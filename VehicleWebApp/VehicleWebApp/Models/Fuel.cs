@@ -32,6 +32,11 @@ namespace VehicleWebApp.Models
             return fuelConsumption = fuelOdometerMileage/fuelQuantity;
         }
 
+        public double CalcFuelCost()
+        {
+            return fuelCost = fuelQuantity * fuelUnitPrice;
+        }
+
     }
 }
 
