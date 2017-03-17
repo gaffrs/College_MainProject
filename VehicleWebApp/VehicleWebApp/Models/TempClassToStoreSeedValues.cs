@@ -7,7 +7,7 @@ namespace VehicleWebApp.Models
 {
     public class TempClassToStoreSeedValues
     {
-//test1
+//test2
         //Collection in Memory, list
         List<Vehicle> Vehicles;         //<Vehicle> is the name of the Class in Model
         List<User> Users;
