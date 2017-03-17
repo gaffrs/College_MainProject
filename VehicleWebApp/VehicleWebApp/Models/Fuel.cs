@@ -7,34 +7,33 @@ using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] 
 using System.Data.Entity;                       //enables "DbContext"	
 
 namespace VehicleWebApp.Models
-{
+{        
     public class Fuel
     {
-        //Enums
-        public enum efuelPartialFill
-        {
-            True, False
-        }
         //Property			                    //auto-implemented ReadWrite
-        public int fuelID { get; set; }
-        public DateTime fuelDate { get; set; }
-        public int fuelOdometerMileage { get; set; }
-        public int fuelQuantity { get; set; }
-        public double fuelUnitPrice { get; set; }
-        public efuelPartialFill fuelPartialFill { get; set; }                       //TODO Have this in as Enum ??????????????
-        public double fuelConsumption { get; set; }
-        public double fuelCost { get; set; }
+        public int FuelID { get; set; }                     //PK    
+        public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
+        public DateTime FuelDate { get; set; }
+        public int FuelOdometerMileage { get; set; }
+        public int FuelQuantity { get; set; }
+        public double FuelUnitPrice { get; set; }
+        public bool FuelPartialFill { get; set; }                       //TODO Have this in as Enum ??????????????
+        public double FuelConsumption { get; set; }
+        public double FuelCost { get; set; }
+
+        //Navigation Property
+        public Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Fuel associated to only One Vehicle
 
 
         //need to adjust this for Partial fills *********************************
         public double CalcFuelConsumption()
         {
-            return fuelConsumption = fuelOdometerMileage/fuelQuantity;
+            return FuelConsumption = FuelOdometerMileage / FuelQuantity;
         }
 
         public double CalcFuelCost()
         {
-            return fuelCost = fuelQuantity * fuelUnitPrice;
+            return FuelCost = FuelQuantity * FuelUnitPrice;
         }
 
     }

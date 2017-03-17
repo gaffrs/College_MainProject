@@ -1,31 +1,32 @@
-﻿//colm 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] etc
-using System.Data.Entity;                       //enables "DbContext"	
+using System.Data.Entity;                       //enables "DbContext"
 
 namespace VehicleWebApp.Models
 {
+    //Enum costs
+    public enum eCostTitle { Tyres, Tax, Service, NCTorDOE, Insurance, Testing }
+
     public class Cost
     {
-        public enum eCostTitle
-        {
-            Tyres, Tax, Service, NCTorDOE, Insurance, Testing,
-        }
-
         //Property			                    //auto-implemented ReadWrite
-        
-        public int costID { get; set; }
-        public DateTime costDate { get; set; }
-        public int costOdometerMileage { get; set; }
-        public eCostTitle costTitle { get; set; }       //Enum Type
-        public double costRunningCost { get; set; }
-        public DateTime costYear { get; set; }
-        public DateTime costStartDate { get; set; }
-        public DateTime costEndDate { get; set; }
+        public int CostID { get; set; }                     //PK
+        public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
+        public DateTime CostDate { get; set; }
+        public int CostOdometerMileage { get; set; }
+        public eCostTitle CostTitle { get; set; }           //Enum Type
+        public double CostRunningCost { get; set; }
+        public DateTime CostYear { get; set; }
+        public DateTime CostStartDate { get; set; }
+        public DateTime CostEndDate { get; set; }
+
+        //Navigation Property
+        public Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Cost associated to only One Vehicle
+
 
         /*
         //Method
@@ -48,8 +49,5 @@ namespace VehicleWebApp.Models
         {
             throw new System.NotImplementedException();
         }*/
-
-
-
-}
+    }
 }
