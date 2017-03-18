@@ -22,7 +22,18 @@ namespace VehicleWebApp.Models
         public double FuelCost { get; set; }
 
         //Navigation Property
+
         public Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Fuel associated to only One Vehicle
+        /*
+        //Partial fill = true
+        //Full fill = false
+        //used in the calculation of the Full & Partial filles
+        public double RollingFuelQuantity { get; set; }        
+        public int RollingFuelMileage { get; set; }
+        */
+        
+
+
 
 
         //need to adjust this for Partial fills *********************************
@@ -35,7 +46,7 @@ namespace VehicleWebApp.Models
         {
             return FuelCost = FuelQuantity * FuelUnitPrice;
         }
-
+        
     }
 }
 
