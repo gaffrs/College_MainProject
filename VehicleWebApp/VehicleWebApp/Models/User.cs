@@ -22,7 +22,7 @@ namespace VehicleWebApp.Models
         [Required(ErrorMessage = "User Password is required")] //Not null or empty string
         public String UserPassword { get; set; }
 
-        [Display(Name = "Email address")]
+        [Display(Name = "Email Address")]
         [Required(ErrorMessage = "The email address is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public String UserEmailAddress { get; set; }
