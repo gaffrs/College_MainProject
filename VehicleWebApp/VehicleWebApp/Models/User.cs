@@ -27,8 +27,7 @@ namespace VehicleWebApp.Models
         [Required(ErrorMessage = "Email address is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [Display(Name = "Email Address")]
-        public String UserEmailAddress { get; set; }
-        
+        public String UserEmailAddress { get; set; }    
 
 		[Required(ErrorMessage = "Number must not be blank")]   //Not null or empty string
         [StringLength(10, MinimumLength = 10, ErrorMessage = "Number must be 10 digits long")]// string 10 characters long & no shorter than 10 characters
@@ -39,8 +38,9 @@ namespace VehicleWebApp.Models
         public eUserType UserType { get; set; }
 
         //Navigation Property
-        public ICollection<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
-        public ICollection<Notification> Notifications { get; set; }//Collection and refers to Notification
+        public virtual ICollection<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
+        public virtual ICollection<Notification> Notifications { get; set; }//Collection and refers to Notification
+
 
         //ToString()
         public override string ToString()

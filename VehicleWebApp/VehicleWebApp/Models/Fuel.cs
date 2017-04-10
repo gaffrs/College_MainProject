@@ -12,9 +12,8 @@ namespace VehicleWebApp.Models
     {
         //Property			                    //auto-implemented ReadWrite
         public int FuelID { get; set; }                     //PK    
-        [Display(Name = "vehicle ID")]
-        public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
 
+        public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
         
         [Required(ErrorMessage = "Fuel Date is required")]       //Not null or empty string
         [Display(Name = "Fuel Date")]
@@ -45,7 +44,7 @@ namespace VehicleWebApp.Models
 
         //Navigation Property
 
-        public Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Fuel associated to only One Vehicle
+        public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Fuel associated to only One Vehicle
         /*
         //Partial fill = true
         //Full fill = false
@@ -54,6 +53,7 @@ namespace VehicleWebApp.Models
         public int RollingFuelMileage { get; set; }
         */
         
+
         //ToString()
         public override string ToString()
         {

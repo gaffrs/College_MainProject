@@ -25,23 +25,23 @@ namespace VehicleWebApp.Models
         public int UserID { get; set; }                             //FK    Customer.UserID
 
         [Required(ErrorMessage = "Vehicle Make is required")]       //Not null or empty string
-        [Display(Name = "Make")]
+        [Display(Name = "Vehicle Make")]
         public String VehicleMake { get; set; }
 
         [Required(ErrorMessage = "Vehicle Model is required")]      //Not null or empty string
-        [Display(Name = "Model")]
+        [Display(Name = "Vehicle Model")]
         public String VehicleModel { get; set; }
 
         [Required(ErrorMessage = "Vehicle Registration Number is required")] //Not null or empty string
-        [Display(Name = "Registration No.")]
+        [Display(Name = "Vehicle Registration No.")]
         public String VehicleRegistrationNumber { get; set; }
 
         [Required(ErrorMessage = "Vehicle Odometer Mileage is required")] //Not null or empty string
-        [Display(Name = "Odometer")]
+        [Display(Name = "Vehicle Odometer")]
         public int VehicleOdometerMileage { get; set; }
 
         [Required(ErrorMessage = "Fuel Type Setting is required")]  //Not null or empty string
-        [Display(Name = "Fuel type")]
+        [Display(Name = "Vehicle Fuel type")]
         public eSettingFuelType SettingFuelType { get; set; }       //Enum Type
 
         [Required(ErrorMessage = "Distance Setting is required")]   //Not null or empty string
@@ -58,17 +58,16 @@ namespace VehicleWebApp.Models
 
         //Navigation Property
         public User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
+        public virtual ICollection<Cost> Costs { get; set; }    //Collection and refers to Cost
+        public virtual ICollection<Fuel> FuelFills { get; set; }//Collection and refers to Fuel
 
-        public ICollection<Cost> Costs { get; set; }    //Collection and refers to Cost
-
-        public ICollection<Fuel> FuelFills { get; set; }//Collection and refers to Fuel
 
         //ToString()
         public override string ToString()
         {
-            return "Vehicle ID: " + VehicleID + ", Make: " + VehicleMake + ", Model: " + VehicleModel +
-                ", Registration Number: " + VehicleRegistrationNumber + ", Odometer: " + VehicleOdometerMileage +
-                ", Fuel Type: " + SettingFuelType + ", Distance: " + SettingDistance + ", Volume: " + SettingVolume +
+            return "Vehicle ID: " + VehicleID + ", Vehicle  Make: " + VehicleMake + ", Vehicle  Model: " + VehicleModel +
+                ", Vehicle Registration Number: " + VehicleRegistrationNumber + ", Vehicle Odometer: " + VehicleOdometerMileage +
+                ", Vehicle Fuel Type: " + SettingFuelType + ", Distance unit: " + SettingDistance + ", Volume unit: " + SettingVolume +
                 ", Consumption Unit: " + SettingConsumption;
         }
 

@@ -21,7 +21,7 @@ namespace VehicleWebApp.Models
         public DateTime CostDate { get; set; }
 
         [Required(ErrorMessage = "Vehicle Odometer Mileage is required")] //Not null or empty string
-        [Display(Name = "Odometer")]
+        [Display(Name = "Cost Odometer")]
         public int CostOdometerMileage { get; set; }
 
         [Required(ErrorMessage = "Cost Title is required")] //Not null or empty string
@@ -40,11 +40,13 @@ namespace VehicleWebApp.Models
         public DateTime CostEndDate { get; set; }
 
         //Navigation Property
-        public Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Cost associated to only One Vehicle
+        public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Cost associated to only One Vehicle
 
+
+        //ToString()
         public override string ToString()
         {
-            return "Cost ID: " + CostID + ", Cost Date: " + CostDate + ", Cost Mileage: " + CostOdometerMileage +
+            return "Cost ID: " + CostID + ", Cost Date: " + CostDate + ", Cost Odometer: " + CostOdometerMileage +
                 ", Cost Title: " + CostTitle + ", Running Cost: " + CostRunningCost + ", Cost Year: " + CostYear + 
                 ", Cost Start Date: " + CostStartDate + ", Cost End Date: " + CostEndDate;
         }

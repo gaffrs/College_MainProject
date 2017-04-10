@@ -22,19 +22,25 @@ namespace VehicleWebApp.Models
         public int UserID { get; set; }                             //FK    Customer.UserID 
 
         [Required(ErrorMessage = "Notification Date is required")]   //Not null or empty string
+        [Display(Name = "Notification Date")]
         public DateTime NotificationDate { get; set; }
 
         [Required(ErrorMessage = "Notification Send Date is required")]   //Not null or empty string
+        [Display(Name = "Notification Send Date")]
         public DateTime NotificationSendDate { get; set; }
+        [Display(Name = "Notification Type")]
         public eNotificationType NotificationType { get; set; }     //Enum Type
+        [Display(Name = "Notification Title")]
         public eNotificationTitle NotificationTitle { get; set; }   //Enum Type
 
         //Navigation Property
-        public User User { get; set; }              //NOT a Collection, as a Notification associated to only One User
+        public virtual User User { get; set; }              //NOT a Collection, as a Notification associated to only One User
 
+
+        //ToString()
         public override string ToString()
         {
-            return "Notification ID: " + NotificationID + ", Date: " + NotificationDate + ", Send Date: " + NotificationSendDate +
+            return "Notification ID: " + NotificationID + ", Notification Date: " + NotificationDate + ", Notification Send Date: " + NotificationSendDate +
                 ", Notification Type: " + NotificationType + ", Notification Title: " + NotificationTitle;
         }
 
