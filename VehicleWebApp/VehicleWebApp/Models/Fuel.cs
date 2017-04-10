@@ -12,13 +12,21 @@ namespace VehicleWebApp.Models
     {
         //Property			                    //auto-implemented ReadWrite
         public int FuelID { get; set; }                     //PK    
+        [Display(Name = "vehicle ID")]
         public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
+        [Display(Name = "Date")]
         public DateTime FuelDate { get; set; }
+        [Display(Name = "Odometer")]
         public int FuelOdometerMileage { get; set; }
+        [Display(Name = "Qty")]
         public int FuelQuantity { get; set; }
+        [Display(Name = "Price")]
         public double FuelUnitPrice { get; set; }
+        [Display(Name = "Partial Fill")]
         public bool FuelPartialFill { get; set; }                       //TODO Have this in as Enum ??????????????
+        [Display(Name = "Consumption")]
         public double FuelConsumption { get; set; }
+        [Display(Name = "Cost")]
         public double FuelCost { get; set; }
 
         //Navigation Property
@@ -32,7 +40,13 @@ namespace VehicleWebApp.Models
         public int RollingFuelMileage { get; set; }
         */
         
-
+        //ToString()
+        public override string ToString()
+        {
+            return "Fuel ID: " + FuelID + ", Date: " + FuelDate + ", Odometer: " + FuelOdometerMileage +
+                ", Quantity: " + FuelQuantity + ", Unit Price: " + FuelUnitPrice + ", Partial Fill: " + FuelPartialFill
+                 + ", Consumption: " + FuelConsumption + ", Cost: " + FuelCost;
+        }
 
 
 

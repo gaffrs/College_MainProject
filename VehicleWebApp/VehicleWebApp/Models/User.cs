@@ -16,17 +16,27 @@ namespace VehicleWebApp.Models
         [Key]                                   //implies Primary Key PK
         public int UserID { get; set; }
 
-        [Required(ErrorMessage = "User Username is required")] //Not null or empty string
+        [Required(ErrorMessage = "Username is required")] //Not null or empty string
         public String Username { get; set; }
 
-        [Required(ErrorMessage = "User Password is required")] //Not null or empty string
+        [Required(ErrorMessage = "Password is required")] //Not null or empty string
+        [Display(Name = "Password")]
         public String UserPassword { get; set; }
 
-        [Display(Name = "Email Address")]
-        [Required(ErrorMessage = "The email address is required")]
+        
+        [Required(ErrorMessage = "Email address is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [Display(Name = "Email Address")]
         public String UserEmailAddress { get; set; }
+        
+		//Other Phone attribute option
+		[Required(ErrorMessage = "Number must not be blank")] //Not null or empty string
+        // string 10 characters long & no shorter than 10 characters
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "Number must be 10 digits long")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Number must be 10 digits long")]
+        [Display(Name = "Mobile Phone Number")]             
         public int UserMobileNumber { get; set; }
+
         public eUserType UserType { get; set; }
 
         //Navigation Property
@@ -36,7 +46,8 @@ namespace VehicleWebApp.Models
         //ToString()
         public override string ToString()
         {
-            return Username + " " + UserPassword + " " + UserEmailAddress + " " + UserMobileNumber;
+            return "User ID: " + UserID + ", Username: " + Username + ", Password: " + UserPassword +
+                ", Email Address: " + UserEmailAddress + ", UserMobileNumber: " + UserMobileNumber + ", User Type: " + UserType;
         }
 
         /*public int CreditCardNumber { get; set; }
