@@ -16,17 +16,38 @@ namespace VehicleWebApp.Models
         //Property			                    //auto-implemented ReadWrite
         public int CostID { get; set; }                     //PK
         public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
+
+        [Display(Name = "Cost Date")]
         public DateTime CostDate { get; set; }
+
+        [Required(ErrorMessage = "Vehicle Odometer Mileage is required")] //Not null or empty string
+        [Display(Name = "Odometer")]
         public int CostOdometerMileage { get; set; }
+
+        [Required(ErrorMessage = "Cost Title is required")] //Not null or empty string
+        [Display(Name = "Cost Title")]
         public eCostTitle CostTitle { get; set; }           //Enum Type
+
+
+        //Values retuned from Methods
+        [Display(Name = "Running Cost")]
         public double CostRunningCost { get; set; }
+        [Display(Name = "Running Cost Year")]
         public DateTime CostYear { get; set; }
+        [Display(Name = "Running Cost Start Date")]
         public DateTime CostStartDate { get; set; }
+        [Display(Name = "Running Cost End Date")]
         public DateTime CostEndDate { get; set; }
 
         //Navigation Property
         public Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Cost associated to only One Vehicle
 
+        public override string ToString()
+        {
+            return "Cost ID: " + CostID + ", Cost Date: " + CostDate + ", Cost Mileage: " + CostOdometerMileage +
+                ", Cost Title: " + CostTitle + ", Running Cost: " + CostRunningCost + ", Cost Year: " + CostYear + 
+                ", Cost Start Date: " + CostStartDate + ", Cost End Date: " + CostEndDate;
+        }
 
         /*
         //Method

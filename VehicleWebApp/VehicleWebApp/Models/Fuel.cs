@@ -14,19 +14,33 @@ namespace VehicleWebApp.Models
         public int FuelID { get; set; }                     //PK    
         [Display(Name = "vehicle ID")]
         public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
-        [Display(Name = "Date")]
+
+        
+        [Required(ErrorMessage = "Fuel Date is required")]       //Not null or empty string
+        [Display(Name = "Fuel Date")]
         public DateTime FuelDate { get; set; }
-        [Display(Name = "Odometer")]
+
+        [Required(ErrorMessage = "Fuel Odometer is required")]   //Not null or empty string
+        [Display(Name = "Fuel Odometer")]
         public int FuelOdometerMileage { get; set; }
-        [Display(Name = "Qty")]
+
+        [Required(ErrorMessage = "Fuel Odometer is required")]   //Not null or empty string
+        [Display(Name = "Fuel Qty")]
         public int FuelQuantity { get; set; }
-        [Display(Name = "Price")]
+
+        [Required(ErrorMessage = "Fuel price is required")]   //Not null or empty string
+        [Display(Name = "Fuel Price")]
         public double FuelUnitPrice { get; set; }
+
         [Display(Name = "Partial Fill")]
         public bool FuelPartialFill { get; set; }                       //TODO Have this in as Enum ??????????????
-        [Display(Name = "Consumption")]
+
+
+        //Values retuned from Methods
+        [Display(Name = "Fuel Consumption")]
         public double FuelConsumption { get; set; }
-        [Display(Name = "Cost")]
+
+        [Display(Name = "Fuel Cost")]
         public double FuelCost { get; set; }
 
         //Navigation Property
@@ -43,9 +57,9 @@ namespace VehicleWebApp.Models
         //ToString()
         public override string ToString()
         {
-            return "Fuel ID: " + FuelID + ", Date: " + FuelDate + ", Odometer: " + FuelOdometerMileage +
-                ", Quantity: " + FuelQuantity + ", Unit Price: " + FuelUnitPrice + ", Partial Fill: " + FuelPartialFill
-                 + ", Consumption: " + FuelConsumption + ", Cost: " + FuelCost;
+            return "Fuel ID: " + FuelID + ", Fuel Date: " + FuelDate + ", Fuel Odometer: " + FuelOdometerMileage +
+                ", Fuel Quantity: " + FuelQuantity + ", Fuel Price: " + FuelUnitPrice + ", Partial Fill: " + FuelPartialFill
+                 + ", Fuel Consumption: " + FuelConsumption + ", Fuel Cost: " + FuelCost;
         }
 
 

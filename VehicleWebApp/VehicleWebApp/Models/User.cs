@@ -29,13 +29,12 @@ namespace VehicleWebApp.Models
         [Display(Name = "Email Address")]
         public String UserEmailAddress { get; set; }
         
-		//Other Phone attribute option
-		[Required(ErrorMessage = "Number must not be blank")] //Not null or empty string
-        // string 10 characters long & no shorter than 10 characters
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "Number must be 10 digits long")]
+
+		[Required(ErrorMessage = "Number must not be blank")]   //Not null or empty string
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "Number must be 10 digits long")]// string 10 characters long & no shorter than 10 characters
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Number must be 10 digits long")]
-        [Display(Name = "Mobile Phone Number")]             
-        public int UserMobileNumber { get; set; }
+        [Display(Name = "Mobile Phone Number")]          
+        public String UserMobileNumber { get; set; }
 
         public eUserType UserType { get; set; }
 
