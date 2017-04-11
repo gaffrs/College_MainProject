@@ -236,13 +236,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersAPIController.cs" />
+    <Compile Include="Controllers\VehiclesAPIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cost.cs" />
-    <Compile Include="Models\CostsDto.cs" />
+    <Compile Include="Models\CostDto.cs" />
     <Compile Include="Models\FuelDto.cs" />
     <Compile Include="Models\NotificationDto.cs" />
     <Compile Include="Models\TempClassToStoreSeedValues.cs" />
