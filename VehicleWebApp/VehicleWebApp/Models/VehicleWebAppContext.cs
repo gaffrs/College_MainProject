@@ -24,5 +24,7 @@ namespace VehicleWebApp.Models
         public System.Data.Entity.DbSet<VehicleWebApp.Models.Vehicle> Vehicles { get; set; }
 
         public System.Data.Entity.DbSet<VehicleWebApp.Models.Fuel> Fuels { get; set; }
+
+        public System.Data.Entity.DbSet<VehicleWebApp.Models.Cost> Costs { get; set; }
     }
 }
