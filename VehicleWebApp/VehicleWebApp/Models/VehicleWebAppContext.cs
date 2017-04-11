@@ -4,6 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
+
+using System.Data.Entity.ModelConfiguration.Conventions;    //CG: Added to remove Pluralisation from Table names
+        
 namespace VehicleWebApp.Models
 {
     public class VehicleWebAppContext : DbContext
@@ -28,5 +31,12 @@ namespace VehicleWebApp.Models
         public System.Data.Entity.DbSet<VehicleWebApp.Models.Cost> Costs { get; set; }
 
         public System.Data.Entity.DbSet<VehicleWebApp.Models.Notification> Notifications { get; set; }
+
+        //CG: Added to remove Pluralisation from Table names
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
     }
 }
