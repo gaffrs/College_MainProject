@@ -22,5 +22,7 @@ namespace VehicleWebApp.Models
         public System.Data.Entity.DbSet<VehicleWebApp.Models.User> Users { get; set; }
 
         public System.Data.Entity.DbSet<VehicleWebApp.Models.Vehicle> Vehicles { get; set; }
+
+        public System.Data.Entity.DbSet<VehicleWebApp.Models.Fuel> Fuels { get; set; }
     }
 }
