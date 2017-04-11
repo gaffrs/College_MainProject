@@ -32,9 +32,9 @@ namespace VehicleWebApp.Models
             {
 
             //context.User.AddOrUpdate(u => u.UserID,
-                new User { Username = "Colm1", UserPassword = "123456", UserEmailAddress = "Colm@gmail.com", UserMobileNumber = 0871234567, UserType = eUserType.Basic  },
-                new User { Username = "John1", UserPassword = "234567", UserEmailAddress = "John@gmail.com", UserMobileNumber = 0871111111, UserType = eUserType.PRO  },
-                new User { Username = "Mick1", UserPassword = "345678", UserEmailAddress = "Mick@gmail.com", UserMobileNumber = 0872222222, UserType = eUserType.Basic  }
+                new User { Username = "Colm1", UserPassword = "123456", UserEmailAddress = "Colm@gmail.com", UserMobileNumber = "0871234567", UserType = eUserType.Basic  },
+                new User { Username = "John1", UserPassword = "234567", UserEmailAddress = "John@gmail.com", UserMobileNumber = "0871111111", UserType = eUserType.PRO  },
+                new User { Username = "Mick1", UserPassword = "345678", UserEmailAddress = "Mick@gmail.com", UserMobileNumber = "0872222222", UserType = eUserType.Basic  }
             };
 
             // Create a list of costs.
@@ -42,8 +42,9 @@ namespace VehicleWebApp.Models
             {
 
             //context.Cost.AddOrUpdate(c => c.CostID,
-                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 1, 01), CostOdometerMileage = 100, CostTitle = eCostTitle.Insurance, CostRunningCost = 100.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 1, 20), CostEndDate = new DateTime(2018, 1, 20) },
-                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 6, 01), CostOdometerMileage = 100, CostTitle = eCostTitle.Insurance, CostRunningCost = 100.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 7, 20), CostEndDate = new DateTime(2018, 7, 20) }
+                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 1, 01), CostOdometerMileage = 1000, CostTitle = eCostTitle.Insurance, CostRunningCost = 100.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 1, 20), CostEndDate = new DateTime(2018, 1, 20) },
+                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 5, 01), CostOdometerMileage = 3000, CostTitle = eCostTitle.Service, CostRunningCost = 200.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 1, 20), CostEndDate = new DateTime(2018, 1, 20) },
+                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 6, 01), CostOdometerMileage = 4000, CostTitle = eCostTitle.Tax, CostRunningCost = 300.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 7, 20), CostEndDate = new DateTime(2018, 7, 20) }
             };
 
             // Create a list of Fuelfills.

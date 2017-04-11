@@ -38,8 +38,8 @@ namespace VehicleWebApp.Models
         public eUserType UserType { get; set; }
 
         //Navigation Property
-        public virtual ICollection<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
-        public virtual ICollection<Notification> Notifications { get; set; }//Collection and refers to Notification
+        public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
+        public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
 
 
         //ToString()
@@ -49,24 +49,17 @@ namespace VehicleWebApp.Models
                 ", Email Address: " + UserEmailAddress + ", UserMobileNumber: " + UserMobileNumber + ", User Type: " + UserType;
         }
 
-        /*public int CreditCardNumber { get; set; }
-
+        /*
+        public int CreditCardNumber { get; set; }
         public int CreditCardExpMonth { get; set; }
-
-
         public int CreditCardExpYear { get; set; }
-
-
         public int CreditCardSecurityCode { get; set; }
-
-
-        public int CreditCardAuthorisationNumber { get; set; }*/
+        public int CreditCardAuthorisationNumber { get; set; }
+        */
 
 
     }
 }
-
-
 
 
 /*

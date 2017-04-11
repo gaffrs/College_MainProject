@@ -57,9 +57,9 @@ namespace VehicleWebApp.Models
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
 
         //Navigation Property
-        public User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
-        public virtual ICollection<Cost> Costs { get; set; }    //Collection and refers to Cost
-        public virtual ICollection<Fuel> FuelFills { get; set; }//Collection and refers to Fuel
+        public virtual User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
+        public virtual List<Cost> Costs { get; set; }    //Collection and refers to Cost
+        public virtual List<Fuel> Fuels { get; set; }//Collection and refers to Fuel
 
 
         //ToString()

@@ -18,6 +18,7 @@ namespace VehicleWebApp.Models
         public VehicleWebAppContext() : base("name=VehicleWebAppContext")
         {
         }
-    
+
+        public System.Data.Entity.DbSet<VehicleWebApp.Models.User> Users { get; set; }
     }
 }
