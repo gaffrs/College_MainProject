@@ -237,6 +237,7 @@
     <Compile Include="Controllers\CostsAPIController.cs" />
     <Compile Include="Controllers\FuelsAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotificationsAPIController.cs" />
     <Compile Include="Controllers\UsersAPIController.cs" />
     <Compile Include="Controllers\VehiclesAPIController.cs" />
     <Compile Include="Global.asax.cs">
