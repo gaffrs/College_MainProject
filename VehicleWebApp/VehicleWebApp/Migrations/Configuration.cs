@@ -55,9 +55,9 @@ namespace VehicleWebApp.Migrations
             {
 */
             context.Costs.AddOrUpdate(c => c.CostID,
-                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 1, 01), CostOdometerMileage = 1000, CostTitle = eCostTitle.Insurance, CostRunningCost = 100.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 1, 20), CostEndDate = new DateTime(2018, 1, 20) },
-                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 5, 01), CostOdometerMileage = 3000, CostTitle = eCostTitle.Service, CostRunningCost = 200.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 1, 20), CostEndDate = new DateTime(2018, 1, 20) },
-                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 6, 01), CostOdometerMileage = 4000, CostTitle = eCostTitle.Tax, CostRunningCost = 300.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 7, 20), CostEndDate = new DateTime(2018, 7, 20) }
+                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 01, 01), CostOdometerMileage = 1000, CostTitle = eCostTitle.Insurance, CostRunningCost = 100.55, CostYear = new DateTime (2018),  CostStartDate  = new DateTime(2017, 01 ,20), CostEndDate = new DateTime(2018, 01, 20) },
+                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 05, 01), CostOdometerMileage = 3000, CostTitle = eCostTitle.Service, CostRunningCost = 200.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 01, 20), CostEndDate = new DateTime(2018, 01, 20) },
+                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 06, 01), CostOdometerMileage = 4000, CostTitle = eCostTitle.Tax, CostRunningCost = 300.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 07, 20), CostEndDate = new DateTime(2018, 07, 20) }
             );
 /*
             // Create a list of Fuelfills.
@@ -65,11 +65,11 @@ namespace VehicleWebApp.Migrations
             {
 */
             context.Fuels.AddOrUpdate(f => f.FuelID,
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 01), FuelOdometerMileage = 10000, FuelQuantity = 45, FuelUnitPrice = 1.35, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 10), FuelOdometerMileage = 10300, FuelQuantity = 40, FuelUnitPrice = 1.45, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 24), FuelOdometerMileage = 10600, FuelQuantity = 48, FuelUnitPrice = 1.55, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 29), FuelOdometerMileage = 10900, FuelQuantity = 50, FuelUnitPrice = 1.25, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 4, 05), FuelOdometerMileage = 11200, FuelQuantity = 55, FuelUnitPrice = 1.15, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 }
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 03, 01), FuelOdometerMileage = 10000, FuelQuantity = 45, FuelUnitPrice = 1.35, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 03, 10), FuelOdometerMileage = 10300, FuelQuantity = 40, FuelUnitPrice = 1.45, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 03, 24), FuelOdometerMileage = 10600, FuelQuantity = 48, FuelUnitPrice = 1.55, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 03, 29), FuelOdometerMileage = 10900, FuelQuantity = 50, FuelUnitPrice = 1.25, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 04, 05), FuelOdometerMileage = 11200, FuelQuantity = 55, FuelUnitPrice = 1.15, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 }
 
             );
             /*
@@ -78,9 +78,9 @@ namespace VehicleWebApp.Migrations
             {*/
 
             context.Notifications.AddOrUpdate(n => n.NotificationID,
-                new Notification { UserID = 1, NotificationDate = new DateTime(2017, 7, 01), NotificationSendDate = new DateTime(2017, 1, 01), NotificationType = eNotificationType.Email , NotificationTitle = eNotificationTitle.MotorTaxDateRenewal },
-                new Notification { UserID = 1, NotificationDate = new DateTime(2017, 7, 01), NotificationSendDate = new DateTime(2017, 1, 01), NotificationType = eNotificationType.SMS , NotificationTitle = eNotificationTitle.VehicleTestingDateRenewal },
-                new Notification { UserID = 2 ,NotificationDate = new DateTime(2018, 7, 01), NotificationSendDate = new DateTime(2018, 1, 01), NotificationType = eNotificationType.Email , NotificationTitle = eNotificationTitle.MotorTaxDateRenewal }
+                new Notification { UserID = 1, NotificationDate = new DateTime(2017, 07, 01), NotificationSendDate = new DateTime(2017, 01, 01), NotificationType = eNotificationType.Email , NotificationTitle = eNotificationTitle.MotorTaxDateRenewal },
+                new Notification { UserID = 1, NotificationDate = new DateTime(2017, 07, 01), NotificationSendDate = new DateTime(2017, 01, 01), NotificationType = eNotificationType.SMS , NotificationTitle = eNotificationTitle.VehicleTestingDateRenewal },
+                new Notification { UserID = 2 ,NotificationDate = new DateTime(2018, 07, 01), NotificationSendDate = new DateTime(2018, 01, 01), NotificationType = eNotificationType.Email , NotificationTitle = eNotificationTitle.MotorTaxDateRenewal }
             );
 
         }
