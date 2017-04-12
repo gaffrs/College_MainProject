@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using VehicleWebApp.Models;
@@ -28,10 +29,11 @@ namespace VehicleWebApp.Controllers
                 UserPassword = a.UserPassword,
                 UserEmailAddress = a.UserEmailAddress,
                 UserMobileNumber = a.UserMobileNumber,
-                UserType = a.UserType,
-                
+                UserType = a.UserType
+
             }).ToList();
         }
+
         /*
                 //Original Code
                 // GET: api/UsersAPI
@@ -41,62 +43,46 @@ namespace VehicleWebApp.Controllers
                 }
         */
 
-
         // GET: api/UsersAPI/5
         [ResponseType(typeof(UserDto))]
-        public IHttpActionResult GetUser(int id)
+        public async Task<IHttpActionResult> GetUser(int id)
         {
-            User user = db.Users.Find(id);
-            if (user == null)
+            var list = await db.Users.Include(p => p.UserID).Select(a => new UserDto()
+            {
+                UserID = a.UserID,
+                Username = a.Username,
+                UserPassword = a.UserPassword,
+                UserEmailAddress = a.UserEmailAddress,
+                UserMobileNumber = a.UserMobileNumber,
+                UserType = a.UserType
+            }).SingleOrDefaultAsync(p => p.UserID == id);
+            if (list == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(list);
         }
 
-        // GET: api/HiresAPI/5
-        [ResponseType(typeof(HireDetailsDto))]
-        public async Task<IHttpActionResult> GetHire(int id)
-        {
-            var hireList = await db.Hires.Include(p => p.HireID).Select(s => new HireDetailsDto()
-            {
-                HireID = s.HireID,
-                BikeID = s.BikeID,
-                FirstName = s.FirstName,
-                Surname = s.Surname,
-                Address = s.Address,
-                PhoneNumber = s.PhoneNumber,
-                StartDate = s.StartDate,
-                FinishDate = s.FinishDate
-            }).SingleOrDefaultAsync(p => p.HireID == id);
-
-            if (hireList == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(hireList);
-        }
 /*
-        // Original Code
-        // GET: api/UsersAPI/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
-        {
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
+                //Original Code
+                // GET: api/UsersAPI/5
+                [ResponseType(typeof(User))]
+                public async Task<IHttpActionResult> GetUser(int id)
+                {
+                    User user = await db.Users.FindAsync(id);
+                    if (user == null)
+                    {
+                        return NotFound();
+                    }
 
-            return Ok(user);
-        }
+                    return Ok(user);
+                }
 */
 
         // PUT: api/UsersAPI/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public async Task<IHttpActionResult> PutUser(int id, User user)
         {
             if (!ModelState.IsValid)
             {
@@ -112,7 +98,7 @@ namespace VehicleWebApp.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -131,7 +117,7 @@ namespace VehicleWebApp.Controllers
 
         // POST: api/UsersAPI
         [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        public async Task<IHttpActionResult> PostUser(User user)
         {
             if (!ModelState.IsValid)
             {
@@ -139,23 +125,23 @@ namespace VehicleWebApp.Controllers
             }
 
             db.Users.Add(user);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = user.UserID }, user);
         }
 
         // DELETE: api/UsersAPI/5
         [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
+        public async Task<IHttpActionResult> DeleteUser(int id)
         {
-            User user = db.Users.Find(id);
+            User user = await db.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
 
             db.Users.Remove(user);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(user);
         }
@@ -175,3 +161,4 @@ namespace VehicleWebApp.Controllers
         }
     }
 }
+ 

@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using VehicleWebApp.Models;
@@ -30,21 +31,21 @@ namespace VehicleWebApp.Controllers
                 FuelPartialFill = e.FuelPartialFill
             }).ToList();
         }
-/*
- *      // Original Code
-        // GET: api/FuelsAPI
-        public IQueryable<Fuel> GetFuels()
-        {
-            return db.Fuels;
-        }
-*/
 
+        /*
+                //Original Code
+                // GET: api/FuelsAPI
+                public IQueryable<Fuel> GetFuels()
+                {
+                    return db.Fuels;
+                }
+        */
 
-    // GET: api/FuelsAPI/5
-    [ResponseType(typeof(Fuel))]
-        public IHttpActionResult GetFuel(int id)
+        // GET: api/FuelsAPI/5
+        [ResponseType(typeof(Fuel))]
+        public async Task<IHttpActionResult> GetFuel(int id)
         {
-            Fuel fuel = db.Fuels.Find(id);
+            Fuel fuel = await db.Fuels.FindAsync(id);
             if (fuel == null)
             {
                 return NotFound();
@@ -55,7 +56,7 @@ namespace VehicleWebApp.Controllers
 
         // PUT: api/FuelsAPI/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutFuel(int id, Fuel fuel)
+        public async Task<IHttpActionResult> PutFuel(int id, Fuel fuel)
         {
             if (!ModelState.IsValid)
             {
@@ -71,7 +72,7 @@ namespace VehicleWebApp.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -90,7 +91,7 @@ namespace VehicleWebApp.Controllers
 
         // POST: api/FuelsAPI
         [ResponseType(typeof(Fuel))]
-        public IHttpActionResult PostFuel(Fuel fuel)
+        public async Task<IHttpActionResult> PostFuel(Fuel fuel)
         {
             if (!ModelState.IsValid)
             {
@@ -98,23 +99,23 @@ namespace VehicleWebApp.Controllers
             }
 
             db.Fuels.Add(fuel);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = fuel.FuelID }, fuel);
         }
 
         // DELETE: api/FuelsAPI/5
         [ResponseType(typeof(Fuel))]
-        public IHttpActionResult DeleteFuel(int id)
+        public async Task<IHttpActionResult> DeleteFuel(int id)
         {
-            Fuel fuel = db.Fuels.Find(id);
+            Fuel fuel = await db.Fuels.FindAsync(id);
             if (fuel == null)
             {
                 return NotFound();
             }
 
             db.Fuels.Remove(fuel);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(fuel);
         }

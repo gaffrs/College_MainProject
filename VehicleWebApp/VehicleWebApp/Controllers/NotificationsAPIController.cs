@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using VehicleWebApp.Models;
@@ -15,7 +16,6 @@ namespace VehicleWebApp.Controllers
     public class NotificationsAPIController : ApiController
     {
         private VehicleWebAppContext db = new VehicleWebAppContext();
-
         // GET: api/NotificationsAPI
         public IList<NotificationDto> GetNotifications()
         {
@@ -30,20 +30,20 @@ namespace VehicleWebApp.Controllers
             }).ToList();
         }
 
-                /*
-                        //Original Code
-                        // GET: api/NotificationsAPI
-                        public IQueryable<Notification> GetNotifications()
-                        {
-                            return db.Notifications;
-                        }
-                */
-
-                // GET: api/NotificationsAPI/5
-                [ResponseType(typeof(Notification))]
-        public IHttpActionResult GetNotification(int id)
+/*
+        //Original Code
+        // GET: api/NotificationsAPI
+        public IQueryable<Notification> GetNotifications()
         {
-            Notification notification = db.Notifications.Find(id);
+            return db.Notifications;
+        }
+*/
+
+        // GET: api/NotificationsAPI/5
+        [ResponseType(typeof(Notification))]
+        public async Task<IHttpActionResult> GetNotification(int id)
+        {
+            Notification notification = await db.Notifications.FindAsync(id);
             if (notification == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace VehicleWebApp.Controllers
 
         // PUT: api/NotificationsAPI/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutNotification(int id, Notification notification)
+        public async Task<IHttpActionResult> PutNotification(int id, Notification notification)
         {
             if (!ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace VehicleWebApp.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -89,7 +89,7 @@ namespace VehicleWebApp.Controllers
 
         // POST: api/NotificationsAPI
         [ResponseType(typeof(Notification))]
-        public IHttpActionResult PostNotification(Notification notification)
+        public async Task<IHttpActionResult> PostNotification(Notification notification)
         {
             if (!ModelState.IsValid)
             {
@@ -97,23 +97,23 @@ namespace VehicleWebApp.Controllers
             }
 
             db.Notifications.Add(notification);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = notification.NotificationID }, notification);
         }
 
         // DELETE: api/NotificationsAPI/5
         [ResponseType(typeof(Notification))]
-        public IHttpActionResult DeleteNotification(int id)
+        public async Task<IHttpActionResult> DeleteNotification(int id)
         {
-            Notification notification = db.Notifications.Find(id);
+            Notification notification = await db.Notifications.FindAsync(id);
             if (notification == null)
             {
                 return NotFound();
             }
 
             db.Notifications.Remove(notification);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(notification);
         }

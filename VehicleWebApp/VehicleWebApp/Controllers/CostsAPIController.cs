@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using VehicleWebApp.Models;
@@ -31,20 +32,21 @@ namespace VehicleWebApp.Controllers
                 CostEndDate = c.CostEndDate
             }).ToList();
         }
-                    /*
-                            //Original Code
-                            // GET: api/CostsAPI
-                            public IQueryable<Cost> GetCosts()
-                            {
-                                return db.Costs;
-                            }
-                    */
 
-                    // GET: api/CostsAPI/5
-                    [ResponseType(typeof(Cost))]
-        public IHttpActionResult GetCost(int id)
+/*
+        //Original Code
+        // GET: api/CostsAPI
+        public IQueryable<Cost> GetCosts()
         {
-            Cost cost = db.Costs.Find(id);
+            return db.Costs;
+        }
+*/
+
+        // GET: api/CostsAPI/5
+        [ResponseType(typeof(Cost))]
+        public async Task<IHttpActionResult> GetCost(int id)
+        {
+            Cost cost = await db.Costs.FindAsync(id);
             if (cost == null)
             {
                 return NotFound();
@@ -55,7 +57,7 @@ namespace VehicleWebApp.Controllers
 
         // PUT: api/CostsAPI/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCost(int id, Cost cost)
+        public async Task<IHttpActionResult> PutCost(int id, Cost cost)
         {
             if (!ModelState.IsValid)
             {
@@ -71,7 +73,7 @@ namespace VehicleWebApp.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -90,7 +92,7 @@ namespace VehicleWebApp.Controllers
 
         // POST: api/CostsAPI
         [ResponseType(typeof(Cost))]
-        public IHttpActionResult PostCost(Cost cost)
+        public async Task<IHttpActionResult> PostCost(Cost cost)
         {
             if (!ModelState.IsValid)
             {
@@ -98,23 +100,23 @@ namespace VehicleWebApp.Controllers
             }
 
             db.Costs.Add(cost);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = cost.CostID }, cost);
         }
 
         // DELETE: api/CostsAPI/5
         [ResponseType(typeof(Cost))]
-        public IHttpActionResult DeleteCost(int id)
+        public async Task<IHttpActionResult> DeleteCost(int id)
         {
-            Cost cost = db.Costs.Find(id);
+            Cost cost = await db.Costs.FindAsync(id);
             if (cost == null)
             {
                 return NotFound();
             }
 
             db.Costs.Remove(cost);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(cost);
         }

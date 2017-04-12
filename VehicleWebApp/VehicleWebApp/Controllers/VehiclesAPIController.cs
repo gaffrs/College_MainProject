@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using VehicleWebApp.Models;
@@ -47,9 +48,9 @@ namespace VehicleWebApp.Controllers
 
         // GET: api/VehiclesAPI/5
         [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult GetVehicle(int id)
+        public async Task<IHttpActionResult> GetVehicle(int id)
         {
-            Vehicle vehicle = db.Vehicles.Find(id);
+            Vehicle vehicle = await db.Vehicles.FindAsync(id);
             if (vehicle == null)
             {
                 return NotFound();
@@ -60,7 +61,7 @@ namespace VehicleWebApp.Controllers
 
         // PUT: api/VehiclesAPI/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVehicle(int id, Vehicle vehicle)
+        public async Task<IHttpActionResult> PutVehicle(int id, Vehicle vehicle)
         {
             if (!ModelState.IsValid)
             {
@@ -76,7 +77,7 @@ namespace VehicleWebApp.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -95,7 +96,7 @@ namespace VehicleWebApp.Controllers
 
         // POST: api/VehiclesAPI
         [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult PostVehicle(Vehicle vehicle)
+        public async Task<IHttpActionResult> PostVehicle(Vehicle vehicle)
         {
             if (!ModelState.IsValid)
             {
@@ -103,23 +104,23 @@ namespace VehicleWebApp.Controllers
             }
 
             db.Vehicles.Add(vehicle);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = vehicle.VehicleID }, vehicle);
         }
 
         // DELETE: api/VehiclesAPI/5
         [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult DeleteVehicle(int id)
+        public async Task<IHttpActionResult> DeleteVehicle(int id)
         {
-            Vehicle vehicle = db.Vehicles.Find(id);
+            Vehicle vehicle = await db.Vehicles.FindAsync(id);
             if (vehicle == null)
             {
                 return NotFound();
             }
 
             db.Vehicles.Remove(vehicle);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(vehicle);
         }
