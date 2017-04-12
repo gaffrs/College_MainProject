@@ -42,9 +42,9 @@ namespace VehicleWebApp.Models
             {
 
             //context.Cost.AddOrUpdate(c => c.CostID,
-                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 1, 01), CostOdometerMileage = 1000, CostTitle = eCostTitle.Insurance, CostRunningCost = 100.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 1, 20), CostEndDate = new DateTime(2018, 1, 20) },
-                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 5, 01), CostOdometerMileage = 3000, CostTitle = eCostTitle.Service, CostRunningCost = 200.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 1, 20), CostEndDate = new DateTime(2018, 1, 20) },
-                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 6, 01), CostOdometerMileage = 4000, CostTitle = eCostTitle.Tax, CostRunningCost = 300.55, CostYear = new DateTime(2018),  CostStartDate  = new DateTime(2017, 7, 20), CostEndDate = new DateTime(2018, 7, 20) }
+                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 1, 01), CostOdometerMileage = 1000, CostTitle = eCostTitle.Insurance, CostStartDate  = new DateTime(2017, 1, 20), CostEndDate = new DateTime(2018, 1, 20) },
+                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 5, 01), CostOdometerMileage = 3000, CostTitle = eCostTitle.Service, CostStartDate  = new DateTime(2017, 1, 20), CostEndDate = new DateTime(2018, 1, 20) },
+                new Cost { VehicleID = 1, CostDate = new DateTime(2017, 6, 01), CostOdometerMileage = 4000, CostTitle = eCostTitle.Tax, CostStartDate  = new DateTime(2017, 7, 20), CostEndDate = new DateTime(2018, 7, 20) }
             };
 
             // Create a list of Fuelfills.
@@ -69,6 +69,10 @@ namespace VehicleWebApp.Models
                 new Notification { UserID = 1, NotificationDate = new DateTime(2017, 7, 01), NotificationSendDate = new DateTime(2017, 1, 01), NotificationType = eNotificationType.SMS , NotificationTitle = eNotificationTitle.VehicleTestingDateRenewal },
                 new Notification { UserID = 2 ,NotificationDate = new DateTime(2018, 7, 01), NotificationSendDate = new DateTime(2018, 1, 01), NotificationType = eNotificationType.Email , NotificationTitle = eNotificationTitle.MotorTaxDateRenewal }
             };
+
+
+
+
         }
             
         }

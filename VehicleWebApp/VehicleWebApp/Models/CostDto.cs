@@ -23,16 +23,17 @@ namespace VehicleWebApp.Models
         [Display(Name = "Cost Title")]
         public eCostTitle CostTitle { get; set; }           //Enum Type
 
+        [Display(Name = "Running Cost Start Date")]
+        public DateTime CostStartDate { get; set; }
+        [Display(Name = "Running Cost End Date")]
+        public DateTime CostEndDate { get; set; }
 
         //Values retuned from Methods
         [Display(Name = "Running Cost")]
         public double CostRunningCost { get; set; }
         [Display(Name = "Running Cost Year")]
         public DateTime CostYear { get; set; }
-        [Display(Name = "Running Cost Start Date")]
-        public DateTime CostStartDate { get; set; }
-        [Display(Name = "Running Cost End Date")]
-        public DateTime CostEndDate { get; set; }
+
 
         //Navigation Property
         public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Cost associated to only One Vehicle

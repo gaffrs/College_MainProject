@@ -17,13 +17,31 @@ namespace VehicleWebApp.Controllers
         private VehicleWebAppContext db = new VehicleWebAppContext();
 
         // GET: api/CostsAPI
-        public IQueryable<Cost> GetCosts()
+        public IList<CostDto> GetCosts()
         {
-            return db.Costs;
+            var list = db.Costs.ToList();
+            return list.Select(c => new CostDto
+            {
+                CostID = c.CostID,
+                VehicleID = c.VehicleID,
+                CostDate = c.CostDate,
+                CostOdometerMileage = c.CostOdometerMileage,
+                CostTitle = c.CostTitle,
+                CostStartDate = c.CostStartDate,
+                CostEndDate = c.CostEndDate
+            }).ToList();
         }
+                    /*
+                            //Original Code
+                            // GET: api/CostsAPI
+                            public IQueryable<Cost> GetCosts()
+                            {
+                                return db.Costs;
+                            }
+                    */
 
-        // GET: api/CostsAPI/5
-        [ResponseType(typeof(Cost))]
+                    // GET: api/CostsAPI/5
+                    [ResponseType(typeof(Cost))]
         public IHttpActionResult GetCost(int id)
         {
             Cost cost = db.Costs.Find(id);

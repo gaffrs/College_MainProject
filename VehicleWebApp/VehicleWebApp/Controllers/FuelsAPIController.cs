@@ -17,13 +17,31 @@ namespace VehicleWebApp.Controllers
         private VehicleWebAppContext db = new VehicleWebAppContext();
 
         // GET: api/FuelsAPI
+        public IList<FuelDto> GetFuels()
+        {
+            var list = db.Fuels.ToList();
+            return list.Select(e => new FuelDto
+            {
+                FuelID = e.FuelID,
+                FuelDate = e.FuelDate,
+                FuelOdometerMileage = e.FuelOdometerMileage,
+                FuelQuantity = e.FuelQuantity,
+                FuelUnitPrice = e.FuelUnitPrice,
+                FuelPartialFill = e.FuelPartialFill
+            }).ToList();
+        }
+/*
+ *      // Original Code
+        // GET: api/FuelsAPI
         public IQueryable<Fuel> GetFuels()
         {
             return db.Fuels;
         }
+*/
 
-        // GET: api/FuelsAPI/5
-        [ResponseType(typeof(Fuel))]
+
+    // GET: api/FuelsAPI/5
+    [ResponseType(typeof(Fuel))]
         public IHttpActionResult GetFuel(int id)
         {
             Fuel fuel = db.Fuels.Find(id);

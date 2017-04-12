@@ -17,13 +17,30 @@ namespace VehicleWebApp.Controllers
         private VehicleWebAppContext db = new VehicleWebAppContext();
 
         // GET: api/NotificationsAPI
-        public IQueryable<Notification> GetNotifications()
+        public IList<NotificationDto> GetNotifications()
         {
-            return db.Notifications;
+            var list = db.Notifications.ToList();
+            return list.Select(d => new NotificationDto
+            {
+                NotificationID = d.NotificationID,
+                NotificationDate = d.NotificationDate,
+                NotificationSendDate = d.NotificationSendDate,
+                NotificationType = d.NotificationType,
+                NotificationTitle = d.NotificationTitle
+            }).ToList();
         }
 
-        // GET: api/NotificationsAPI/5
-        [ResponseType(typeof(Notification))]
+                /*
+                        //Original Code
+                        // GET: api/NotificationsAPI
+                        public IQueryable<Notification> GetNotifications()
+                        {
+                            return db.Notifications;
+                        }
+                */
+
+                // GET: api/NotificationsAPI/5
+                [ResponseType(typeof(Notification))]
         public IHttpActionResult GetNotification(int id)
         {
             Notification notification = db.Notifications.Find(id);

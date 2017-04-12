@@ -16,8 +16,6 @@ namespace VehicleWebApp.Migrations
                         CostDate = c.DateTime(nullable: false),
                         CostOdometerMileage = c.Int(nullable: false),
                         CostTitle = c.Int(nullable: false),
-                        CostRunningCost = c.Double(nullable: false),
-                        CostYear = c.DateTime(nullable: false),
                         CostStartDate = c.DateTime(nullable: false),
                         CostEndDate = c.DateTime(nullable: false),
                     })

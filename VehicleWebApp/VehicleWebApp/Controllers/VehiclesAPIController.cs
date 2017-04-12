@@ -17,10 +17,33 @@ namespace VehicleWebApp.Controllers
         private VehicleWebAppContext db = new VehicleWebAppContext();
 
         // GET: api/VehiclesAPI
-        public IQueryable<Vehicle> GetVehicles()
+        public IList<VehicleDto> GetVehicles()
         {
-            return db.Vehicles;
+            var list = db.Vehicles.ToList();
+            return list.Select(b => new VehicleDto
+            {
+                VehicleID = b.VehicleID,
+                UserID = b.UserID,
+                VehicleMake = b.VehicleMake,
+                VehicleModel = b.VehicleModel,
+                VehicleRegistrationNumber = b.VehicleRegistrationNumber,
+                VehicleOdometerMileage = b.VehicleOdometerMileage,
+                SettingFuelType = b.SettingFuelType,
+                SettingDistance = b.SettingDistance,
+                SettingVolume = b.SettingVolume,
+                SettingConsumption = b.SettingConsumption
+
+            }).ToList();
         }
+
+        /*
+                //Original Code
+                // GET: api/VehiclesAPI
+                public IQueryable<Vehicle> GetVehicles()
+                {
+                    return db.Vehicles;
+                }
+        */
 
         // GET: api/VehiclesAPI/5
         [ResponseType(typeof(Vehicle))]

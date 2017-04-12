@@ -13,7 +13,7 @@ namespace VehicleWebApp.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201704112013247_Initial"; }
+            get { return "201704121626350_Initial"; }
         }
         
         string IMigrationMetadata.Source
