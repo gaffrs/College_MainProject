@@ -41,7 +41,6 @@ namespace VehicleWebApp.Models
         public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
         public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
 
-
         //ToString()
         public override string ToString()
         {

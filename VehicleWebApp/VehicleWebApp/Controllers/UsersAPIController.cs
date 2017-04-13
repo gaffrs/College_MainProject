@@ -34,6 +34,7 @@ namespace VehicleWebApp.Controllers
             }).ToList();
         }
 
+
         /*
                 //Original Code
                 // GET: api/UsersAPI
@@ -64,21 +65,21 @@ namespace VehicleWebApp.Controllers
             return Ok(list);
         }
 
-/*
-                //Original Code
-                // GET: api/UsersAPI/5
-                [ResponseType(typeof(User))]
-                public async Task<IHttpActionResult> GetUser(int id)
-                {
-                    User user = await db.Users.FindAsync(id);
-                    if (user == null)
-                    {
-                        return NotFound();
-                    }
+        /*
+                        //Original Code
+                        // GET: api/UsersAPI/5
+                        [ResponseType(typeof(User))]
+                        public async Task<IHttpActionResult> GetUser(int id)
+                        {
+                            User user = await db.Users.FindAsync(id);
+                            if (user == null)
+                            {
+                                return NotFound();
+                            }
 
-                    return Ok(user);
-                }
-*/
+                            return Ok(user);
+                        }
+        */
 
         // PUT: api/UsersAPI/5
         [ResponseType(typeof(void))]

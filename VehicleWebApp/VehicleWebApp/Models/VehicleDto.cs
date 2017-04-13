@@ -41,9 +41,11 @@ namespace VehicleWebApp.Models
 
         //Navigation Property
         public virtual User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
-        public virtual List<CostDto> Costs { get; set; }    
-        public virtual List<FuelDto> Fuels { get; set; }  
+        public virtual List<Cost> Costs { get; set; }    
+        public virtual List<Fuel> Fuels { get; set; }  
 
+//        public virtual List<CostDto> Costs { get; set; }    
+//        public virtual List<FuelDto> Fuels { get; set; }  
 
         //ToString()
         public override string ToString()
