@@ -23,6 +23,7 @@ namespace VehicleWebApp.Controllers
             return list.Select(d => new NotificationDto
             {
                 NotificationID = d.NotificationID,
+                UserID = d.UserID,
                 NotificationDate = d.NotificationDate,
                 NotificationSendDate = d.NotificationSendDate,
                 NotificationType = d.NotificationType,
@@ -40,17 +41,41 @@ namespace VehicleWebApp.Controllers
 */
 
         // GET: api/NotificationsAPI/5
-        [ResponseType(typeof(Notification))]
+        [ResponseType(typeof(NotificationDto))]
         public async Task<IHttpActionResult> GetNotification(int id)
         {
-            Notification notification = await db.Notifications.FindAsync(id);
-            if (notification == null)
+            var list = await db.Notifications.Include(p => p.NotificationID).Select(d => new NotificationDto()
+            {
+                NotificationID = d.NotificationID,
+                UserID = d.UserID,
+                NotificationDate = d.NotificationDate,
+                NotificationSendDate = d.NotificationSendDate,
+                NotificationType = d.NotificationType,
+                NotificationTitle = d.NotificationTitle
+            }).SingleOrDefaultAsync(p => p.NotificationID == id);
+            if (list == null)
             {
                 return NotFound();
             }
 
-            return Ok(notification);
+            return Ok(list);
         }
+
+
+        /*
+                // GET: api/NotificationsAPI/5
+                [ResponseType(typeof(Notification))]
+                public async Task<IHttpActionResult> GetNotification(int id)
+                {
+                    Notification notification = await db.Notifications.FindAsync(id);
+                    if (notification == null)
+                    {
+                        return NotFound();
+                    }
+
+                    return Ok(notification);
+                }
+        */
 
         // PUT: api/NotificationsAPI/5
         [ResponseType(typeof(void))]

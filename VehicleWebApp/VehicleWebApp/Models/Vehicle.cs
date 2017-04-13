@@ -67,7 +67,7 @@ namespace VehicleWebApp.Models
         public virtual List<Cost> Costs { get; set; }    //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }//Collection and refers to Fuel
 */
-/*
+
         //ToString()
         public override string ToString()
         {
@@ -76,7 +76,7 @@ namespace VehicleWebApp.Models
                 ", Vehicle Fuel Type: " + SettingFuelType + ", Distance unit: " + SettingDistance + ", Volume unit: " + SettingVolume +
                 ", Consumption Unit: " + SettingConsumption;
         }
-*/
+
         /*
                 static void Main()
                 {

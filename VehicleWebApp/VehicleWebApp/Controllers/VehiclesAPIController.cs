@@ -47,17 +47,45 @@ namespace VehicleWebApp.Controllers
         */
 
         // GET: api/VehiclesAPI/5
-        [ResponseType(typeof(Vehicle))]
+        [ResponseType(typeof(VehicleDto))]
         public async Task<IHttpActionResult> GetVehicle(int id)
         {
-            Vehicle vehicle = await db.Vehicles.FindAsync(id);
-            if (vehicle == null)
+            var list = await db.Vehicles.Include(p => p.VehicleID).Select(b => new VehicleDto()
+            {
+                VehicleID = b.VehicleID,
+                UserID = b.UserID,
+                VehicleMake = b.VehicleMake,
+                VehicleModel = b.VehicleModel,
+                VehicleRegistrationNumber = b.VehicleRegistrationNumber,
+                VehicleOdometerMileage = b.VehicleOdometerMileage,
+                SettingFuelType = b.SettingFuelType,
+                SettingDistance = b.SettingDistance,
+                SettingVolume = b.SettingVolume,
+                SettingConsumption = b.SettingConsumption
+            }).SingleOrDefaultAsync(p => p.VehicleID == id);
+            if (list == null)
             {
                 return NotFound();
             }
 
-            return Ok(vehicle);
+            return Ok(list);
         }
+
+        /*
+                // GET: api/VehiclesAPI/5
+                [ResponseType(typeof(Vehicle))]
+                public async Task<IHttpActionResult> GetVehicle(int id)
+                {
+                    Vehicle vehicle = await db.Vehicles.FindAsync(id);
+                    if (vehicle == null)
+                    {
+                        return NotFound();
+                    }
+
+                    return Ok(vehicle);
+                }
+        */
+
 
         // PUT: api/VehiclesAPI/5
         [ResponseType(typeof(void))]

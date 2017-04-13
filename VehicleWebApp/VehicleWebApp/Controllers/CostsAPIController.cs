@@ -43,17 +43,41 @@ namespace VehicleWebApp.Controllers
 */
 
         // GET: api/CostsAPI/5
-        [ResponseType(typeof(Cost))]
+        [ResponseType(typeof(CostDto))]
         public async Task<IHttpActionResult> GetCost(int id)
         {
-            Cost cost = await db.Costs.FindAsync(id);
-            if (cost == null)
+            var list = await db.Costs.Include(p => p.CostID).Select(c => new CostDto()
+            {
+                CostID = c.CostID,
+                VehicleID = c.VehicleID,
+                CostDate = c.CostDate,
+                CostOdometerMileage = c.CostOdometerMileage,
+                CostTitle = c.CostTitle,
+                CostStartDate = c.CostStartDate,
+                CostEndDate = c.CostEndDate
+            }).SingleOrDefaultAsync(p => p.CostID == id);
+            if (list == null)
             {
                 return NotFound();
             }
 
-            return Ok(cost);
+            return Ok(list);
         }
+
+        /*
+                // GET: api/CostsAPI/5
+                [ResponseType(typeof(Cost))]
+                public async Task<IHttpActionResult> GetCost(int id)
+                {
+                    Cost cost = await db.Costs.FindAsync(id);
+                    if (cost == null)
+                    {
+                        return NotFound();
+                    }
+
+                    return Ok(cost);
+                }
+        */
 
         // PUT: api/CostsAPI/5
         [ResponseType(typeof(void))]
