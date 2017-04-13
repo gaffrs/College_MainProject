@@ -16,7 +16,7 @@ namespace VehicleWebApp.Models
     public enum eSettingVolume { Litres_L, UK_Gal, US_Gal }
 
     public enum eSettingConsumption { Lper100km, Mpg_US, Mpg_UK }
-
+    //
     public class Vehicle
     {
         [Key]                                   //implies Primary Key PK
