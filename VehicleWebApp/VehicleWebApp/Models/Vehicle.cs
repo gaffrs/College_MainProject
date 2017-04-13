@@ -58,15 +58,8 @@ namespace VehicleWebApp.Models
 
         //Navigation Property
         public virtual User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
-        public virtual List<Cost> Costs { get; set; }    //Collection and refers to Cost
-        public virtual List<Fuel> Fuels { get; set; }//Collection and refers to Fuel
-
-/*
-        //Navigation Property
-        public virtual User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
-        public virtual List<Cost> Costs { get; set; }    //Collection and refers to Cost
-        public virtual List<Fuel> Fuels { get; set; }//Collection and refers to Fuel
-*/
+        public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
+        public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel
 
         //ToString()
         public override string ToString()
@@ -89,26 +82,6 @@ namespace VehicleWebApp.Models
                     vehicles.Add(new Vehicle() { VehicleMake = "Volkswagen", VehicleModel = "Polo", VehicleRegistrationNumber = "161D250", VehicleOdometerMileage = 1000, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.US_Gal, SettingConsumption = eSettingConsumption.Mpg_US });
                 }
         */
-
-
-        /*
-            //Methods
-                public virtual void VehicleAdd()
-                {
-                    throw new System.NotImplementedException();
-                }
-
-                public virtual void VehicleEdit()
-                {
-                    throw new System.NotImplementedException();
-                }
-
-                public virtual void VehicleDelete()
-                {
-                    throw new System.NotImplementedException();
-                }
-                */
-
     }
 }
 

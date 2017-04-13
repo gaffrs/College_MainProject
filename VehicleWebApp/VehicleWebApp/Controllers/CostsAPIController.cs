@@ -28,6 +28,7 @@ namespace VehicleWebApp.Controllers
                 CostDate = c.CostDate,
                 CostOdometerMileage = c.CostOdometerMileage,
                 CostTitle = c.CostTitle,
+                //CostRunningCost = c.CostRunningCost,
                 CostStartDate = c.CostStartDate,
                 CostEndDate = c.CostEndDate
             }).ToList();
@@ -53,6 +54,7 @@ namespace VehicleWebApp.Controllers
                 CostDate = c.CostDate,
                 CostOdometerMileage = c.CostOdometerMileage,
                 CostTitle = c.CostTitle,
+                CostRunningCost = c.CostRunningCost,
                 CostStartDate = c.CostStartDate,
                 CostEndDate = c.CostEndDate
             }).SingleOrDefaultAsync(p => p.CostID == id);

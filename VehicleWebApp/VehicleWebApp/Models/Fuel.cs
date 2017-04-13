@@ -35,7 +35,7 @@ namespace VehicleWebApp.Models
         public bool FuelPartialFill { get; set; }                       //TODO Have this in as Enum ??????????????
 
 
-        //Values retuned from Methods
+        //Calculations
         [Display(Name = "Fuel Consumption")]
         public double FuelConsumption { get; set; }
 
