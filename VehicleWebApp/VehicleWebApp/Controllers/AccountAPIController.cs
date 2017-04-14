@@ -21,16 +21,16 @@ namespace VehicleWebApp.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountAPIController : ApiController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountAPIController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager,
+        public AccountAPIController(ApplicationUserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
