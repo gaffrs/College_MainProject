@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace VehicleWebApp.Controllers
 {
-    public class HomeAPIController : Controller
+    public class HomeController : Controller
     {
         public ActionResult Index()
         {
