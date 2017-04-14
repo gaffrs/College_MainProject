@@ -260,6 +260,18 @@
     <Compile Include="Migrations\201704121644393_Initial1.Designer.cs">
       <DependentUpon>201704121644393_Initial1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704141243311_AddRunningCost.cs" />
+    <Compile Include="Migrations\201704141243311_AddRunningCost.Designer.cs">
+      <DependentUpon>201704141243311_AddRunningCost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704141259286_AddRunningCost2.cs" />
+    <Compile Include="Migrations\201704141259286_AddRunningCost2.Designer.cs">
+      <DependentUpon>201704141259286_AddRunningCost2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704141307109_RunningCost3.cs" />
+    <Compile Include="Migrations\201704141307109_RunningCost3.Designer.cs">
+      <DependentUpon>201704141307109_RunningCost3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -356,6 +368,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704121644393_Initial1.resx">
       <DependentUpon>201704121644393_Initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704141243311_AddRunningCost.resx">
+      <DependentUpon>201704141243311_AddRunningCost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704141259286_AddRunningCost2.resx">
+      <DependentUpon>201704141259286_AddRunningCost2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704141307109_RunningCost3.resx">
+      <DependentUpon>201704141307109_RunningCost3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
