@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleWebApp - OLD API", "VehicleWebApp\VehicleWebApp - OLD API.csproj", "{70AD5BC0-0AC4-4BFC-AF8B-6F9D64202873}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleWebAppOLD API", "VehicleWebApp\VehicleWebAppOLD API.csproj", "{70AD5BC0-0AC4-4BFC-AF8B-6F9D64202873}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleWebAppMVC", "VehicleWebAppMVC\VehicleWebAppMVC.csproj", "{D3A21C2C-E99E-4866-B92F-15B500C6C6EC}"
 EndProject
