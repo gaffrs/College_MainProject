@@ -280,7 +280,6 @@
     <Compile Include="Models\Cost.cs" />
     <Compile Include="Models\CostDto.cs" />
     <Compile Include="Models\FuelDto.cs" />
-    <Compile Include="Models\IdentityMVCModels.cs" />
     <Compile Include="Models\NotificationDto.cs" />
     <Compile Include="Models\TempClassToStoreSeedValues.cs" />
     <Compile Include="Models\User.cs" />
