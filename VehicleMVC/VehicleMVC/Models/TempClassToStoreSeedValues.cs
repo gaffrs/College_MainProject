@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,7 @@ namespace VehicleMVC.Models
     {
         //Collection in Memory, list
         List<Vehicle> Vehicles;         //<Vehicle> is the name of the Class in Model
-        List<TempClassUser> Users;
+        List<UserLoginInfo> Users;
         List<Cost> Costs;
         List<Fuel> FuelFills;
         List<Notification> Notifications;
@@ -21,20 +22,20 @@ namespace VehicleMVC.Models
             {
             
             //context.Vehicle.AddOrUpdate(v => v.VehicleID,
-                new Vehicle { UserID = 1, VehicleMake = "Opel", VehicleModel = "Vectra", VehicleRegistrationNumber = "161D171", VehicleOdometerMileage = 1600, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
-                new Vehicle { UserID = 1, VehicleMake = "Mercedes", VehicleModel = "C-Class", VehicleRegistrationNumber = "161D181", VehicleOdometerMileage = 1300, SettingFuelType = eSettingFuelType.Diesel, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
-                new Vehicle { UserID = 2, VehicleMake = "Subaru", VehicleModel = "Impreza", VehicleRegistrationNumber = "161D200", VehicleOdometerMileage = 2500, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.UK_Gal, SettingConsumption = eSettingConsumption.Mpg_UK },
-                new Vehicle { UserID = 2, VehicleMake = "Volkswagen", VehicleModel = "Polo", VehicleRegistrationNumber = "161D250", VehicleOdometerMileage = 1000, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.US_Gal, SettingConsumption = eSettingConsumption.Mpg_US }
+ //               new Vehicle { ID = 32bbea34-29ea-41cf-bdea-d743cb1da724, VehicleMake = "Opel", VehicleModel = "Vectra", VehicleRegistrationNumber = "161D171", VehicleOdometerMileage = 1600, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
+ //               new Vehicle { ID = 32bbea34-29ea-41cf-bdea-d743cb1da724, VehicleMake = "Mercedes", VehicleModel = "C-Class", VehicleRegistrationNumber = "161D181", VehicleOdometerMileage = 1300, SettingFuelType = eSettingFuelType.Diesel, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
+//                new Vehicle { ID = a32f0a41-ad2e-4882-9194-6a49a4faf253, VehicleMake = "Subaru", VehicleModel = "Impreza", VehicleRegistrationNumber = "161D200", VehicleOdometerMileage = 2500, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.UK_Gal, SettingConsumption = eSettingConsumption.Mpg_UK },
+ //               new Vehicle { ID = a32f0a41-ad2e-4882-9194-6a49a4faf253, VehicleMake = "Volkswagen", VehicleModel = "Polo", VehicleRegistrationNumber = "161D250", VehicleOdometerMileage = 1000, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.US_Gal, SettingConsumption = eSettingConsumption.Mpg_US }
             };
 
             // Create a list of customers.
-            Users = new List<TempClassUser>()  //strongly typed list of objects that can be accessed by index.
+            Users = new List<UserLoginInfo>()  //strongly typed list of objects that can be accessed by index.
             {
 
             //context.User.AddOrUpdate(u => u.UserID,
-                new TempClassUser { Username = "Colm1", UserPassword = "123456", UserEmailAddress = "Colm@gmail.com", UserMobileNumber = "0871234567", UserType = eUserType.Basic  },
-                new TempClassUser { Username = "John1", UserPassword = "234567", UserEmailAddress = "John@gmail.com", UserMobileNumber = "0871111111", UserType = eUserType.PRO  },
-                new TempClassUser { Username = "Mick1", UserPassword = "345678", UserEmailAddress = "Mick@gmail.com", UserMobileNumber = "0872222222", UserType = eUserType.Basic  }
+//                new TempClassUser { Username = "Colm1", UserPassword = "123456", UserEmailAddress = "Colm@gmail.com", UserMobileNumber = "0871234567", UserType = eUserType.Basic  },
+//                new TempClassUser { Username = "John1", UserPassword = "234567", UserEmailAddress = "John@gmail.com", UserMobileNumber = "0871111111", UserType = eUserType.PRO  },
+//                new TempClassUser { Username = "Mick1", UserPassword = "345678", UserEmailAddress = "Mick@gmail.com", UserMobileNumber = "0872222222", UserType = eUserType.Basic  }
             };
 
             // Create a list of costs.

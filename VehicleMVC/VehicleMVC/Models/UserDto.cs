@@ -8,7 +8,7 @@ using System.Data.Entity;                       //enables "DbContext"
 
 namespace VehicleMVC.Models
 {
-    public class TempClassUserDto
+    public class UserDto
     {
         public int UserID { get; set; }
 

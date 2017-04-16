@@ -5,6 +5,7 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] etc
 using System.Data.Entity;                       //enables "DbContext"
+using Microsoft.AspNet.Identity;
 
 namespace VehicleMVC.Models
 {
@@ -40,7 +41,7 @@ namespace VehicleMVC.Models
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
 
         //Navigation Property
-        public virtual TempClassUser User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
+        public virtual UserLoginInfo User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
         public virtual List<CostDto> Costs { get; set; }
         public virtual List<FuelDto> Fuels { get; set; }
 

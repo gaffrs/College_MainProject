@@ -5,6 +5,7 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] etc
 using System.Data.Entity;                       //enables "DbContext"
+using Microsoft.AspNet.Identity;
 
 namespace VehicleMVC.Models
 {
@@ -24,7 +25,7 @@ namespace VehicleMVC.Models
         public eNotificationTitle NotificationTitle { get; set; }   //Enum Type
 
         //Navigation Property
-        public virtual TempClassUser User { get; set; }              //NOT a Collection, as a Notification associated to only One User
+        public virtual UserLoginInfo User { get; set; }              //NOT a Collection, as a Notification associated to only One User
 
 
         //ToString()

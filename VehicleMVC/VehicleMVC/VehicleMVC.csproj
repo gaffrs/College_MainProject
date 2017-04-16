@@ -212,8 +212,8 @@
     <Compile Include="Models\NotificationDto.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\TempClassToStoreSeedValues.cs" />
-    <Compile Include="Models\TempClassUser.cs" />
-    <Compile Include="Models\TempClassUserDto.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserDto.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Models\VehicleDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

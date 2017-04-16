@@ -5,6 +5,7 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] etc
 using System.Data.Entity;                       //enables "DbContext"	
+using Microsoft.AspNet.Identity;
 
 namespace VehicleMVC.Models
 {
@@ -22,7 +23,7 @@ namespace VehicleMVC.Models
         [Key]                                   //implies Primary Key PK
         public int VehicleID { get; set; }
 
-        public int UserID { get; set; }                             //FK    Customer.UserID
+        public ApplicationUser ID { get; set; }                             //FK    Customer.UserID
 
         [Required(ErrorMessage = "Vehicle Make is required")]       //Not null or empty string
         [Display(Name = "Vehicle Make")]
@@ -57,7 +58,7 @@ namespace VehicleMVC.Models
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
 
         //Navigation Property
-        public virtual TempClassUser User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
+        public virtual User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel
 

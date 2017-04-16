@@ -16,6 +16,9 @@ namespace VehicleMVC.Models
             // Add custom user claims here
             return userIdentity;
         }
+        
+        //Navigation Property
+        public virtual User User { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
