@@ -17,20 +17,18 @@ namespace VehicleAppMVC.Models
     {
         [Key]
         public int UserID { get; set; }             //implies Primary Key PK
-        //public ApplicationUser ID { get; set; }              //FK for Application User
-        //public ApplicationUser Email { get; set; }
-
+                                                    //public ApplicationUser ID { get; set; }              //FK for Application User
+                                                    //public ApplicationUser Email { get; set; }
+        public int ID { get; set; }     //FK
         //[ForeignKey("ID")]
         //public ApplicationUser ID { get; set; }
 
         //Navigation Property
-        //public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
         public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
 
-
         /*
-
                 [Key]                                   //implies Primary Key PK
                 public int UserID { get; set; }
 

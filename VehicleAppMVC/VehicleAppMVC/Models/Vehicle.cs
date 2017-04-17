@@ -24,12 +24,12 @@ namespace VehicleAppMVC.Models
 
         [Key]                                   //implies Primary Key PK
         public int VehicleID { get; set; }
-        public int UserID { get; set; }                             //FK    Customer.UserID 
-                                                                    /*
-                                                                            [Key, ForeignKey("ID")]
-                                                                            public ApplicationUser ID { get; set; }                     //FK    
-                                                                            //public ApplicationUser UserName { get; set; }
-                                                                    */
+        public int UserID { get; set; }                             //FK    
+        /*
+                [Key, ForeignKey("ID")]
+                public ApplicationUser ID { get; set; }                     //FK    
+                //public ApplicationUser UserName { get; set; }
+        */
 
         [Required(ErrorMessage = "Vehicle Make is required")]       //Not null or empty string
         [Display(Name = "Vehicle Make")]
@@ -64,10 +64,7 @@ namespace VehicleAppMVC.Models
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
 
         //Navigation Property
-        public virtual ApplicationUser ApplicationUser { get; set; }
-
-
-        //public virtual User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
+        public virtual User Users { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel
 
