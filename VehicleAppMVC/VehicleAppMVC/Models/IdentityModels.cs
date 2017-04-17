@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 //CG: Added
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] etc
 
 namespace VehicleAppMVC.Models
 {
@@ -19,12 +20,13 @@ namespace VehicleAppMVC.Models
             // Add custom user claims here
             return userIdentity;
         }
-
-        //CG: Added
-        [ForeignKey("UserID")]
+        //[Key]
+        //public int ID { get; set; }
 
         //Navigation Property       //CG added
-        public virtual List<User> Users { get; set; }               //Collection and refers to User
+        //public virtual ICollection<User> Users { get; set; }               //Collection and refers to User
+        //public virtual List<User> Users { get; set; }               //Collection and refers to User
+
         //public virtual Vehicle Vehicles { get; set; }          //Collection and refers to Vehicle
         //public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
     }

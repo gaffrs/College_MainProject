@@ -6,21 +6,27 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] etc
 using System.Data.Entity;                       //enables "DbContext"
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNet.Identity.EntityFramework;    //CG: added
 
 namespace VehicleAppMVC.Models
 {
     //Enums user types
     public enum eUserType { Basic, PRO }
 
-    public class User
+    public class User //: IdentityUser                //CG: added
     {
         [Key]
         public int UserID { get; set; }             //implies Primary Key PK
+        //public ApplicationUser ID { get; set; }              //FK for Application User
+        //public ApplicationUser Email { get; set; }
 
-        [ForeignKey("ID")]
+        //[ForeignKey("ID")]
+        //public ApplicationUser ID { get; set; }
 
         //Navigation Property
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        //public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
+        public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
 
 
         /*

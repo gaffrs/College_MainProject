@@ -10,7 +10,7 @@ namespace VehicleAppMVC.Models
 {
     public class UserDto
     {
-        public int UserID { get; set; }
+/*        public int UserID { get; set; }
 
         public String Username { get; set; }
         [Display(Name = "Password")]
@@ -34,6 +34,7 @@ namespace VehicleAppMVC.Models
             return "User ID: " + UserID + ", Username: " + Username + ", Password: " + UserPassword +
                 ", Email Address: " + UserEmailAddress + ", UserMobileNumber: " + UserMobileNumber + ", User Type: " + UserType;
         }
+        */
 
     }
 }
