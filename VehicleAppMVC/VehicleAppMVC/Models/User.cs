@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;    //CG: added
 
 namespace VehicleAppMVC.Models
 {
+
     //Enums user types
     public enum eUserType { Basic, PRO }
 
