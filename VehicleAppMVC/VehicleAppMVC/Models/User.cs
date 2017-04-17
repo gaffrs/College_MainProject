@@ -19,7 +19,8 @@ namespace VehicleAppMVC.Models
         public int UserID { get; set; }             //implies Primary Key PK
                                                     //public ApplicationUser ID { get; set; }              //FK for Application User
                                                     //public ApplicationUser Email { get; set; }
-        public int ID { get; set; }     //FK
+        public string Email { get; set; }       //FK 
+        //public int UserId { get; set; }     //FK
         //[ForeignKey("ID")]
         //public ApplicationUser ID { get; set; }
 

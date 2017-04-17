@@ -203,35 +203,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704170854166_InitialCreate.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704170854166_InitialCreate.Designer.cs">
-      <DependentUpon>201704170854166_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704171220570_InitialCreate1.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704171220570_InitialCreate1.Designer.cs">
-      <DependentUpon>201704171220570_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704171221478_Update 1.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704171221478_Update 1.Designer.cs">
-      <DependentUpon>201704171221478_Update 1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704171232093_Update 2.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704171232093_Update 2.Designer.cs">
-      <DependentUpon>201704171232093_Update 2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704171328272_Update 4.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704171328272_Update 4.Designer.cs">
-      <DependentUpon>201704171328272_Update 4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704171335361_Update 5.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704171335361_Update 5.Designer.cs">
-      <DependentUpon>201704171335361_Update 5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\Configuration.cs" />
-    <Compile Include="Migrations\VehicleAppMVCMigration\201704170854355_InitialCreate.cs" />
-    <Compile Include="Migrations\VehicleAppMVCMigration\201704170854355_InitialCreate.Designer.cs">
-      <DependentUpon>201704170854355_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\VehicleAppMVCMigration\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cost.cs" />
@@ -334,29 +305,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704170854166_InitialCreate.resx">
-      <DependentUpon>201704170854166_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704171220570_InitialCreate1.resx">
-      <DependentUpon>201704171220570_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704171221478_Update 1.resx">
-      <DependentUpon>201704171221478_Update 1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704171232093_Update 2.resx">
-      <DependentUpon>201704171232093_Update 2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704171328272_Update 4.resx">
-      <DependentUpon>201704171328272_Update 4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704171335361_Update 5.resx">
-      <DependentUpon>201704171335361_Update 5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\VehicleAppMVCMigration\201704170854355_InitialCreate.resx">
-      <DependentUpon>201704170854355_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

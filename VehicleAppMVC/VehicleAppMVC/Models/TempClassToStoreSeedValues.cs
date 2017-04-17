@@ -30,7 +30,7 @@ namespace VehicleAppMVC.Models
             };
 
             // Create a list of customers.
-            Users = new List<User>()  //strongly typed list of objects that can be accessed by index.
+            //Users = new List<User>()  //strongly typed list of objects that can be accessed by index.
             {
 
             //context.User.AddOrUpdate(u => u.UserID,
@@ -98,6 +98,20 @@ namespace VehicleAppMVC.Models
                 userManager.AddToRole(user.Id, "admin");
             }
             */
+
+
+            /*
+             * Users = new List<User>()  //strongly typed list of objects that can be accessed by index.
+            {
+                
+            
+                            new User { Id = "259940c3-eaaa-46ca-ba06-1b81c31cf65d" },
+                            new User {  },
+                            new User {  }
+
+            colm@gmail.com
+        };
+        */
 
 
 
