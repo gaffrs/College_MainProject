@@ -64,10 +64,10 @@ namespace VehicleAppMVC.Models
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
 
         //Navigation Property
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+
         //public virtual User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
-
-
-        public virtual User Users { get; set; }
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -69,6 +71,33 @@ namespace VehicleAppMVC.Models
                 new Notification { UserID = 1, NotificationDate = new DateTime(2017, 7, 01), NotificationSendDate = new DateTime(2017, 1, 01), NotificationType = eNotificationType.SMS , NotificationTitle = eNotificationTitle.VehicleTestingDateRenewal },
                 new Notification { UserID = 2 ,NotificationDate = new DateTime(2018, 7, 01), NotificationSendDate = new DateTime(2018, 1, 01), NotificationType = eNotificationType.Email , NotificationTitle = eNotificationTitle.MotorTaxDateRenewal }
             };
+
+            //Option1....need to use: using Microsoft.AspNet.Identity;
+            /*
+            var hasher = new PasswordHasher();
+            context.Users.AddOrUpdate(u => u.UserName,
+            new ApplicationUser { UserName = "colm", Email = "colm@gmail.com", PhoneNumber = "0871234567", PasswordHash = hasher.HashPassword("$Password1") },
+            new ApplicationUser { UserName = "john", Email = "paul@gmail.com", PhoneNumber = "0871234568", PasswordHash = hasher.HashPassword("$Password1") },
+            new ApplicationUser { UserName = "paul", Email = "paul@gmail.com", PhoneNumber = "0871234569", PasswordHash = hasher.HashPassword("$Password1") }
+            );
+
+            */
+            //Option2 (update-database....using seed data
+            /*
+            if (!context.Users.Any(u => u.UserName == "colm"))
+            {
+                var roleStore = new RoleStore<IdentityRoles>.(context);
+                var roleManager = new RoleManager<IdentityRoles>(roleStore);
+
+                var userStore = new UserStore<ApplicationUser>.(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = new ApplicationUser { UserName = "colm" };
+
+                userManager.Create(user, "password");
+                roleManager.Create(new IdentityRole { Name = "admin" });
+                userManager.AddToRole(user.Id, "admin");
+            }
+            */
 
 
 

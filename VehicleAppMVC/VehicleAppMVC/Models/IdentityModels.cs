@@ -20,10 +20,20 @@ namespace VehicleAppMVC.Models
             // Add custom user claims here
             return userIdentity;
         }
-        //[Key]
-        //public int ID { get; set; }
+
+        //CD: added 
+        [Key]
+        public int ID { get; set; }
+
+        [Display(Name = "Mobile Phone Number")]
+        public string UserMobileNumber { get; set; }
 
         //Navigation Property       //CG added
+        public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
+        public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
+
+
+
         //public virtual ICollection<User> Users { get; set; }               //Collection and refers to User
         //public virtual List<User> Users { get; set; }               //Collection and refers to User
 
