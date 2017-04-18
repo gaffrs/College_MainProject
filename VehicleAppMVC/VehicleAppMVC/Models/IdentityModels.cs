@@ -22,8 +22,6 @@ namespace VehicleAppMVC.Models
         }
 
         //CG: added 
-        
-        
         //[ForeignKey("Users")]
         //public int UserId { get; set; }
 

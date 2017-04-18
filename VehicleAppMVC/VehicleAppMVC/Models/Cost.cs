@@ -11,7 +11,7 @@ using System.Data.Entity;                       //enables "DbContext"
 namespace VehicleAppMVC.Models
 {
     //Enum costs
-    public enum eCostTitle { Tyres, Tax, Service, NCTorDOE, Insurance, Testing }
+    public enum eCostTitle { Tyres, Tax, Service, [Display(Name = "NCT or DOE")] NCTorDOE, Insurance, Testing }
 
     public class Cost
     {
@@ -23,17 +23,17 @@ namespace VehicleAppMVC.Models
         public DateTime CostDate { get; set; }
 
         [Required(ErrorMessage = "Vehicle Odometer Mileage is required")] //Not null or empty string
-        [Display(Name = "Cost Odometer")]
+        [Display(Name = "Odometer")]
         public int CostOdometerMileage { get; set; }
 
         [Required(ErrorMessage = "Cost Title is required")] //Not null or empty string
-        [Display(Name = "Cost Title")]
+        [Display(Name = "Title")]
         public eCostTitle CostTitle { get; set; }           //Enum Type
-        [Display(Name = "Running Cost")]
+        [Display(Name = "Cost amount")]
         public double CostRunningCost { get; set; }
-        [Display(Name = "Running Cost Start Date")]
+        [Display(Name = "Start Date")]
         public DateTime CostStartDate { get; set; }
-        [Display(Name = "Running Cost End Date")]
+        [Display(Name = "End Date")]
         public DateTime CostEndDate { get; set; }
 
         //Navigation Property

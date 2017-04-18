@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] 
 using System.Data.Entity;                       //enables "DbContext"	
 using Microsoft.AspNet.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace VehicleAppMVC.Models
 {
@@ -15,9 +16,19 @@ namespace VehicleAppMVC.Models
 
     public enum eSettingDistance { Km, Miles }
 
-    public enum eSettingVolume { Litres_L, UK_Gal, US_Gal }
-
-    public enum eSettingConsumption { Lper100km, Mpg_US, Mpg_UK }
+    public enum eSettingVolume
+    {
+        [Display(Name = "Litres")] Litres_L,
+        [Display(Name = "UK Gal")] UK_Gal,
+        [Display(Name = "US Gal")] US_Gal
+    }
+    
+    public enum eSettingConsumption
+    {
+        [Display(Name = "L/100Km")] Lper100km,
+        [Display(Name = "Mpg US")] Mpg_US,
+        [Display(Name = "Mpg UK")] Mpg_UK
+    }
 
     public class Vehicle
     {

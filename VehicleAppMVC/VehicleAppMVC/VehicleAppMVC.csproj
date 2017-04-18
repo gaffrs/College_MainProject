@@ -220,6 +220,18 @@
     <Compile Include="Migrations\ApplicationDbMigration\201704181911172_Update 4.Designer.cs">
       <DependentUpon>201704181911172_Update 4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbMigration\201704181918222_Update 5.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704181918222_Update 5.Designer.cs">
+      <DependentUpon>201704181918222_Update 5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbMigration\201704181939140_Update 8.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704181939140_Update 8.Designer.cs">
+      <DependentUpon>201704181939140_Update 8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbMigration\201704181944393_Update 9.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704181944393_Update 9.Designer.cs">
+      <DependentUpon>201704181944393_Update 9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbMigration\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cost.cs" />
@@ -340,6 +352,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704181911172_Update 4.resx">
       <DependentUpon>201704181911172_Update 4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704181918222_Update 5.resx">
+      <DependentUpon>201704181918222_Update 5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704181939140_Update 8.resx">
+      <DependentUpon>201704181939140_Update 8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704181944393_Update 9.resx">
+      <DependentUpon>201704181944393_Update 9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -14,7 +14,7 @@ namespace VehicleAppMVC.Controllers
     public class VehiclesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        
         // GET: Vehicles
         public async Task<ActionResult> Index()
         {
