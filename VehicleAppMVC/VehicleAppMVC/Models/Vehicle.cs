@@ -24,7 +24,10 @@ namespace VehicleAppMVC.Models
 
         [Key]                                   //implies Primary Key PK
         public int VehicleID { get; set; }
-        public int UserID { get; set; }                             //FK    
+        //public int UserID { get; set; }                             //FK    
+        //public int UserId { get; set; }                             //FK 
+        public string Email { get; set; }                             //FK 
+
         /*
                 [Key, ForeignKey("ID")]
                 public ApplicationUser ID { get; set; }                     //FK    
@@ -64,7 +67,9 @@ namespace VehicleAppMVC.Models
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
 
         //Navigation Property
-        public virtual User Users { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+        //public virtual User Users { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel
 

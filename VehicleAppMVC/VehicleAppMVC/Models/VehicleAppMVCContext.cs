@@ -22,9 +22,9 @@ namespace VehicleAppMVC.Models
 
         //public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
-        public System.Data.Entity.DbSet<VehicleAppMVC.Models.User> Users { get; set; }
+        //public System.Data.Entity.DbSet<VehicleAppMVC.Models.User> Users { get; set; }
 
-        public System.Data.Entity.DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
+        //public System.Data.Entity.DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
 /*
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

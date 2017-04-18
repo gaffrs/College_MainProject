@@ -197,13 +197,30 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\VehicleAppMVCMigration\Configuration.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704181751343_InitialCreate.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704181751343_InitialCreate.Designer.cs">
+      <DependentUpon>201704181751343_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbMigration\201704181839112_Update 1.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704181839112_Update 1.Designer.cs">
+      <DependentUpon>201704181839112_Update 1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbMigration\201704181907239_Update 2.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704181907239_Update 2.Designer.cs">
+      <DependentUpon>201704181907239_Update 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbMigration\201704181911172_Update 4.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704181911172_Update 4.Designer.cs">
+      <DependentUpon>201704181911172_Update 4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbMigration\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cost.cs" />
     <Compile Include="Models\CostDto.cs" />
@@ -291,6 +308,11 @@
     <Content Include="Views\Vehicles\Details.cshtml" />
     <Content Include="Views\Vehicles\Edit.cshtml" />
     <Content Include="Views\Vehicles\Index.cshtml" />
+    <Content Include="Views\Costs\Create.cshtml" />
+    <Content Include="Views\Costs\Delete.cshtml" />
+    <Content Include="Views\Costs\Details.cshtml" />
+    <Content Include="Views\Costs\Edit.cshtml" />
+    <Content Include="Views\Costs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +327,20 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704181751343_InitialCreate.resx">
+      <DependentUpon>201704181751343_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704181839112_Update 1.resx">
+      <DependentUpon>201704181839112_Update 1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704181907239_Update 2.resx">
+      <DependentUpon>201704181907239_Update 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704181911172_Update 4.resx">
+      <DependentUpon>201704181911172_Update 4.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

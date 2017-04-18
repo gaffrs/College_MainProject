@@ -23,25 +23,22 @@ namespace VehicleAppMVC.Models
 
         //CG: added 
         
-            /*
-        [ForeignKey("Users")]
-        public int UserID { get; set; }
-        */
+        
+        //[ForeignKey("Users")]
+        //public int UserId { get; set; }
+
         /*
         [ForeignKey("VehicleID")]
         public int VehicleID { get; set; }
         [ForeignKey("NotificationID")]
         public int NotificationID { get; set; }
         */
-/*
-        [Display(Name = "Mobile Phone Number")]
-        public string UserMobileNumber { get; set; }
 
         //Navigation Property       //CG added
-        public virtual List<User> Users { get; set; }               //Collection and refers to User
-*/
+        public virtual ICollection<Vehicle> Vehicles { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; } //Collection and refers to Notification
 
-        /*
+        /*      //public virtual List<User> Users { get; set; }               //Collection and refers to User
                 public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
                 public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
         */
@@ -56,6 +53,14 @@ namespace VehicleAppMVC.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        
+        //CG:18/04/17
+        public System.Data.Entity.DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
+        public System.Data.Entity.DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
+        public System.Data.Entity.DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
+        public System.Data.Entity.DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
+
+
 
         public static ApplicationDbContext Create()
         {

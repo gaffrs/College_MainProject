@@ -24,7 +24,9 @@ namespace VehicleAppMVC.Models
         public eNotificationTitle NotificationTitle { get; set; }   //Enum Type
 
         //Navigation Property
-        public virtual User User { get; set; }              //NOT a Collection, as a Notification associated to only One User
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
+        //        public virtual User User { get; set; }              //NOT a Collection, as a Notification associated to only One User
 
 
         //ToString()

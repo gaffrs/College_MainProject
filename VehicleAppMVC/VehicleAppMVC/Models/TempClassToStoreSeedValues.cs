@@ -11,7 +11,7 @@ namespace VehicleAppMVC.Models
     {
         //Collection in Memory, list
         List<Vehicle> Vehicles;         //<Vehicle> is the name of the Class in Model
-        List<User> Users;
+        //List<User> Users;
         List<Cost> Costs;
         List<Fuel> FuelFills;
         List<Notification> Notifications;
@@ -76,9 +76,9 @@ namespace VehicleAppMVC.Models
             /*
             var hasher = new PasswordHasher();
             context.Users.AddOrUpdate(u => u.UserName,
-            new ApplicationUser { UserName = "colm", Email = "colm@gmail.com", PhoneNumber = "0871234567", PasswordHash = hasher.HashPassword("$Password1") },
-            new ApplicationUser { UserName = "john", Email = "paul@gmail.com", PhoneNumber = "0871234568", PasswordHash = hasher.HashPassword("$Password1") },
-            new ApplicationUser { UserName = "paul", Email = "paul@gmail.com", PhoneNumber = "0871234569", PasswordHash = hasher.HashPassword("$Password1") }
+            new ApplicationUser { UserName = "colm@gmail.com", Email = "colm@gmail.com", PhoneNumber = "0871234567", PasswordHash = hasher.HashPassword("$Password1") },
+            new ApplicationUser { UserName = "paul@gmail.com", Email = "paul@gmail.com", PhoneNumber = "0871234568", PasswordHash = hasher.HashPassword("$Password1") },
+            new ApplicationUser { UserName = "john@gmail.com", Email = "john@gmail.com", PhoneNumber = "0871234569", PasswordHash = hasher.HashPassword("$Password1") }
             );
 
             */
@@ -112,10 +112,30 @@ namespace VehicleAppMVC.Models
             colm@gmail.com
         };
         */
+            /*
+             * //using Models;
+                        // Create a list of vehicles.
+                        {
 
-
-
-
+                            context.Vehicles.AddOrUpdate(v => v.VehicleID,
+                              new Vehicle { Email = "colm@gmail.com", VehicleMake = "Opel", VehicleModel = "Vectra", VehicleRegistrationNumber = "161D171", VehicleOdometerMileage = 1600, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
+                              new Vehicle { Email = "colm@gmail.com", VehicleMake = "Mercedes", VehicleModel = "C-Class", VehicleRegistrationNumber = "161D181", VehicleOdometerMileage = 1300, SettingFuelType = eSettingFuelType.Diesel, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
+                              new Vehicle { Email = "paul@gmail.com", VehicleMake = "Subaru", VehicleModel = "Impreza", VehicleRegistrationNumber = "161D200", VehicleOdometerMileage = 2500, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.UK_Gal, SettingConsumption = eSettingConsumption.Mpg_UK },
+                              new Vehicle { Email = "paul@gmail.com", VehicleMake = "Volkswagen", VehicleModel = "Polo", VehicleRegistrationNumber = "161D250", VehicleOdometerMileage = 1000, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.US_Gal, SettingConsumption = eSettingConsumption.Mpg_US }
+                              );
+                        };
+            */
+            /*
+             * 
+             * //using Microsoft.AspNet.Identity;
+             * 
+                        var hasher = new PasswordHasher();
+                        context.Users.AddOrUpdate(u => u.UserName,
+                        new ApplicationUser { Email = "colm@gmail.com", PhoneNumber = "0871234567", PasswordHash = hasher.HashPassword("$Password1") },
+                        new ApplicationUser { Email = "paul@gmail.com", PhoneNumber = "0871234568", PasswordHash = hasher.HashPassword("$Password1") },
+                        new ApplicationUser { Email = "paul@gmail.com", PhoneNumber = "0871234569", PasswordHash = hasher.HashPassword("$Password1") }
+                        );
+            */
         }
 
     }
