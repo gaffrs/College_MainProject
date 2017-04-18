@@ -23,6 +23,7 @@ namespace VehicleAppMVC.Models
         [Display(Name = "US Gal")] US_Gal
     }
     
+
     public enum eSettingConsumption
     {
         [Display(Name = "L/100Km")] Lper100km,
