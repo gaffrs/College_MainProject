@@ -13,12 +13,13 @@ namespace VehicleAppMVC.Controllers
 {
     public class VehiclesController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        
+        private VehicleAppMVCContext db = new VehicleAppMVCContext();
+
         // GET: Vehicles
         public async Task<ActionResult> Index()
         {
-            return View(await db.Vehicles.ToListAsync());
+            var vehicles = db.Vehicles.Include(v => v.Users);
+            return View(await vehicles.ToListAsync());
         }
 
         // GET: Vehicles/Details/5
@@ -39,6 +40,7 @@ namespace VehicleAppMVC.Controllers
         // GET: Vehicles/Create
         public ActionResult Create()
         {
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserID");
             return View();
         }
 
@@ -47,6 +49,7 @@ namespace VehicleAppMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        /*public async Task<ActionResult> Create([Bind(Include = "VehicleID,UserID,VehicleMake,VehicleModel,VehicleRegistrationNumber,VehicleOdometerMileage,SettingFuelType,SettingDistance,SettingVolume,SettingConsumption")] Vehicle vehicle)*/
         public async Task<ActionResult> Create([Bind(Include = "VehicleID,Email,VehicleMake,VehicleModel,VehicleRegistrationNumber,VehicleOdometerMileage,SettingFuelType,SettingDistance,SettingVolume,SettingConsumption")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
@@ -56,6 +59,7 @@ namespace VehicleAppMVC.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserID", vehicle.UserID);
             return View(vehicle);
         }
 
@@ -71,6 +75,7 @@ namespace VehicleAppMVC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserID", vehicle.UserID);
             return View(vehicle);
         }
 
@@ -79,7 +84,7 @@ namespace VehicleAppMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "VehicleID,Email,VehicleMake,VehicleModel,VehicleRegistrationNumber,VehicleOdometerMileage,SettingFuelType,SettingDistance,SettingVolume,SettingConsumption")] Vehicle vehicle)
+        public async Task<ActionResult> Edit([Bind(Include = "VehicleID,UserID,VehicleMake,VehicleModel,VehicleRegistrationNumber,VehicleOdometerMileage,SettingFuelType,SettingDistance,SettingVolume,SettingConsumption")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +92,7 @@ namespace VehicleAppMVC.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserID", vehicle.UserID);
             return View(vehicle);
         }
 

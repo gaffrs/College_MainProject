@@ -16,22 +16,28 @@ namespace VehicleAppMVC.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public VehicleAppMVCContext() : base("name=VehicleAppMVCContext")
+        public VehicleAppMVCContext() : base("DefaultConnection")
         {
         }
+
+        public DbSet<VehicleAppMVC.Models.User> Users { get; set; }
+        public DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
+        public DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
+        public DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
+        public DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
 
         //public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
         //public System.Data.Entity.DbSet<VehicleAppMVC.Models.User> Users { get; set; }
 
         //public System.Data.Entity.DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
-/*
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-*/
+        /*
+                protected override void OnModelCreating(DbModelBuilder modelBuilder)
+                {
+                    base.OnModelCreating(modelBuilder);
+                    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+                }
+        */
         /*
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -39,7 +45,7 @@ namespace VehicleAppMVC.Models
             modelBuilder.Entity<User>()
                         .HasRequired<ApplicationUser>(s => s.ApplicationUsers)
                         .WithMany(s => s.Users)
-                        .HasForeignKey(s => s.Id);
+                        .HasForeignKey(s => s.);
 
         }
 */

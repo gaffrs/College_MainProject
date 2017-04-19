@@ -7,28 +7,39 @@ using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] 
 using System.Data.Entity;                       //enables "DbContext"
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity.EntityFramework;    //CG: added
-/*
+
 namespace VehicleAppMVC.Models
 {
 
     //Enums user types
-    public enum eUserType { Basic, PRO }
+    //public enum eUserType { Basic, PRO }
 
-    public class User //: IdentityUser                //CG: added
+    public class User //: ApplicationUser//: IdentityUser                //CG: added
     {
         [Key]
         public int UserID { get; set; }             //implies Primary Key PK
-                                                    //public ApplicationUser ID { get; set; }              //FK for Application User
-                                                    //public ApplicationUser Email { get; set; }
+
+        /*
+        [Key,ForeignKey("ApplicationUser")]
+        public string UserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        */
+
+        //public string Email { get; set; }
+
+
+
+        //public ApplicationUser ID { get; set; }              //FK for Application User
+        //public ApplicationUser Email { get; set; }
         //public string Email { get; set; }       //FK 
         //public int UserId { get; set; }     //FK
         //[ForeignKey("Id")]
         //public ApplicationUser Id { get; set; }
 
         //Navigation Property
-        //public virtual ApplicationUser ApplicationUser { get; set; }
-        //public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
-        //public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
+        //public virtual ApplicationUser Users { get; set; }
+        public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
+        public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
 
         /*
                 [Key]                                   //implies Primary Key PK
@@ -73,6 +84,9 @@ namespace VehicleAppMVC.Models
                 public int CreditCardSecurityCode { get; set; }
                 public int CreditCardAuthorisationNumber { get; set; }
                 */
+
+    }
+}
 
 /*
     }

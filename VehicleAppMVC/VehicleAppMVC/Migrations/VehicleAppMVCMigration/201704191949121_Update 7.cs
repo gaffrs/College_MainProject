@@ -1,9 +1,9 @@
-namespace VehicleAppMVC.Migrations.ApplicationDbMigration
+namespace VehicleAppMVC.Migrations.VehicleAppMVCMigration
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Update5 : DbMigration
+    public partial class Update7 : DbMigration
     {
         public override void Up()
         {

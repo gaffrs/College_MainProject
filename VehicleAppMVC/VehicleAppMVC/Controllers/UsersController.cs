@@ -11,112 +11,107 @@ using VehicleAppMVC.Models;
 
 namespace VehicleAppMVC.Controllers
 {
-    public class CostsController : Controller
+    public class UsersController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private VehicleAppMVCContext db = new VehicleAppMVCContext();
 
-        // GET: Costs
+        // GET: Users
         public async Task<ActionResult> Index()
         {
-            var costs = db.Costs.Include(c => c.Vehicle);
-            return View(await costs.ToListAsync());
+            return View(await db.Users.ToListAsync());
         }
 
-        // GET: Costs/Details/5
+        // GET: Users/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cost cost = await db.Costs.FindAsync(id);
-            if (cost == null)
+            User user = await db.Users.FindAsync(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(cost);
+            return View(user);
         }
 
-        // GET: Costs/Create
+        // GET: Users/Create
         public ActionResult Create()
         {
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "Email");
             return View();
         }
 
-        // POST: Costs/Create
+        // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CostID,VehicleID,CostDate,CostOdometerMileage,CostTitle,CostRunningCost,CostStartDate,CostEndDate")] Cost cost)
+        public async Task<ActionResult> Create([Bind(Include = "UserID")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Costs.Add(cost);
+                db.Users.Add(user);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "Email", cost.VehicleID);
-            return View(cost);
+            return View(user);
         }
 
-        // GET: Costs/Edit/5
+        // GET: Users/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cost cost = await db.Costs.FindAsync(id);
-            if (cost == null)
+            User user = await db.Users.FindAsync(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "Email", cost.VehicleID);
-            return View(cost);
+            return View(user);
         }
 
-        // POST: Costs/Edit/5
+        // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CostID,VehicleID,CostDate,CostOdometerMileage,CostTitle,CostRunningCost,CostStartDate,CostEndDate")] Cost cost)
+        public async Task<ActionResult> Edit([Bind(Include = "UserID")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cost).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "Email", cost.VehicleID);
-            return View(cost);
+            return View(user);
         }
 
-        // GET: Costs/Delete/5
+        // GET: Users/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cost cost = await db.Costs.FindAsync(id);
-            if (cost == null)
+            User user = await db.Users.FindAsync(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(cost);
+            return View(user);
         }
 
-        // POST: Costs/Delete/5
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Cost cost = await db.Costs.FindAsync(id);
-            db.Costs.Remove(cost);
+            User user = await db.Users.FindAsync(id);
+            db.Users.Remove(user);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

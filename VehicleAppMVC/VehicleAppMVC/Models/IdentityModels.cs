@@ -21,6 +21,8 @@ namespace VehicleAppMVC.Models
             return userIdentity;
         }
 
+        //public virtual User User { get; set; }
+
         //CG: added 
         //[ForeignKey("Users")]
         //public int UserId { get; set; }
@@ -33,36 +35,33 @@ namespace VehicleAppMVC.Models
         */
 
         //Navigation Property       //CG added
+        /*
         public virtual ICollection<Vehicle> Vehicles { get; set; }
         public virtual ICollection<Notification> Notifications { get; set; } //Collection and refers to Notification
-
-        /*      //public virtual List<User> Users { get; set; }               //Collection and refers to User
-                public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
-                public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
         */
-        //public virtual ICollection<User> Users { get; set; }               //Collection and refers to User
-        //public virtual List<User> Users { get; set; }               //Collection and refers to User
-
     }
-
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+    
+        public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         {
-        }
-        
-        //CG:18/04/17
-        public System.Data.Entity.DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
-        public System.Data.Entity.DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
-        public System.Data.Entity.DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
-        public System.Data.Entity.DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
+            public ApplicationDbContext()
+                : base("DefaultConnection", throwIfV1Schema: false)
+            {
+            }
+
+                public static ApplicationDbContext Create()
+            {
+                return new ApplicationDbContext();
+            }
+            
+    /* 
+     //CG:18/04/17
+     public System.Data.Entity.DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
+     public System.Data.Entity.DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
+     public System.Data.Entity.DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
+     public System.Data.Entity.DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
+     */
 
 
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
+}
 }

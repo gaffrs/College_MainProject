@@ -8,6 +8,7 @@ using System.Data.Entity;                       //enables "DbContext"
 using Microsoft.AspNet.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace VehicleAppMVC.Models
 {
@@ -18,6 +19,11 @@ namespace VehicleAppMVC.Models
 
     public enum eSettingVolume
     {
+        //Litres = 0,
+        //[EnumMember(Value = "UK Gal")]
+        //UKGal = 1,
+        //[EnumMember(Value = "US Gal")]
+        //USGal = 2
         [Display(Name = "Litres")] Litres_L,
         [Display(Name = "UK Gal")] UK_Gal,
         [Display(Name = "US Gal")] US_Gal
@@ -36,9 +42,9 @@ namespace VehicleAppMVC.Models
 
         [Key]                                   //implies Primary Key PK
         public int VehicleID { get; set; }
-        //public int UserID { get; set; }                             //FK    
+        public int UserID { get; set; }                             //FK    
         //public int UserId { get; set; }                             //FK 
-        public string Email { get; set; }                             //FK 
+        //public string Email { get; set; }                             //FK 
 
         /*
                 [Key, ForeignKey("ID")]
@@ -79,9 +85,9 @@ namespace VehicleAppMVC.Models
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
 
         //Navigation Property
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        //public virtual ApplicationUser ApplicationUser { get; set; }
 
-        //public virtual User Users { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
+        public virtual User Users { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel
 

@@ -1,19 +1,19 @@
-namespace VehicleAppMVC.Migrations.ApplicationDbMigration
+namespace VehicleAppMVC.Migrations.VehicleAppMVCMigration
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<VehicleAppMVC.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<VehicleAppMVC.Models.VehicleAppMVCContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            MigrationsDirectory = @"Migrations\ApplicationDbMigration";
+            MigrationsDirectory = @"Migrations\VehicleAppMVCMigration";
         }
 
-        protected override void Seed(VehicleAppMVC.Models.ApplicationDbContext context)
+        protected override void Seed(VehicleAppMVC.Models.VehicleAppMVCContext context)
         {
             //  This method will be called after migrating to the latest version.
 
