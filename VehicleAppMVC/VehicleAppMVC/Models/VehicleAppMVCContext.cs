@@ -20,11 +20,22 @@ namespace VehicleAppMVC.Models
         {
         }
 
-        public DbSet<VehicleAppMVC.Models.User> Users { get; set; }
-        public DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
-        public DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
-        public DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
-        public DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
+
+        /*
+        //CG NEW 20/04/17
+                protected override void OnModelCreating(DbModelBuilder modelBuilder)
+                {
+                    base.OnModelCreating(modelBuilder);
+
+                    // one-to-zero or one relationship between ApplicationUser and Customer
+                    // UserId column in Customers table will be foreign key
+                    modelBuilder.Entity<ApplicationUser>()
+                        .HasOptional(m => m.User)
+                        .WithRequired(m => m.ApplicationUser)
+                        .Map(p => p.MapKey("UserId"));
+                }
+        */
+
 
         //public DbSet<ApplicationUser> ApplicationUser { get; set; }
 

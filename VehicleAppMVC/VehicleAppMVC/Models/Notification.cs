@@ -27,8 +27,8 @@ namespace VehicleAppMVC.Models
     {
         //Property			                    //auto-implemented ReadWrite
         public int NotificationID { get; set; }                     //PK
-        public int UserID { get; set; }                             //FK    Customer.UserID 
-        //public ApplicationUser ID { get; set; }                     //FK    
+        public string ApplicationUserId { get; set; }               //FK to AspNetUsers UserId 
+        //public int UserID { get; set; }                           //FK    Customer.UserID 
 
         [Required(ErrorMessage = "Notification Date is required")]   //Not null or empty string
         [Display(Name = "Notification Date")]
@@ -43,11 +43,8 @@ namespace VehicleAppMVC.Models
         public eNotificationTitle NotificationTitle { get; set; }   //Enum Type
 
         //Navigation Property
-        //public virtual ApplicationUser ApplicationUser { get; set; }
-        public virtual User Users { get; set; }              //NOT a Collection, as a Notification associated to only One User
-
-
-
+        public virtual ApplicationUser ApplicationUser { get; set; }
+ 
         //ToString()
         public override string ToString()
         {

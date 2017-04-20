@@ -21,6 +21,10 @@ namespace VehicleAppMVC.Models
             return userIdentity;
         }
 
+        public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
+        public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
+
+
         //public virtual User User { get; set; }
 
         //CG: added 
@@ -39,9 +43,10 @@ namespace VehicleAppMVC.Models
         public virtual ICollection<Vehicle> Vehicles { get; set; }
         public virtual ICollection<Notification> Notifications { get; set; } //Collection and refers to Notification
         */
+
     }
-    
-        public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         {
             public ApplicationDbContext()
                 : base("DefaultConnection", throwIfV1Schema: false)
@@ -52,16 +57,38 @@ namespace VehicleAppMVC.Models
             {
                 return new ApplicationDbContext();
             }
-            
-    /* 
-     //CG:18/04/17
-     public System.Data.Entity.DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
-     public System.Data.Entity.DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
-     public System.Data.Entity.DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
-     public System.Data.Entity.DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
-     */
+
+        //Navigation Property of Model Classes
+        public DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
+        public DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
+        public DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
+        public DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
+
+        /*
+                //CG NEW 20/04/17
+                protected override void OnModelCreating(DbModelBuilder modelBuilder)
+                {
+                    base.OnModelCreating(modelBuilder);
+
+                    // one-to-zero or one relationship between ApplicationUser and Customer
+                    // UserId column in Customers table will be foreign key
+                    modelBuilder.Entity<ApplicationUser>()
+                        .HasOptional(m => m.User)
+                        .WithRequired(m => m.ApplicationUser)
+                        .Map(p => p.MapKey("UserId"));
+                }
+        */
+
+
+        /* 
+         //CG:18/04/17
+         public System.Data.Entity.DbSet<VehicleAppMVC.Models.Vehicle> Vehicles { get; set; }
+         public System.Data.Entity.DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
+         public System.Data.Entity.DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
+         public System.Data.Entity.DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
+         */
 
 
 
-}
+    }
 }
