@@ -1,0 +1,81 @@
+﻿@model IEnumerable<VehicleAppMVC.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleMake)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleRegistrationNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleOdometerMileage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SettingFuelType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SettingDistance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SettingVolume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SettingConsumption)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleMake)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleRegistrationNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleOdometerMileage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SettingFuelType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SettingDistance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SettingVolume)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SettingConsumption)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VehicleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VehicleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VehicleID })
+        </td>
+    </tr>
+}
+
+</table>

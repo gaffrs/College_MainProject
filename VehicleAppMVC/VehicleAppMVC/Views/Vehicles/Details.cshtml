@@ -1,0 +1,90 @@
+﻿@model VehicleAppMVC.Models.Vehicle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleMake)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleMake)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleModel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleModel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleRegistrationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleRegistrationNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleOdometerMileage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleOdometerMileage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SettingFuelType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettingFuelType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SettingDistance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettingDistance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SettingVolume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettingVolume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SettingConsumption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SettingConsumption)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VehicleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
