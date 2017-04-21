@@ -21,10 +21,25 @@ namespace VehicleAppMVC.Controllers
         // GET: Vehicles
         public async Task<ActionResult> Index()
         {
-            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            var currentUserId = User.Identity.GetUserId();  //CG: Get the UserId of user logged in 
             var vehicles = db.Vehicles.Where(v => v.ApplicationUserId == currentUserId);    //CG: Edited
             return View(await vehicles.ToListAsync());
         }
+
+        /*
+         * Debugging
+        // GET: Vehicles
+        public async Task<ActionResult> Index()
+        {
+            var currentUserId = User.Identity.GetUserId();  //CG: Get the UserId of user logged in 
+            var vehicles = await db.Vehicles.Where(v => v.ApplicationUserId == currentUserId).ToListAsync();    //CG: Edited
+            foreach (var item in vehicles)
+            {
+                //item.SettingVolume =  item.SettingVolume.ToString();
+            }
+            return View(vehicles);
+        }
+        */
 
         /* Original
          
