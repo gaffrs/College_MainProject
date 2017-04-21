@@ -9,11 +9,11 @@ using System.Web;
 using System.Web.Mvc;
 using VehicleAppMVC.Models;
 
-using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity;    //CG added
 
 namespace VehicleAppMVC.Controllers
 {
-    [Authorize]
+    [Authorize]         //CG: added
     public class VehiclesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

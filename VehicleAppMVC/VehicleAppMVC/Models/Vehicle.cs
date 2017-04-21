@@ -24,7 +24,7 @@ namespace VehicleAppMVC.Models
         //UKGal = 1,
         //[EnumMember(Value = "US Gal")]
         //USGal = 2
-        [Display(Name = "Litres")] Litres_L,
+        [Display(Name = "Litres")] Litres,
         [Display(Name = "UK Gal")] UK_Gal,
         [Display(Name = "US Gal")] US_Gal
     }
@@ -33,13 +33,12 @@ namespace VehicleAppMVC.Models
     public enum eSettingConsumption
     {
         [Display(Name = "L/100Km")] Lper100km,
-        [Display(Name = "Mpg US")] Mpg_US,
-        [Display(Name = "Mpg UK")] Mpg_UK
+        [Display(Name = "US Mpg")] US_Mpg,
+        [Display(Name = "UK Mpg")] UK_Mpg
     }
 
     public class Vehicle
     {
-
         [Key]                                   //implies Primary Key PK
         public int VehicleID { get; set; }
         public string ApplicationUserId { get; set; }               //FK to AspNetUsers UserId 
