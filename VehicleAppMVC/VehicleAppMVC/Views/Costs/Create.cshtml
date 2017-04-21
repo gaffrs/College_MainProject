@@ -1,4 +1,4 @@
-﻿@model VehicleAppMVC.Models.Cost
+﻿@model VehicleAppMVC.Models.Cost 
 
 @{
     ViewBag.Title = "Create";
@@ -15,15 +15,27 @@
         <h4>Cost</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+@*CG: Added to return the VehicleID based on the Make*@        
         <div class="form-group">
             @Html.LabelFor(model => model.VehicleID, "VehicleID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("VehicleID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("VehicleIDMake", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("VehicleIDModel", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.VehicleID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-
+@*CG: Added to return the VehicleID based on the Model*@
+@*
+    <div class="form-group">
+        @Html.LabelFor(model => model.VehicleID, "VehicleID", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("VehicleIDModel", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.VehicleID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+*@ 
 
         <div class="form-group">
             @Html.LabelFor(model => model.CostDate, htmlAttributes: new { @class = "control-label col-md-2" })

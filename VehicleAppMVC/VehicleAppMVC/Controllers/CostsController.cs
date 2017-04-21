@@ -43,10 +43,18 @@ namespace VehicleAppMVC.Controllers
         // GET: Costs/Create
         public ActionResult Create()
         {
-            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehicleID");//.Where(v => v.Value == currentUserId);   //CG: Edited
+            var currentUserId =  User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            //var currentVehicleId = new List(currentUserId.where(currentUserId
+            //var currentVehicleId = db.Vehicles.Where(v => v.ApplicationUserId == currentUserId);
+            //ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehicleID");//.Where(v => v.Value == currentUserId);   //CG: Edited
+            //ViewBag.VehicleIDMake = new SelectList(db.Vehicles, "VehicleID", "VehicleMake");//.Where(v => v.Value == currentUserId);   //CG: Edited
+            //ViewBag.VehicleIDModel = new SelectList(db.Vehicles, "VehicleID", "VehicleModel");
+
+            ViewBag.VehicleIDMake = new SelectList(db.Vehicles, "VehicleID", "VehicleMake");//.Where(db.Vehicles.Include(((v => v.Value == currentUserId)//.Where(v => v.Value == v);   //CG: Edited
+            ViewBag.VehicleIDModel = new SelectList(db.Vehicles, "VehicleID", "VehicleModel");
             return View();
         }
+
 
         /* // Original Code
         // GET: Costs/Create
