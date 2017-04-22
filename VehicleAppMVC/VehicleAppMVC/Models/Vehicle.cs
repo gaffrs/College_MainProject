@@ -52,7 +52,7 @@ namespace VehicleAppMVC.Models
         public String VehicleModel { get; set; }
 
         [Required(ErrorMessage = "Vehicle Registration Number is required")] //Not null or empty string
-        [Display(Name = "Vehicle Registration No.")]
+        [Display(Name = "Vehicle Registration")]
         public String VehicleRegistrationNumber { get; set; }
 
         [Required(ErrorMessage = "Vehicle Odometer Mileage is required")] //Not null or empty string
@@ -76,6 +76,7 @@ namespace VehicleAppMVC.Models
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
 
         //Navigation Property
+        [Display(Name = "Application User")]
         public virtual ApplicationUser ApplicationUser { get; set; }       //NOT a Collection, as a Vehicle associated to only One User     
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel

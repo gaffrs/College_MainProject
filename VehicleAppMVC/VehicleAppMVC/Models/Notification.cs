@@ -56,9 +56,10 @@ namespace VehicleAppMVC.Models
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Send Date")]
         public DateTime NotificationSendDate { get; set; }
-        
+
 
         //Navigation Property
+        [Display(Name = "Application User")]
         public virtual ApplicationUser ApplicationUser { get; set; }
  
         //ToString()

@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)
+            @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CostTitle)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CostDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CostOdometerMileage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CostTitle)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CostRunningCost)
@@ -38,16 +38,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Vehicle.ApplicationUserId)
+            @Html.DisplayFor(modelItem => item.Vehicle.VehicleRegistrationNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CostTitle)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CostDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CostOdometerMileage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CostTitle)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CostRunningCost)

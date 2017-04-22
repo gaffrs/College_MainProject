@@ -20,7 +20,7 @@ namespace VehicleAppMVC.Models
         public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
 
         [Required(ErrorMessage = "Cost Title is required")] //Not null or empty string
-        [Display(Name = "Title")]
+        [Display(Name = "Cost Description")]
         public eCostTitle CostTitle { get; set; }           //Enum Type
 
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
@@ -33,8 +33,12 @@ namespace VehicleAppMVC.Models
        
         [Display(Name = "Cost amount")]
         public double CostRunningCost { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Start Date")]
+
         public DateTime CostStartDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "End Date")]
         public DateTime CostEndDate { get; set; }
 
