@@ -25,22 +25,38 @@ namespace VehicleAppMVC.Models
 
     public class Notification
     {
+            //Enums
+    public enum eNotificationTitle
+    {
+        [Display(Name = "Vehicle Birthday")] VehicleBirthday,
+        [Display(Name = "Service Date Notification")] ServiceDateNotification,
+        [Display(Name = "Vehicle Testing DateRenewal")] VehicleTestingDateRenewal,
+        [Display(Name = "Insurance Date Renewal")] InsuranceDateRenewal,
+        [Display(Name = "Motor Tax Date Renewal")] MotorTaxDateRenewal,
+        [Display(Name = "Service Mileage Notification")] ServiceMileageNotification
+    }
+
         //Property			                    //auto-implemented ReadWrite
         public int NotificationID { get; set; }                     //PK
         public string ApplicationUserId { get; set; }               //FK to AspNetUsers UserId 
         //public int UserID { get; set; }                           //FK    Customer.UserID 
 
+        [Display(Name = "Notification Title")]
+        public eNotificationTitle NotificationTitle { get; set; }   //Enum Type  
+            
+        [Display(Name = "Notification Type")]
+        public eNotificationType NotificationType { get; set; }     //Enum Type
+
         [Required(ErrorMessage = "Notification Date is required")]   //Not null or empty string
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Notification Date")]
         public DateTime NotificationDate { get; set; }
 
         [Required(ErrorMessage = "Notification Send Date is required")]   //Not null or empty string
-        [Display(Name = "Notification Send Date")]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Send Date")]
         public DateTime NotificationSendDate { get; set; }
-        [Display(Name = "Notification Type")]
-        public eNotificationType NotificationType { get; set; }     //Enum Type
-        [Display(Name = "Notification Title")]
-        public eNotificationTitle NotificationTitle { get; set; }   //Enum Type
+        
 
         //Navigation Property
         public virtual ApplicationUser ApplicationUser { get; set; }

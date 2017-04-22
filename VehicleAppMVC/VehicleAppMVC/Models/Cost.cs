@@ -19,16 +19,18 @@ namespace VehicleAppMVC.Models
         public int CostID { get; set; }                     //PK
         public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
 
+        [Required(ErrorMessage = "Cost Title is required")] //Not null or empty string
+        [Display(Name = "Title")]
+        public eCostTitle CostTitle { get; set; }           //Enum Type
+
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Cost Date")]
         public DateTime CostDate { get; set; }
 
         [Required(ErrorMessage = "Vehicle Odometer Mileage is required")] //Not null or empty string
         [Display(Name = "Odometer")]
         public int CostOdometerMileage { get; set; }
-
-        [Required(ErrorMessage = "Cost Title is required")] //Not null or empty string
-        [Display(Name = "Title")]
-        public eCostTitle CostTitle { get; set; }           //Enum Type
+       
         [Display(Name = "Cost amount")]
         public double CostRunningCost { get; set; }
         [Display(Name = "Start Date")]

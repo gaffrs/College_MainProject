@@ -46,8 +46,8 @@ namespace VehicleAppMVC.Models
 
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-        {
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>    //Original code
+    {
             public ApplicationDbContext()
                 : base("DefaultConnection", throwIfV1Schema: false)
             {

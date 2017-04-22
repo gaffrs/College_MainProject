@@ -202,13 +202,18 @@
     <Compile Include="Controllers\CostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704201633344_Create Initial.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704201633344_Create Initial.Designer.cs">
-      <DependentUpon>201704201633344_Create Initial.cs</DependentUpon>
+    <Compile Include="Migrations\ApplicationDbMigration\201704220803550_InitialCreate.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704220803550_InitialCreate.Designer.cs">
+      <DependentUpon>201704220803550_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbMigration\201704220811209_1.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704220811209_1.Designer.cs">
+      <DependentUpon>201704220811209_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbMigration\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -297,6 +302,11 @@
     <Content Include="Views\Costs\Details.cshtml" />
     <Content Include="Views\Costs\Edit.cshtml" />
     <Content Include="Views\Costs\Index.cshtml" />
+    <Content Include="Views\Notifications\Create.cshtml" />
+    <Content Include="Views\Notifications\Delete.cshtml" />
+    <Content Include="Views\Notifications\Details.cshtml" />
+    <Content Include="Views\Notifications\Edit.cshtml" />
+    <Content Include="Views\Notifications\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -313,8 +323,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704201633344_Create Initial.resx">
-      <DependentUpon>201704201633344_Create Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704220803550_InitialCreate.resx">
+      <DependentUpon>201704220803550_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704220811209_1.resx">
+      <DependentUpon>201704220811209_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -3,7 +3,7 @@ namespace VehicleAppMVC.Migrations.ApplicationDbMigration
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateInitial : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -13,9 +13,9 @@ namespace VehicleAppMVC.Migrations.ApplicationDbMigration
                     {
                         CostID = c.Int(nullable: false, identity: true),
                         VehicleID = c.Int(nullable: false),
+                        CostTitle = c.Int(nullable: false),
                         CostDate = c.DateTime(nullable: false),
                         CostOdometerMileage = c.Int(nullable: false),
-                        CostTitle = c.Int(nullable: false),
                         CostRunningCost = c.Double(nullable: false),
                         CostStartDate = c.DateTime(nullable: false),
                         CostEndDate = c.DateTime(nullable: false),

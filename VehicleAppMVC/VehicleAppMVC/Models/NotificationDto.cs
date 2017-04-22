@@ -18,10 +18,10 @@ namespace VehicleAppMVC.Models
         public DateTime NotificationDate { get; set; }
         [Display(Name = "Notification Send Date")]
         public DateTime NotificationSendDate { get; set; }
-        [Display(Name = "Notification Type")]
-        public eNotificationType NotificationType { get; set; }     //Enum Type
-        [Display(Name = "Notification Title")]
-        public eNotificationTitle NotificationTitle { get; set; }   //Enum Type
+        //[Display(Name = "Notification Type")]
+        //public eNotificationType NotificationType { get; set; }     //Enum Type
+        //[Display(Name = "Notification Title")]
+        //public eNotificationTitle NotificationTitle { get; set; }   //Enum Type
 
         //Navigation Property
         public virtual ApplicationUser ApplicationUser { get; set; }
@@ -33,7 +33,7 @@ namespace VehicleAppMVC.Models
         public override string ToString()
         {
             return "Notification ID: " + NotificationID + ", Notification Date: " + NotificationDate + ", Notification Send Date: " + NotificationSendDate +
-                ", Notification Type: " + NotificationType + ", Notification Title: " + NotificationTitle;
+                ", Notification Type: " /*+ NotificationType + ", Notification Title: " + NotificationTitle*/;
         }
     }
 }
