@@ -43,8 +43,6 @@ namespace VehicleAppMVC.Controllers
         // GET: Costs/Create
         public ActionResult Create()
         {
-
-
             //WORKING reg no.
             var currentUserId =  User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
             ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehicleRegistrationNumber");//.Where(db.Vehicles.Include(((v => v.Value == currentUserId)//.Where(v => v.Value == v);   //CG: Edited
@@ -106,7 +104,9 @@ public ActionResult Create()
                 return RedirectToAction("Index");
             }
 
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehicleRegistrationNumber", cost.VehicleID);
+            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehicleRegistrationNumber", cost.VehicleID);  //CG: Edited
+            //ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "ApplicationUserId", cost.VehicleID);
+
             return View(cost);
         }
 

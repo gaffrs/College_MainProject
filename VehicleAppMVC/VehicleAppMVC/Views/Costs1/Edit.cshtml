@@ -1,13 +1,13 @@
-﻿@model VehicleAppMVC.Models.Cost 
+﻿@model VehicleAppMVC.Models.Cost
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
@@ -15,28 +15,23 @@
         <h4>Cost</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
-@*CG: Added to return the VehicleID based on the Make*@        
+        @Html.HiddenFor(model => model.CostID)
+
         <div class="form-group">
-            @Html.LabelFor(model => model.VehicleID, "Vehicle Registration", htmlAttributes: new { @class = "control-label col-md-2" })
-            @*@Html.LabelFor(model => model.VehicleID, "VehicleID", htmlAttributes: new { @class = "control-label col-md-2" })*@
+            @Html.LabelFor(model => model.VehicleID, "VehicleID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("VehicleID", null, htmlAttributes: new { @class = "form-control" })
-                @*@Html.DropDownList("VehicleIDModel", null, htmlAttributes: new { @class = "form-control" })*@
                 @Html.ValidationMessageFor(model => model.VehicleID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-@*CG: Added to return the VehicleID based on the Model*@
-@*
-    <div class="form-group">
-        @Html.LabelFor(model => model.VehicleID, "VehicleID", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("VehicleIDModel", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.VehicleID, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CostTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.CostTitle, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CostTitle, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-*@ 
 
         <div class="form-group">
             @Html.LabelFor(model => model.CostDate, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -51,14 +46,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CostOdometerMileage, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CostOdometerMileage, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CostTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.CostTitle, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CostTitle, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -88,7 +75,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

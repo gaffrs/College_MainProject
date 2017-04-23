@@ -1,0 +1,82 @@
+﻿@model VehicleAppMVC.Models.Fuel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fuel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle.VehicleRegistrationNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelOdometerMileage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelOdometerMileage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelUnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelUnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelPartialFill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelPartialFill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelConsumption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelConsumption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuelCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuelCost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FuelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

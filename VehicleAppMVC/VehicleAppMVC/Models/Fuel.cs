@@ -30,7 +30,7 @@ namespace VehicleAppMVC.Models
         public int FuelQuantity { get; set; }
 
         [Required(ErrorMessage = "Fuel price is required")]   //Not null or empty string
-        [Display(Name = "Fuel Price")]
+        [Display(Name = "Fuel Unit Price")]
         public double FuelUnitPrice { get; set; }
 
         [Display(Name = "Partial Fill")]
@@ -39,10 +39,34 @@ namespace VehicleAppMVC.Models
 
         //Calculations
         [Display(Name = "Fuel Consumption")]
-        public double FuelConsumption { get; set; }
+        public double FuelConsumption                                   //need to adjust this for Partial fills *********************************
+        {
+            get
+            {
+                double consumption = 0;
+
+                if (FuelPartialFill == false)
+                {
+                    consumption = FuelOdometerMileage / FuelQuantity;
+                }
+                else
+                {
+                    consumption = 1000000000000000;
+                }
+                return consumption;
+            }
+        }
 
         [Display(Name = "Fuel Cost")]
-        public double FuelCost { get; set; }
+        public double FuelCost
+        {
+            get
+            {
+                double cost = 0;
+                cost = FuelQuantity * FuelUnitPrice;
+                return cost;
+            }
+        }
 
         //Navigation Property
 
@@ -67,15 +91,18 @@ namespace VehicleAppMVC.Models
 
 
         //need to adjust this for Partial fills *********************************
+        /*
         public double CalcFuelConsumption()
         {
             return FuelConsumption = FuelOdometerMileage / FuelQuantity;
         }
-
+        */
+/*
         public double CalcFuelCost()
         {
             return FuelCost = FuelQuantity * FuelUnitPrice;
         }
+*/
 
     }
 }

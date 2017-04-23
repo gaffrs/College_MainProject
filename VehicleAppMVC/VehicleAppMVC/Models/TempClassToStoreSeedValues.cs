@@ -54,11 +54,11 @@ namespace VehicleAppMVC.Models
             {
 
             //context.Fuel.AddOrUpdate(f => f.FuelID,
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 01), FuelOdometerMileage = 10000, FuelQuantity = 45, FuelUnitPrice = 1.35, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 10), FuelOdometerMileage = 10300, FuelQuantity = 40, FuelUnitPrice = 1.45, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 24), FuelOdometerMileage = 10600, FuelQuantity = 48, FuelUnitPrice = 1.55, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 29), FuelOdometerMileage = 10900, FuelQuantity = 50, FuelUnitPrice = 1.25, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
-                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 4, 05), FuelOdometerMileage = 11200, FuelQuantity = 55, FuelUnitPrice = 1.15, FuelPartialFill = false,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555 },
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 01), FuelOdometerMileage = 10000, FuelQuantity = 45, FuelUnitPrice = 1.35, FuelPartialFill = false /*,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555*/ },
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 10), FuelOdometerMileage = 10300, FuelQuantity = 40, FuelUnitPrice = 1.45, FuelPartialFill = false /*,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555*/ },
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 24), FuelOdometerMileage = 10600, FuelQuantity = 48, FuelUnitPrice = 1.55, FuelPartialFill = false /*,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555*/ },
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 3, 29), FuelOdometerMileage = 10900, FuelQuantity = 50, FuelUnitPrice = 1.25, FuelPartialFill = false /*,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555*/ },
+                new Fuel { VehicleID = 1, FuelDate = new DateTime(2017, 4, 05), FuelOdometerMileage = 11200, FuelQuantity = 55, FuelUnitPrice = 1.15, FuelPartialFill = false /*,  FuelConsumption = 45555555555555555, FuelCost = 100.35555555555555*/ },
 
             };
 

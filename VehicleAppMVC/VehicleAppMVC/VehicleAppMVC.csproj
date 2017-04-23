@@ -199,7 +199,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Costs1Controller.cs" />
     <Compile Include="Controllers\CostsController.cs" />
+    <Compile Include="Controllers\FuelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
@@ -214,6 +216,10 @@
     <Compile Include="Migrations\ApplicationDbMigration\201704220811209_1.cs" />
     <Compile Include="Migrations\ApplicationDbMigration\201704220811209_1.Designer.cs">
       <DependentUpon>201704220811209_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbMigration\201704230900437_2.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704230900437_2.Designer.cs">
+      <DependentUpon>201704230900437_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbMigration\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -307,6 +313,16 @@
     <Content Include="Views\Notifications\Details.cshtml" />
     <Content Include="Views\Notifications\Edit.cshtml" />
     <Content Include="Views\Notifications\Index.cshtml" />
+    <Content Include="Views\Fuels\Create.cshtml" />
+    <Content Include="Views\Fuels\Delete.cshtml" />
+    <Content Include="Views\Fuels\Details.cshtml" />
+    <Content Include="Views\Fuels\Edit.cshtml" />
+    <Content Include="Views\Fuels\Index.cshtml" />
+    <Content Include="Views\Costs1\Create.cshtml" />
+    <Content Include="Views\Costs1\Delete.cshtml" />
+    <Content Include="Views\Costs1\Details.cshtml" />
+    <Content Include="Views\Costs1\Edit.cshtml" />
+    <Content Include="Views\Costs1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -328,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704220811209_1.resx">
       <DependentUpon>201704220811209_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704230900437_2.resx">
+      <DependentUpon>201704230900437_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

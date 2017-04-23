@@ -12,8 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)      @*CG: Edited*@
-            @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
+            @Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CostTitle)
@@ -39,8 +38,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Vehicle.VehicleRegistrationNumber)       @*CG: Edited*@
-            @*@Html.DisplayFor(modelItem => item.Vehicle.ApplicationUserId)*@
+            @Html.DisplayFor(modelItem => item.Vehicle.ApplicationUserId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CostTitle)
