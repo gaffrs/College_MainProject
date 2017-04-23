@@ -17,6 +17,13 @@
         <dd>
             @Html.DisplayFor(model => model.Vehicle.VehicleRegistrationNumber)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CostTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostTitle)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.CostDate)
@@ -32,14 +39,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.CostOdometerMileage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CostTitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CostTitle)
         </dd>
 
         <dt>
@@ -65,7 +64,13 @@
         <dd>
             @Html.DisplayFor(model => model.CostEndDate)
         </dd>
-
+        <dt>
+            @Html.DisplayNameFor(model => model.CostTotalRunningCost)
+        </dt>
+    
+        <dd>
+             @Html.DisplayFor(model => model.CostTotalRunningCost)
+    	</dd>
     </dl>
 </div>
 <p>

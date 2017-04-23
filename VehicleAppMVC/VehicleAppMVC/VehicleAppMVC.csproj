@@ -199,7 +199,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Costs1Controller.cs" />
     <Compile Include="Controllers\CostsController.cs" />
     <Compile Include="Controllers\FuelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,17 +208,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704220803550_InitialCreate.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704220803550_InitialCreate.Designer.cs">
-      <DependentUpon>201704220803550_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\ApplicationDbMigration\201704231039546_InitialCreate.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704231039546_InitialCreate.Designer.cs">
+      <DependentUpon>201704231039546_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704220811209_1.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704220811209_1.Designer.cs">
-      <DependentUpon>201704220811209_1.cs</DependentUpon>
+    <Compile Include="Migrations\ApplicationDbMigration\201704231042350_1.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704231042350_1.Designer.cs">
+      <DependentUpon>201704231042350_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704230900437_2.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704230900437_2.Designer.cs">
-      <DependentUpon>201704230900437_2.cs</DependentUpon>
+    <Compile Include="Migrations\ApplicationDbMigration\201704231052431_2.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704231052431_2.Designer.cs">
+      <DependentUpon>201704231052431_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbMigration\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -318,11 +317,6 @@
     <Content Include="Views\Fuels\Details.cshtml" />
     <Content Include="Views\Fuels\Edit.cshtml" />
     <Content Include="Views\Fuels\Index.cshtml" />
-    <Content Include="Views\Costs1\Create.cshtml" />
-    <Content Include="Views\Costs1\Delete.cshtml" />
-    <Content Include="Views\Costs1\Details.cshtml" />
-    <Content Include="Views\Costs1\Edit.cshtml" />
-    <Content Include="Views\Costs1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,14 +333,14 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704220803550_InitialCreate.resx">
-      <DependentUpon>201704220803550_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704231039546_InitialCreate.resx">
+      <DependentUpon>201704231039546_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704220811209_1.resx">
-      <DependentUpon>201704220811209_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704231042350_1.resx">
+      <DependentUpon>201704231042350_1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704230900437_2.resx">
-      <DependentUpon>201704230900437_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704231052431_2.resx">
+      <DependentUpon>201704231052431_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

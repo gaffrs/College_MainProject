@@ -94,10 +94,10 @@ namespace VehicleAppMVC.Migrations.ApplicationDbMigration
                     {
                         NotificationID = c.Int(nullable: false, identity: true),
                         ApplicationUserId = c.String(maxLength: 128),
+                        NotificationTitle = c.Int(nullable: false),
+                        NotificationType = c.Int(nullable: false),
                         NotificationDate = c.DateTime(nullable: false),
                         NotificationSendDate = c.DateTime(nullable: false),
-                        NotificationType = c.Int(nullable: false),
-                        NotificationTitle = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.NotificationID)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
@@ -127,8 +127,6 @@ namespace VehicleAppMVC.Migrations.ApplicationDbMigration
                         FuelQuantity = c.Int(nullable: false),
                         FuelUnitPrice = c.Double(nullable: false),
                         FuelPartialFill = c.Boolean(nullable: false),
-                        FuelConsumption = c.Double(nullable: false),
-                        FuelCost = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.FuelID)
                 .ForeignKey("dbo.Vehicles", t => t.VehicleID, cascadeDelete: true)

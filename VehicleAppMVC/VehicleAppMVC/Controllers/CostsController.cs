@@ -95,8 +95,8 @@ public ActionResult Create()
 // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CostID,VehicleID,CostDate,CostOdometerMileage,CostTitle,CostRunningCost,CostStartDate,CostEndDate")] Cost cost)
-        {
+        public async Task<ActionResult> Create([Bind(Include = "CostID,VehicleID,CostTitle,CostDate,CostOdometerMileage,CostRunningCost,CostStartDate,CostEndDate,CostTotalRunningCost")] Cost cost)		
+		{
             if (ModelState.IsValid)
             {
                 db.Costs.Add(cost);
@@ -131,7 +131,7 @@ public ActionResult Create()
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CostID,VehicleID,CostDate,CostOdometerMileage,CostTitle,CostRunningCost,CostStartDate,CostEndDate")] Cost cost)
+        public async Task<ActionResult> Edit([Bind(Include = "CostID,VehicleID,CostTitle,CostDate,CostOdometerMileage,CostRunningCost,CostStartDate,CostEndDate")] Cost cost)
         {
             if (ModelState.IsValid)
             {

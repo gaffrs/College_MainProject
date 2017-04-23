@@ -36,8 +36,8 @@ namespace VehicleAppMVC.Models
 
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Start Date")]
-
         public DateTime CostStartDate { get; set; }
+
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "End Date")]
         public DateTime CostEndDate { get; set; }
@@ -45,13 +45,14 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Total running cost")]
         public double CostTotalRunningCost
         {
-            get
-            {
-                double totalCost = 0;
-                totalCost = CostRunningCost++;
-                return totalCost;
-            }
-        }
+             get
+             {
+                 double totalCost = 0;
+                 totalCost = CostRunningCost++;
+                 return totalCost;
+             }
+         }
+       
 
         //Navigation Property
         public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Cost associated to only One Vehicle

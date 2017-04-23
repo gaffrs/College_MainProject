@@ -22,7 +22,7 @@ namespace VehicleAppMVC.Controllers
         public async Task<ActionResult> Index()
         {
             var currentUserId = User.Identity.GetUserId();  //CG: Get the UserId of user logged in 
-            var notifications = db.Notifications.Include(n => n.ApplicationUser);//.Where(v => v.ApplicationUserId == currentUserId);    //CG: Edited;
+            var notifications = db.Notifications.Where(v => v.ApplicationUserId == currentUserId);    //CG: Edited
             return View(await notifications.ToListAsync());
         }
         /*

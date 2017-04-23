@@ -118,10 +118,10 @@ namespace VehicleAppMVC.Models
                         {
 
                             context.Vehicles.AddOrUpdate(v => v.VehicleID,
-                              new Vehicle { Email = "colm@gmail.com", VehicleMake = "Opel", VehicleModel = "Vectra", VehicleRegistrationNumber = "161D171", VehicleOdometerMileage = 1600, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
-                              new Vehicle { Email = "colm@gmail.com", VehicleMake = "Mercedes", VehicleModel = "C-Class", VehicleRegistrationNumber = "161D181", VehicleOdometerMileage = 1300, SettingFuelType = eSettingFuelType.Diesel, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
-                              new Vehicle { Email = "paul@gmail.com", VehicleMake = "Subaru", VehicleModel = "Impreza", VehicleRegistrationNumber = "161D200", VehicleOdometerMileage = 2500, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.UK_Gal, SettingConsumption = eSettingConsumption.Mpg_UK },
-                              new Vehicle { Email = "paul@gmail.com", VehicleMake = "Volkswagen", VehicleModel = "Polo", VehicleRegistrationNumber = "161D250", VehicleOdometerMileage = 1000, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.US_Gal, SettingConsumption = eSettingConsumption.Mpg_US }
+                              new Vehicle { Email = "colm@gmail.com", VehicleMake = "Colm Opel", VehicleModel = "Colm Vectra", VehicleRegistrationNumber = "Colm1", VehicleOdometerMileage = 1000, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
+                              new Vehicle { Email = "colm@gmail.com", VehicleMake = "Colm Mercedes", VehicleModel = "Colm C-Class", VehicleRegistrationNumber = "Colm2", VehicleOdometerMileage = 1300, SettingFuelType = eSettingFuelType.Diesel, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres_L, SettingConsumption = eSettingConsumption.Lper100km },
+                              new Vehicle { Email = "paul@gmail.com", VehicleMake = "Paul Subaru", VehicleModel = "Paul Impreza", VehicleRegistrationNumber = "Paul1", VehicleOdometerMileage = 2500, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.UK_Gal, SettingConsumption = eSettingConsumption.Mpg_UK },
+                              new Vehicle { Email = "paul@gmail.com", VehicleMake = "Paul Volkswagen", VehicleModel = "Paul Polo", VehicleRegistrationNumber = "Paul2", VehicleOdometerMileage = 1000, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.US_Gal, SettingConsumption = eSettingConsumption.Mpg_US }
                               );
                         };
             */
@@ -136,6 +136,37 @@ namespace VehicleAppMVC.Models
                         new ApplicationUser { Email = "paul@gmail.com", PhoneNumber = "0871234569", PasswordHash = hasher.HashPassword("$Password1") }
                         );
             */
+
+
+/*
+//*********************************************************************
+//Setting up seed data from Scratch
+//Delete ALL Tables
+//1)Register User Paul
+//2)Register User Colm
+
+            {
+                context.Vehicles.AddOrUpdate(v => v.VehicleID,
+                    new Vehicle { ApplicationUserId = "9226d49c-1b87-4ddc-8a88-c26d6639fbaf", VehicleMake = "Paul Subaru", VehicleModel = "Paul Impreza", VehicleRegistrationNumber = "Paul1", VehicleOdometerMileage = 2500, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.UK_Gal, SettingConsumption = eSettingConsumption.UK_Mpg },  //User Paul 
+                    new Vehicle { ApplicationUserId = "9226d49c-1b87-4ddc-8a88-c26d6639fbaf", VehicleMake = "Paul Volkswagen", VehicleModel = "Paul Polo", VehicleRegistrationNumber = "Paul2", VehicleOdometerMileage = 1000, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Miles, SettingVolume = eSettingVolume.US_Gal, SettingConsumption = eSettingConsumption.US_Mpg }, //User Paul 
+                    new Vehicle { ApplicationUserId = "316f6ed3-d7b3-4a14-bffb-3770ce35447c", VehicleMake = "Colm Opel", VehicleModel = "Colm Vectra", VehicleRegistrationNumber = "Colm1", VehicleOdometerMileage = 1000, SettingFuelType = eSettingFuelType.Petrol, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres, SettingConsumption = eSettingConsumption.Lper100km },     //User Colm 
+                    new Vehicle { ApplicationUserId = "316f6ed3-d7b3-4a14-bffb-3770ce35447c", VehicleMake = "Colm Mercedes", VehicleModel = "Colm C-Class", VehicleRegistrationNumber = "Colm2", VehicleOdometerMileage = 1300, SettingFuelType = eSettingFuelType.Diesel, SettingDistance = eSettingDistance.Km, SettingVolume = eSettingVolume.Litres, SettingConsumption = eSettingConsumption.Lper100km } //User Colm 
+                  );
+            };
+
+            {
+
+//                context.Notifications.AddOrUpdate(n => n.NotificationID,
+                    new Notification { ApplicationUserId = "9226d49c-1b87-4ddc-8a88-c26d6639fbaf", NotificationDate = new DateTime(2017, 7, 01), NotificationSendDate = new DateTime(2017, 1, 01), NotificationType = eNotificationType.Email, NotificationTitle = Notification.eNotificationTitle.InsuranceDateRenewal },        //User Paul
+                    new Notification { ApplicationUserId = "9226d49c-1b87-4ddc-8a88-c26d6639fbaf", NotificationDate = new DateTime(2017, 7, 01), NotificationSendDate = new DateTime(2017, 1, 01), NotificationType = eNotificationType.SMS, NotificationTitle = Notification.eNotificationTitle.MotorTaxDateRenewal },           //User Paul
+                    new Notification { ApplicationUserId = "316f6ed3-d7b3-4a14-bffb-3770ce35447c", NotificationDate = new DateTime(2018, 7, 01), NotificationSendDate = new DateTime(2018, 1, 01), NotificationType = eNotificationType.Email, NotificationTitle = Notification.eNotificationTitle.ServiceDateNotification },     //User Colm 
+                    new Notification { ApplicationUserId = "316f6ed3-d7b3-4a14-bffb-3770ce35447c", NotificationDate = new DateTime(2018, 7, 01), NotificationSendDate = new DateTime(2018, 1, 01), NotificationType = eNotificationType.Email, NotificationTitle = Notification.eNotificationTitle.ServiceMileageNotification }   //User Colm 
+                );
+            };
+        }
+*/
+
+
         }
 
     }
