@@ -91,15 +91,17 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Mobile Phone Number")]
         public string UserMobileNumber { get; set; }
 */
+/*
         //CG: Added 17/04/17
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone Number")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone Number must be 10 digits long")]
         public string PhoneNumber { get; set; }
 
-
-        public String VehicleUnit { get; set; }
-
+*/
+/*
+        public ApplicationUser VehicleUnit { get; set; }
+*/
 
 
     }
