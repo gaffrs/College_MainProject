@@ -47,7 +47,7 @@ namespace VehicleAppMVC.Models
 
                 if (FuelPartialFill == false)
                 {
-                    consumption = FuelOdometerMileage / FuelQuantity;
+                    consumption = FuelOdometerMileage / FuelQuantity *1000;   //need to adjust this New-Old mileage *******
                 }
                 else
                 {

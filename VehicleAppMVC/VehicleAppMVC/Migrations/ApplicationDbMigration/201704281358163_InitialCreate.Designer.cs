@@ -7,13 +7,13 @@ namespace VehicleAppMVC.Migrations.ApplicationDbMigration
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _2 : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704231052431_2"; }
+            get { return "201704281358163_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

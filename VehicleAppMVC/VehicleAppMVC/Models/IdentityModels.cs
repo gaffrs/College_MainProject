@@ -33,7 +33,7 @@ namespace VehicleAppMVC.Models
         public virtual ICollection<Vehicle> Vehicles { get; set; }
         public virtual ICollection<Notification> Notifications { get; set; } //Collection and refers to Notification
         */
-
+/*
 //Below Added to get user to fill in settings on registration, so settings are for ALL their vehicles
 
         //Units settings
@@ -98,11 +98,10 @@ namespace VehicleAppMVC.Models
                 return distance + volume + consumption;
             }
         }
+*/
 
     }
-
-
-
+    
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>    //Original code
     {
             public ApplicationDbContext()

@@ -208,17 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704231039546_InitialCreate.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704231039546_InitialCreate.Designer.cs">
-      <DependentUpon>201704231039546_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704231042350_1.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704231042350_1.Designer.cs">
-      <DependentUpon>201704231042350_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ApplicationDbMigration\201704231052431_2.cs" />
-    <Compile Include="Migrations\ApplicationDbMigration\201704231052431_2.Designer.cs">
-      <DependentUpon>201704231052431_2.cs</DependentUpon>
+    <Compile Include="Migrations\ApplicationDbMigration\201704281358163_InitialCreate.cs" />
+    <Compile Include="Migrations\ApplicationDbMigration\201704281358163_InitialCreate.Designer.cs">
+      <DependentUpon>201704281358163_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ApplicationDbMigration\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -333,14 +325,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704231039546_InitialCreate.resx">
-      <DependentUpon>201704231039546_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704231042350_1.resx">
-      <DependentUpon>201704231042350_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704231052431_2.resx">
-      <DependentUpon>201704231052431_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\ApplicationDbMigration\201704281358163_InitialCreate.resx">
+      <DependentUpon>201704281358163_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

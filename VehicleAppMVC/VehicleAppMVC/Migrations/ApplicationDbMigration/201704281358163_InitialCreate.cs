@@ -17,8 +17,6 @@ namespace VehicleAppMVC.Migrations.ApplicationDbMigration
                         CostDate = c.DateTime(nullable: false),
                         CostOdometerMileage = c.Int(nullable: false),
                         CostRunningCost = c.Double(nullable: false),
-                        CostStartDate = c.DateTime(nullable: false),
-                        CostEndDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.CostID)
                 .ForeignKey("dbo.Vehicles", t => t.VehicleID, cascadeDelete: true)
@@ -48,6 +46,7 @@ namespace VehicleAppMVC.Migrations.ApplicationDbMigration
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        VehicleUnit = c.String(nullable: false),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
