@@ -24,20 +24,6 @@ namespace VehicleAppMVC.Models
         public virtual List<Vehicle> Vehicles { get; set; }          //Collection and refers to Vehicle
         public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
 
-
-        //public virtual User User { get; set; }
-
-        //CG: added 
-        //[ForeignKey("Users")]
-        //public int UserId { get; set; }
-
-        /*
-        [ForeignKey("VehicleID")]
-        public int VehicleID { get; set; }
-        [ForeignKey("NotificationID")]
-        public int NotificationID { get; set; }
-        */
-
         //Navigation Property       //CG added
         /*
         public virtual ICollection<Vehicle> Vehicles { get; set; }

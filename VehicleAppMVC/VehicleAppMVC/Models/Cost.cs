@@ -34,13 +34,17 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Cost amount")]
         public double CostRunningCost { get; set; }
 
+        /* //Removed as not required
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Start Date")]
         public DateTime CostStartDate { get; set; }
+        */
 
+        /* //Removed as not required
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "End Date")]
         public DateTime CostEndDate { get; set; }
+        */
 
         [Display(Name = "Total running cost")]
         public double CostTotalRunningCost
@@ -62,8 +66,7 @@ namespace VehicleAppMVC.Models
         public override string ToString()
         {
             return "Cost ID: " + CostID + ", Cost Date: " + CostDate + ", Cost Odometer: " + CostOdometerMileage +
-                ", Cost Title: " + CostTitle + ", Running Cost: " + CostRunningCost + ", Cost Year: " + CostYear +
-                ", Cost Start Date: " + CostStartDate + ", Cost End Date: " + CostEndDate;
+                ", Cost Title: " + CostTitle + ", Running Cost: " + CostRunningCost + ", Cost Year: " + CostYear;
         }
 
         //Values retuned from Methods
