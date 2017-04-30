@@ -33,72 +33,79 @@ namespace VehicleAppMVC.Models
         public virtual ICollection<Vehicle> Vehicles { get; set; }
         public virtual ICollection<Notification> Notifications { get; set; } //Collection and refers to Notification
         */
-/*
-//Below Added to get user to fill in settings on registration, so settings are for ALL their vehicles
-
-        //Units settings
-        const string Km = "Km";
-        const string Litres = "Litres";
-        const string Lper100Km = "L/100Km";
-
-        const string Miles = "Miles";
-        const string UK_Gal = "UK Gal";
-        const string UK_Mpg = "UK Mpg";
-
-        const string US_Gal = "US Gal";
-        const string US_Mpg = "US Mpg";
 
 
-        //Vehicle category's
-        public static String[] VehicleUnits       //array of Strings
-        {
-            get
-            {
-                return new String[] { "Km - Litres - L/100Km", "Miles - UK Gal - UK Mpg", "Miles - US Gal - US Mpg" };
-            }
 
-        }
+        //Below Added to get user to fill in settings on registration, so settings are for ALL their vehicles
+        /*
+                //Units settings
+                const string Km = "Km";
+                const string Litres = "Litres";
+                const string Lper100Km = "L/100Km";
 
+                const string Miles = "Miles";
+                const string UK_Gal = "UK Gal";
+                const string UK_Mpg = "UK Mpg";
+
+                const string US_Gal = "US Gal";
+                const string US_Mpg = "US Mpg";
+        */
+        /*
+                //Vehicle category's
+                public static String[] VehicleUnits       //array of Strings
+                {
+                    get
+                    {
+                        return new String[] { "Km - Litres - L/100Km", "Miles - UK Gal - UK Mpg", "Miles - US Gal - US Mpg" };
+                    }
+
+                }
+                */
+
+        public enum VehicleUnits {KM, MilesUK, MilesUS }
 
         //vehicle Category  
         [Required(ErrorMessage = "Required field")]
         [DisplayName("Vehicle Unit")]
-        public String VehicleUnit { get; set; }
+        //public String VehicleUnit { get; set; }
+        public VehicleUnits VehicleUnit { get; set; }
 
-        [DisplayName("Consumption Units")]
-        public string Consumption    //Read ONLY
-        {
-            get                 // display the users consumption settions
-            {
-                string distance = "";
-                string volume = "";
-                string consumption = "";
 
-                if (VehicleUnit == "Km - Litres - L/100Km")
+        /*
+                [DisplayName("Consumption Units")]
+                public string Consumption    //Read ONLY
                 {
-                    distance = Km;
-                    volume = Litres;
-                    consumption = Lper100Km;
+                    get                 // display the users consumption settions
+                    {
+                        string distance = "";
+                        string volume = "";
+                        string consumption = "";
 
-                }
-                else if (VehicleUnit == "Miles - UK Gal - UK Mpg")
-                {
-                    distance = Miles;
-                    volume = UK_Gal;
-                    consumption = UK_Mpg;
-                }
+                        if (VehicleUnit == "Km - Litres - L/100Km")
+                        {
+                            distance = Km;
+                            volume = Litres;
+                            consumption = Lper100Km;
 
-                else
-                {
-                    distance = Miles;
-                    volume = US_Gal;
-                    consumption = US_Mpg;
-                }
+                        }
+                        else if (VehicleUnit == "Miles - UK Gal - UK Mpg")
+                        {
+                            distance = Miles;
+                            volume = UK_Gal;
+                            consumption = UK_Mpg;
+                        }
 
-                return distance + volume + consumption;
-            }
-        }
-*/
+                        else
+                        {
+                            distance = Miles;
+                            volume = US_Gal;
+                            consumption = US_Mpg;
+                        }
+
+                        return distance + volume + consumption;
+                    }
+                }
+        */
 
     }
     

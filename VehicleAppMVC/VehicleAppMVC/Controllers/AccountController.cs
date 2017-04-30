@@ -139,6 +139,15 @@ namespace VehicleAppMVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+ /*           var vehicleUnits = EntityData.ddlGetAllCountries();
+            RegisterViewModel model = new RegisterViewModel
+            {
+                VehicleUnit = new SelectList(vehicleUnits, "Km - Litres - L/100Km", "Miles - UK Gal - UK Mpg", "Miles - US Gal - US Mpg")
+            };
+            return View(model);
+            */
+
+            //Original
             return View();
         }
 
@@ -152,6 +161,14 @@ namespace VehicleAppMVC.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                //CG added properties
+                //user.VehicleUnit = new SelectList(ApplicationUser.VehicleUnits);
+                //user.VehicleUnit = model.VehicleUnit;
+                //user.VehicleUnit = new SelectList(ApplicationUser.VehicleUnits);
+
+ 
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

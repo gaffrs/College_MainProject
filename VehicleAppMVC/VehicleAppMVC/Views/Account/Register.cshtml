@@ -40,19 +40,34 @@
     </div>
     *@
 @*CG added*@
-
-
-
-
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+ @*   <div class="form-group">
+        @Html.LabelFor(m => m.VehicleUnit, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.VehicleUnit, new { @class = "form-control" })
+            @Html.DropDownList("VehicleUnits")
         </div>
     </div>
-}
+*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.VehicleUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @* CG: ***** NB for DropDown List ***** *@
+            @Html.DropDownListFor(model => model.VehicleUnit, (SelectList)ViewBag.VehicleUnits, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.VehicleUnit, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Register" />
+                </div>
+            </div>
+            }
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

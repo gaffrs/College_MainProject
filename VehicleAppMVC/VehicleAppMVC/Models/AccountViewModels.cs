@@ -83,25 +83,35 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-/*
-        //CG: Added 17/04/17
-        [Required(ErrorMessage = "Number must not be blank")]   //Not null or empty string
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "Number must be 10 digits long")]// string 10 characters long & no shorter than 10 characters
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Number must be 10 digits long")]
-        [Display(Name = "Mobile Phone Number")]
-        public string UserMobileNumber { get; set; }
-*/
-/*
-        //CG: Added 17/04/17
-        [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Phone Number")]
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone Number must be 10 digits long")]
-        public string PhoneNumber { get; set; }
 
-*/
-/*
-        public ApplicationUser VehicleUnit { get; set; }
-*/
+        //CG added
+        public enum VehicleUnits { KM, MilesUK, MilesUS }
+
+        //vehicle Category  
+        [Required(ErrorMessage = "Required field")]
+        [DisplayName("Vehicle Unit")]
+        //public String VehicleUnit { get; set; }
+        public VehicleUnits VehicleUnit { get; set; }
+
+        /*
+                //CG: Added 17/04/17
+                [Required(ErrorMessage = "Number must not be blank")]   //Not null or empty string
+                [StringLength(10, MinimumLength = 10, ErrorMessage = "Number must be 10 digits long")]// string 10 characters long & no shorter than 10 characters
+                [RegularExpression(@"^\d{10}$", ErrorMessage = "Number must be 10 digits long")]
+                [Display(Name = "Mobile Phone Number")]
+                public string UserMobileNumber { get; set; }
+        */
+        /*
+                //CG: Added 17/04/17
+                [DataType(DataType.PhoneNumber)]
+                [Display(Name = "Phone Number")]
+                [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone Number must be 10 digits long")]
+                public string PhoneNumber { get; set; }
+
+        */
+        /*
+                public ApplicationUser VehicleUnit { get; set; }
+        */
 
 
     }
