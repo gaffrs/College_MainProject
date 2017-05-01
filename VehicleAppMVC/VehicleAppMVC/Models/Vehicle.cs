@@ -14,7 +14,8 @@ namespace VehicleAppMVC.Models
 {
     //Enums
     public enum eSettingFuelType { Petrol, Diesel }
-
+/*
+ * //Below enums removed and put into Register as 1 field
     public enum eSettingDistance { Km, Miles }
 
     public enum eSettingVolume
@@ -35,7 +36,7 @@ namespace VehicleAppMVC.Models
         [Display(Name = "US Mpg")] US_Mpg,
         [Display(Name = "UK Mpg")] UK_Mpg
     }
-
+*/
     public class Vehicle
     {
         [Key]                                   //implies Primary Key PK
@@ -62,7 +63,8 @@ namespace VehicleAppMVC.Models
         [Required(ErrorMessage = "Fuel Type Setting is required")]  //Not null or empty string
         [Display(Name = "Vehicle Fuel type")]
         public eSettingFuelType SettingFuelType { get; set; }       //Enum Type
-
+/*
+ * //Below enums removed and put into Register as 1 field
         [Required(ErrorMessage = "Distance Setting is required")]   //Not null or empty string
         [Display(Name = "Distance unit")]
         public eSettingDistance SettingDistance { get; set; }       //Enum Type
@@ -74,7 +76,7 @@ namespace VehicleAppMVC.Models
         [Required(ErrorMessage = "Consumption Setting is required")] //Not null or empty string
         [Display(Name = "Consumption unit")]
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
-
+*/
         //Navigation Property
         [Display(Name = "Application User")]
         public virtual ApplicationUser ApplicationUser { get; set; }       //NOT a Collection, as a Vehicle associated to only One User     
@@ -86,8 +88,8 @@ namespace VehicleAppMVC.Models
         {
             return "Vehicle ID: " + VehicleID + ", Vehicle  Make: " + VehicleMake + ", Vehicle  Model: " + VehicleModel +
                 ", Vehicle Registration Number: " + VehicleRegistrationNumber + ", Vehicle Odometer: " + VehicleOdometerMileage +
-                ", Vehicle Fuel Type: " + SettingFuelType + ", Distance unit: " + SettingDistance + ", Volume unit: " + SettingVolume +
-                ", Consumption Unit: " + SettingConsumption;
+                ", Vehicle Fuel Type: " + SettingFuelType /*+ ", Distance unit: " + SettingDistance + ", Volume unit: " + SettingVolume +
+                ", Consumption Unit: " + SettingConsumption*/;
         }
 
         /*

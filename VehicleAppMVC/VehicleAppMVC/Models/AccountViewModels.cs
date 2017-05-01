@@ -85,13 +85,33 @@ namespace VehicleAppMVC.Models
         public string ConfirmPassword { get; set; }
 
         //CG added
-        public enum VehicleUnits { KM, MilesUK, MilesUS }
+        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        //vehicle Category  
+        //Note Enum is at top of the IdentityModels so its removed from here.........public enum eVehicleUnits { KM, MilesUK, MilesUS }               //Enum Type
+        [Required(ErrorMessage = "Required field")]
+        [DisplayName("Vehicle Unit Setting")]
+        //public String VehicleUnit { get; set; }
+        public eVehicleUnits VehicleUnit { get; set; }
+
+/*
+        //Vehicle category's
+        public static String[] VehicleUnits       //array of Strings
+        {
+            get
+            {
+                return new String[] { "Km - Litres - L/100Km", "Miles - UK Gal - UK Mpg", "Miles - US Gal - US Mpg" };
+            }
+
+        }
 
         //vehicle Category  
         [Required(ErrorMessage = "Required field")]
-        [DisplayName("Vehicle Unit")]
-        //public String VehicleUnit { get; set; }
-        public VehicleUnits VehicleUnit { get; set; }
+        [DisplayName("Vehicle Unit Setting")]
+        public String sVehicleUnit { get; set; }
 
         /*
                 //CG: Added 17/04/17

@@ -12,8 +12,17 @@ using System.ComponentModel;
 
 namespace VehicleAppMVC.Models
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+
+    public enum eVehicleUnits           //Enum Type
+    {                
+        [Display(Name = "Km - Litres - L/100Km")] KM,
+        [Display(Name = "Miles - UK Gal - UK Mpg")] MilesUK,
+        [Display(Name = "Miles - US Gal - US Mpg")] MilesUS
+    }
+
+
+// You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+public class ApplicationUser : IdentityUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -34,7 +43,11 @@ namespace VehicleAppMVC.Models
         public virtual ICollection<Notification> Notifications { get; set; } //Collection and refers to Notification
         */
 
-
+        //CG added
+        //vehicle Category  
+        [Required(ErrorMessage = "Required field")]
+        [DisplayName("Vehicle Unit Setting")]
+        public eVehicleUnits VehicleUnit { get; set; }
 
         //Below Added to get user to fill in settings on registration, so settings are for ALL their vehicles
         /*
@@ -50,25 +63,26 @@ namespace VehicleAppMVC.Models
                 const string US_Gal = "US Gal";
                 const string US_Mpg = "US Mpg";
         */
-        /*
-                //Vehicle category's
-                public static String[] VehicleUnits       //array of Strings
-                {
-                    get
-                    {
-                        return new String[] { "Km - Litres - L/100Km", "Miles - UK Gal - UK Mpg", "Miles - US Gal - US Mpg" };
-                    }
+        /*       
+                       //Vehicle category's
+                       public static String[] VehicleUnits       //array of Strings
+                       {
+                           get
+                           {
+                               return new String[] { "Km - Litres - L/100Km", "Miles - UK Gal - UK Mpg", "Miles - US Gal - US Mpg" };
+                           }
 
-                }
-                */
+                       }
 
-        public enum VehicleUnits {KM, MilesUK, MilesUS }
+               //vehicle Category  
+               [Required(ErrorMessage = "Required field")]
+               [DisplayName("Vehicle Unit Setting")]
+               public String VehicleUnit { get; set; }
+         */
 
-        //vehicle Category  
-        [Required(ErrorMessage = "Required field")]
-        [DisplayName("Vehicle Unit")]
-        //public String VehicleUnit { get; set; }
-        public VehicleUnits VehicleUnit { get; set; }
+
+
+
 
 
         /*

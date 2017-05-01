@@ -30,35 +30,22 @@
         </div>
     </div>
 
-@*CG added*@
-    @*
+    @*CG added*@
     <div class="form-group">
-        @Html.LabelFor(m => m.UserMobileNumber, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.UserMobileNumber, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.PhoneNumber, new { @class = "form-control" })
         </div>
     </div>
-    *@
-@*CG added*@
- @*   <div class="form-group">
-        @Html.LabelFor(m => m.VehicleUnit, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.VehicleUnit, new { @class = "form-control" })
-            @Html.DropDownList("VehicleUnits")
-        </div>
-    </div>
-*@
+    @*CG added*@
     <div class="form-group">
         @Html.LabelFor(model => model.VehicleUnit, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @* CG: ***** NB for DropDown List ***** *@
-            @Html.DropDownListFor(model => model.VehicleUnit, (SelectList)ViewBag.VehicleUnits, new { htmlAttributes = new { @class = "form-control" } })
+            @* CG: ***** NB for EnumDropDown List ***** *@
+            @Html.EnumDropDownListFor(model => model.VehicleUnit, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.VehicleUnit, "", new { @class = "text-danger" })
         </div>
     </div>
-
-
-
 
 
             <div class="form-group">

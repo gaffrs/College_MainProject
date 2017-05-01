@@ -29,7 +29,7 @@ namespace VehicleAppMVC.Models
 
         [Display(Name = "Vehicle Fuel type")]
         public eSettingFuelType SettingFuelType { get; set; }       //Enum Type
-
+/*
         [Display(Name = "Distance unit")]
         public eSettingDistance SettingDistance { get; set; }       //Enum Type
 
@@ -38,7 +38,7 @@ namespace VehicleAppMVC.Models
 
         [Display(Name = "Consumption unit")]
         public eSettingConsumption SettingConsumption { get; set; } //Enum Type
-
+*/
         //Navigation Property
         public virtual ApplicationUser ApplicationUser { get; set; }
         //public virtual User User { get; set; }                  //NOT a Collection, as a Vehicle associated to only One User
@@ -51,8 +51,8 @@ namespace VehicleAppMVC.Models
         {
             return "Vehicle ID: " + VehicleID + ", Vehicle  Make: " + VehicleMake + ", Vehicle  Model: " + VehicleModel +
                 ", Vehicle Registration Number: " + VehicleRegistrationNumber + ", Vehicle Odometer: " + VehicleOdometerMileage +
-                ", Vehicle Fuel Type: " + SettingFuelType + ", Distance unit: " + SettingDistance + ", Volume unit: " + SettingVolume +
-                ", Consumption Unit: " + SettingConsumption;
+                ", Vehicle Fuel Type: " + SettingFuelType /*+ ", Distance unit: " + SettingDistance + ", Volume unit: " + SettingVolume +
+                ", Consumption Unit: " + SettingConsumption*/;
         }
     }
 }
