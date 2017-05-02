@@ -1,10 +1,10 @@
 ﻿@model VehicleAppMVC.Models.Vehicle
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Vehicle Details";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
     <h4>Vehicle</h4>
@@ -86,5 +86,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.VehicleID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Vehicle list", "Index")
 </p>

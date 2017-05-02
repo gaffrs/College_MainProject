@@ -56,7 +56,7 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Vehicle Registration")]
         public String VehicleRegistrationNumber { get; set; }
 
-        [Required(ErrorMessage = "Vehicle Odometer Mileage is required")] //Not null or empty string
+        [Required(ErrorMessage = "Vehicle Odometer reading is required")] //Not null or empty string
         [Display(Name = "Vehicle Odometer")]
         public int VehicleOdometerMileage { get; set; }
 

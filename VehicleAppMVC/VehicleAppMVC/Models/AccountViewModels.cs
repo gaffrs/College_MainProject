@@ -70,7 +70,7 @@ namespace VehicleAppMVC.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Email/UserName")]
         public string Email { get; set; }
 
         [Required]
@@ -85,14 +85,14 @@ namespace VehicleAppMVC.Models
         public string ConfirmPassword { get; set; }
 
         //CG added
-        [Required(ErrorMessage = "Your must provide a PhoneNumber")]
+        [Required(ErrorMessage = "The Mobile Phone Number must be provided to receive notifications")]
         [Phone]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Mobile Phone Number")]
         public string PhoneNumber { get; set; }
 
         //vehicle Category  
         //Note Enum is at top of the IdentityModels so its removed from here.........public enum eVehicleUnits { KM, MilesUK, MilesUS }               //Enum Type
-        [Required(ErrorMessage = "Required field")]
+        [Required(ErrorMessage = "The Vehicle Unit Setting must be selected")]
         [DisplayName("Vehicle Unit Setting")]
         //public String VehicleUnit { get; set; }
         public eVehicleUnits VehicleUnit { get; set; }

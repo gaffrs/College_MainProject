@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<VehicleAppMVC.Models.Vehicle>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Vehicle List";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Vehicle", "Create")
 </p>
 <table class="table">
     <tr>
@@ -64,15 +64,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.SettingFuelType)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SettingDistance)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SettingVolume)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SettingConsumption)
-        </td>
+@*
+    <td>
+        @Html.DisplayFor(modelItem => item.SettingDistance)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SettingVolume)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SettingConsumption)
+    </td>
+*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.VehicleID }) |
             @Html.ActionLink("Details", "Details", new { id=item.VehicleID }) |
