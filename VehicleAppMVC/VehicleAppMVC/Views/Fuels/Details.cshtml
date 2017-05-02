@@ -1,13 +1,13 @@
 ﻿@model VehicleAppMVC.Models.Fuel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Fuel-fill Details";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
-    <h4>Fuel</h4>
+    @*<h4>Fuel</h4>*@
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -78,5 +78,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.FuelID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Fuel-fills List", "Index")
 </p>
