@@ -49,22 +49,24 @@
         <dd>
             @Html.DisplayFor(model => model.CostRunningCost)
         </dd>
+@*CG: Not required*@
+@*
+                <dt>
+                    @Html.DisplayNameFor(model => model.CostTotalRunningCost)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.CostTotalRunningCost)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CostTotalRunningCost)
-            </dd>
-    </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.CostTotalRunningCost)
+                </dd>
+*@
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to Costs List", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to Costs List", "Index")
+            </div>
+        }
+    </div>

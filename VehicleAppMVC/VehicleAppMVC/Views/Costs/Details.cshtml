@@ -48,16 +48,20 @@
         <dd>
             @Html.DisplayFor(model => model.CostRunningCost)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CostTotalRunningCost)
-        </dt>
-    
-        <dd>
-             @Html.DisplayFor(model => model.CostTotalRunningCost)
-    	</dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CostID }) |
-    @Html.ActionLink("Back to Costs List", "Index")
-</p>
+
+@*CG: Not required*@
+@*
+            <dt>
+                @Html.DisplayNameFor(model => model.CostTotalRunningCost)
+            </dt>
+
+            <dd>
+                 @Html.DisplayFor(model => model.CostTotalRunningCost)
+            </dd>
+*@
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CostID }) |
+        @Html.ActionLink("Back to Costs List", "Index")
+    </p>

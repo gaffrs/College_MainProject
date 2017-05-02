@@ -55,26 +55,30 @@
                 @Html.ValidationMessageFor(model => model.CostRunningCost, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.CostTotalRunningCost, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-        	@Html.EditorFor(model => model.CostTotalRunningCost, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CostTotalRunningCost, "", new { @class = "text-danger" })
-            </div>
-	</div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+@*CG: Not required*@
+@*
+            <div class="form-group">
+                @Html.LabelFor(model => model.CostTotalRunningCost, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                @Html.EditorFor(model => model.CostTotalRunningCost, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CostTotalRunningCost, "", new { @class = "text-danger" })
+                </div>
+        </div>
+*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to Costs List", "Index")
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to Costs List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -75,3 +75,7 @@
 }
 
 </table>
+
+@Html.DisplayNameFor(model => model.FuelTotalFuelCost)
+
+@Model.Sum(x => x.FuelCost)

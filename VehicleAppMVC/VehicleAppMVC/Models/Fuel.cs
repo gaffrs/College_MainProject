@@ -68,6 +68,9 @@ namespace VehicleAppMVC.Models
             }
         }
 
+        [Display(Name = "Total Fuel Cost: €")]
+        public double FuelTotalFuelCost { get; }
+
         //Navigation Property
 
         public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Fuel associated to only One Vehicle

@@ -46,17 +46,23 @@ namespace VehicleAppMVC.Models
         public DateTime CostEndDate { get; set; }
         */
 
+        [Display(Name = "Total Running Cost: €")]
+        public double CostTotalRunningCost { get; }
+
+
+        /* Old
         [Display(Name = "Total running cost")]
         public double CostTotalRunningCost
         {
              get
              {
                  double totalCost = 0;
-                 totalCost = CostRunningCost++;
+                 totalCost += CostRunningCost;
                  return totalCost;
              }
          }
-       
+         * */
+
 
         //Navigation Property
         public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Cost associated to only One Vehicle

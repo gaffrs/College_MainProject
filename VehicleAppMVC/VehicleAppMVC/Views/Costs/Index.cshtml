@@ -27,9 +27,11 @@
         <th>
             @Html.DisplayNameFor(model => model.CostRunningCost)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CostTotalRunningCost)
-        </th>
+@*
+    <th>
+        @Html.DisplayNameFor(model => model.CostTotalRunningCost)
+    </th>
+    @Model.Sum(x => x.CostRunningCost)*@
         <th></th>
     </tr>
 
@@ -51,15 +53,22 @@
         <td>
             @Html.DisplayFor(modelItem => item.CostRunningCost)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CostTotalRunningCost)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CostID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CostID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CostID })
-        </td>
-    </tr>
-}
 
-</table>
+    <td>
+        @*@Html.DisplayFor(modelItem => item.CostTotalRunningCost)*@
+        @*@Model.Sum(x => x.CostRunningCost)*@
+        </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.CostID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.CostID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.CostID })
+                </td>
+            </tr>
+        }
+    </td>
+
+        </table>
+
+@Html.DisplayNameFor(model => model.CostTotalRunningCost)
+
+@Model.Sum(x => x.CostRunningCost)

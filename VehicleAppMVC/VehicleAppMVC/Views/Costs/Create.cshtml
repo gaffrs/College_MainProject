@@ -69,7 +69,8 @@
                 @Html.ValidationMessageFor(model => model.CostRunningCost, "", new { @class = "text-danger" })
             </div>
         </div>
-	
+@*CG: Not required*@
+@*       	
 	            <div class="form-group">
                 @Html.LabelFor(model => model.CostTotalRunningCost, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -77,6 +78,7 @@
                     @Html.ValidationMessageFor(model => model.CostTotalRunningCost, "", new { @class = "text-danger" })
                 </div>
             </div>
+*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

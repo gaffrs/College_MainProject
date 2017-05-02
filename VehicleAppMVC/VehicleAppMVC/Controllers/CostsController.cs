@@ -22,6 +22,8 @@ namespace VehicleAppMVC.Controllers
         public async Task<ActionResult> Index()
         {
             var costs = db.Costs.Include(c => c.Vehicle);
+            //CG added to Sum values
+            //ViewBag.TotalCosts = yourCollection.Sum(x => x.CostRunningCost);
             return View(await costs.ToListAsync());
         }
 
