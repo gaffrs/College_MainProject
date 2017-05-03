@@ -19,13 +19,57 @@ namespace VehicleAppMVC.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Costs
+        public async Task<ActionResult> Index(string sortOrder, string searchString)
+        {        
+
+        //Add Filtering
+            ViewBag.NameSortParmReg = String.IsNullOrEmpty(sortOrder) ? "vehicle_registration_ascending" : "";
+            ViewBag.NameSortParmTitle = String.IsNullOrEmpty(sortOrder) ? "cost_title_ascending" : "";
+            ViewBag.DateSortParmDate = sortOrder == "Date" ? "date_desc" : "Date";
+
+            var costs = from s in db.Costs.Include(c => c.Vehicle)
+                select s;
+        //Add a Search Box to the Cost View  (Search by Reg or Title or Year)
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                costs = costs.Where(s => s.CostTitle.ToString().Contains(searchString.ToUpper())
+                                            ||
+                                         s.Vehicle.VehicleRegistrationNumber.ToUpper().Contains(searchString.ToUpper())
+                                            ||
+                                         s.CostDate.ToString().Contains(searchString.ToUpper())
+                ); ;
+            }
+
+
+            switch (sortOrder)
+            {
+                case "vehicle_registration_ascending":
+                    costs = costs.OrderBy(s => s.Vehicle.VehicleRegistrationNumber);
+                    break;
+                case "cost_title_ascending":
+                    costs = costs.OrderBy(s => s.CostTitle);
+                    break;
+                case "date_desc":
+                    costs = costs.OrderByDescending(s => s.CostDate);
+                    break;
+                default:
+                    costs = costs.Include(c => c.Vehicle).OrderBy(s => s.CostID);
+                    break;
+            }
+
+
+
+            return View(await costs.ToListAsync());
+        }
+/*
+//Original Code
+        // GET: Costs
         public async Task<ActionResult> Index()
         {
             var costs = db.Costs.Include(c => c.Vehicle);
-            //CG added to Sum values
-            //ViewBag.TotalCosts = yourCollection.Sum(x => x.CostRunningCost);
             return View(await costs.ToListAsync());
         }
+*/
 
         // GET: Costs/Details/5
         public async Task<ActionResult> Details(int? id)

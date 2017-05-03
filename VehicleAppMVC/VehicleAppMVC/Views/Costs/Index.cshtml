@@ -9,33 +9,65 @@
 <p>
     @Html.ActionLink("Add Cost", "Create")
 </p>
+
+
+@*Add a Search Box to the Hire View*@
+@using (Html.BeginForm())
+{
+    <p>
+        Find by Title or Registration or Year: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+@*Find by Title or Registration: @Html.EnumDropDownListFor(CostTitle)*@
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)      @*CG: Edited*@
-            @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
+            @Html.ActionLink("Vehicle Registration", "Index", new
+       {
+           sortOrder = ViewBag.NameSortParmReg
+       })      @*CG: Edited*@
+    @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CostTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CostDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CostOdometerMileage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CostRunningCost)
-        </th>
+@*New for sorting*@
+    <th>
+        @Html.ActionLink("Cost Description", "Index", new { sortOrder = ViewBag.NameSortParmTitle })
+    </th>
+    <th>
+        @Html.ActionLink("Cost Date", "Index", new { sortOrder = ViewBag.DateSortParmDate })
+    </th>
+
+@*
+    @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)      @*CG: Edited*@
+@*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
+@*
+    <th>
+        @Html.DisplayNameFor(model => model.CostTitle)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.CostDate)
+    </th>
+*@
+    <th>
+        @Html.DisplayNameFor(model => model.CostOdometerMileage)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.CostRunningCost)
+    </th>
+
+
 @*
     <th>
         @Html.DisplayNameFor(model => model.CostTotalRunningCost)
     </th>
     @Model.Sum(x => x.CostRunningCost)*@
-        <th></th>
-    </tr>
+<th></th>
+</tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Vehicle.VehicleRegistrationNumber)       @*CG: Edited*@
@@ -54,20 +86,20 @@
             @Html.DisplayFor(modelItem => item.CostRunningCost)
         </td>
 
-    <td>
-        @*@Html.DisplayFor(modelItem => item.CostTotalRunningCost)*@
-        @*@Model.Sum(x => x.CostRunningCost)*@
+        <td>
+            @*@Html.DisplayFor(modelItem => item.CostTotalRunningCost)*@
+            @*@Model.Sum(x => x.CostRunningCost)*@
         </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.CostID }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.CostID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.CostID })
-                </td>
-            </tr>
-        }
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CostID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CostID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CostID })
+        </td>
+    </tr>
+}
     </td>
 
-        </table>
+</table>
 
 @Html.DisplayNameFor(model => model.CostTotalRunningCost)
 
