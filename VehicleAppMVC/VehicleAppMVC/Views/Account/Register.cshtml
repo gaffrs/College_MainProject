@@ -42,7 +42,7 @@
         @Html.LabelFor(model => model.VehicleUnit, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @* CG: ***** NB for EnumDropDown List ***** *@
-            @Html.EnumDropDownListFor(model => model.VehicleUnit, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EnumDropDownListFor(model => model.VehicleUnit, new { @class = "form-control" } )
             @Html.ValidationMessageFor(model => model.VehicleUnit, "", new { @class = "text-danger" })
         </div>
     </div>

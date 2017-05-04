@@ -20,16 +20,17 @@ namespace VehicleAppMVC.Controllers
 
         // GET: Costs
         public async Task<ActionResult> Index(string sortOrder, string searchString)
-        {        
+        {
 
-        //Add Filtering
-            ViewBag.NameSortParmReg = String.IsNullOrEmpty(sortOrder) ? "vehicle_registration_ascending" : "";
-            ViewBag.NameSortParmTitle = String.IsNullOrEmpty(sortOrder) ? "cost_title_ascending" : "";
-            ViewBag.DateSortParmDate = sortOrder == "Date" ? "date_desc" : "Date";
+            //Add Filtering
+ 
+            ViewBag.NameSortParmReg = String.IsNullOrEmpty(sortOrder) ? "vehicle_registration_ascending" : "vehicle_registration_descending";                  // "vehicle_registration_descending"
+            ViewBag.NameSortParmTitle = String.IsNullOrEmpty(sortOrder) ? "cost_title_ascending" : "cost_title_descending";                      // "cost_title_descending"
+            ViewBag.DateSortParmDate = sortOrder == "Date" ? "date_descending" : "Date";           
 
             var costs = from s in db.Costs.Include(c => c.Vehicle)
-                select s;
-        //Add a Search Box to the Cost View  (Search by Reg or Title or Year)
+                        select s;
+            //Add a Search Box to the Cost View  (Search by Reg or Title or Year)
             if (!String.IsNullOrEmpty(searchString))
             {
                 costs = costs.Where(s => s.CostTitle.ToString().Contains(searchString.ToUpper())
@@ -46,21 +47,37 @@ namespace VehicleAppMVC.Controllers
                 case "vehicle_registration_ascending":
                     costs = costs.OrderBy(s => s.Vehicle.VehicleRegistrationNumber);
                     break;
+
+                case "vehicle_registration_descending":
+                    costs = costs.OrderByDescending(s => s.Vehicle.VehicleRegistrationNumber);
+                    break;
+
                 case "cost_title_ascending":
                     costs = costs.OrderBy(s => s.CostTitle);
                     break;
-                case "date_desc":
+
+                case "cost_title_descending":
+                    costs = costs.OrderByDescending(s => s.CostTitle);
+                    break;
+
+                case "Date":
+                    costs = costs.OrderBy(s => s.CostDate);
+                    break;
+
+                case "date_descending":
                     costs = costs.OrderByDescending(s => s.CostDate);
                     break;
+
                 default:
                     costs = costs.Include(c => c.Vehicle).OrderBy(s => s.CostID);
                     break;
             }
 
-
-
             return View(await costs.ToListAsync());
         }
+
+
+
 /*
 //Original Code
         // GET: Costs

@@ -19,15 +19,66 @@ namespace VehicleAppMVC.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
         // GET: Fuels
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string sortOrder, string searchString)
         {
-            var fuels = db.Fuels.Include(f => f.Vehicle);
+
+        //Add Filtering
+
+            ViewBag.NameSortParmReg = String.IsNullOrEmpty(sortOrder) ? "vehicle_registration_ascending" : "vehicle_registration_descending";                  // "vehicle_registration_descending"
+            ViewBag.DateSortParmDate = sortOrder == "Date" ? "date_descending" : "Date";     
+
+            var fuels = from s in db.Fuels.Include(f => f.Vehicle)
+                        select s;
+            //Add a Search Box to the Cost View  (Search by Reg or Year)
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                fuels = fuels.Where(s => s.Vehicle.VehicleRegistrationNumber.ToUpper().Contains(searchString.ToUpper())
+                                            ||
+                                         s.FuelDate.ToString().Contains(searchString.ToUpper())
+                ); ;
+            }
+
+
+            switch (sortOrder)
+            {
+                case "vehicle_registration_ascending":
+                    fuels = fuels.OrderBy(s => s.Vehicle.VehicleRegistrationNumber);
+                    break;
+
+                case "vehicle_registration_descending":
+                    fuels = fuels.OrderByDescending(s => s.Vehicle.VehicleRegistrationNumber);
+                break;
+
+                case "Date":
+                    fuels = fuels.OrderBy(s => s.FuelDate);
+                    break;
+
+                case "date_descending":
+                    fuels = fuels.OrderByDescending(s => s.FuelDate);
+                    break;
+
+                default:
+                    fuels = fuels.Include(f => f.Vehicle).OrderBy(s => s.FuelID);
+                    break;
+            }
+
             return View(await fuels.ToListAsync());
         }
 
-        // GET: Fuels/Details/5
-        public async Task<ActionResult> Details(int? id)
+    /*
+    //Original Code
+            // GET: Fuels
+            public async Task<ActionResult> Index()
+            {
+                var fuels = db.Fuels.Include(f => f.Vehicle);
+                return View(await fuels.ToListAsync());
+            }
+    */
+
+    // GET: Fuels/Details/5
+    public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
