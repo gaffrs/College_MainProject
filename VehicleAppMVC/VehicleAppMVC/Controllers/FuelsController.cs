@@ -27,11 +27,14 @@ namespace VehicleAppMVC.Controllers
         //Add Filtering
 
             ViewBag.NameSortParmReg = String.IsNullOrEmpty(sortOrder) ? "vehicle_registration_ascending" : "vehicle_registration_descending";                  // "vehicle_registration_descending"
-            ViewBag.DateSortParmDate = sortOrder == "Date" ? "date_descending" : "Date";     
+            ViewBag.DateSortParmDate = sortOrder == "Date" ? "date_descending" : "Date";
 
-            var fuels = from s in db.Fuels.Include(f => f.Vehicle)
+            var currentUserId = User.Identity.GetUserId();  //CG: Get the UserId of user logged in 
+            //To return Fuels for Vehicles for ONLY the Logged in User
+            var fuels = from s in db.Fuels.Include(f => f.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId)    //CG: Edited
                         select s;
-            //Add a Search Box to the Cost View  (Search by Reg or Year)
+
+            //Add a Search Box to the Fuel View  (Search by Reg or Year)
             if (!String.IsNullOrEmpty(searchString))
             {
                 fuels = fuels.Where(s => s.Vehicle.VehicleRegistrationNumber.ToUpper().Contains(searchString.ToUpper())

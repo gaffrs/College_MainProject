@@ -1,60 +1,79 @@
 ﻿@model IEnumerable<VehicleAppMVC.Models.Cost>
 
-@{
-    ViewBag.Title = "Cost List";
-}
-
-<h2>@ViewBag.Title</h2>
-
-<p>
-    @Html.ActionLink("Add Cost", "Create")
-</p>
-
-
-@*Add a Search Box to the Hire View*@
-@using (Html.BeginForm())
-{
-    <p>
-        Find by Title or Registration or Year: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
-    </p>
-}
-
-@*Find by Title or Registration: @Html.EnumDropDownListFor(CostTitle)*@
-
-<table class="table-condensed">
+<table class="table-condensed" width="350" align="right" style="background-color :lightslategray">
     <tr>
         <th>
-            <b>Cost statistics :</b>
+            Cost statistics
+        </th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>
+            Total
+        </th>
+
+        <th>
+            Average
+        </th>
+
+        <th>
+            Highest @*Max*@
+        </th>
+        <th>
+            Lowest @*Min*@
+        </th>
+    <tr>
+    <tr>
+        <th>
+            Cost:
         </th>
         <th>
             @*CG: Calculate Total Cost for the View*@
-            Total €
-            @Model.Sum(x => x.CostRunningCost)
-            ,  
+            €@Model.Sum(x => x.CostRunningCost)
         </th>
 
         <th>
             @*CG: Calculate Average Cost for the View*@
-            Average €
-            @Model.Select(x => x.CostRunningCost).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
-            ,          
+            €@Model.Select(x => x.CostRunningCost).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
         </th>
 
         <th>
             @*CG: Calculate Max Cost for the View*@
-            Max €
-            @Model.Select(x => x.CostRunningCost).Max().ToString("#.##")
-            ,  
+            €@Model.Select(x => x.CostRunningCost).Max().ToString("#.##")
         </th>
 
         <th>
             @*CG: Calculate Min Cost for the View*@
-            Min €
-            @Model.Select(x => x.CostRunningCost).Min().ToString("#.##")
+            €@Model.Select(x => x.CostRunningCost).Min().ToString("#.##")
         </th>
-        <th></th>
     </tr>
+
+    <tr></tr>
+</table>
+
+
+
+    @{
+        ViewBag.Title = "Cost List";
+    }
+
+    <h2>@ViewBag.Title</h2>
+
+    <p>
+        @Html.ActionLink("Add Cost", "Create")
+    </p>
+
+
+    @*Add a Search Box to the Hire View*@
+    @using (Html.BeginForm())
+    {
+        <p>
+            Find by Title or Registration or Year: @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+        </p>
+    }
+
+    @*Find by Title or Registration: @Html.EnumDropDownListFor(CostTitle)*@
 
     <table class="table">
         <tr>
@@ -116,7 +135,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CostRunningCost)
                 </td>
-
                 <td>
                     @*@Html.DisplayFor(modelItem => item.CostTotalRunningCost)*@
                     @*@Model.Sum(x => x.CostRunningCost)*@

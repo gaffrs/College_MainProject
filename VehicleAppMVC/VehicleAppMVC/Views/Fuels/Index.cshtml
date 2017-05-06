@@ -1,5 +1,98 @@
 ﻿@model IEnumerable<VehicleAppMVC.Models.Fuel>
 
+<table class="table-condensed" width="350" align="right" style="background-color :lightslategray">
+    <tr>
+        <th>
+            Fuel statistics
+        </th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>
+            Total
+        </th>
+
+        <th>
+            Average
+        </th>
+
+        <th>
+            Highest @*Max*@
+        </th>
+        <th>
+            Lowest @*Min*@
+        </th>
+    <tr>
+        <th>
+            Cost:
+        </th>
+        <th>
+            @*CG: Calculate Total Cost for the View*@
+            €@Model.Sum(x => x.FuelCost)
+        </th>
+
+        <th>
+            @*CG: Calculate Average Cost for the View*@
+            €@Model.Select(x => x.FuelCost).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
+        </th>
+
+        <th>
+            @*CG: Calculate Max Cost for the View*@
+            €@Model.Select(x => x.FuelCost).Max().ToString("#.##")
+        </th>
+
+        <th>
+            @*CG: Calculate Min Cost for the View*@
+            €@Model.Select(x => x.FuelCost).Min().ToString("#.##")
+        </th>
+    </tr>
+
+    <tr>
+        <th>
+            Unit Price :
+        </th>
+        <th>
+        </th>
+        <th>
+            @*CG: Calculate Average Cost for the View*@
+            €@Model.Select(x => x.FuelUnitPrice).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
+        </th>
+
+        <th>
+            @*CG: Calculate Max Cost for the View*@
+            €@Model.Select(x => x.FuelUnitPrice).Max().ToString("#.##")
+        </th>
+
+        <th>
+            @*CG: Calculate Min Cost for the View*@
+            €@Model.Select(x => x.FuelUnitPrice).Min().ToString("#.##")
+        </th>
+    </tr>
+
+    <tr>
+        <th>
+            Consumption :
+        </th>
+        <th>
+        </th>
+        <th>
+            @*CG: Calculate Average Cost for the View*@
+            NEED to fix  @*€@Model.Where(x => x.FuelPartialFill = false).Select(x => x.FuelConsumption).Average().ToString("#.##")   *@     @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@          
+        </th>
+
+        <th>
+            @*CG: Calculate Max Cost for the View*@
+            €@Model.Select(x => x.FuelConsumption).Max().ToString("#.##")
+        </th>
+
+        <th>
+            @*CG: Calculate Min Cost for the View*@
+            €@Model.Select(x => x.FuelConsumption).Min().ToString("#.##")
+        </th>
+    </tr>
+    <tr></tr>
+</table>
+
 
 @{
     ViewBag.Title = "Fuel-fill Log";
@@ -7,9 +100,11 @@
 
 <h2>@ViewBag.Title</h2>
 
+
 <p>
     @Html.ActionLink("Add Fuel-fill", "Create")
 </p>
+
 
 
 @*Add a Search Box to the Hire View*@
@@ -20,70 +115,6 @@
         <input type="submit" value="Search" />
     </p>
 }
-
-
-<table class="table-condensed">
-    <tr>
-        <th>
-            Fuel Cost statistics :
-        </th>
-        <th>
-            @*CG: Calculate Total Cost for the View*@
-            Total €
-            @Model.Sum(x => x.FuelCost)
-            ,  
-        </th>
-
-        <th>
-            @*CG: Calculate Average Cost for the View*@
-            Average €
-            @Model.Select(x => x.FuelCost).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
-            ,  
-        </th>
-
-        <th>
-            @*CG: Calculate Max Cost for the View*@
-            Max €
-            @Model.Select(x => x.FuelCost).Max().ToString("#.##")
-            ,  
-        </th>
-
-        <th>
-            @*CG: Calculate Min Cost for the View*@
-            Min €
-            @Model.Select(x => x.FuelCost).Min().ToString("#.##")
-        </th>
-        <th></th>
-    </tr>
-</table>
-
-<table class="table-condensed">
-    <tr>
-        <th>
-            Fuel Price statistics :
-        </th>
-
-        <th>
-            @*CG: Calculate Average Cost for the View*@
-            Average €
-            @Model.Select(x => x.FuelUnitPrice).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
-            ,  
-        </th>
-
-        <th>
-            @*CG: Calculate Max Cost for the View*@
-            Max €
-            @Model.Select(x => x.FuelUnitPrice).Max().ToString("#.##")
-            ,  
-        </th>
-
-        <th>
-            @*CG: Calculate Min Cost for the View*@
-            Min €
-            @Model.Select(x => x.FuelUnitPrice).Min().ToString("#.##")
-        </th>
-    </tr>
-</table>
 
 <table class="table">
     @*New for sorting*@
@@ -169,4 +200,17 @@
 
 </table>
 
+
+@*Trying to show wht the users current settings are*@
+@*
+
+    @using Microsoft.AspNet.Identity
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Vehicle.ApplicationUser.VehicleUnit)
+    </dt>
+    <dt>
+        @Html.DisplayFor(dbo.User.Identity.GetUserName())
+    </dt>
+*@
 
