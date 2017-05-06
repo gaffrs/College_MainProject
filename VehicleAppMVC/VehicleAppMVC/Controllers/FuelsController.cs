@@ -29,7 +29,7 @@ namespace VehicleAppMVC.Controllers
             ViewBag.NameSortParmReg = String.IsNullOrEmpty(sortOrder) ? "vehicle_registration_ascending" : "vehicle_registration_descending";                  // "vehicle_registration_descending"
             ViewBag.DateSortParmDate = sortOrder == "Date" ? "date_descending" : "Date";
 
-            var currentUserId = User.Identity.GetUserId();  //CG: Get the UserId of user logged in 
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
             //To return Fuels for Vehicles for ONLY the Logged in User
             var fuels = from s in db.Fuels.Include(f => f.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId)    //CG: Edited
                         select s;
@@ -112,7 +112,7 @@ namespace VehicleAppMVC.Controllers
         public ActionResult Create()
         {
             var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehicleRegistrationNumber");//.Where(db.Vehicles.Include(((v => v.Value == currentUserId)//.Where(v => v.Value == v);   //CG: Edited
+            ViewBag.VehicleID = new SelectList(db.Vehicles.Where(v => v.ApplicationUserId == currentUserId), "VehicleID", "VehicleRegistrationNumber");//.Where(db.Vehicles.Include(((v => v.Value == currentUserId)//.Where(v => v.Value == v);   //CG: Edited
             return View();
         }
 
@@ -138,7 +138,8 @@ namespace VehicleAppMVC.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehicleRegistrationNumber", fuel.VehicleID);      //CG: Edited
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            ViewBag.VehicleID = new SelectList(db.Vehicles.Where(v => v.ApplicationUserId == currentUserId), "VehicleID", "VehicleRegistrationNumber", fuel.VehicleID);      //CG: Edited
             //ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "ApplicationUserId", fuel.VehicleID);
 
             return View(fuel);
@@ -156,7 +157,8 @@ namespace VehicleAppMVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehicleRegistrationNumber", fuel.VehicleID);      //CG: Edited
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            ViewBag.VehicleID = new SelectList(db.Vehicles.Where(v => v.ApplicationUserId == currentUserId), "VehicleID", "VehicleRegistrationNumber", fuel.VehicleID);      //CG: Edited
             //ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "ApplicationUserId", fuel.VehicleID); 
             return View(fuel);
         }
@@ -174,7 +176,8 @@ namespace VehicleAppMVC.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "VehicleRegistrationNumber", fuel.VehicleID);
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            ViewBag.VehicleID = new SelectList(db.Vehicles.Where(v => v.ApplicationUserId == currentUserId), "VehicleID", "VehicleRegistrationNumber", fuel.VehicleID);
             return View(fuel);
         }
 
