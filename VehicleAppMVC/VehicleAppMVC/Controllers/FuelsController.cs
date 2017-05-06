@@ -63,6 +63,19 @@ namespace VehicleAppMVC.Controllers
                     fuels = fuels.Include(f => f.Vehicle).OrderBy(s => s.FuelID);
                     break;
             }
+/*
+//CG: calculation 5th May
+
+            var fuellist = db.Fuels.ToArray();
+            foreach (var item in fuellist)
+            {
+                Fuel
+            }
+  */              
+               
+            
+             
+
 
             return View(await fuels.ToListAsync());
         }

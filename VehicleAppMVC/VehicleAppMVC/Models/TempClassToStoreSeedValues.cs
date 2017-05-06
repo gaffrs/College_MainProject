@@ -116,12 +116,12 @@ namespace VehicleAppMVC.Models
             new Cost { VehicleID = 1, CostDate = new DateTime(2017, 3, 01), CostOdometerMileage = 500, CostTitle = eCostTitle.Insurance, CostRunningCost = 700 },   //User Paul Vehicle 1
             new Cost { VehicleID = 1, CostDate = new DateTime(2017, 8, 01), CostOdometerMileage = 3000, CostTitle = eCostTitle.Service, CostRunningCost = 400 },    //User Paul Vehicle 1
             new Cost { VehicleID = 1, CostDate = new DateTime(2017, 10, 01), CostOdometerMileage = 4000, CostTitle = eCostTitle.Tax, CostRunningCost = 250 },       //User Paul Vehicle 1
-            new Cost { VehicleID = 2, CostDate = new DateTime(2017, 3, 01), CostOdometerMileage = 500, CostTitle = eCostTitle.Insurance, CostRunningCost = 700 },   //User Paul Vehicle 2
-            new Cost { VehicleID = 2, CostDate = new DateTime(2017, 8, 01), CostOdometerMileage = 3000, CostTitle = eCostTitle.Service, CostRunningCost = 400 },    //User Paul Vehicle 2
-            new Cost { VehicleID = 2, CostDate = new DateTime(2017, 10, 01), CostOdometerMileage = 4000, CostTitle = eCostTitle.Tax, CostRunningCost = 250 },       //User Paul Vehicle 2
-            new Cost { VehicleID = 3, CostDate = new DateTime(2017, 4, 01), CostOdometerMileage = 500, CostTitle = eCostTitle.Insurance, CostRunningCost = 800 },   //User Colm Vehicle 3
-            new Cost { VehicleID = 3, CostDate = new DateTime(2017, 9, 01), CostOdometerMileage = 3000, CostTitle = eCostTitle.Service, CostRunningCost = 500 },    //User Colm Vehicle 3
-            new Cost { VehicleID = 3, CostDate = new DateTime(2017, 11, 01), CostOdometerMileage = 4000, CostTitle = eCostTitle.Tax, CostRunningCost = 350 }        //User Colm Vehicle 3
+            new Cost { VehicleID = 2, CostDate = new DateTime(2017, 3, 01), CostOdometerMileage = 1500, CostTitle = eCostTitle.Insurance, CostRunningCost = 1500 },   //User Paul Vehicle 2
+            new Cost { VehicleID = 2, CostDate = new DateTime(2017, 8, 01), CostOdometerMileage = 4000, CostTitle = eCostTitle.Service, CostRunningCost = 1000 },    //User Paul Vehicle 2
+            new Cost { VehicleID = 2, CostDate = new DateTime(2017, 10, 01), CostOdometerMileage = 5000, CostTitle = eCostTitle.Tax, CostRunningCost = 1200 },       //User Paul Vehicle 2
+            new Cost { VehicleID = 3, CostDate = new DateTime(2017, 4, 01), CostOdometerMileage = 2500, CostTitle = eCostTitle.Insurance, CostRunningCost = 400 },   //User Colm Vehicle 3
+            new Cost { VehicleID = 3, CostDate = new DateTime(2017, 9, 01), CostOdometerMileage = 5000, CostTitle = eCostTitle.Service, CostRunningCost = 1000 },    //User Colm Vehicle 3
+            new Cost { VehicleID = 3, CostDate = new DateTime(2017, 11, 01), CostOdometerMileage = 6000, CostTitle = eCostTitle.Tax, CostRunningCost = 500 }        //User Colm Vehicle 3
             );
 
 
@@ -138,7 +138,7 @@ namespace VehicleAppMVC.Models
             new Fuel { VehicleID = 2, FuelDate = new DateTime(2017, 4, 24), FuelOdometerMileage = 2100, FuelQuantity = 48, FuelUnitPrice = 1.55, FuelPartialFill = false },
             new Fuel { VehicleID = 2, FuelDate = new DateTime(2017, 4, 29), FuelOdometerMileage = 2500, FuelQuantity = 50, FuelUnitPrice = 1.25, FuelPartialFill = false },
             new Fuel { VehicleID = 2, FuelDate = new DateTime(2017, 5, 05), FuelOdometerMileage = 3000, FuelQuantity = 55, FuelUnitPrice = 1.15, FuelPartialFill = false },
-            new Fuel { VehicleID = 3, FuelDate = new DateTime(2017, 5, 05), FuelOdometerMileage = 3000, FuelQuantity = 55, FuelUnitPrice = 1.15, FuelPartialFill = false }
+            new Fuel { VehicleID = 3, FuelDate = new DateTime(2017, 5, 05), FuelOdometerMileage = 2500, FuelQuantity = 35, FuelUnitPrice = 1.15, FuelPartialFill = false }
         );
 */
 

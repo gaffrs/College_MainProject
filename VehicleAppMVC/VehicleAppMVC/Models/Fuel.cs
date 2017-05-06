@@ -37,21 +37,50 @@ namespace VehicleAppMVC.Models
         public bool FuelPartialFill { get; set; }                       //TODO Have this in as Enum ??????????????
 
 
+
+
         //Calculations
         [Display(Name = "Fuel Consumption")]
         public double FuelConsumption                                   //need to adjust this for Partial fills *********************************
         {
+
             get
             {
-                double consumption = 0;
+
+                double consumption;
+                int previousOdo = 0;
+                int previousQty = 0;
+                int consumptionOdo = 0;
+                int consumptionQty = 0;
 
                 if (FuelPartialFill == false)
                 {
-                    consumption = FuelOdometerMileage / FuelQuantity *1000;   //need to adjust this New-Old mileage *******
+                    consumptionOdo = FuelOdometerMileage - previousOdo;
+                    consumptionQty = FuelQuantity - previousQty;
+
+
+                    if ((consumptionOdo < 1) && (consumptionQty < 1))
+                    {
+                        consumption = 0;
+                        previousOdo = FuelOdometerMileage;
+                        previousQty = FuelQuantity;
+        
+                    }
+                    else
+                    {
+                        consumption = consumptionOdo / consumptionQty;   //need to adjust this New-Old mileage *******
+                    }
+
+                    previousOdo = consumptionOdo;
+                    previousQty = consumptionQty;
+
+                    return previousOdo + previousQty;
                 }
                 else
                 {
-                    consumption = 1000000000000000;
+                    FuelOdometerMileage += FuelOdometerMileage;
+                    FuelQuantity += FuelQuantity;
+                    consumption = 0;
                 }
                 return consumption;
             }

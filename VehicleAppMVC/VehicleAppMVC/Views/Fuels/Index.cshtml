@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<VehicleAppMVC.Models.Fuel>
 
+
 @{
     ViewBag.Title = "Fuel-fill Log";
 }
@@ -15,95 +16,157 @@
 @using (Html.BeginForm())
 {
     <p>
-        Find by Title or Registration or Year: @Html.TextBox("SearchString")
+        Find by Registration or Year: @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>
 }
 
-<table class="table">
-@*New for sorting*@        
+
+<table class="table-condensed">
     <tr>
-            <th>
-                @Html.ActionLink("Vehicle Registration", "Index", new { sortOrder = ViewBag.NameSortParmReg })      @*CG: Edited*@
-                @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
-            </th>
-
-                <th>
-                    @Html.ActionLink("Fuel Date", "Index", new { sortOrder = ViewBag.DateSortParmDate })
-                </th>
-
-@*
-        @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)      @*CG: Edited*@
-                @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)
-*@
-@*
         <th>
-            @Html.DisplayNameFor(model => model.FuelDate)
+            Fuel Cost statistics :
         </th>
-*@
+        <th>
+            @*CG: Calculate Total Cost for the View*@
+            Total €
+            @Model.Sum(x => x.FuelCost)
+            ,  
+        </th>
+
+        <th>
+            @*CG: Calculate Average Cost for the View*@
+            Average €
+            @Model.Select(x => x.FuelCost).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
+            ,  
+        </th>
+
+        <th>
+            @*CG: Calculate Max Cost for the View*@
+            Max €
+            @Model.Select(x => x.FuelCost).Max().ToString("#.##")
+            ,  
+        </th>
+
+        <th>
+            @*CG: Calculate Min Cost for the View*@
+            Min €
+            @Model.Select(x => x.FuelCost).Min().ToString("#.##")
+        </th>
+        <th></th>
+    </tr>
+</table>
+
+<table class="table-condensed">
+    <tr>
+        <th>
+            Fuel Price statistics :
+        </th>
+
+        <th>
+            @*CG: Calculate Average Cost for the View*@
+            Average €
+            @Model.Select(x => x.FuelUnitPrice).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
+            ,  
+        </th>
+
+        <th>
+            @*CG: Calculate Max Cost for the View*@
+            Max €
+            @Model.Select(x => x.FuelUnitPrice).Max().ToString("#.##")
+            ,  
+        </th>
+
+        <th>
+            @*CG: Calculate Min Cost for the View*@
+            Min €
+            @Model.Select(x => x.FuelUnitPrice).Min().ToString("#.##")
+        </th>
+    </tr>
+</table>
+
+<table class="table">
+    @*New for sorting*@
+    <tr>
+        <th>
+            @Html.ActionLink("Vehicle Registration", "Index", new { sortOrder = ViewBag.NameSortParmReg })      @*CG: Edited*@
+            @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
+        </th>
+
+        <th>
+            @Html.ActionLink("Fuel Date", "Index", new { sortOrder = ViewBag.DateSortParmDate })
+        </th>
+
+        @*
+            @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)      @*CG: Edited*@
+        @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)
+        *@
+        @*
+            <th>
+                @Html.DisplayNameFor(model => model.FuelDate)
+            </th>
+        *@
 
 
 
 
-                <th>
-                    @Html.DisplayNameFor(model => model.FuelOdometerMileage)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FuelQuantity)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FuelUnitPrice)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FuelPartialFill)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FuelConsumption)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FuelCost)
-                </th>
-                <th></th>
-            </tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelOdometerMileage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelUnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelPartialFill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelConsumption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelCost)
+        </th>
+        <th></th>
+    </tr>
 
-            @foreach (var item in Model)
+    @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Vehicle.VehicleRegistrationNumber)       @*CG: Edited*@
-                        @*@Html.DisplayFor(modelItem => item.Vehicle.ApplicationUserId)*@
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FuelDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FuelOdometerMileage)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FuelQuantity)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FuelUnitPrice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FuelPartialFill)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FuelConsumption)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FuelCost)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.FuelID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.FuelID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.FuelID })
-                    </td>
-                </tr>
-            }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicle.VehicleRegistrationNumber)       @*CG: Edited*@
+                @*@Html.DisplayFor(modelItem => item.Vehicle.ApplicationUserId)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelOdometerMileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelUnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelPartialFill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelConsumption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelCost)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FuelID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FuelID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FuelID })
+            </td>
+        </tr>
+    }
 
-        </table>
+</table>
 
-        @Html.DisplayNameFor(model => model.FuelTotalFuelCost)
 
-        @Model.Sum(x => x.FuelCost)

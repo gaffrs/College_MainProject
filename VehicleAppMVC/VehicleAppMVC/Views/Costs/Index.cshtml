@@ -22,82 +22,112 @@
 
 @*Find by Title or Registration: @Html.EnumDropDownListFor(CostTitle)*@
 
-<table class="table">
+<table class="table-condensed">
     <tr>
         <th>
-            @Html.ActionLink("Vehicle Registration", "Index", new { sortOrder = ViewBag.NameSortParmReg })      @*CG: Edited*@
-    @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
+            <b>Cost statistics :</b>
         </th>
-@*New for sorting*@
-    <th>
-        @Html.ActionLink("Cost Description", "Index", new { sortOrder = ViewBag.NameSortParmTitle })
-    </th>
-    <th>
-        @Html.ActionLink("Cost Date", "Index", new { sortOrder = ViewBag.DateSortParmDate })
-    </th>
+        <th>
+            @*CG: Calculate Total Cost for the View*@
+            Total €
+            @Model.Sum(x => x.CostRunningCost)
+            ,  
+        </th>
 
-@*
-    @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)      @*CG: Edited*@
-@*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
-@*
-    <th>
-        @Html.DisplayNameFor(model => model.CostTitle)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.CostDate)
-    </th>
-*@
-    <th>
-        @Html.DisplayNameFor(model => model.CostOdometerMileage)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.CostRunningCost)
-    </th>
+        <th>
+            @*CG: Calculate Average Cost for the View*@
+            Average €
+            @Model.Select(x => x.CostRunningCost).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
+            ,          
+        </th>
 
+        <th>
+            @*CG: Calculate Max Cost for the View*@
+            Max €
+            @Model.Select(x => x.CostRunningCost).Max().ToString("#.##")
+            ,  
+        </th>
 
-@*
-    <th>
-        @Html.DisplayNameFor(model => model.CostTotalRunningCost)
-    </th>
-    @Model.Sum(x => x.CostRunningCost)*@
-<th></th>
-</tr>
-
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vehicle.VehicleRegistrationNumber)       @*CG: Edited*@
-            @*@Html.DisplayFor(modelItem => item.Vehicle.ApplicationUserId)*@
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CostTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CostDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CostOdometerMileage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CostRunningCost)
-        </td>
-
-        <td>
-            @*@Html.DisplayFor(modelItem => item.CostTotalRunningCost)*@
-            @*@Model.Sum(x => x.CostRunningCost)*@
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CostID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CostID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CostID })
-        </td>
+        <th>
+            @*CG: Calculate Min Cost for the View*@
+            Min €
+            @Model.Select(x => x.CostRunningCost).Min().ToString("#.##")
+        </th>
+        <th></th>
     </tr>
-}
-    </td>
 
-</table>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Vehicle Registration", "Index", new { sortOrder = ViewBag.NameSortParmReg })      @*CG: Edited*@
+                @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
+            </th>
+            @*New for sorting*@
+            <th>
+                @Html.ActionLink("Cost Description", "Index", new { sortOrder = ViewBag.NameSortParmTitle })
+            </th>
+            <th>
+                @Html.ActionLink("Cost Date", "Index", new { sortOrder = ViewBag.DateSortParmDate })
+            </th>
 
-@Html.DisplayNameFor(model => model.CostTotalRunningCost)
+            @*
+                @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)      @*CG: Edited*@
+            @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
+            @*
+                <th>
+                    @Html.DisplayNameFor(model => model.CostTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CostDate)
+                </th>
+            *@
+            <th>
+                @Html.DisplayNameFor(model => model.CostOdometerMileage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostRunningCost)
+            </th>
 
-@Model.Sum(x => x.CostRunningCost)
+
+            @*
+                <th>
+                    @Html.DisplayNameFor(model => model.CostTotalRunningCost)
+                </th>
+                @Model.Sum(x => x.CostRunningCost)*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vehicle.VehicleRegistrationNumber)       @*CG: Edited*@
+                    @*@Html.DisplayFor(modelItem => item.Vehicle.ApplicationUserId)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostOdometerMileage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostRunningCost)
+                </td>
+
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.CostTotalRunningCost)*@
+                    @*@Model.Sum(x => x.CostRunningCost)*@
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CostID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CostID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CostID })
+                </td>
+            </tr>
+        }
+        </td>
+
+    </table>
