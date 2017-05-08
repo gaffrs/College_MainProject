@@ -9,38 +9,109 @@ using System.Data.Entity;                       //enables "DbContext"
 namespace VehicleAppMVC.Models
 {
     public class FuelDto
-    {
-        //Property			                    //auto-implemented ReadWrite
+    { //Property			                    //auto-implemented ReadWrite
         public int FuelID { get; set; }                     //PK    
 
-        public int VehicleID { get; set; }                  //FK    
+        public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
 
+        [Required(ErrorMessage = "Fuel Date is required")]       //Not null or empty string
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fuel Date")]
         public DateTime FuelDate { get; set; }
 
+        [Required(ErrorMessage = "Fuel Odometer is required")]   //Not null or empty string
         [Display(Name = "Fuel Odometer")]
         public int FuelOdometerMileage { get; set; }
 
+        [Required(ErrorMessage = "Fuel Odometer is required")]   //Not null or empty string
         [Display(Name = "Fuel Qty")]
         public int FuelQuantity { get; set; }
 
-        [Display(Name = "Fuel Price")]
+        [Required(ErrorMessage = "Fuel price is required")]   //Not null or empty string
+        [Display(Name = "Fuel Unit Price")]
         public double FuelUnitPrice { get; set; }
 
         [Display(Name = "Partial Fill")]
-        public bool FuelPartialFill { get; set; }
+        public bool FuelPartialFill { get; set; }                       //TODO Have this in as Enum ??????????????
 
 
-        //Values retuned from Methods
+
+
+        //Calculations
         [Display(Name = "Fuel Consumption")]
-        public double FuelConsumption { get; set; }
+        public double FuelConsumption                                   //need to adjust this for Partial fills *********************************
+        {
+
+            get
+
+            {
+
+
+                double consumption;
+                int previousOdo = 0;
+                int previousQty = 0;
+                int consumptionOdo = 0;
+                int consumptionQty = 0;
+
+                if (FuelPartialFill == false)
+                {
+                    consumptionOdo = FuelOdometerMileage - previousOdo;
+                    consumptionQty = FuelQuantity - previousQty;
+
+
+                    if ((consumptionOdo < 1) && (consumptionQty < 1))
+                    {
+                        consumption = 0;
+                        previousOdo = FuelOdometerMileage;
+                        previousQty = FuelQuantity;
+
+                    }
+                    else
+                    {
+                        consumption = consumptionOdo / consumptionQty;   //need to adjust this New-Old mileage *******
+                    }
+
+                    previousOdo = consumptionOdo;
+                    previousQty = consumptionQty;
+
+                    return previousOdo + previousQty;
+                }
+                else
+                {
+                    FuelOdometerMileage += FuelOdometerMileage;
+                    FuelQuantity += FuelQuantity;
+                    consumption = 0;
+                }
+                return consumption;
+            }
+        }
 
         [Display(Name = "Fuel Cost")]
-        public double FuelCost { get; set; }
+        public double FuelCost
+        {
+            get
+            {
+                double cost = 0;
+                cost = FuelQuantity * FuelUnitPrice;
+                return cost;
+            }
+        }
+
+        [Display(Name = "Total Fuel Cost: €")]
+        public double FuelTotalFuelCost { get; }
 
         //Navigation Property
 
-        public virtual Vehicle Vehicle { get; set; }
+        public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Fuel associated to only One Vehicle
+                                                                      /*
+                                                                      //Partial fill = true
+                                                                      //Full fill = false
+                                                                      //used in the calculation of the Full & Partial filles
+                                                                      public double RollingFuelQuantity { get; set; }        
+                                                                      public int RollingFuelMileage { get; set; }
+                                                                      */
+
 
         //ToString()
         public override string ToString()
@@ -53,17 +124,22 @@ namespace VehicleAppMVC.Models
 
 
         //need to adjust this for Partial fills *********************************
+        /*
         public double CalcFuelConsumption()
         {
             return FuelConsumption = FuelOdometerMileage / FuelQuantity;
         }
-
-        public double CalcFuelCost()
-        {
-            return FuelCost = FuelQuantity * FuelUnitPrice;
-        }
-
+        */
+        /*
+                public double CalcFuelCost()
+                {
+                    return FuelCost = FuelQuantity * FuelUnitPrice;
+                }
+        */
 
     }
 }
+
+
+
 

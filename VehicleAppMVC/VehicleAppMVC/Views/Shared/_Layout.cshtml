@@ -59,17 +59,18 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 
-    @*CG: New to get DatePicker to work*@
-    <link href="~/Content/themes/base/jquery.ui.core.css" rel="stylesheet" />
-    <link href="~/Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
-    <link href="~/Content/themes/base/jquery.ui.theme.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-ui-1.10.4.js"></script>
-    <script src="~/Scripts/Common/DatePickerReady.js"></script>
+
+    @*CG: Added use Datepicker*@
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     @**********************************@
 
 
-    @RenderSection("scripts", required: false)
+
 </body>
 </html>
 

@@ -33,6 +33,69 @@ namespace VehicleAppMVC.Controllers
             //To return Fuels for Vehicles for ONLY the Logged in User
             var fuels = from s in db.Fuels.Include(f => f.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId)    //CG: Edited
                         select s;
+            /*var vehicles = from s in db.Vehicles.Include(v => v.ApplicationUserId == currentUserId)    //CG: Edited
+                           select s;*/
+
+            //**************************************************
+            //CG: added to iterate through the Fuel consumption
+
+            //var fuels2 = fuels.ToList();
+            //var vehicles2 = vehicles.ToArray();
+            //var vehicleList = fuels.Distinct(f => f.VehicleID).ToList();
+
+
+            var lastVehicleId = 0;
+            var currentVehicleId = 0;
+
+            var mileagePrevious = 0;          ///****Can this be made = FuelOdometerMileage for 1st Iteration?????
+            var mileageDelta = 0;
+            double consumption = 0;
+
+            foreach (var fuel in fuels)
+            {
+                if (mileagePrevious == 0)                           //Initial fuel fill will NOT have a consumption
+                {
+                    consumption = 0;
+                }
+                else                                                //Calculate the consumption
+                {
+                    mileageDelta = fuel.FuelOdometerMileage - mileagePrevious;
+                    consumption = mileageDelta / fuel.FuelQuantity;
+                }
+                mileagePrevious = fuel.FuelOdometerMileage;         //Holds a record of the last Odo for the next fuel fill
+            }
+
+
+
+            //**************************************************
+
+
+            //*****************************************************
+
+            //Working but not detecting change in Vehicle
+            /*
+            var mileagePrevious = 0;          ///****Can this be made = FuelOdometerMileage for 1st Iteration?????
+            var mileageDelta = 0;
+            double consumption = 0;
+
+            foreach (var fuel in fuels)
+            {
+                if (mileagePrevious == 0)                           //Initial fuel fill will NOT have a consumption
+                {
+                    consumption = 0;
+                }
+                else                                                //Calculate the consumption
+                {
+                    mileageDelta = fuel.FuelOdometerMileage - mileagePrevious;
+                    consumption = mileageDelta / fuel.FuelQuantity;
+                }
+                mileagePrevious = fuel.FuelOdometerMileage;         //Holds a record of the last Odo for the next fuel fill
+            }
+
+            */
+            //*****************************************************
+
+
 
             //Add a Search Box to the Fuel View  (Search by Reg or Year)
             if (!String.IsNullOrEmpty(searchString))
