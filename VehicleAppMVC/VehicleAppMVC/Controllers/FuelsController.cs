@@ -82,7 +82,7 @@ namespace VehicleAppMVC.Controllers
                 if (currentVehicleId != lastVehicleId)                              // Initial Full fill will NOT have a consumption, so consumption = 0
                 {
                     consumption = 0;
-                    firstFullFillComplete = true;                                  // Resets to false for new VehicleID, until user has filled the tank
+ /*may need to change these to cope with Vehicle2 starting with Partial Fill*/ firstFullFillComplete = true;                                  // Resets to false for new VehicleID, until user has filled the tank
                 }
                 else                                                                // Calculate the consumption, based on the delta to previous "Full fill" mileage and "Fuel qty" used 
                 {
@@ -215,6 +215,85 @@ namespace VehicleAppMVC.Controllers
                         }
                         */
             //*****************************************************
+
+
+            //**************************************************/
+            //CG: added to iterate through the Fuel consumption
+            //*****************************************************/
+            // Iteration 4: Enhanced the calculation:
+            // Iterates through the fuel fills (BOTH Full & Partial).
+            // Orders by VehicleID, to have all calculations completed for the same vehicle.
+            // Consumptions needs at least 1 full fill to commence calculations, below does work for the 1st Vehicle having a Partial fill
+            // NEED to adjust code so that the 2nd Vehicle can cope with 1st fill being Full or Empty
+            /*
+
+                        var fuels = from s in db.Fuels.Include(f => f.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId).OrderBy(t => t.VehicleID)    //CG: Edited //.OrderBy(t => t.VehicleID) added to enable fuel consumption calculation.
+                                    select s;
+
+                        int lastVehicleId = 0;
+                        int currentVehicleId = 0;
+
+                        int lastMileage = 0;          
+                        int mileageDelta = 0;
+
+                        double partialFuelQty = 0;         
+                        double partialFuelQtyTotal = 0;
+
+                        bool firstFullFillComplete = false;         //To ensure user makes initial FULL tank of fuel
+
+                        double consumption = 0;
+
+                        foreach (var fuel in fuels)
+                        {
+                            // Partial Fill & No previous Full fills (Consumption = 0 & No data tracked)
+                            if ((fuel.FuelPartialFill == true) && (firstFullFillComplete == false))                             
+                            {
+                                consumption = 0;
+                            }
+                            else
+                            {
+
+                            // Partial Fill & Previous Full fills (Consumption = 0 & FuelQty used tracked)
+                            if (fuel.FuelPartialFill == true)
+                            {
+                                partialFuelQty = fuel.FuelQuantity;
+                                partialFuelQtyTotal += partialFuelQty;
+                            }
+
+                            //Full Fill up
+                            else
+                            {
+                            currentVehicleId = fuel.VehicleID;
+
+                            // Calculation for Each VehicleID
+                            if (currentVehicleId != lastVehicleId)                              // Initial Full fill will NOT have a consumption, so consumption = 0
+                            {
+                                consumption = 0;
+
+firstFullFillComplete = true;   //may need to change these to cope with Vehicle 2 starting with Partial Fill                               // Resets to false for new VehicleID, until user has filled the tank
+        }
+                else                                                                // Calculate the consumption, based on the delta to previous "Full fill" mileage and "Fuel qty" used 
+                {
+                    mileageDelta = fuel.FuelOdometerMileage - lastMileage;  
+                    consumption = mileageDelta / (fuel.FuelQuantity + partialFuelQtyTotal);
+                    partialFuelQtyTotal = 0;                                        // Resets partialFuelQtyTotal attribute to 0 if a full fill has been complete after 1 or many Partial-fills
+                    firstFullFillComplete = true;                                   // Indicates the user has made a full fill
+                 }                                                                   // Used to set the values for the last vehicle
+                    lastVehicleId = fuel.VehicleID;
+                    lastMileage = fuel.FuelOdometerMileage;
+
+                    fuel.FuelConsumption = consumption;
+                }
+            }
+            }
+
+*/
+            //*****************************************************
+
+
+
+
+
 
             //Add a Search Box to the Fuel View  (Search by Reg or Year)
             if (!String.IsNullOrEmpty(searchString))
