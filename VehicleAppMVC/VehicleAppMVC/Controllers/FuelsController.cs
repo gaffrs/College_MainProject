@@ -47,34 +47,48 @@ namespace VehicleAppMVC.Controllers
             var lastVehicleId = 0;
             var currentVehicleId = 0;
 
-            var mileagePrevious = 0;          ///****Can this be made = FuelOdometerMileage for 1st Iteration?????
+            var lastMileage = 0;          ///****Can this be made = FuelOdometerMileage for 1st Iteration?????
             var mileageDelta = 0;
             double consumption = 0;
 
             foreach (var fuel in fuels)
             {
-                if (mileagePrevious == 0)                           //Initial fuel fill will NOT have a consumption
+                currentVehicleId = fuel.VehicleID;
+                                                                                    // Calculation: for Each VehicleID
+                if (currentVehicleId != lastVehicleId)                              // Initial fuel fill will NOT have a consumption, so consumption = 0
                 {
                     consumption = 0;
                 }
-                else                                                //Calculate the consumption
+                else                                                                // Calculate the consumption, based on the delta to previous mileage and current qty 
                 {
-                    mileageDelta = fuel.FuelOdometerMileage - mileagePrevious;
+                    mileageDelta = fuel.FuelOdometerMileage - lastMileage;  
                     consumption = mileageDelta / fuel.FuelQuantity;
-                }
-                mileagePrevious = fuel.FuelOdometerMileage;         //Holds a record of the last Odo for the next fuel fill
+                }                                                                   // Used to set the values for the last vehicle
+                lastVehicleId = fuel.VehicleID;
+                lastMileage = fuel.FuelOdometerMileage;
+
             }
 
 
+            
+/*
+If(currentVehicleId == lastVehicleId)
+
+
+Else....
+last Mileage = 0;
+
+            lastVehicleId = fuels.VehicleId
+
+*/
 
             //**************************************************
 
 
             //*****************************************************
-
-            //Working but not detecting change in Vehicle
+            //Initial calculation: NOTE this iterates through the fuel fills BUT does NOT take the VehicleID into account.
             /*
-            var mileagePrevious = 0;          ///****Can this be made = FuelOdometerMileage for 1st Iteration?????
+            var mileagePrevious = 0;          
             var mileageDelta = 0;
             double consumption = 0;
 
@@ -91,7 +105,6 @@ namespace VehicleAppMVC.Controllers
                 }
                 mileagePrevious = fuel.FuelOdometerMileage;         //Holds a record of the last Odo for the next fuel fill
             }
-
             */
             //*****************************************************
 
