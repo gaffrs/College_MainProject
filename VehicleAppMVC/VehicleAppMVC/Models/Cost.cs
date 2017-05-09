@@ -23,8 +23,8 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Cost Description")]
         public eCostTitle CostTitle { get; set; }           //Enum Type
 
-        //[DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         //[DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Cost Date")]
         public DateTime CostDate { get; set; }
 

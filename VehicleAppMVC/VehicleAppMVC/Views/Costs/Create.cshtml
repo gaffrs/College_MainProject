@@ -1,23 +1,10 @@
-﻿@************************************@
-@*CG: Added to try set up Datepicker*@
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+﻿
 
 
-<!-- Code to wire up your DatePicker -->
-<script type="text/javascript">
-    $(function () {
-        // This will make every element with the class "date-picker" into a DatePicker element
-        $('.date-picker').datepicker();
-    })
-</script>
 @************************************@
 
 
-@model VehicleAppMVC.Models.Cost 
+@model VehicleAppMVC.Models.Cost
 
 
 
@@ -28,16 +15,35 @@
 <h2>@ViewBag.Title</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
+    @************************************@
+    @*CG: Added to try set up Datepicker*@
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <!-- Code to wire up your DatePicker -->
+    <script type="text/javascript">
+         $(function () {
+             $('.date-picker').datepicker({
+                dateFormat: 'dd/MM/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+         });
+    </script>
     <div class="form-horizontal">
         <h4>Enter Cost details</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
-@*CG: Added to return the VehicleID based on the Make*@        
+
+@*CG: Added to return the VehicleID based on the Make*@
         <div class="form-group">
             @Html.LabelFor(model => model.VehicleID, "Vehicle Registration", htmlAttributes: new { @class = "control-label col-md-2" })
             @*@Html.LabelFor(model => model.VehicleID, "VehicleID", htmlAttributes: new { @class = "control-label col-md-2" })*@
@@ -57,7 +63,7 @@
             @Html.ValidationMessageFor(model => model.VehicleID, "", new { @class = "text-danger" })
         </div>
     </div>
-*@ 
+*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.CostTitle, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -92,7 +98,7 @@
             </div>
         </div>
 @*CG: Not required*@
-@*       	
+@*
 	            <div class="form-group">
                 @Html.LabelFor(model => model.CostTotalRunningCost, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">

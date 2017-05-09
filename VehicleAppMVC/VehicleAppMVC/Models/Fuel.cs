@@ -6,6 +6,7 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] etc
 using System.Data.Entity;                       //enables "DbContext"	
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VehicleAppMVC.Models
 {
@@ -37,56 +38,10 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Partial Fill")]
         public bool FuelPartialFill { get; set; }                       //TODO Have this in as Enum ??????????????
 
-
-
-
         //Calculations
+        [NotMapped]
         [Display(Name = "Fuel Consumption")]
-        public double FuelConsumption                                   //need to adjust this for Partial fills *********************************
-        {
-
-            get
-
-            {
-
-                double consumption;
-                int previousOdo = 0;
-                int previousQty = 0;
-                int consumptionOdo = 0;
-                int consumptionQty = 0;
-
-                if (FuelPartialFill == false)
-                {
-                    consumptionOdo = FuelOdometerMileage - previousOdo;
-                    consumptionQty = FuelQuantity - previousQty;
-
-
-                    if ((consumptionOdo < 1) && (consumptionQty < 1))
-                    {
-                        consumption = 0;
-                        previousOdo = FuelOdometerMileage;
-                        previousQty = FuelQuantity;
-        
-                    }
-                    else
-                    {
-                        consumption = consumptionOdo / consumptionQty;   //need to adjust this New-Old mileage *******
-                    }
-
-                    previousOdo = consumptionOdo;
-                    previousQty = consumptionQty;
-
-                    return previousOdo + previousQty;
-                }
-                else
-                {
-                    FuelOdometerMileage += FuelOdometerMileage;
-                    FuelQuantity += FuelQuantity;
-                    consumption = 0;
-                }
-                return consumption;
-            }
-        }
+        public double FuelConsumption { get; set; }                            //need to adjust this for Partial fills *********************************
 
         [Display(Name = "Fuel Cost")]
         public double FuelCost
@@ -122,15 +77,16 @@ namespace VehicleAppMVC.Models
                  + ", Fuel Consumption: " + FuelConsumption + ", Fuel Cost: " + FuelCost;
         }
 
+    }
+}
 
-
-        //need to adjust this for Partial fills *********************************
-        /*
-        public double CalcFuelConsumption()
-        {
-            return FuelConsumption = FuelOdometerMileage / FuelQuantity;
-        }
-        */
+//need to adjust this for Partial fills *********************************
+/*
+public double CalcFuelConsumption()
+{
+    return FuelConsumption = FuelOdometerMileage / FuelQuantity;
+}
+*/
 /*
         public double CalcFuelCost()
         {
@@ -138,9 +94,56 @@ namespace VehicleAppMVC.Models
         }
 */
 
-    }
-}
 
+
+
+/*        [Display(Name = "Fuel Consumption")]
+        public double FuelConsumption                                   //need to adjust this for Partial fills *********************************
+        {
+
+            get
+
+            {
+
+                double consumption;
+                int previousOdo = 0;
+                int previousQty = 0;
+                int consumptionOdo = 0;
+                int consumptionQty = 0;
+            
+                if (FuelPartialFill == false)
+                {
+                    consumptionOdo = FuelOdometerMileage - previousOdo;
+                    consumptionQty = FuelQuantity - previousQty;
+
+
+                    if ((consumptionOdo < 1) && (consumptionQty < 1))
+                    {
+                        consumption = 0;
+                        previousOdo = FuelOdometerMileage;
+                        previousQty = FuelQuantity;
+        
+                    }
+                    else
+                    {
+                        consumption = consumptionOdo / consumptionQty;   //need to adjust this New-Old mileage *******
+                    }
+
+                    previousOdo = consumptionOdo;
+                    previousQty = consumptionQty;
+
+                    return previousOdo + previousQty;
+                }
+                else
+                {
+                    FuelOdometerMileage += FuelOdometerMileage;
+                    FuelQuantity += FuelQuantity;
+                    consumption = 0;
+                }
+                return consumption;
+            }
+        }
+        */
 
 /*
         //Method to implement
