@@ -41,6 +41,7 @@ namespace VehicleAppMVC.Models
         //Calculations
         [NotMapped]
         [Display(Name = "Fuel Consumption")]
+        [DisplayFormat(DataFormatString = "{0:#.##}")]
         public double FuelConsumption { get; set; }                            //need to adjust this for Partial fills *********************************
 
         [Display(Name = "Fuel Cost")]

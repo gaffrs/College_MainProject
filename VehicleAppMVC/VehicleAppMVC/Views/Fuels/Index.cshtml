@@ -78,17 +78,17 @@
         </th>
         <th>
             @*CG: Calculate Average Cost for the View*@
-            NEED to fix  @*€@Model.Where(x => x.FuelPartialFill = false).Select(x => x.FuelConsumption).Average().ToString("#.##")   *@     @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@          
+            @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Average().ToString("#.##")      @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@          
         </th>
 
         <th>
             @*CG: Calculate Max Cost for the View*@
-            €@Model.Select(x => x.FuelConsumption).Max().ToString("#.##")
+            @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Max().ToString("#.##")
         </th>
 
         <th>
             @*CG: Calculate Min Cost for the View*@
-            €@Model.Select(x => x.FuelConsumption).Min().ToString("#.##")
+            @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Min().ToString("#.##")
         </th>
     </tr>
     <tr></tr>
@@ -117,7 +117,7 @@
     </p>
 }
 
-<h4>NOTE: A FULL tank of fuel is required to commence consumption calculations. Consumption readings will display only on full fills </h4>
+<p><em> NOTE: A FULL tank of fuel is required to initiate consumption calculations. Consumption results will ONLY get displayed on subsequent fill-ups </em></p> 
 
 <table class="table">
     @*New for sorting*@
