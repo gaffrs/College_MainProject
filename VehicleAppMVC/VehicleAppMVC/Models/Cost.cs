@@ -31,7 +31,9 @@ namespace VehicleAppMVC.Models
         [Required(ErrorMessage = "Vehicle Odometer Mileage is required")] //Not null or empty string
         [Display(Name = "Odometer")]
         public int CostOdometerMileage { get; set; }
-       
+
+        //[DisplayFormat(NullDisplayText = "", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:#.##}")]
         [Display(Name = "Cost amount")]
         public double CostRunningCost { get; set; }
 
@@ -46,7 +48,7 @@ namespace VehicleAppMVC.Models
         [Display(Name = "End Date")]
         public DateTime CostEndDate { get; set; }
         */
-
+        //[DisplayFormat(NullDisplayText = "", ApplyFormatInEditMode = true)]
         [Display(Name = "Total Running Cost: €")]
         public double CostTotalRunningCost { get; }
 

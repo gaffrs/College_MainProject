@@ -76,7 +76,8 @@ namespace VehicleAppMVC.Controllers
                     break;
             }
 
-            return View(await costs.ToListAsync());
+            
+                return View(await costs.ToListAsync());
         }
 
 

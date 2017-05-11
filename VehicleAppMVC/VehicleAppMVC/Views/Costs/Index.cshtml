@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<VehicleAppMVC.Models.Cost>
 
+
 <table class="table-condensed" width="350" align="right" style="background-color :lightslategray">
-    <tr>
+ <tr>
         <th>
             Cost statistics
         </th>
@@ -23,34 +24,34 @@
             Lowest @*Min*@
         </th>
     <tr>
+
     <tr>
         <th>
             Cost:
         </th>
         <th>
             @*CG: Calculate Total Cost for the View*@
-            €@Model.Sum(x => x.CostRunningCost)
+            @Model.Sum(x => x.CostRunningCost)
         </th>
 
         <th>
             @*CG: Calculate Average Cost for the View*@
-            €@Model.Select(x => x.CostRunningCost).Average().ToString("#.##")         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
+            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.CostRunningCost).Average().ToString("#.##"))      @**€@Model.Select(x => x.CostRunningCost).Average().ToString("#.##") *@        
         </th>
 
         <th>
             @*CG: Calculate Max Cost for the View*@
-            €@Model.Select(x => x.CostRunningCost).Max().ToString("#.##")
-        </th>
+            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.CostRunningCost).Max().ToString("#.##"))          @*€@Model.Select(x => x.CostRunningCost).Max().ToString("#.##")*@
+        </th >
 
         <th>
             @*CG: Calculate Min Cost for the View*@
-            €@Model.Select(x => x.CostRunningCost).Min().ToString("#.##")
+            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.CostRunningCost).Min().ToString("#.##") )         @*€@Model.Select(x => x.CostRunningCost).Min().ToString("#.##")*@
         </th>
     </tr>
 
     <tr></tr>
 </table>
-
 
 
 @{
@@ -118,6 +119,7 @@
 
     @foreach (var item in Model)
     {
+
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Vehicle.VehicleRegistrationNumber)       @*CG: Edited*@
@@ -145,7 +147,7 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.CostID })
             </td>
         </tr>
-    }
+        }
     </td>
 
 </table>
