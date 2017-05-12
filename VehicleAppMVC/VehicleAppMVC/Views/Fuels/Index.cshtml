@@ -112,7 +112,8 @@
 @using (Html.BeginForm())
 {
     <p>
-        Find by Registration or Year: @Html.TextBox("SearchString")
+        Enter Registration or Year:     @Html.TextBox("SearchString")
+        Enter Date Range:  Start Date @Html.TextBox("StartDate")  Finish Date @Html.TextBox("FinishDate")
         <input type="submit" value="Search" />
     </p>
 }
