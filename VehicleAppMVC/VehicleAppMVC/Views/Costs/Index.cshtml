@@ -36,17 +36,17 @@
 
         <th>
             @*CG: Calculate Average Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.CostRunningCost).Average().ToString("#.##"))      @**€@Model.Select(x => x.CostRunningCost).Average().ToString("#.##") *@        
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.CostRunningCost).Average().ToString("#.##"))      @**€@Model.Select(x => x.CostRunningCost).Average().ToString("#.##") *@        
         </th>
 
         <th>
             @*CG: Calculate Max Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.CostRunningCost).Max().ToString("#.##"))          @*€@Model.Select(x => x.CostRunningCost).Max().ToString("#.##")*@
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.CostRunningCost).Max().ToString("#.##"))          @*€@Model.Select(x => x.CostRunningCost).Max().ToString("#.##")*@
         </th >
 
         <th>
             @*CG: Calculate Min Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.CostRunningCost).Min().ToString("#.##") )         @*€@Model.Select(x => x.CostRunningCost).Min().ToString("#.##")*@
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.CostRunningCost).Min().ToString("#.##") )         @*€@Model.Select(x => x.CostRunningCost).Min().ToString("#.##")*@
         </th>
     </tr>
 

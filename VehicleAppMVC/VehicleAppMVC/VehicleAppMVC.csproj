@@ -216,18 +216,14 @@
     <Compile Include="Migrations\ApplicationDbMigration\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cost.cs" />
-    <Compile Include="Models\CostDto.cs" />
     <Compile Include="Models\Fuel.cs" />
-    <Compile Include="Models\FuelDto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Notification.cs" />
-    <Compile Include="Models\NotificationDto.cs" />
     <Compile Include="Models\TempClassToStoreSeedValues.cs" />
     <Compile Include="Models\UserDto.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Models\VehicleAppMVCContext.cs" />
-    <Compile Include="Models\VehicleDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

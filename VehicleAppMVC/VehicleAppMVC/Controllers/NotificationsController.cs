@@ -81,6 +81,17 @@ namespace VehicleAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "NotificationID,ApplicationUserId,NotificationDate,NotificationSendDate,NotificationType,NotificationTitle")] Notification notification)
         {
+
+            if (notification.NotificationSendDate <= notification.NotificationDate)
+            {
+                ModelState.AddModelError("NotificationSendDate", "Send Date must be earlier than Notification Date");
+            }
+
+            if (notification.NotificationSendDate <= DateTime.Now)
+            {
+                ModelState.AddModelError("NotificationSendDate", "Send Date must occur after current Date");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Notifications.Add(notification);

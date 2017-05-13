@@ -92,6 +92,19 @@ namespace VehicleAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "VehicleID,ApplicationUserId,VehicleMake,VehicleModel,VehicleRegistrationNumber,VehicleOdometerMileage,SettingFuelType,SettingDistance,SettingVolume,SettingConsumption")] Vehicle vehicle)
         {
+/*
+            var currentUserId = User.Identity.GetUserId();            //CG: Get the UserId of user logged in 
+            var vehicles = db.Vehicles.Where(v => v.ApplicationUserId == currentUserId).ToList();
+
+            // Validation check to ensure Registration Number has not been already used on Create
+            var previousVehicleRegistrationNumber = vehicles.Select(x => x.VehicleRegistrationNumber).ToList();
+
+            if (vehicle.VehicleRegistrationNumber.Equals(previousVehicleRegistrationNumber))
+            {
+                ModelState.AddModelError("VehicleRegistrationNumber", "Registration Number already exists");
+            }
+*/
+
             if (ModelState.IsValid)
             {
                 db.Vehicles.Add(vehicle);
@@ -103,8 +116,9 @@ namespace VehicleAppMVC.Controllers
             return View(vehicle);
         }
 
-        // GET: Vehicles/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+
+    // GET: Vehicles/Edit/5
+    public async Task<ActionResult> Edit(int? id)
         {
             var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
 

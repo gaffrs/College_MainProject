@@ -34,17 +34,17 @@
 
         <th>
             @*CG: Calculate Average Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.FuelCost).Average().ToString("#.##"))         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.FuelCost).Average().ToString("#.##"))         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
         </th>
 
         <th>
             @*CG: Calculate Max Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.FuelCost).Max().ToString("#.##"))
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.FuelCost).Max().ToString("#.##"))
         </th>
 
         <th>
             @*CG: Calculate Min Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.FuelCost).Min().ToString("#.##"))
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.FuelCost).Min().ToString("#.##"))
         </th>
     </tr>
 
@@ -56,17 +56,17 @@
         </th>
         <th>
             @*CG: Calculate Average Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.FuelUnitPrice).Average().ToString("#.##"))         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.FuelUnitPrice).Average().ToString("#.##"))         @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
         </th>
 
         <th>
             @*CG: Calculate Max Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.FuelUnitPrice).Max().ToString("#.##"))
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.FuelUnitPrice).Max().ToString("#.##"))
         </th>
 
         <th>
             @*CG: Calculate Min Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Select(x => x.FuelUnitPrice).Min().ToString("#.##"))
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.FuelUnitPrice).Min().ToString("#.##"))
         </th>
     </tr>
 
@@ -76,24 +76,29 @@
         </th>
         <th>
         </th>
-        <th>
+
+        <th>FIX THIS
             @*CG: Calculate Average Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Average().ToString("#.##"))      @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@          
+@*          @(@Model.FirstOrDefault() == null ? "" : @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Average().ToString("#.##")) *@     @*OR*@ @*Average Cost: €@((Model.Sum(x => x.FuelCost) / Model.Count()))*@
         </th>
 
+        
         <th>
             @*CG: Calculate Max Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Max().ToString("#.##"))
+@*            @(@Model.FirstOrDefault() == null ? "" : @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Max().ToString("#.##"))      *@
         </th>
 
         <th>
-            @*CG: Calculate Min Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "0" : @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Min().ToString("#.##"))
-        </th >
+        @*CG: Calculate Min Cost for the View*@
+@*            @(@Model.FirstOrDefault() == null ? "" : @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Min().ToString("#.##"))      *@
+        </th>
+
+
     </tr>
     <tr></tr>
 </table>
 
+ 
 
 @{
                 ViewBag.Title = "Fuel-fill Log";
