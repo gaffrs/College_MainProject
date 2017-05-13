@@ -18,7 +18,7 @@
         <input type="submit" value="Search by Title/Type/Year" />
     </p>
     <p>
-        @Html.TextBox("StartDate", "Start Date")  @Html.TextBox("FinishDate", "Finish Date")
+        @Html.TextBox("StartDate", "Start Date", new { @class = "date-picker" })  @Html.TextBox("FinishDate", "Finish Date", new { @class = "date-picker" })
         <input type="submit" value="Search by Date Range" />
     </p>
 }

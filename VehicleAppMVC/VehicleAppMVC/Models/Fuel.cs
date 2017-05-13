@@ -18,8 +18,9 @@ namespace VehicleAppMVC.Models
         public int VehicleID { get; set; }                  //FK    Vehicle.VehicleID
 
         [Required(ErrorMessage = "Fuel Date is required")]       //Not null or empty string
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         //[DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Fuel Date")]
         public DateTime FuelDate { get; set; }
 

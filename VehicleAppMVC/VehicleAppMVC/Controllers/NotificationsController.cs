@@ -148,14 +148,14 @@ namespace VehicleAppMVC.Controllers
         public async Task<ActionResult> Create([Bind(Include = "NotificationID,ApplicationUserId,NotificationDate,NotificationSendDate,NotificationType,NotificationTitle")] Notification notification)
         {
 
-            if (notification.NotificationSendDate <= notification.NotificationDate)
+            if (notification.NotificationSendDate >= notification.NotificationDate)
             {
-                ModelState.AddModelError("NotificationSendDate", "Send Date must be earlier than Notification Date");
+                ModelState.AddModelError("NotificationSendDate", "Send Date cannot be before Notification Date");
             }
 
             if (notification.NotificationSendDate <= DateTime.Now)
             {
-                ModelState.AddModelError("NotificationSendDate", "Send Date must occur after current Date");
+                ModelState.AddModelError("NotificationSendDate", "Send Date cannot must occur after today");
             }
 
             if (ModelState.IsValid)

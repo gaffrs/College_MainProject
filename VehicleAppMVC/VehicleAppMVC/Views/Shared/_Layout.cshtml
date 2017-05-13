@@ -68,7 +68,16 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     @**********************************@
-
+    <!-- Code to wire up your DatePicker -->
+    <script type="text/javascript">
+         $(function () {
+             $('.date-picker').datepicker({
+                 dateFormat: 'dd-MM-yy',
+                @*changeMonth: true,
+                changeYear: true*@
+            });
+         });
+    </script>
 
 
 </body>

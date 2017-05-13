@@ -25,7 +25,8 @@ namespace VehicleAppMVC.Models
 
     public class Notification
     {
-            //Enums
+        /*
+        //Enums
     public enum eNotificationTitle
     {
         [Display(Name = "Vehicle Birthday")] VehicleBirthday,
@@ -35,7 +36,7 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Motor Tax Date Renewal")] MotorTaxDateRenewal,
         [Display(Name = "Service Mileage Notification")] ServiceMileageNotification
     }
-
+    */
         //Property			                    //auto-implemented ReadWrite
         public int NotificationID { get; set; }                     //PK
         public string ApplicationUserId { get; set; }               //FK to AspNetUsers UserId 
@@ -48,12 +49,14 @@ namespace VehicleAppMVC.Models
         public eNotificationType NotificationType { get; set; }     //Enum Type
 
         [Required(ErrorMessage = "Notification Date is required")]   //Not null or empty string
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Notification Date")]
         public DateTime NotificationDate { get; set; }
 
         [Required(ErrorMessage = "Notification Send Date is required")]   //Not null or empty string
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Send Date")]
         public DateTime NotificationSendDate { get; set; }
 
