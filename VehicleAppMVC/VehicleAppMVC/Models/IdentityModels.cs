@@ -15,9 +15,9 @@ namespace VehicleAppMVC.Models
 
     public enum eVehicleUnits           //Enum Type
     {                
-        [Display(Name = "Km - Litres - L/100Km")] KM,
-        [Display(Name = "Miles - UK Gal - UK Mpg")] MilesUK,
-        [Display(Name = "Miles - US Gal - US Mpg")] MilesUS
+        [Display(Name = "€ - Km - Litres - L/100Km")] KM,
+        [Display(Name = "£ - Miles - UK Gal - UK Mpg")] MilesUK,
+        [Display(Name = "$ - Miles - US Gal - US Mpg")] MilesUS
     }
 
 
