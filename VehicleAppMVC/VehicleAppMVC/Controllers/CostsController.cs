@@ -19,7 +19,7 @@ namespace VehicleAppMVC.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Costs
-        public async Task<ActionResult> Index(string sortOrder, string searchString)
+        public async Task<ActionResult> Index(string sortOrder, string searchString, DateTime? startDate, DateTime? finishDate)
         {
 
             //Add Filtering
@@ -42,6 +42,12 @@ namespace VehicleAppMVC.Controllers
                                             ||
                                          s.CostDate.ToString().Contains(searchString.ToUpper())
                 ); ;
+            }
+
+            //Add a Dynamic Date Range             
+            if (((startDate != null)) && ((finishDate != null)))
+            {
+                costs = costs.Where(s => s.CostDate >= startDate).Where(s => s.CostDate <= finishDate);
             }
 
 

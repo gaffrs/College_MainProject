@@ -64,13 +64,16 @@
     @Html.ActionLink("Add Cost", "Create")
 </p>
 
-
-@*Add a Search Box to the Hire View*@
+@*Add a Search Box*@
 @using (Html.BeginForm())
 {
     <p>
-        Find by Title or Registration or Year: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search by Registration/Description/Year" />
+    </p>
+    <p>
+        @Html.TextBox("StartDate", "Start Date")  @Html.TextBox("FinishDate", "Finish Date")
+        <input type="submit" value="Search by Date Range" />
     </p>
 }
 

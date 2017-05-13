@@ -19,30 +19,96 @@ namespace VehicleAppMVC.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Notifications
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string sortOrder, string searchString, DateTime? startDate, DateTime? finishDate)
         {
-            var currentUserId = User.Identity.GetUserId();  //CG: Get the UserId of user logged in 
-            var notifications = db.Notifications.Where(v => v.ApplicationUserId == currentUserId);    //CG: Edited
-            return View(await notifications.ToListAsync());
-        }
-        /*
-        {
+            //var currentUserId = User.Identity.GetUserId();  //CG: Get the UserId of user logged in 
+            //var notifications = db.Notifications.Where(v => v.ApplicationUserId == currentUserId);    //CG: Edited
 
-            var vehicles = db.Vehicles.Where(v => v.ApplicationUserId == currentUserId);    //CG: Edited
-            return View(await vehicles.ToListAsync());
-        }*/
+            //Add Filtering
+            ViewBag.NameSortParmNotificationTitle = String.IsNullOrEmpty(sortOrder) ? "NotificationTitle_ascending" : "NotificationTitle_descending";                  // "vehicle_registration_descending"
+            ViewBag.NameSortParmNotificationType = String.IsNullOrEmpty(sortOrder) ? "NotificationType_ascending" : "NotificationType_descending";                      // "cost_title_descending"
+            ViewBag.DateSortParmNotificationDate = sortOrder == "NotificationDate" ? "NotificationDate_descending" : "NotificationDate";
 
-        /*      // Original
-                // GET: Notifications
-                public async Task<ActionResult> Index()
-                {
-                    var notifications = db.Notifications.Include(n => n.ApplicationUser);
+
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            //To return Notificals for Vehicles for ONLY the Logged in User
+            var notifications = from s in db.Notifications.Where(v => v.ApplicationUserId == currentUserId)    //CG: Edited
+                                select s;
+
+
+
+            //Add a Search Box to the Cost View  (Search by Title, Type or Year)
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                notifications = notifications.Where(s => s.NotificationTitle.ToString().Contains(searchString.ToUpper())
+                                            ||
+                                         s.NotificationType.ToString().ToUpper().Contains(searchString.ToUpper())
+                                            ||
+                                         s.NotificationDate.ToString().Contains(searchString.ToUpper())
+                ); ;
+            }
+
+            //Add a Dynamic Date Range             
+            if (((startDate != null)) && ((finishDate != null)))
+            {
+                notifications = notifications.Where(s => s.NotificationDate >= startDate).Where(s => s.NotificationDate <= finishDate);
+            }
+
+
+            switch (sortOrder)
+            {
+                case "NotificationTitle_ascending":
+                    notifications = notifications.OrderBy(s => s.NotificationTitle);
+                    break;
+
+                case "NotificationTitle_descending":
+                    notifications = notifications.OrderByDescending(s => s.NotificationTitle);
+                    break;
+
+                case "NotificationType_ascending":
+                    notifications = notifications.OrderBy(s => s.NotificationType);
+                    break;
+
+                case "NotificationType_descending":
+                    notifications = notifications.OrderByDescending(s => s.NotificationType);
+                    break;
+
+                case "NotificationDate":
+                    notifications = notifications.OrderBy(s => s.NotificationDate);
+                    break;
+
+                case "NotificationDate_descending":
+                    notifications = notifications.OrderByDescending(s => s.NotificationDate);
+                    break;
+
+                default:
+                    notifications = notifications.OrderBy(s => s.NotificationID);
+                    break;
+            }
+
                     return View(await notifications.ToListAsync());
-                }
-        */
+        }
 
-        // GET: Notifications/Details/5
-        public async Task<ActionResult> Details(int? id)
+
+
+    /*
+    {
+
+        var vehicles = db.Vehicles.Where(v => v.ApplicationUserId == currentUserId);    //CG: Edited
+        return View(await vehicles.ToListAsync());
+    }*/
+
+    /*      // Original
+            // GET: Notifications
+            public async Task<ActionResult> Index()
+            {
+                var notifications = db.Notifications.Include(n => n.ApplicationUser);
+                return View(await notifications.ToListAsync());
+            }
+    */
+
+    // GET: Notifications/Details/5
+    public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {

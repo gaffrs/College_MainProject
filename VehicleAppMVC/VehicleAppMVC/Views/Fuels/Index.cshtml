@@ -83,17 +83,15 @@
         </th>
 
         
-        <th>
+        <th>FIX THIS
             @*CG: Calculate Max Cost for the View*@
 @*            @(@Model.FirstOrDefault() == null ? "" : @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Max().ToString("#.##"))      *@
         </th>
 
-        <th>
+        <th>FIX THIS
         @*CG: Calculate Min Cost for the View*@
 @*            @(@Model.FirstOrDefault() == null ? "" : @Model.Where(x => x.FuelConsumption > 0).Select(x => x.FuelConsumption).Min().ToString("#.##"))      *@
         </th>
-
-
     </tr>
     <tr></tr>
 </table>
@@ -113,13 +111,16 @@
 
 
 
-@*Add a Search Box to the Hire View*@
+@*Search fields*@
 @using (Html.BeginForm())
 {
     <p>
-        Enter Registration or Year:     @Html.TextBox("SearchString")
-        Enter Date Range:  Start Date @Html.TextBox("StartDate")  Finish Date @Html.TextBox("FinishDate")
-        <input type="submit" value="Search" />
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search by Registration/Year" />
+    </p>
+    <p>
+        @Html.TextBox("StartDate", "Start Date")  @Html.TextBox("FinishDate", "Finish Date")
+        <input type="submit" value="Search by Date Range" />
     </p>
 }
 
@@ -136,20 +137,11 @@
         <th>
             @Html.ActionLink("Fuel Date", "Index", new { sortOrder = ViewBag.DateSortParmDate })
         </th>
-
-        @*
-            @Html.DisplayNameFor(model => model.Vehicle.VehicleRegistrationNumber)      @*CG: Edited*@
-        @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)
-        *@
         @*
             <th>
                 @Html.DisplayNameFor(model => model.FuelDate)
             </th>
         *@
-
-
-
-
         <th>
             @Html.DisplayNameFor(model => model.FuelOdometerMileage)
         </th>

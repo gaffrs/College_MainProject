@@ -21,7 +21,7 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Service Mileage Notification")] ServiceMileageNotification
     }
 
-    public enum eNotificationType { SMS, Email }
+    public enum eNotificationType { Email, SMS}
 
     public class Notification
     {
