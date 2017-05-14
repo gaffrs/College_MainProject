@@ -138,13 +138,26 @@ namespace VehicleAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "CostID,VehicleID,CostTitle,CostDate,CostOdometerMileage,CostRunningCost,CostStartDate,CostEndDate,CostTotalRunningCost")] Cost cost)		
 		{
+
+            // Validation check to ensure value is > 0 last CostRunningCost
+            if (cost.CostRunningCost == 0)
+            {
+                ModelState.AddModelError("CostRunningCost", "Must be greater than 0");
+            }
+
+            // Validation check to ensure value is > 0 last CostOdometerMileage
+            if (cost.CostOdometerMileage == 0)
+            {
+                ModelState.AddModelError("CostOdometerMileage", "Must be greater than 0");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Costs.Add(cost);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
             ViewBag.VehicleID = new SelectList(db.Vehicles.Where(v => v.ApplicationUserId == currentUserId), "VehicleID", "VehicleRegistrationNumber", cost.VehicleID);  //CG: Edited
             //ViewBag.VehicleID = new SelectList(db.Vehicles, "VehicleID", "ApplicationUserId", cost.VehicleID);
 
@@ -154,11 +167,13 @@ namespace VehicleAppMVC.Controllers
         // GET: Costs/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Cost cost = await db.Costs.FindAsync(id);
+
             if (cost == null)
             {
                 return HttpNotFound();
@@ -175,6 +190,19 @@ namespace VehicleAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "CostID,VehicleID,CostTitle,CostDate,CostOdometerMileage,CostRunningCost,CostStartDate,CostEndDate")] Cost cost)
         {
+
+            // Validation check to ensure value is > 0 last CostRunningCost
+            if (cost.CostRunningCost == 0)
+            {
+                ModelState.AddModelError("CostRunningCost", "Must be greater than 0");
+            }
+
+            // Validation check to ensure value is > 0 last CostOdometerMileage
+            if (cost.CostOdometerMileage == 0)
+            {
+                ModelState.AddModelError("CostOdometerMileage", "Must be greater than 0");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(cost).State = EntityState.Modified;

@@ -150,12 +150,12 @@ namespace VehicleAppMVC.Controllers
 
             if (notification.NotificationSendDate >= notification.NotificationDate)
             {
-                ModelState.AddModelError("NotificationSendDate", "Send Date cannot be before Notification Date");
+                ModelState.AddModelError("NotificationSendDate", "Send Date must be before Notification Date");
             }
 
             if (notification.NotificationSendDate <= DateTime.Now)
             {
-                ModelState.AddModelError("NotificationSendDate", "Send Date cannot must occur after today");
+                ModelState.AddModelError("NotificationSendDate", "Send Date must occur after today");
             }
 
             if (ModelState.IsValid)
@@ -211,6 +211,16 @@ namespace VehicleAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "NotificationID,ApplicationUserId,NotificationDate,NotificationSendDate,NotificationType,NotificationTitle")] Notification notification)
         {
+            if (notification.NotificationSendDate >= notification.NotificationDate)
+            {
+                ModelState.AddModelError("NotificationSendDate", "Send Date must be before Notification Date");
+            }
+
+            if (notification.NotificationSendDate <= DateTime.Now)
+            {
+                ModelState.AddModelError("NotificationSendDate", "Send Date must occur after today");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(notification).State = EntityState.Modified;
