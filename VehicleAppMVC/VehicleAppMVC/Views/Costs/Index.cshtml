@@ -27,7 +27,9 @@
 
     <tr>
         <th>
-            Cost:
+            Cost
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
+            :
         </th>
         <th>
             @*CG: Calculate Total Cost for the View*@
@@ -106,17 +108,20 @@
         *@
         <th>
             @Html.DisplayNameFor(model => model.CostOdometerMileage)
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[1]).FirstOrDefault().ToString())
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CostRunningCost)
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
         </th>
 
 
-        @*
-            <th>
-                @Html.DisplayNameFor(model => model.CostTotalRunningCost)
-            </th>
-            @Model.Sum(x => x.CostRunningCost)*@
+                @*
+        <th>
+            @Html.DisplayNameFor(model => model.CostTotalRunningCost)
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
+        </th>
+        @Model.Sum(x => x.CostRunningCost)*@
         <th></th>
     </tr>
 

@@ -25,7 +25,9 @@
 
     <tr>
         <th>
-            Cost:
+            Cost
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
+            :
         </th>
         <th>
             @*CG: Calculate Total Cost for the View*@
@@ -50,7 +52,9 @@
 
     <tr>
         <th>
-            Unit Price:
+            Unit Price
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
+            :
         </th>
         <th>
         </th>
@@ -72,7 +76,9 @@
 
     <tr>
         <th>
-            Consumption :
+            Consumption 
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[3]).FirstOrDefault().ToString())
+            :
         </th>
         <th>
         </th>
@@ -143,21 +149,26 @@
         *@
         <th>
             @Html.DisplayNameFor(model => model.FuelOdometerMileage)
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[1]).FirstOrDefault().ToString())
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FuelQuantity)
+            @(@Model.FirstOrDefault() == null ? "" :@Model.Select(x => x.Vehicle.Consumption[2]).FirstOrDefault().ToString())
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FuelUnitPrice)
+            @(@Model.FirstOrDefault() == null ? "" :@Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FuelCost)
+            @(@Model.FirstOrDefault() == null ? "" :@Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FuelPartialFill)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FuelConsumption)
+            @(@Model.FirstOrDefault() == null ? "" :@Model.Select(x => x.Vehicle.Consumption[3]).FirstOrDefault().ToString())
         </th>
         <th></th>
     </tr>
@@ -173,13 +184,13 @@
                 @Html.DisplayFor(modelItem => item.FuelDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuelOdometerMileage)
+                @Html.DisplayFor(modelItem => item.FuelOdometerMileage) 
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuelQuantity)
+                @Html.DisplayFor(modelItem => item.FuelQuantity) 
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FuelUnitPrice)
+                @Html.DisplayFor(modelItem => item.FuelUnitPrice) 
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FuelCost)
@@ -199,6 +210,8 @@
     }
 
 </table>
+
+
 
 
 @*Trying to show wht the users current settings are*@

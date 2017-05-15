@@ -81,45 +81,7 @@ public class ApplicationUser : IdentityUser
          */
 
 
-
-
-
-
-        /*
-                [DisplayName("Consumption Units")]
-                public string Consumption    //Read ONLY
-                {
-                    get                 // display the users consumption settions
-                    {
-                        string distance = "";
-                        string volume = "";
-                        string consumption = "";
-
-                        if (VehicleUnit == "Km - Litres - L/100Km")
-                        {
-                            distance = Km;
-                            volume = Litres;
-                            consumption = Lper100Km;
-
-                        }
-                        else if (VehicleUnit == "Miles - UK Gal - UK Mpg")
-                        {
-                            distance = Miles;
-                            volume = UK_Gal;
-                            consumption = UK_Mpg;
-                        }
-
-                        else
-                        {
-                            distance = Miles;
-                            volume = US_Gal;
-                            consumption = US_Mpg;
-                        }
-
-                        return distance + volume + consumption;
-                    }
-                }
-        */
+        
 
     }
     

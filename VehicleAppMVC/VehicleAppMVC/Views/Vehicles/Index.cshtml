@@ -1,5 +1,46 @@
 ﻿@model IEnumerable<VehicleAppMVC.Models.Vehicle>
 
+<table class="table-condensed" width="250" align="right" style="background-color :lightslategray">
+    <tr>
+        <th>
+            Vehicle Units
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Currency
+        </th>
+        <th>
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Consumption[0]).FirstOrDefault().ToString())
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Distance:
+        </th>
+        <th>
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Consumption[1]).FirstOrDefault().ToString())
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Volume:
+        </th>
+        <th>
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Consumption[2]).FirstOrDefault().ToString())        </th>
+    </tr>
+    <tr>
+        <th>
+            Consumption:
+        </th>
+        <th>
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Consumption[3]).FirstOrDefault().ToString())        
+        </th>
+    </tr>
+    <tr></tr>
+</table>
+
+
 @{
     ViewBag.Title = "Vehicle List";
 }
@@ -15,7 +56,7 @@
             @Html.DisplayNameFor(model => model.ApplicationUser)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VehicleMake)
+            @Html.DisplayNameFor(model => model.VehicleMake)  
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VehicleModel)
@@ -25,10 +66,15 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VehicleOdometerMileage)
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Consumption[1]).FirstOrDefault().ToString())
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SettingFuelType)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationUser.VehicleUnit)
+        </th>
+        
 @*
         <th>
             @Html.DisplayNameFor(model => model.SettingDistance)
@@ -65,6 +111,42 @@
             @Html.DisplayFor(modelItem => item.SettingFuelType)
         </td>
 @*
+        <td>
+            @Html.DisplayFor(modelItem => item.Consumption)
+        </td>
+*@
+
+
+@* Colm testing the units*@
+  @*
+    @Model.Select(x => x.Consumption[0]).FirstOrDefault().ToString()
+    @Model.Select(x => x.Consumption[1]).FirstOrDefault().ToString()
+    @Model.Select(x => x.Consumption[2]).FirstOrDefault().ToString()
+    @Model.Select(x => x.Consumption[3]).FirstOrDefault().ToString()
+
+
+    <th>
+        @Html.ValueFor(modelItem => item.Consumption[0])
+    </th>
+    <th>
+        @Html.ValueFor(modelItem => item.Consumption[1])
+    </th>
+    <th>
+        @Html.ValueFor(modelItem => item.Consumption[2])
+    </th>
+    <th>
+        @Html.ValueFor(modelItem => item.Consumption[3])
+    </th>
+*@
+        
+
+        @*
+    <th>
+        @Html.ValueFor(modelItem => item.Consumption.currency)
+    </th>
+        *@
+
+@*
     <td>
         @Html.DisplayFor(modelItem => item.SettingDistance)
     </td>
@@ -82,5 +164,6 @@
         </td>
     </tr>
 }
+
 
 </table>

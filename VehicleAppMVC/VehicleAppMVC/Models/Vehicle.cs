@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using System.Collections;
 
 namespace VehicleAppMVC.Models
 {
@@ -63,22 +64,96 @@ namespace VehicleAppMVC.Models
         [Required(ErrorMessage = "Fuel Type Setting is required")]  //Not null or empty string
         [Display(Name = "Vehicle Fuel type")]
         public eSettingFuelType SettingFuelType { get; set; }       //Enum Type
+
+
+        [DisplayName("Units")]
+        public ArrayList Consumption    //Read ONLY
+        {
+            get                 // display the users consumption settions
+            {
+                string currency = "";
+                string distance = "";
+                string volume = "";
+                string consumption = "";
+
+                if (ApplicationUser.VehicleUnit == eVehicleUnits.KM)
+                {
+                    currency = "(€)";
+                    distance = "(Km)";
+                    volume = "(Litres)";
+                    consumption = "(L/100Km)";
+                }
+                else
+                {
+                    if (ApplicationUser.VehicleUnit == eVehicleUnits.MilesUK)
+                    {
+                        currency = "(£)";
+                        distance = "(Miles)";
+                        volume = "(UK_Gal)";
+                        consumption = "(UK_Mpg)";
+                    }
+
+                    else
+                    {
+                        if (ApplicationUser.VehicleUnit == eVehicleUnits.MilesUS)
+                        {
+                            currency = "($)";
+                            distance = "(Miles)";
+                            volume = "(US_Gal)";
+                            consumption = "(US_Mpg)";
+                        }
+                    }
+                }
+                //return currency + distance + volume + consumption;
+
+                ArrayList list = new ArrayList();
+                list.Add(currency);
+                list.Add(distance);
+                list.Add(volume);
+                list.Add(consumption);
+
+                return list;
+
+
+            }
+
+        }
+
+        //public class List<string> MyUnits
 /*
- * //Below enums removed and put into Register as 1 field
-        [Required(ErrorMessage = "Distance Setting is required")]   //Not null or empty string
-        [Display(Name = "Distance unit")]
-        public eSettingDistance SettingDistance { get; set; }       //Enum Type
-
-        [Required(ErrorMessage = "Volume Setting is required")]     //Not null or empty string
-        [Display(Name = "Volume unit")]
-        public eSettingVolume SettingVolume { get; set; }           //Enum Type
-
-        [Required(ErrorMessage = "Consumption Setting is required")] //Not null or empty string
-        [Display(Name = "Consumption unit")]
-        public eSettingConsumption SettingConsumption { get; set; } //Enum Type
+        [NotMapped]
+public string CurrencyUnit { get; set; }
+[NotMapped]
+public string DistanceUnit { get; set; }
+[NotMapped]
+public string VolumeUnit { get; set; }
+[NotMapped]
+public string ConsunptionUnit { get; set; }
 */
-        //Navigation Property
-        [Display(Name = "Application User")]
+
+            /*
+                CurrencyUnit = currency;
+                DistanceUnit = distance;
+                VolumeUnit = volume;
+                ConsunptionUnit = consumption;
+                */
+
+    /*
+     * //Below enums removed and put into Register as 1 field
+            [Required(ErrorMessage = "Distance Setting is required")]   //Not null or empty string
+            [Display(Name = "Distance unit")]
+            public eSettingDistance SettingDistance { get; set; }       //Enum Type
+
+            [Required(ErrorMessage = "Volume Setting is required")]     //Not null or empty string
+            [Display(Name = "Volume unit")]
+            public eSettingVolume SettingVolume { get; set; }           //Enum Type
+
+            [Required(ErrorMessage = "Consumption Setting is required")] //Not null or empty string
+            [Display(Name = "Consumption unit")]
+            public eSettingConsumption SettingConsumption { get; set; } //Enum Type
+    */
+    //Navigation Property
+    [Display(Name = "Application User")]
         public virtual ApplicationUser ApplicationUser { get; set; }       //NOT a Collection, as a Vehicle associated to only One User     
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel
@@ -105,4 +180,8 @@ namespace VehicleAppMVC.Models
                 }
         */
     }
+
+
 }
+
+
