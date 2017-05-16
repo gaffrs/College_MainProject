@@ -26,6 +26,9 @@ namespace VehicleAppMVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //Colm added to get Charts
+            bundles.Add(new ScriptBundle("~/Bundles/Chart").Include("~/Scripts/Chart.js"));
         }
     }
 }
