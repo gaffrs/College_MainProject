@@ -240,7 +240,80 @@ namespace VehicleAppMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+            /*
+        [HttpGet]
+        public ActionResult ChartDataQuery()
+        {
+
+
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            //To return Costs for Vehicles for ONLY the Logged in User
+            var costs = from s in db.Costs.Include(c => c.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId)    //CG: Edited
+                        select s;
+
+            return View(costs);
+        }
+
+            */
+
+
+        /*//To try get Chart working
+        public async Task<ActionResult> ChartDataQuery()
+        {
+
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            //To return Costs for Vehicles for ONLY the Logged in User
+            var costs = from s in db.Costs.Include(c => c.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId)    //CG: Edited
+                        select s;
+
+            return View(await costs.ToListAsync());
+        }
+        */
+        /*
+                public ActionResult ChartDataQuery()
+                {
+                    List<string[]> data = new List<string[]>();
+                    data.Add(new[] { "Day", "Kasse", "Bonds", "Stocks", "Futures", "Options" });
+                    data.Add(new[] { "01.03.", "200", "500", "100", "0", "10" });
+                    data.Add(new[] { "01.03.", "300", "450", "150", "50", "30" });
+                    data.Add(new[] { "01.03.", "350", "200", "180", "80", "40" });
+                    return View(data);
+                }
+                */
+        /*
+                public JsonResult ChartDataQuery()
+                {
+                    List<string[]> data = new List<string[]>();
+                    data.Add(new[] { "name", "score" });
+                    data.Add(new[] { "xyz", "30" });
+                    data.Add(new[] { "aaa", "135", });
+                    //return Json(data);
+                    return Json(data, JsonRequestBehavior.AllowGet);
+                }
+                */
+/*
+            namespace Kendo.Mvc.Examples.Controllers
+    {
+        public partial class Line_ChartsController : Controller
+        {
+
+            public ActionResult Index()
+            {
+                return View();
+            }
+        }
+    }*/
+
+            public ActionResult ChartDataQuery()
+        {
+            int[] test = { 3, 5, 6, 7, 8, 9, 0 };
+            ViewBag.intArray = test;
+
+            return View();
+        }
+
+
+    protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
