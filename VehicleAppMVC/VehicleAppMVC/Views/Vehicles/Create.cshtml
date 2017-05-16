@@ -50,11 +50,28 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.VehicleOdometerMileage, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @*@Model.Consumption[0].ToString()*@
+    @*@Html.DisplayFor(m => m.[0].Consumption)*@
+             @*@Html.LabelFor(m => m[list].ArrayList Consumption)*@
+             @*@Model..Select(x => x.Vehicle.Consumption[1]).FirstOrDefault().ToString())*@
+            @*@Model.Select(x => x.Vehicle.Consumption[1]).FirstOrDefault().ToString())*@
+            @*@Html.DisplayFor(m => m.Consumption, iList[0])*@
+            @*@Html.LabelFor(model => model.Consumption.ToString(), htmlAttributes: new { @class = "control-label col-md-2" })*@
+            @*@Html.DisplayFor(model => model.iList[0])*@
+            @*@Html.ValueForModel("Consumption")*@
+            @*@Html.LabelFor(x => x.Consumption, Model.Consumption)*@
+            @*@Html.DisplayTextFor(model => model.Consumption.ToString());*@
+
             <div class="col-md-10">
                 @Html.EditorFor(model => model.VehicleOdometerMileage, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VehicleOdometerMileage, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        @*@Html.ValueFor(model => model.Consumption)*@
+        @*@@Html.DisplayFor(model => model[0].Consumption)*@
+        @*@Html.DisplayNameFor(ArrayList..Consumption..GetEnumerator.ToString())*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.SettingFuelType, htmlAttributes: new { @class = "control-label col-md-2" })
