@@ -119,41 +119,42 @@ namespace VehicleAppMVC.Models
 
         }
 
+
         //public class List<string> MyUnits
-/*
+        /*
+                [NotMapped]
+        public string CurrencyUnit { get; set; }
         [NotMapped]
-public string CurrencyUnit { get; set; }
-[NotMapped]
-public string DistanceUnit { get; set; }
-[NotMapped]
-public string VolumeUnit { get; set; }
-[NotMapped]
-public string ConsunptionUnit { get; set; }
-*/
+        public string DistanceUnit { get; set; }
+        [NotMapped]
+        public string VolumeUnit { get; set; }
+        [NotMapped]
+        public string ConsunptionUnit { get; set; }
+        */
 
-            /*
-                CurrencyUnit = currency;
-                DistanceUnit = distance;
-                VolumeUnit = volume;
-                ConsunptionUnit = consumption;
-                */
+        /*
+            CurrencyUnit = currency;
+            DistanceUnit = distance;
+            VolumeUnit = volume;
+            ConsunptionUnit = consumption;
+            */
 
-    /*
-     * //Below enums removed and put into Register as 1 field
-            [Required(ErrorMessage = "Distance Setting is required")]   //Not null or empty string
-            [Display(Name = "Distance unit")]
-            public eSettingDistance SettingDistance { get; set; }       //Enum Type
+        /*
+         * //Below enums removed and put into Register as 1 field
+                [Required(ErrorMessage = "Distance Setting is required")]   //Not null or empty string
+                [Display(Name = "Distance unit")]
+                public eSettingDistance SettingDistance { get; set; }       //Enum Type
 
-            [Required(ErrorMessage = "Volume Setting is required")]     //Not null or empty string
-            [Display(Name = "Volume unit")]
-            public eSettingVolume SettingVolume { get; set; }           //Enum Type
+                [Required(ErrorMessage = "Volume Setting is required")]     //Not null or empty string
+                [Display(Name = "Volume unit")]
+                public eSettingVolume SettingVolume { get; set; }           //Enum Type
 
-            [Required(ErrorMessage = "Consumption Setting is required")] //Not null or empty string
-            [Display(Name = "Consumption unit")]
-            public eSettingConsumption SettingConsumption { get; set; } //Enum Type
-    */
-    //Navigation Property
-    [Display(Name = "Application User")]
+                [Required(ErrorMessage = "Consumption Setting is required")] //Not null or empty string
+                [Display(Name = "Consumption unit")]
+                public eSettingConsumption SettingConsumption { get; set; } //Enum Type
+        */
+        //Navigation Property
+        [Display(Name = "Application User")]
         public virtual ApplicationUser ApplicationUser { get; set; }       //NOT a Collection, as a Vehicle associated to only One User     
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel
