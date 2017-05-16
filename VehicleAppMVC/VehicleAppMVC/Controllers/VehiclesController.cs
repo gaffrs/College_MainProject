@@ -73,6 +73,19 @@ namespace VehicleAppMVC.Controllers
             var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email").Where(v => v.Value == currentUserId);   //CG: Edited
             return View();
+            
+
+            //Marco Code
+            /*
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email").Where(v => v.Value == currentUserId);   //CG: Edited
+
+            var vv = new Vehicle();
+            vv.ApplicationUser = new ApplicationUser();
+            vv.ApplicationUser.VehicleUnit = eVehicleUnits.KM;
+            return View(vv);
+            */
+
         }
 
 
@@ -85,9 +98,9 @@ namespace VehicleAppMVC.Controllers
                 }
         */
 
-        // POST: Vehicles/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+            // POST: Vehicles/Create
+            // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+            // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "VehicleID,ApplicationUserId,VehicleMake,VehicleModel,VehicleRegistrationNumber,VehicleOdometerMileage,SettingFuelType,SettingDistance,SettingVolume,SettingConsumption")] Vehicle vehicle)
