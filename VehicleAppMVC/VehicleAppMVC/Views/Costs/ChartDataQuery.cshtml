@@ -1,27 +1,228 @@
 ﻿@*@model VehicleAppMVC.Models.Cost*@
+    @model IEnumerable<VehicleAppMVC.Models.Cost>
+
+
 
 @*
-@model IEnumerable<VehicleAppMVC.Models.Cost>
+    var costs = @Html.Raw(Json.Encode(Model))
+
+        Morris.Area({
+            element: 'morris-area-chart',
+            data: model.cost,
+            xkey: 'period',
+            ....
+            labels: model.Labels,
+            ....
+*@
+
+
+@*
+
+    // Any of the following formats may be used
+    var ctx = document.getElementById("myChart");
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var ctx = $("#myChart");
+    var ctx = "myChart";*@
+@*@
+
+    @{
+        ViewBag.Title = "Chart Page";
+    }
+
+    <h2>@ViewBag.Message</h2>
+    <p>
+        <img src="/Home/Chart" />
+    </p>
+*@
 
 @{
-
-    var myChart = new Chart(width: 500, height: 300, theme: ChartTheme.Green)
-        .AddTitle("Product Sales")
-        .AddSeries("Default",
-                   xValue: Model, xField: "CostRunningCost",
-                   yValues: Model, yFields: "CostID")
-        .Write("png");
+    ViewBag.Title = "Vehicle Graph";
 }
 
-@{
-    var myChartb = new Chart(width: 600, height: 400)
-        .AddTitle("Chart Title")
-        .AddSeries(
-            name: "Employee",
-            xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
-            yValues: new[] { "2", "6", "4", "5", "3" })
-        .Write();
-}*@
+<h2>@ViewBag.Title</h2>
+
+<div>
+    @Html.ActionLink("Back to Cost List", "Index")
+</div>
+
+<p>
+    <img src="/Home/Chart" />
+</p>
+
+<p>@Model.ToArray()</p>
+
+<p>
+    var count = @Model.Select(s => s.CostRunningCost).Count()
+</p>
+
+<p>
+    @Model.Select(s => s.CostRunningCost).ToArray()
+</p>
+
+<p>
+@foreach (var item in Model)
+{
+    @Html.DisplayFor(modelItem => item.CostRunningCost)
+    
+}
+</p>
+
+<canvas id="myChart" width="400" height="200"></canvas>
+<script>
+
+    var description = new Array();
+    description.push('a');
+    description.push('b');
+    var myvalues = new Array();
+    myvalues.push(1);
+    myvalues.push(10);
+    myvalues.push(4);
+    var dates = new Array();
+    dates.push("Monday");
+    dates.push("Tuesday");
+    dates.push("Wednesday");
+
+
+
+var ctx = "myChart";
+@*var ctx = document.getElementById("myChart");*@
+var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,          @*["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],*@
+            datasets: [{
+                label: description,  @*'# of Votes',*@
+                data: myvalues,      @*[1,23,3,4],*@
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+    </script>
+*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+    @model IEnumerable<VehicleAppMVC.Models.Cost>
+
+    @{
+
+        var myChart = new Chart(width: 500, height: 300, theme: ChartTheme.Green)
+            .AddTitle("Product Sales")
+            .AddSeries("Default",
+                       xValue: Model, xField: "CostRunningCost",
+                       yValues: Model, yFields: "CostID")
+            .Write("png");
+    }
+
+    @{
+        var myChartb = new Chart(width: 600, height: 400)
+            .AddTitle("Chart Title")
+            .AddSeries(
+                name: "Employee",
+                xValue: new[] { "Peter", "Andrew", "Julie", "Mary", "Dave" },
+                yValues: new[] { "2", "6", "4", "5", "3" })
+            .Write();
+    }*@
 
 @*
     @{
@@ -60,109 +261,109 @@
 
 *@
 @*
-               var tdata = new google.visualization.DataTable();
-               var rows = data.length;
-               var cols = data[0].length;
+    var tdata = new google.visualization.DataTable();
+    var rows = data.length;
+    var cols = data[0].length;
 
-               tdata.addColumn('string', data[0][0]);
-               for (var i = 1; i < cols; i++) {
-                   tdata.addColumn('number', data[0][i]);
-               }
-
-               tdata.addRows(data.length);
-               for (var i = 0; i < data.length; i++) {
-                   tdata.setCell(i, 0, data[i][0]);
-                   for (var j = 1; j < cols; j++) {
-                       var value = parseInt(data[i][j]);
-                       tdata.setCell(i, j, value);
-                   }
-               }
-    *@
-@*
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi "></script>
-<script type="text/javascript">
-// <![CDATA[
-    google.load("visualization", "1", { packages: ["corechart"] });
-    google.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-
-        $.post('ChartDataQuery', {},
-    function (data) {
-        var tdata = new google.visualization.DataTable();
-        var rows = data.length;
-        var cols = data[0].length;
-
-
-
-        tdata.addColumn('string', data[0][0]);
-        for (var i = 0; i < cols; i++) {
-            tdata.addColumn('number', data[0][i]);
-        }
-
-        tdata.addRows(data.length);
-        for (var i = 1; i < data.length; i++) {
-            tdata.setCell(i, 0, data[i][0]);
-            for (var j = 1; j < cols; j++) {
-                var value = parseInt(data[i][j]);
-                tdata.setCell(i, j, value);
-
-            }
-        }
-
-        var options = {
-            title: 'Employee Documentation  Perfomeance Chart',
-            isStacked: true,
-            width: 900,
-            height: 500,
-            vAxis: { title: "More Text" },
-            hAxis: { title: "Date" }
-        };
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(tdata, options);
-    });
-
+    tdata.addColumn('string', data[0][0]);
+    for (var i = 1; i < cols; i++) {
+        tdata.addColumn('number', data[0][i]);
     }
-// ]]></script>
+
+    tdata.addRows(data.length);
+    for (var i = 0; i < data.length; i++) {
+        tdata.setCell(i, 0, data[i][0]);
+        for (var j = 1; j < cols; j++) {
+            var value = parseInt(data[i][j]);
+            tdata.setCell(i, j, value);
+        }
+    }
+*@
+@*
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi "></script>
+    <script type="text/javascript">
+    // <![CDATA[
+        google.load("visualization", "1", { packages: ["corechart"] });
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            $.post('ChartDataQuery', {},
+        function (data) {
+            var tdata = new google.visualization.DataTable();
+            var rows = data.length;
+            var cols = data[0].length;
+
+
+
+            tdata.addColumn('string', data[0][0]);
+            for (var i = 0; i < cols; i++) {
+                tdata.addColumn('number', data[0][i]);
+            }
+
+            tdata.addRows(data.length);
+            for (var i = 1; i < data.length; i++) {
+                tdata.setCell(i, 0, data[i][0]);
+                for (var j = 1; j < cols; j++) {
+                    var value = parseInt(data[i][j]);
+                    tdata.setCell(i, j, value);
+
+                }
+            }
+
+            var options = {
+                title: 'Employee Documentation  Perfomeance Chart',
+                isStacked: true,
+                width: 900,
+                height: 500,
+                vAxis: { title: "More Text" },
+                hAxis: { title: "Date" }
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(tdata, options);
+        });
+
+        }
+    // ]]></script>
 *@
 
 @*
-@model VehicleAppMVC.Models.Cost
-@{
-    ViewBag.Title = "How To Create Dynamic Google Column Chart In an Asp.Net MVC Using C# and Javascript";
+    @model VehicleAppMVC.Models.Cost
+    @{
+        ViewBag.Title = "How To Create Dynamic Google Column Chart In an Asp.Net MVC Using C# and Javascript";
 
-}
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-
-    google.load("visualization", "1", { packages: ["corechart"] });
-    google.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-        // Create and populate the data table.
-        var years = [@Model.CostRunningCost];
-        var sales = [@Model.CostDate];
-        var Purchase = [@Model.CostOdometerMileage];
-
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', '@Model.CostRunningCost');
-        data.addColumn('number', '@Model.CostDate');
-        data.addColumn('number', '@Model.CostOdometerMileage');
-        for (i = 0; i < years.length; i++) {
-            data.addRow([years[i].toString(), sales[i], Purchase[i]]);
-        }
-        var options = {
-            title: 'Sale and Purchase Compare',
-            hAxis: { title: '@Model.CostRunningCost', titleTextStyle: { color: 'red'} }
-        };
-
-        var chart = newgoogle.visualization.ColumnChart(document.getElementById('chartdiv'));
-        chart.draw(data, options);
     }
-</script>
-<div id="chartdiv" style="width: 500px; height: 300px;">
-</div>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+        google.load("visualization", "1", { packages: ["corechart"] });
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Create and populate the data table.
+            var years = [@Model.CostRunningCost];
+            var sales = [@Model.CostDate];
+            var Purchase = [@Model.CostOdometerMileage];
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', '@Model.CostRunningCost');
+            data.addColumn('number', '@Model.CostDate');
+            data.addColumn('number', '@Model.CostOdometerMileage');
+            for (i = 0; i < years.length; i++) {
+                data.addRow([years[i].toString(), sales[i], Purchase[i]]);
+            }
+            var options = {
+                title: 'Sale and Purchase Compare',
+                hAxis: { title: '@Model.CostRunningCost', titleTextStyle: { color: 'red'} }
+            };
+
+            var chart = newgoogle.visualization.ColumnChart(document.getElementById('chartdiv'));
+            chart.draw(data, options);
+        }
+    </script>
+    <div id="chartdiv" style="width: 500px; height: 300px;">
+    </div>
 
 *@
 @*
@@ -213,167 +414,127 @@
 *@
 
 @*
-@{
-    ViewBag.Title = "Home Page";
+    @{
+        ViewBag.Title = "Home Page";
 
-    int[] result = ViewBag.intArray;
-    string test = "";
+        int[] result = ViewBag.intArray;
+        string test = "";
 
-    for (int i = 0; i <= result.Length - 1; i++)
-    {
-        if (i == 0)
+        for (int i = 0; i <= result.Length - 1; i++)
         {
-            test = test + result[i].ToString();
+            if (i == 0)
+            {
+                test = test + result[i].ToString();
+            }
+            else
+            {
+                test = test + "," + result[i].ToString();
+            }
+
         }
-        else
-        {
-            test = test + "," + result[i].ToString();
-        }
+
+        <canvas id="myChart" width="800" height="400"></canvas>
+
+        <script>
+    var result = "@test";
+            var resultsArray = result.split(',');
+            var context = $("#myChart").get(0).getContext("2d");
+
+        </script>
+
+                    var data = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+
+    datasets: [{
+
+    label: "My First dataset",
+    fillColor: "rgba(220,220,220,0,2)",
+    strokeColor: "rgba(220,220,220,1)",
+    pointColor: "rgba(220,220,220,1)",
+    pointStrokeColor: "#fff",
+    pointHighlightFill: "#fff",
+    pointHighlightStroke: "rgba(220,220,220,1)",
+    data: resultsArray
+
+    }]
+    }
+
+        var options = {
+    ///Boolean - Whether grid lines are shown across the chart
+    scaleShowGridLines: true,
+    //String - Colour of the grid lines
+    scaleGridLineColor: "rgba(0,0,0,.05)",
+    //Number - Width of the grid lines
+    scaleGridLineWidth: 1,
+    //Boolean - Whether the line is curved between points
+    bezierCurve: true,
+    //Number - Tension of the bezier curve between points
+    bezierCurveTension: 0.4,
+    //Boolean - Whether to show a dot for each point
+    pointDot: true,
+    //Number - Radius of each point dot in pixels
+    pointDotRadius: 4,
+    //Number - Pixel width of point dot stroke
+    pointDotStrokeWidth: 1,
+    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+    pointHitDetectionRadius: 20,
+    //Boolean - Whether to show a stroke for datasets
+    datasetStroke: true,
+    //Number - Pixel width of dataset stroke
+    datasetStrokeWidth: 2,
+    //Boolean - Whether to fill the dataset with a colour
+    datasetFill: true,
 
     }
 
-    <canvas id="myChart" width="800" height="400"></canvas>
 
-    <script>
-var result = "@test";
-        var resultsArray = result.split(',');
-        var context = $("#myChart").get(0).getContext("2d");
-
-    </script>
-
-                var data = {
-labels: ["January", "February", "March", "April", "May", "June", "July"],
-
-datasets: [{
-
-label: "My First dataset",
-fillColor: "rgba(220,220,220,0,2)",
-strokeColor: "rgba(220,220,220,1)",
-pointColor: "rgba(220,220,220,1)",
-pointStrokeColor: "#fff",
-pointHighlightFill: "#fff",
-pointHighlightStroke: "rgba(220,220,220,1)",
-data: resultsArray
-
-}]
-}
-
-    var options = {
-///Boolean - Whether grid lines are shown across the chart
-scaleShowGridLines: true,
-//String - Colour of the grid lines
-scaleGridLineColor: "rgba(0,0,0,.05)",
-//Number - Width of the grid lines
-scaleGridLineWidth: 1,
-//Boolean - Whether the line is curved between points
-bezierCurve: true,
-//Number - Tension of the bezier curve between points
-bezierCurveTension: 0.4,
-//Boolean - Whether to show a dot for each point
-pointDot: true,
-//Number - Radius of each point dot in pixels
-pointDotRadius: 4,
-//Number - Pixel width of point dot stroke
-pointDotStrokeWidth: 1,
-//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-pointHitDetectionRadius: 20,
-//Boolean - Whether to show a stroke for datasets
-datasetStroke: true,
-//Number - Pixel width of dataset stroke
-datasetStrokeWidth: 2,
-//Boolean - Whether to fill the dataset with a colour
-datasetFill: true,
-
-}
+        var myLineChart = new Chart(context).Line(data, options)
 
 
-    var myLineChart = new Chart(context).Line(data, options)
-
-
-}
+    }
 *@
 @*
-<canvas id="myChart" width="400" height="200"></canvas>
-<script>
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
             }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
         }
-    }
-});
-</script>
+    });
+    </script>
 
 *@
 
 
-<canvas id="myChart" width="400" height="200"></canvas>
-<script>
-var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: test@*[12, 19, 3, 5, 2, 3]*@,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
-</script>

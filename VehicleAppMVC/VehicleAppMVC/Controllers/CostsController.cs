@@ -239,22 +239,35 @@ namespace VehicleAppMVC.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        /*
 
-            /*
+                    [HttpGet]
+                    public ActionResult ChartDataQuery()
+                    {
+
+
+                        var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+                        //To return Costs for Vehicles for ONLY the Logged in User
+                        var costs = from s in db.Costs.Include(c => c.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId).Select( v => v.CostRunningCost).ToArray()    //CG: Edited
+                                    select s;
+
+                                return View(costs);
+                    }
+         */
+        /*
         [HttpGet]
         public ActionResult ChartDataQuery()
         {
 
 
             var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
-            //To return Costs for Vehicles for ONLY the Logged in User
-            var costs = from s in db.Costs.Include(c => c.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId)    //CG: Edited
+                                                               //To return Costs for Vehicles for ONLY the Logged in User
+            var costs = from s in db.Costs.Include(c => c.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId).ToArray()    //CG: Edited
                         select s;
 
             return View(costs);
         }
-
-            */
+        */
 
 
         /*//To try get Chart working
@@ -291,29 +304,78 @@ namespace VehicleAppMVC.Controllers
                     return Json(data, JsonRequestBehavior.AllowGet);
                 }
                 */
-/*
-            namespace Kendo.Mvc.Examples.Controllers
-    {
-        public partial class Line_ChartsController : Controller
-        {
-
-            public ActionResult Index()
+        /*
+                    namespace Kendo.Mvc.Examples.Controllers
             {
+                public partial class Line_ChartsController : Controller
+                {
+
+                    public ActionResult Index()
+                    {
+                        return View();
+                    }
+                }
+            }*/
+
+
+        /*
+               public async Task<ActionResult> ChartDataQuery(string sortOrder, string searchString, DateTime? startDate, DateTime? finishDate)
+               {
+                   var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+                   //To return Costs for Vehicles for ONLY the Logged in User
+                   var costs = from s in db.Costs.Include(c => c.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId)    //CG: Edited
+                               select s;
+
+                  return View(await costs.ToListAsync());
+               }
+       */
+        /*
+                public async Task<ActionResult> ChartDataQuery(string sortOrder, string searchString, DateTime? startDate, DateTime? finishDate)
+                {
+                    var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+                                                                       //To return Costs for Vehicles for ONLY the Logged in User
+                    var costs = from s in db.Costs.Include(c => c.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId).Select(s => s.CostRunningCost)    //CG: Edited
+                                select s;
+
+                    return View(await costs.ToListAsync());
+                }
+                */
+
+        /*
+                public async Task<ActionResult> ChartDataQuery(string sortOrder, string searchString, DateTime? startDate, DateTime? finishDate)
+                {
+                    var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+                    //To return Costs for Vehicles for ONLY the Logged in User
+                    var costs = from s in db.Costs.Include(c => c.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId).Select(s => s.CostRunningCost)    //CG: Edited
+                                select s;
+                    return View(await costs.ToListAsync());
+                }
+        */
+        /*
+                public ActionResult ChartDataQuery()
+
+            {
+
+                int[] test = { 3, 5, 6, 7, 8, 9, 0 };
+                ViewBag.intArray = test;
+
                 return View();
-            }
-        }
-    }*/
 
-            public ActionResult ChartDataQuery()
+            }*/
+
+        public async Task<ActionResult> ChartDataQuery(string sortOrder, string searchString, DateTime? startDate, DateTime? finishDate)
         {
-            int[] test = { 3, 5, 6, 7, 8, 9, 0 };
-            ViewBag.intArray = test;
+            var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
+            //To return Costs for Vehicles for ONLY the Logged in User
+            var costs = from s in db.Costs.Where(v => v.Vehicle.ApplicationUserId == currentUserId)   //CG: Edited
+                        select s;
 
-            return View();
+            return View(await costs.ToListAsync());
         }
 
 
-    protected override void Dispose(bool disposing)
+
+        protected override void Dispose(bool disposing)
         {
             if (disposing)
             {

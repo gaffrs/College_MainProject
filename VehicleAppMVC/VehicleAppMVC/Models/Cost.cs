@@ -10,8 +10,9 @@ using System.Data.Entity;                       //enables "DbContext"
 
 namespace VehicleAppMVC.Models
 {
-    //Enum costs
-    public enum eCostTitle { Insurance, Service, Tax, [Display(Name = "Testing: NCT or DOE")]Testing , Tyres }
+
+//Enum costs
+public enum eCostTitle { Insurance, Service, Tax, [Display(Name = "Testing: NCT or DOE")]Testing , Tyres }
 
     public class Cost
     {
