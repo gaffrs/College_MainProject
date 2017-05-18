@@ -1,8 +1,7 @@
 ﻿@model IEnumerable<VehicleAppMVC.Models.Cost>
 
-
 <table class="table-condensed" width="350" align="right" style="background-color :lightslategray">
- <tr>
+    <tr>
         <th>
             Cost statistics
         </th>
@@ -38,13 +37,13 @@
 
         <th>
             @*CG: Calculate Average Cost for the View*@
-            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.CostRunningCost).Average().ToString("#.##"))      @**€@Model.Select(x => x.CostRunningCost).Average().ToString("#.##") *@        
+            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.CostRunningCost).Average().ToString("#.##"))      @**€@Model.Select(x => x.CostRunningCost).Average().ToString("#.##") *@
         </th>
 
         <th>
             @*CG: Calculate Max Cost for the View*@
             @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.CostRunningCost).Max().ToString("#.##"))          @*€@Model.Select(x => x.CostRunningCost).Max().ToString("#.##")*@
-        </th >
+        </th>
 
         <th>
             @*CG: Calculate Min Cost for the View*@
@@ -117,12 +116,12 @@
         </th>
 
 
-                @*
-        <th>
-            @Html.DisplayNameFor(model => model.CostTotalRunningCost)
-            @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
-        </th>
-        @Model.Sum(x => x.CostRunningCost)*@
+        @*
+            <th>
+                @Html.DisplayNameFor(model => model.CostTotalRunningCost)
+                @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
+            </th>
+            @Model.Sum(x => x.CostRunningCost)*@
         <th></th>
     </tr>
 
@@ -156,116 +155,131 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.CostID })
             </td>
         </tr>
-        }
+    }
 
 </table>
 
+    <div id="myArrayCosts">@{
+            var myArrCosts = "";
+            var arrayListCosts = Model.Select(i => i.CostRunningCost).ToArray();
+            foreach (var item in arrayListCosts)
+            {
+                myArrCosts += @item.ToString() + ",";
+            }
+            myArrCosts = myArrCosts.Substring(0, myArrCosts.Length-1) +  "";
+            @Html.DisplayFor(m => myArrCosts);
+        }
+    </div>
 
 
+<div id="myArrayDates">
+    @{
+        var myArrDates = "";
+        var arrayListDates = Model.Select(i => i.CostDate).ToArray();
+        foreach (var item in arrayListDates)
+        {
+            myArrDates += @item.ToShortDateString().ToString() + ",";
+        }
+        myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
+    @Html.DisplayFor(m => myArrDates);
+}
+</div>
 
-@Model.Select(s => s.CostRunningCost).ToArray()
+<div id="myArrayReg">
+    @{
+        var myArrReg = "";
+        var arrayListReg = Model.Select(i => i.Vehicle.VehicleRegistrationNumber).Distinct().ToArray();     //Distinct used to select dinstinct Vehicles
+        foreach (var item in arrayListReg)
+        {
+            myArrReg += @item.ToString() + ",";
+        }
+        myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
+        @Html.DisplayFor(m => myArrReg);
+    }
+</div>
 
-return f;
+
 
 
 <canvas id="myChart" width="400" height="200"></canvas>
-<script>
+    <script>
+        /*
+                var colmArray = new Array()
+                colmArray.push(100);
+                colmArray.push(1000);
 
-    var description = new Array();
-    description.push('a');
-    description.push('b');
-    var myvalues = new Array();
-    myvalues.push(1);
-    myvalues.push(10);
+                 var description = new Array();
+                description.push('a');
+                 description.push('b');
+                 */
 
-    var costs = new Array(costs)
-    
+        //Takes the CostRunningCost list and splits them out into an array list
+        var mycostArr = new Array();
+        costValues = $('#myArrayCosts').text();
+        mycostArr = costValues.split(",");
 
-    var ctx = "myChart";
-    @*var ctx = document.getElementById("myChart");*@
-var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-                label: description,
-                data: myvalues,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+        //Takes the CostDate list and splits them out into an array list
+        var mydateArr = new Array();
+        dateValues = $('#myArrayDates').text();
+        mydateArr = dateValues.split(",");
+
+        //Takes the VehicleRegistrationNumber list and splits them out into an array list
+        var myregArr = new Array();
+        regValues = $('#myArrayReg').text();
+        myregArr = regValues.split(",");
+
+
+        var ctx = "myChart";
+        @*var ctx = document.getElementById("myChart");*@
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: mydateArr,
+                datasets: [{
+                    label: myregArr,
+                    data: mycostArr,
+                    backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
-    });
+        });
 </script>
 
 
-@*
-    @{
-        var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Green)
-            .AddTitle("Chart Title")
-            .AddSeries(
-                name: "ChartTitle",
-                xValue: new[] { "Col1", "Col2", "Col3", "Col4", "Col5" },
-                yValues: new[] { "2", "6", "4", "5", "3" })
-            .Write();
-    }
-*@
+                @*
+                    @{
+                        var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Green)
+                            .AddTitle("Chart Title")
+                            .AddSeries(
+                                name: "ChartTitle",
+                                xValue: new[] { "Col1", "Col2", "Col3", "Col4", "Col5" },
+                                yValues: new[] { "2", "6", "4", "5", "3" })
+                            .Write();
+                    }
+                *@
 
 
-
-        @{
-            ViewBag.Title = "Scatter Chart in MVC";
-        }
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript">
-            google.load("visualization", "1", { packages: ["corechart"] });
-            google.setOnLoadCallback(drawChart);
-            function drawChart() {
-                // Create and populate the data table.
-                var Sale = xxx@*[@Model.SaleValue]*@;
-                var Purchase = yyy @*[@Model.PurchaseValue]*@;
-
-                var data = new google.visualization.DataTable();
-                data.addColumn('number', 'colmx@*@Model.SaleTitle*@');
-                data.addColumn('number', 'colmy @*@Model.SaleTitle*@');
-                for (i = 0; i < Sale.length; i++) {
-                    data.addRow([Sale[i], Purchase[i]]);
-                }
-
-                var options = {
-                    title: 'Sale vs. Purchase Data',
-                    hAxis: { title: 'Sale', minValue: 0, maxValue: colm @*@Model.SaleValue*@ },
-                    vAxis: { title: 'Purchase', minValue: 0, maxValue: yyy @*@Model.PurchaseValue*@ },
-                    legend: 'none',
-
-                };
-
-                var chart = new google.visualization.ScatterChart(document.getElementById('divchart'));
-                chart.draw(data, options);
-            }
-        </script>
-        <div id="divchart" style="width: 400px; height: 200px;">
-        </div>

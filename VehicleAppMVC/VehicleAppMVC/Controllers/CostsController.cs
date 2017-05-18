@@ -81,9 +81,8 @@ namespace VehicleAppMVC.Controllers
                     costs = costs.Include(c => c.Vehicle).OrderBy(s => s.CostID);
                     break;
             }
-
             
-                return View(await costs.ToListAsync());
+            return View(await costs.ToListAsync());
         }
 
 

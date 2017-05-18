@@ -26,5 +26,10 @@ namespace VehicleAppMVC.Controllers
 
             return View();
         }
+//CG added to try get Charts working
+        public ActionResult ChartDisplay()
+        {
+            return View();
+        }
     }
 }
