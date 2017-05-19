@@ -1,6 +1,4 @@
-﻿
-@model VehicleAppMVC.Models.Cost
-
+﻿@model VehicleAppMVC.Models.Cost
 
 
 @{
@@ -21,7 +19,7 @@
         <h4>Enter Cost details</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+       
 @*CG: Added to return the VehicleID based on the Make*@
         <div class="form-group">
             @Html.LabelFor(model => model.VehicleID, "Vehicle Registration", htmlAttributes: new { @class = "control-label col-md-2" })
