@@ -78,7 +78,7 @@ namespace VehicleAppMVC.Controllers
                     break;
 
                 default:
-                    costs = costs.Include(c => c.Vehicle).OrderBy(s => s.CostID);
+                    costs = costs.Include(c => c.Vehicle).OrderBy(s => s.CostDate);
                     break;
             }
             

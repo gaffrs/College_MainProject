@@ -159,43 +159,55 @@
 
 </table>
 
+
+
     <div id="myArrayCosts">@{
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        {
             var myArrCosts = "";
             var arrayListCosts = Model.Select(i => i.CostRunningCost).ToArray();
             foreach (var item in arrayListCosts)
             {
                 myArrCosts += @item.ToString() + ",";
             }
-            myArrCosts = myArrCosts.Substring(0, myArrCosts.Length-1) +  "";
+
+            myArrCosts = myArrCosts.Substring(0, myArrCosts.Length - 1) + "";
             @Html.DisplayFor(m => myArrCosts);
+        }
         }
     </div>
 
 
 <div id="myArrayDates">
     @{
-        var myArrDates = "";
-        var arrayListDates = Model.Select(i => i.CostDate).ToArray();
-        foreach (var item in arrayListDates)
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
         {
-            myArrDates += @item.ToShortDateString().ToString() + ",";
+            var myArrDates = "";
+            var arrayListDates = Model.Select(i => i.CostDate).ToArray();
+            foreach (var item in arrayListDates)
+            {
+                myArrDates += @item.ToShortDateString().ToString() + ",";
+            }
+            myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
+            @Html.DisplayFor(m => myArrDates);
         }
-        myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
-    @Html.DisplayFor(m => myArrDates);
-}
+        }
 </div>
 
 <div id="myArrayReg">
     @{
-        var myArrReg = "";
-        var arrayListReg = Model.Select(i => i.Vehicle.VehicleRegistrationNumber).Distinct().ToArray();     //Distinct used to select dinstinct Vehicles
-        foreach (var item in arrayListReg)
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
         {
-            myArrReg += @item.ToString() + ",";
+            var myArrReg = "";
+            var arrayListReg = Model.Select(i => i.Vehicle.VehicleRegistrationNumber).Distinct().ToArray();     //Distinct used to select dinstinct Vehicles
+            foreach (var item in arrayListReg)
+            {
+                myArrReg += @item.ToString() + ",";
+            }
+            myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
+            @Html.DisplayFor(m => myArrReg);
         }
-        myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
-        @Html.DisplayFor(m => myArrReg);
-    }
+        }
 </div>
 
 
