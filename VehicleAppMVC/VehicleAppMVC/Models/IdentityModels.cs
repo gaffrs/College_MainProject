@@ -49,6 +49,9 @@ public class ApplicationUser : IdentityUser
         [DisplayName("Vehicle Unit Setting")]
         public eVehicleUnits VehicleUnit { get; set; }
 
+        public string StripeToken { get; set; }
+        public string StripeEmail { get; set; }
+
         //Below Added to get user to fill in settings on registration, so settings are for ALL their vehicles
         /*
                 //Units settings
@@ -81,7 +84,7 @@ public class ApplicationUser : IdentityUser
          */
 
 
-        
+
 
     }
     

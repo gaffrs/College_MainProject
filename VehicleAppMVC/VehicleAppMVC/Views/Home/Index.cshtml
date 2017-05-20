@@ -18,8 +18,8 @@
             class="stripe-button"
             data-key="@Model.StripePublishableKey" @*"pk_test_D3LtH2Aj6Gh6rLOQa3hOY7YW"*@
             data-amount="500"
-            data-name="My Vehicle Web Application Payment"
-            data-description="Widget"
+            data-name="My Vehicle Web"
+            data-description="Payment"
             data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
             data-locale="auto"
             data-zip-code="true"
@@ -30,34 +30,6 @@
 
 }
 
-
-
-
-
-
-
-
-    @*CG Stripe*@
-@*
-@using Stripe
-@using Microsoft.Extensions.Options
-@inject IOptions<StripeSettings>
-    Stripe
-
-    <form action="/Home/Charge" method="POST">
-        <article>
-            <label>Amount: $5.00</label>
-        </article>
-        <script src="//checkout.stripe.com/v2/checkout.js"
-                class="stripe-button"
-                data-key="@Stripe.Value.PublishableKey"
-                data-locale="auto"
-                data-description="Sample Charge"
-                data-amount="500">
-        </script>
-    </form>
-
-*@
 
 
 
