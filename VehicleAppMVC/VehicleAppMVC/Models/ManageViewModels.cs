@@ -83,4 +83,29 @@ namespace VehicleAppMVC.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+
+    //CG added to get Edit UserName & PhoneNumber
+    public class ChangeUsernameAndEmail
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email/UserName")]
+        public string UserName { get; set; }
+    }
+
+    //CG added to get Edit UserName & PhoneNumber
+    public class ChangePhonenumber
+    {
+        [Required(ErrorMessage = "The Mobile Phone Number must be provided to receive notifications")]
+        [Phone]
+        [Display(Name = "Mobile Phone Number")]
+        public string PhoneNumber { get; set; }
+    }
+
+
+
+
+
+
 }

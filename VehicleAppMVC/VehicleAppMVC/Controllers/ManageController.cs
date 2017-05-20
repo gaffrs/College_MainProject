@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using VehicleAppMVC.Models;
+using System.Data.Entity;
 
 namespace VehicleAppMVC.Controllers
 {
@@ -243,6 +244,74 @@ namespace VehicleAppMVC.Controllers
             AddErrors(result);
             return View(model);
         }
+
+
+
+        //CG added to Edit Username/email
+        // GET: /Manage/ChangeUsernameAndEmail
+        public ActionResult ChangeUsernameAndEmail()
+        {
+            return View();
+        }
+
+        // POST: /Manage/ChangeUsernameAndEmail
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeUsernameAndEmail(ChangeUsernameAndEmail model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+                ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+                user.UserName = model.UserName;
+                user.Email = model.UserName;
+                UserManager.Update(user);
+
+            if (user != null)
+            {
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                return RedirectToAction("Index", new { Message = "Username/Email has been changed"});
+            }
+
+            return View(model);
+        }
+
+
+        //CG added to Edit User
+        // GET: /Manage/ChangePhonenumber
+        public ActionResult ChangePhonenumber()
+        {
+            return View();
+        }
+
+
+        // POST: /Manage/ChangePhonenumber
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePhonenumber(ChangePhonenumber model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            user.PhoneNumber = model.PhoneNumber;
+            UserManager.Update(user);
+
+            if (user != null)
+            {
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
 
         //
         // GET: /Manage/SetPassword

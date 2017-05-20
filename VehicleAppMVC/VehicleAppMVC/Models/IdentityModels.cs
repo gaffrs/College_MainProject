@@ -106,7 +106,8 @@ public class ApplicationUser : IdentityUser
         public DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
         public DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
         public DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
-        
+
+
 
         /*
                 //CG NEW 20/04/17

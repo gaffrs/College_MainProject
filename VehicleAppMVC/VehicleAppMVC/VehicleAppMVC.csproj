@@ -382,6 +382,8 @@
     <Content Include="Views\Costs\ChartDataQuery.cshtml" />
     <Content Include="Views\Home\Charge.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
+    <Content Include="Views\Manage\ChangeUsernameAndEmail.cshtml" />
+    <Content Include="Views\Manage\ChangePhonenumber.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

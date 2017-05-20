@@ -23,6 +23,22 @@
             }
             ]
         </dd>
+        <dt>Username/Email:</dt>
+        <dd>
+            {
+                @Html.ActionLink("Change your Username/Email", "ChangeUsernameAndEmail")
+            }
+        </dd>
+        <dt>Phone Number:</dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+            {
+            @Html.ActionLink("Change your Phone Number", "ChangePhonenumber")
+            }
+        <dd>
+            
+        </dd>
+        </dd>
         <dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
@@ -36,7 +52,7 @@
              
              Uncomment the following block after you have set up two-factor authentication
         *@
-        @*  
+        @* 
             <dt>Phone Number:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None")
