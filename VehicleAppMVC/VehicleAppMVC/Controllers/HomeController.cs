@@ -1,17 +1,26 @@
-﻿using Stripe;
+﻿using Microsoft.AspNet.Identity;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using VehicleAppMVC.Models;
+
+
+
 
 namespace VehicleAppMVC.Controllers
 {
     public class HomeController : Controller
     {
+
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+
         //CG Removed to use Stripe
         /*
         public ActionResult Index()
@@ -44,7 +53,7 @@ namespace VehicleAppMVC.Controllers
             return View(model);
         }
 
-
+/*
         // Stripe 
         [HttpPost]
         [ValidateAntiForgeryToken()]
@@ -54,7 +63,32 @@ namespace VehicleAppMVC.Controllers
             Debug.WriteLine(chargeViewModel.StripeToken);
             return RedirectToAction("Confirmation");
         }
-        public  ActionResult Confirmation()
+*/
+
+        // Stripe 
+        [HttpPost]
+        [ValidateAntiForgeryToken()]
+        public ActionResult Charge(ChargeViewModel chargeViewModel)
+        {
+            Debug.WriteLine(chargeViewModel.StripeEmail);
+            Debug.WriteLine(chargeViewModel.StripeToken);
+/*
+            if (ModelState.IsValid)
+            {
+
+                db.Entry(chargeViewModel).State = System.Data.Entity.EntityState.Modified;
+                            //.Users.Add(chargeViewModel.StripeEmail);
+                            //db.Users.Add(chargeViewModel.StripeToken);
+                db.SaveChangesAsync();
+            }
+*/
+            
+                return RedirectToAction("Confirmation");
+        }
+
+
+
+    public  ActionResult Confirmation()
         {
             return View();
         }

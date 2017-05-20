@@ -37,6 +37,7 @@ public class ApplicationUser : IdentityUser
 
 
 
+
         //Navigation Property       //CG added
         /*
         public virtual ICollection<Vehicle> Vehicles { get; set; }
@@ -105,6 +106,7 @@ public class ApplicationUser : IdentityUser
         public DbSet<VehicleAppMVC.Models.Cost> Costs { get; set; }
         public DbSet<VehicleAppMVC.Models.Fuel> Fuels { get; set; }
         public DbSet<VehicleAppMVC.Models.Notification> Notifications { get; set; }
+        
 
         /*
                 //CG NEW 20/04/17

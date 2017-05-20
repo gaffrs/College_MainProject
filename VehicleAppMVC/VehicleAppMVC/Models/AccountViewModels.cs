@@ -164,4 +164,16 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class StripeSettings
+    {
+        //public string SecretKey { get; set; }
+        public string StripePublishableKey { get; set; }
+    }
+
+    public class ChargeViewModel
+    {
+        public string StripeToken { get; set; }
+        public string StripeEmail { get; set; }
+    }
 }
