@@ -159,14 +159,6 @@ namespace VehicleAppMVC.Models
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel
 
-        //ToString()
-        public override string ToString()
-        {
-            return "Vehicle ID: " + VehicleID + ", Vehicle  Make: " + VehicleMake + ", Vehicle  Model: " + VehicleModel +
-                ", Vehicle Registration Number: " + VehicleRegistrationNumber + ", Vehicle Odometer: " + VehicleOdometerMileage +
-                ", Vehicle Fuel Type: " + SettingFuelType /*+ ", Distance unit: " + SettingDistance + ", Volume unit: " + SettingVolume +
-                ", Consumption Unit: " + SettingConsumption*/;
-        }
 
         /*
                 static void Main()

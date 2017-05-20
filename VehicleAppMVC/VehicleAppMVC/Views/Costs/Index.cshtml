@@ -114,14 +114,6 @@
             @Html.DisplayNameFor(model => model.CostRunningCost)
             @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
         </th>
-
-
-        @*
-            <th>
-                @Html.DisplayNameFor(model => model.CostTotalRunningCost)
-                @(@Model.FirstOrDefault() == null ? "" : @Model.Select(x => x.Vehicle.Consumption[0]).FirstOrDefault().ToString())
-            </th>
-            @Model.Sum(x => x.CostRunningCost)*@
         <th></th>
     </tr>
 
@@ -144,10 +136,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CostRunningCost)
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.CostTotalRunningCost)*@
-                @*@Model.Sum(x => x.CostRunningCost)*@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CostID }) |

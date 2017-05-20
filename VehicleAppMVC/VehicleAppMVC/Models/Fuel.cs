@@ -56,13 +56,8 @@ namespace VehicleAppMVC.Models
                 return cost;
             }
         }
-        /*
-        [Display(Name = "Total Fuel Cost: €")]
-        public double FuelTotalFuelCost { get; }
-        */
 
         //Navigation Property
-
         public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Fuel associated to only One Vehicle
                                                                       /*
                                                                       //Partial fill = true
@@ -73,30 +68,10 @@ namespace VehicleAppMVC.Models
                                                                       */
 
 
-        //ToString()
-        public override string ToString()
-        {
-            return "Fuel ID: " + FuelID + ", Fuel Date: " + FuelDate + ", Fuel Odometer: " + FuelOdometerMileage +
-                ", Fuel Quantity: " + FuelQuantity + ", Fuel Price: " + FuelUnitPrice + ", Partial Fill: " + FuelPartialFill
-                 + ", Fuel Consumption: " + FuelConsumption + ", Fuel Cost: " + FuelCost;
-        }
 
     }
 }
 
-//need to adjust this for Partial fills *********************************
-/*
-public double CalcFuelConsumption()
-{
-    return FuelConsumption = FuelOdometerMileage / FuelQuantity;
-}
-*/
-/*
-        public double CalcFuelCost()
-        {
-            return FuelCost = FuelQuantity * FuelUnitPrice;
-        }
-*/
 
 
 
@@ -149,50 +124,4 @@ public double CalcFuelConsumption()
         }
         */
 
-/*
-        //Method to implement
-        public virtual void FuelAddFillFull()
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public virtual void FuelAddFillPartial()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void FuelConsumptionBest()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void FuelConsumptionAverage()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void FuelConsumptionWorst()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void FuelCostTotal()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void FuelCostBest()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void FuelCostAverage()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void FuelCostWorst()
-        {
-            throw new System.NotImplementedException();
-        }
-        */

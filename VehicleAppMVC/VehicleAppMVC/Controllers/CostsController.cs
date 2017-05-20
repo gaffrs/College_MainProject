@@ -135,7 +135,7 @@ namespace VehicleAppMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CostID,VehicleID,CostTitle,CostDate,CostOdometerMileage,CostRunningCost,CostStartDate,CostEndDate,CostTotalRunningCost")] Cost cost)		
+        public async Task<ActionResult> Create([Bind(Include = "CostID,VehicleID,CostTitle,CostDate,CostOdometerMileage,CostRunningCost,CostStartDate,CostEndDate")] Cost cost)		
 		{
 
             // Validation check to ensure value is > 0 last CostRunningCost

@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-
 using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] etc
 using System.Data.Entity;                       //enables "DbContext"
 
-
 namespace VehicleAppMVC.Models
 {
-
 //Enum costs
 public enum eCostTitle { Insurance, Service, Tax, [Display(Name = "Testing: NCT or DOE")]Testing , Tyres }
 
@@ -38,72 +35,9 @@ public enum eCostTitle { Insurance, Service, Tax, [Display(Name = "Testing: NCT 
         [DisplayFormat(DataFormatString = "{0:#.##}")]
         [Display(Name = "Cost amount")]
         public double CostRunningCost { get; set; }
-
-        /* //Removed as not required
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Start Date")]
-        public DateTime CostStartDate { get; set; }
-        */
-
-        /* //Removed as not required
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
-        [Display(Name = "End Date")]
-        public DateTime CostEndDate { get; set; }
-        */
-        //[DisplayFormat(NullDisplayText = "", ApplyFormatInEditMode = true)]
-        [Display(Name = "Total Running Cost: €")]
-        public double CostTotalRunningCost { get; }
-
-
-        /* Old
-        [Display(Name = "Total running cost")]
-        public double CostTotalRunningCost
-        {
-             get
-             {
-                 double totalCost = 0;
-                 totalCost += CostRunningCost;
-                 return totalCost;
-             }
-         }
-         * */
-
-
+ 
         //Navigation Property
         public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Cost associated to only One Vehicle
 
-
-        //ToString()
-        public override string ToString()
-        {
-            return "Cost ID: " + CostID + ", Cost Date: " + CostDate + ", Cost Odometer: " + CostOdometerMileage +
-                ", Cost Title: " + CostTitle + ", Running Cost: " + CostRunningCost + ", Cost Year: " + CostYear;
-        }
-
-        //Values retuned from Methods
-        [Display(Name = "Running Cost Year")]
-        public DateTime CostYear { get; }
-
-        /*
-        //Method
-        public virtual void CostsAddRunning()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void CostTotal()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void CostAnnual()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public virtual void CostDynamic()
-        {
-            throw new System.NotImplementedException();
-        }*/
     }
 }

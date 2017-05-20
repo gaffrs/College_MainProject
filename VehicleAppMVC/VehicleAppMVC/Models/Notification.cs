@@ -60,30 +60,9 @@ namespace VehicleAppMVC.Models
         [Display(Name = "Send Date")]
         public DateTime NotificationSendDate { get; set; }
 
-
         //Navigation Property
         [Display(Name = "Application User")]
         public virtual ApplicationUser ApplicationUser { get; set; }
- 
-        //ToString()
-        public override string ToString()
-        {
-            return "Notification ID: " + NotificationID + ", Notification Date: " + NotificationDate + ", Notification Send Date: " + NotificationSendDate +
-                ", Notification Type: " + NotificationType + ", Notification Title: " + NotificationTitle;
-        }
 
-        /*
-                //Method
-
-                public virtual void NotificationSMS()
-                {
-                    throw new System.NotImplementedException();
-                }
-
-                public virtual void NotificationEmail()
-                {
-                    throw new System.NotImplementedException();
-                }
-        */
     }
 }
