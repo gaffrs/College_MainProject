@@ -3,6 +3,7 @@ using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -64,11 +65,11 @@ namespace VehicleAppMVC.Controllers
             return RedirectToAction("Confirmation");
         }
 */
-
+/*
         // Stripe 
         [HttpPost]
         [ValidateAntiForgeryToken()]
-        public ActionResult Charge(ChargeViewModel chargeViewModel)
+        public ActionResult Charge(([Bind(Include = "ID,StripeEmail,StripeToken")] ChargeViewModel chargeViewModel)
         {
             Debug.WriteLine(chargeViewModel.StripeEmail);
             Debug.WriteLine(chargeViewModel.StripeToken);
@@ -81,14 +82,13 @@ namespace VehicleAppMVC.Controllers
                             //db.Users.Add(chargeViewModel.StripeToken);
                 db.SaveChangesAsync();
             }
-*/
+
             
                 return RedirectToAction("Confirmation");
         }
-
-
-
-    public  ActionResult Confirmation()
+*/
+ 
+        public  ActionResult Confirmation()
         {
             return View();
         }
