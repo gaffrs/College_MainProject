@@ -227,3 +227,494 @@
     </dt>
 *@
 
+
+
+@*Fuel Consumptions Graph*@
+
+<div id="myArrayCostsConsumptions">
+    @{
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        {
+            var myArrCosts = "";
+            var arrayListCosts = Model.OrderBy(i => i.FuelDate).Where(i => i.FuelConsumption >0).Select(i => i.FuelConsumption).ToArray();
+            foreach (var item in arrayListCosts)
+            {
+                myArrCosts += @item.ToString() + ",";
+            }
+
+            myArrCosts = myArrCosts.Substring(0, myArrCosts.Length - 1) + "";
+            @Html.DisplayFor(m => myArrCosts);
+        }
+    }
+</div>
+
+
+<div id="myArrayDatesConsumptions">
+    @{
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        {
+            var myArrDates = "";
+            var arrayListDates = Model.OrderBy(i => i.FuelDate).Where(i => i.FuelConsumption > 0).Select(i => i.FuelDate).ToArray();
+            foreach (var item in arrayListDates)
+            {
+                myArrDates += @item.ToShortDateString().ToString() + ",";
+            }
+            myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
+            @Html.DisplayFor(m => myArrDates);
+        }
+    }
+</div>
+
+<div id="myArrayRegConsumptions">
+    @{
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        {
+            var myArrReg = "";
+            var arrayListReg = Model.OrderBy(i => i.FuelDate).Select(i => i.Vehicle.VehicleRegistrationNumber).Distinct().ToArray();     //Distinct used to select dinstinct Vehicles
+            foreach (var item in arrayListReg)
+            {
+                myArrReg += @item.ToString() + ",";
+            }
+            myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
+            @Html.DisplayFor(m => myArrReg);
+        }
+    }
+</div>
+
+
+
+
+<canvas id="myChartConsumptions" width="400" height="150"></canvas>
+<script>
+        /*
+                var colmArray = new Array()
+                colmArray.push(100);
+                colmArray.push(1000);
+
+                 var description = new Array();
+                description.push('a');
+                 description.push('b');
+                 */
+
+        //Takes the CostRunningCost list and splits them out into an array list
+        var mycostArr = new Array();
+        costValues = $('#myArrayCostsConsumptions').text();
+        mycostArr = costValues.split(",");
+
+        //Takes the CostDate list and splits them out into an array list
+        var mydateArr = new Array();
+        dateValues = $('#myArrayDatesConsumptions').text();
+        mydateArr = dateValues.split(",");
+
+        //Takes the VehicleRegistrationNumber list and splits them out into an array list
+        var myregArr = new Array();
+        regValues = $('#myArrayRegConsumptions').text();
+        myregArr = regValues.split(",");
+
+
+        var ctx = "myChartConsumptions";
+        @*var ctx = document.getElementById("myChart");*@
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: mydateArr,
+                datasets: [{
+                    label: myregArr,
+                    data: mycostArr,
+                    backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+
+
+            options: {
+                legend: { labels: { fontColor: "#E5E4E2"} },
+                title: { display: true, text: 'Fuel Consumptions', fontColor: "#E5E4E2", fontSize: 18 },
+
+                scales: {
+
+                    yAxes: [
+                        {
+                            id: 'y-axis-1',
+                            display: true,
+                            position: 'left',
+                            ticks: {
+                                fontColor: "#E5E4E2"
+                            },
+                            scaleLabel:{
+                                display: true,
+                                labelString: 'Fuel Consumption',
+                                fontColor: "#E5E4E2"
+                            }
+
+                        }
+                    ],
+
+                   xAxes: [
+                        {
+                            id: 'x-axis-1',
+                            display: true,
+                            position: 'bottom',
+                            ticks: {
+                                fontColor: "#E5E4E2"
+                            },
+                            scaleLabel:{
+                                display: true,
+                                labelString: 'Date',
+                                fontColor: "#E5E4E2"
+                            }
+                        }
+                    ],
+                }
+            }
+        });
+
+</script>
+
+
+@*Fuel Unit Price Graph*@
+
+<div id="myArrayCostsFuelUnitPrice">
+    @{
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        {
+            var myArrCosts = "";
+            var arrayListCosts = Model.OrderBy(i => i.FuelDate).Select(i => i.FuelUnitPrice).ToArray();
+            foreach (var item in arrayListCosts)
+            {
+                myArrCosts += @item.ToString() + ",";
+            }
+
+            myArrCosts = myArrCosts.Substring(0, myArrCosts.Length - 1) + "";
+            @Html.DisplayFor(m => myArrCosts);
+        }
+    }
+</div>
+
+
+<div id="myArrayDatesFuelUnitPrice">
+    @{
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        {
+            var myArrDates = "";
+            var arrayListDates = Model.OrderBy(i => i.FuelDate).Select(i => i.FuelDate).ToArray();
+            foreach (var item in arrayListDates)
+            {
+                myArrDates += @item.ToShortDateString().ToString() + ",";
+            }
+            myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
+            @Html.DisplayFor(m => myArrDates);
+        }
+    }
+</div>
+
+<div id="myArrayRegFuelUnitPrice">
+    @{
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        {
+            var myArrReg = "";
+            var arrayListReg = Model.OrderBy(i => i.FuelDate).Select(i => i.Vehicle.VehicleRegistrationNumber).Distinct().ToArray();     //Distinct used to select dinstinct Vehicles
+            foreach (var item in arrayListReg)
+            {
+                myArrReg += @item.ToString() + ",";
+            }
+            myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
+            @Html.DisplayFor(m => myArrReg);
+        }
+    }
+</div>
+
+
+
+
+<canvas id="myChartFuelUnitPrice" width="400" height="150"></canvas>
+<script>
+            /*
+                    var colmArray = new Array()
+                    colmArray.push(100);
+                    colmArray.push(1000);
+
+                     var description = new Array();
+                    description.push('a');
+                     description.push('b');
+                     */
+
+            //Takes the CostRunningCost list and splits them out into an array list
+            var mycostArr = new Array();
+            costValues = $('#myArrayCostsFuelUnitPrice').text();
+            mycostArr = costValues.split(",");
+
+            //Takes the CostDate list and splits them out into an array list
+            var mydateArr = new Array();
+            dateValues = $('#myArrayDatesFuelUnitPrice').text();
+            mydateArr = dateValues.split(",");
+
+            //Takes the VehicleRegistrationNumber list and splits them out into an array list
+            var myregArr = new Array();
+            regValues = $('#myArrayRegFuelUnitPrice').text();
+            myregArr = regValues.split(",");
+
+
+            var ctx = "myChartFuelUnitPrice";
+            @*var ctx = document.getElementById("myChart");*@
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data:
+        {
+        labels: mydateArr,
+                datasets: [{
+            label: myregArr,
+                    data: mycostArr,
+                    backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+
+
+            options:
+        {
+        legend: { labels: { fontColor: "#E5E4E2"} },
+                title: { display: true, text: 'Fuel Unit Prices', fontColor: "#E5E4E2", fontSize: 18 },
+
+                scales:
+            {
+
+            yAxes: [
+                        {
+                id: 'y-axis-1',
+                            display: true,
+                            position: 'left',
+                            ticks:
+                    {
+                    fontColor: "#E5E4E2"
+                            },
+                            scaleLabel:
+                    {
+                    display: true,
+                                labelString: 'Fuel Unit Price',
+                                fontColor: "#E5E4E2"
+                            }
+
+                }
+                    ],
+
+                   xAxes: [
+                        {
+                id: 'x-axis-1',
+                            display: true,
+                            position: 'bottom',
+                            ticks:
+                    {
+                    fontColor: "#E5E4E2"
+                            },
+                            scaleLabel:
+                    {
+                    display: true,
+                                labelString: 'Date',
+                                fontColor: "#E5E4E2"
+                            }
+                }
+                    ],
+                }
+        }
+    });
+
+</script>
+
+
+
+
+
+@*Fuel Costs Graph*@
+
+<div id="myArrayCostsFuel">
+    @{
+    if (Model.Count() > 0)      //to overcome issue when model has No Values
+    {
+        var myArrCosts = "";
+        var arrayListCosts = Model.OrderBy(i => i.FuelDate).Select(i => i.FuelCost).ToArray();
+        foreach (var item in arrayListCosts)
+        {
+            myArrCosts += @item.ToString() + ",";
+        }
+
+        myArrCosts = myArrCosts.Substring(0, myArrCosts.Length - 1) + "";
+        @Html.DisplayFor(m => myArrCosts);
+    }
+}
+</div>
+
+
+<div id="myArrayDatesFuel">
+    @{
+        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        {
+            var myArrDates = "";
+            var arrayListDates = Model.OrderBy(i => i.FuelDate).Select(i => i.FuelDate).ToArray();
+            foreach (var item in arrayListDates)
+            {
+                myArrDates += @item.ToShortDateString().ToString() + ",";
+            }
+            myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
+            @Html.DisplayFor(m => myArrDates);
+        }
+    }
+    </div>
+
+    <div id="myArrayRegFuel">
+        @{
+            if (Model.Count() > 0)      //to overcome issue when model has No Values
+            {
+                var myArrReg = "";
+                var arrayListReg = Model.OrderBy(i => i.FuelDate).Select(i => i.Vehicle.VehicleRegistrationNumber).Distinct().ToArray();     //Distinct used to select dinstinct Vehicles
+                foreach (var item in arrayListReg)
+                {
+                    myArrReg += @item.ToString() + ",";
+                }
+                myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
+                @Html.DisplayFor(m => myArrReg);
+            }
+        }
+    </div>
+
+
+
+
+    <canvas id="myChartFuel" width="400" height="150"></canvas>
+    <script>
+            /*
+                    var colmArray = new Array()
+                    colmArray.push(100);
+                    colmArray.push(1000);
+
+                     var description = new Array();
+                    description.push('a');
+                     description.push('b');
+                     */
+
+            //Takes the CostRunningCost list and splits them out into an array list
+            var mycostArr = new Array();
+            costValues = $('#myArrayCostsFuel').text();
+            mycostArr = costValues.split(",");
+
+            //Takes the CostDate list and splits them out into an array list
+            var mydateArr = new Array();
+            dateValues = $('#myArrayDatesFuel').text();
+            mydateArr = dateValues.split(",");
+
+            //Takes the VehicleRegistrationNumber list and splits them out into an array list
+            var myregArr = new Array();
+            regValues = $('#myArrayRegFuel').text();
+            myregArr = regValues.split(",");
+
+
+            var ctx = "myChartFuel";
+            @*var ctx = document.getElementById("myChart");*@
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data:
+        {
+        labels: mydateArr,
+                datasets: [{
+            label: myregArr,
+                    data: mycostArr,
+                    backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+
+
+            options:
+        {
+        legend: { labels: { fontColor: "#E5E4E2"} },
+                title: { display: true, text: 'Fuel Costs', fontColor: "#E5E4E2", fontSize: 18 },
+
+                scales:
+            {
+
+            yAxes: [
+                        {
+                id: 'y-axis-1',
+                            display: true,
+                            position: 'left',
+                            ticks:
+                    {
+                    fontColor: "#E5E4E2"
+                            },
+                            scaleLabel:
+                    {
+                    display: true,
+                                labelString: 'Fuel Cost',
+                                fontColor: "#E5E4E2"
+                            }
+
+                }
+                    ],
+
+                   xAxes: [
+                        {
+                id: 'x-axis-1',
+                            display: true,
+                            position: 'bottom',
+                            ticks:
+                    {
+                    fontColor: "#E5E4E2"
+                            },
+                            scaleLabel:
+                    {
+                    display: true,
+                                labelString: 'Date',
+                                fontColor: "#E5E4E2"
+                            }
+                }
+                    ],
+                }
+        }
+    });
+
+</script>

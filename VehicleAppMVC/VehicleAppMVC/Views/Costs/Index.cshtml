@@ -172,7 +172,7 @@
             }
 
             myArrCosts = myArrCosts.Substring(0, myArrCosts.Length - 1) + "";
-            @Html.DisplayFor(m => myArrCosts);
+            @Html.DisplayFor(m => myArrCosts); 
         }
         }
     </div>
@@ -189,9 +189,9 @@
                 myArrDates += @item.ToShortDateString().ToString() + ",";
             }
             myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
-            @Html.DisplayFor(m => myArrDates);
+            @Html.DisplayFor(m => myArrDates); 
         }
-        }
+    }
 </div>
 
 <div id="myArrayReg">
@@ -205,9 +205,9 @@
                 myArrReg += @item.ToString() + ",";
             }
             myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
-            @Html.DisplayFor(m => myArrReg);
+            @Html.DisplayFor(m => myArrReg); 
         }
-        }
+    }
 </div>
 
 
