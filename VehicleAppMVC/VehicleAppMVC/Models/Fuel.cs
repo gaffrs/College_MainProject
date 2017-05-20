@@ -46,18 +46,20 @@ namespace VehicleAppMVC.Models
         public double FuelConsumption { get; set; }                            //need to adjust this for Partial fills *********************************
 
         [Display(Name = "Fuel Cost")]
+        [DisplayFormat(DataFormatString = "{0:#.##}")]
         public double FuelCost
         {
             get
             {
                 double cost = 0;
-                cost = FuelQuantity * FuelUnitPrice;
+                cost = Math.Round(FuelQuantity * FuelUnitPrice,2);      //Round the result to 2 decimal places
                 return cost;
             }
         }
-
+        /*
         [Display(Name = "Total Fuel Cost: €")]
         public double FuelTotalFuelCost { get; }
+        */
 
         //Navigation Property
 
