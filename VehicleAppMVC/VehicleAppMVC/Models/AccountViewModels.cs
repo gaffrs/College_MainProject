@@ -171,7 +171,7 @@ namespace VehicleAppMVC.Models
         public string StripePublishableKey { get; set; }
     }
 
-    public class ChargeViewModel
+    public class ChargeViewModel       
     {
         public string StripeToken { get; set; }
         public string StripeEmail { get; set; }

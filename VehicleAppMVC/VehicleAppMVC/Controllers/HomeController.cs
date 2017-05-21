@@ -11,6 +11,10 @@ using System.Web;
 using System.Web.Mvc;
 using VehicleAppMVC.Models;
 
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+
+
 
 
 
@@ -54,40 +58,54 @@ namespace VehicleAppMVC.Controllers
             return View(model);
         }
 
-/*
-        // Stripe 
-        [HttpPost]
-        [ValidateAntiForgeryToken()]
-        public ActionResult Charge(ChargeViewModel chargeViewModel)
+        //Stripe
+        //CG: Copied from ManageController to enable saving of Stripe details within the Chage Controller
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
         {
-            Debug.WriteLine(chargeViewModel.StripeEmail);
-            Debug.WriteLine(chargeViewModel.StripeToken);
-            return RedirectToAction("Confirmation");
-        }
-*/
-/*
-        // Stripe 
-        [HttpPost]
-        [ValidateAntiForgeryToken()]
-        public ActionResult Charge(([Bind(Include = "ID,StripeEmail,StripeToken")] ChargeViewModel chargeViewModel)
-        {
-            Debug.WriteLine(chargeViewModel.StripeEmail);
-            Debug.WriteLine(chargeViewModel.StripeToken);
-/*
-            if (ModelState.IsValid)
+            get
             {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
-                db.Entry(chargeViewModel).State = System.Data.Entity.EntityState.Modified;
-                            //.Users.Add(chargeViewModel.StripeEmail);
-                            //db.Users.Add(chargeViewModel.StripeToken);
-                db.SaveChangesAsync();
+        // Stripe 
+        [HttpPost]
+        [ValidateAntiForgeryToken()]
+        public ActionResult Charge( ChargeViewModel chargeViewModel)
+        {
+            Debug.WriteLine(chargeViewModel.StripeEmail);
+            Debug.WriteLine(chargeViewModel.StripeToken);
+
+            if (!ModelState.IsValid)
+            {
+                return View(chargeViewModel);
             }
 
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            user.StripeToken = chargeViewModel.StripeToken;
+            user.StripeEmail = chargeViewModel.StripeEmail;
+            UserManager.Update(user);
             
                 return RedirectToAction("Confirmation");
         }
-*/
- 
+
+        /*      //Initial Charge controller method, before it was expanded to save the Token and the email address used
+                // Stripe 
+                [HttpPost]
+                [ValidateAntiForgeryToken()]
+                public ActionResult Charge(ChargeViewModel chargeViewModel)
+                {
+                    Debug.WriteLine(chargeViewModel.StripeEmail);
+                    Debug.WriteLine(chargeViewModel.StripeToken);
+                    return RedirectToAction("Confirmation");
+                }
+        */
+
         public  ActionResult Confirmation()
         {
             return View();

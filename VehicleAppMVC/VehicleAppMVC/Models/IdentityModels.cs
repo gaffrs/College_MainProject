@@ -36,8 +36,6 @@ public class ApplicationUser : IdentityUser
         public virtual List<Notification> Notifications { get; set; }//Collection and refers to Notification
 
 
-
-
         //Navigation Property       //CG added
         /*
         public virtual ICollection<Vehicle> Vehicles { get; set; }
@@ -50,6 +48,7 @@ public class ApplicationUser : IdentityUser
         [DisplayName("Vehicle Unit Setting")]
         public eVehicleUnits VehicleUnit { get; set; }
 
+        //Stripe Properties
         public string StripeToken { get; set; }
         public string StripeEmail { get; set; }
 
