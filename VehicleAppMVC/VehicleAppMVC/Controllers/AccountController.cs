@@ -193,35 +193,74 @@ namespace VehicleAppMVC.Controllers
         }
 
         //Original code
-/*        // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+        /*        // POST: /Account/Register
+                [HttpPost]
+                [AllowAnonymous]
+                [ValidateAntiForgeryToken]
+                public async Task<ActionResult> Register(RegisterViewModel model)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    if (ModelState.IsValid)
+                    {
+                        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                            // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                            // Send an email with this link
+                            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
+
+                    // If we got this far, something failed, redisplay form
+                    return View(model);
                 }
-                AddErrors(result);
-            }
+        */
+/*
+            //CG Added to Delete User
+        public static async Task<IdentityResult> DeleteUserAccount(UserManager<ApplicationUser> userManager,
+                                                                    string userEmail, ApplicationDbContext context)
+        {
+            IdentityResult rc = new IdentityResult();
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            if ((userManager != null) && (userEmail != null) && (context != null))
+            {
+                var user = await userManager.FindByEmailAsync(userEmail);
+                var logins = user.Logins;
+                //var rolesForUser = await userManager.GetRolesAsync(user);
+
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    foreach (var login in logins.ToList())
+                    {
+                        await userManager.RemoveLoginAsync(login.UserId, new UserLoginInfo(login.LoginProvider, login.ProviderKey)); //(user, login.LoginProvider, login.ProviderKey);
+                    }
+                    /*
+                    if (rolesForUser.Count() > 0)
+                    {
+                        foreach (var item in rolesForUser.ToList())
+                        {
+                            // item should be the name of the role
+                            var result = await userManager.RemoveFromRoleAsync(user, item);
+                        }
+                    }
+                    rc = await userManager.DeleteAsync(user);
+                    transaction.Commit();
+                }
+            }
+            return rc;
         }
-*/
+        */
+
+
+
+
 
         //
         // GET: /Account/ConfirmEmail

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System.Collections;
 
 namespace VehicleAppMVC.Models
 {
@@ -12,6 +13,9 @@ namespace VehicleAppMVC.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public eVehicleUnits VehicleUnit { get; set; }     //CG added so that they appear on Manage Index
+        public string UserName { get; set; }        //CG added so that they appear on Manage Index
+        public ArrayList Consumption { get; set; } //CG added so that they appear on Manage Index
     }
 
     public class ManageLoginsViewModel
@@ -103,7 +107,28 @@ namespace VehicleAppMVC.Models
         public string PhoneNumber { get; set; }
     }
 
+    public class ChangeVehicleUnitSettings
+    {
+        //vehicle Category  
+        [Required(ErrorMessage = "The Vehicle Unit Setting must be selected")]
+        [Display(Name = "Vehicle Unit Setting")]
+        //public String VehicleUnit { get; set; }
+        public eVehicleUnits VehicleUnit { get; set; }
+    }
 
+    public class DeleteUserViewModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email/UserName")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Current password")]
+        public string OldPassword { get; set; }
+    }
+    
 
 
 

@@ -25,6 +25,7 @@
         </dd>
         <dt>Username/Email:</dt>
         <dd>
+            @Html.DisplayFor(model => model.UserName)
             {
                 @Html.ActionLink("Change your Username/Email", "ChangeUsernameAndEmail")
             }
@@ -36,6 +37,31 @@
             @Html.ActionLink("Change your Phone Number", "ChangePhonenumber")
             }
         </dd>
+        <dt>Vehicle Unit Settings:</dt>
+        <dd>
+            @*@Html.DisplayFor(model => model.VehicleUnit)*@
+
+            {
+            @Html.ActionLink("Change your Vehicle Units", "ChangeVehicleUnitSettings")
+            }
+        </dd>
+
+        <dt>Delete User:</dt>
+        <dd>
+            
+            @*@Html.DisplayFor(model => model.VehicleUnit)*@
+
+            @{ 
+                using (Html.BeginForm("Delete", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+            @Html.AntiForgeryToken()
+            <text>
+                Enabled
+                <input type="submit" value="Delete" class="btn btn-link" />
+            </text>
+                    }
+                }
+
 @*
     <dt>External Logins:</dt>
     <dd>
