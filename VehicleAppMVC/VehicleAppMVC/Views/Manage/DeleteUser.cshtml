@@ -1,0 +1,17 @@
+﻿using (Html.BeginForm(
+    "DeleteUser",
+    "Account",
+    new { uname = item.UserName },
+    FormMethod.Post,
+    new { id = "myform" })
+) { %>
+    <%= Html.HttpMethodOverride(HttpVerbs.Delete) %>
+<input type="submit" value="Delete" />
+<% }
+
+
+$(function() {
+    $('#myform').submit(function() {
+        return confirm('Are you sure you want to delete this User?');
+    });
+});

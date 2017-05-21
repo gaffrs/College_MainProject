@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using VehicleAppMVC.Models;
 using System.Data.Entity;
+using System.Net;
+using System.Web.Security;
 
 namespace VehicleAppMVC.Controllers
 {
@@ -58,6 +60,8 @@ namespace VehicleAppMVC.Controllers
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == ManageMessageId.SetUsernameSuccess ? "Your username/email has been set."
+                : message == ManageMessageId.SetMobileNumberSuccess ? "Your mobile number has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
@@ -273,7 +277,7 @@ namespace VehicleAppMVC.Controllers
             if (user != null)
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                return RedirectToAction("Index", new { Message = "Username/Email has been changed"});
+                return RedirectToAction("Index", new { Message = ManageMessageId.SetUsernameSuccess });
             }
 
             return View(model);
@@ -306,12 +310,175 @@ namespace VehicleAppMVC.Controllers
             if (user != null)
             {
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { Message = ManageMessageId.SetMobileNumberSuccess });
             }
 
             return View(model);
         }
 
+
+        //CG added to Delete User
+        // GET: Manage/Delete/5
+        /*        public async Task<ActionResult> Delete()
+                {
+                    if (id == null)
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+
+                    var currentUserId = User.Identity.GetUserId();
+                    // Look for user in the UserStore
+                    var user = UserManager.Users.Where(u => u.Id == currentUserId);
+
+                    if (user == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(user);
+                }
+
+        */
+        /*
+        // POST: Vehicles/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            Vehicle vehicle = await User.Identity.GetUserId();
+            db.Vehicles.Remove(vehicle);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+        */
+
+
+
+
+
+        /*           
+                   // GET: /Manage/Delete
+               public ActionResult Delete()
+               {
+                   var currentUserId = User.Identity.GetUserId();
+                   return View();
+               }
+
+               [HttpPost, ActionName("Delete")]
+               [ValidateAntiForgeryToken]
+               public async Task<ActionResult> Delete(string id, string role)
+               {
+                   // Check for for both ID and Role and exit if not found
+                   if (id == null || role == null)
+                   {
+                       return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                   }
+
+                   // Look for user in the UserStore
+                   var user = UserManager.Users.SingleOrDefault(u => u.Id == id);
+
+                   // If not found, exit
+                   if (user == null)
+                   {
+                       return HttpNotFound();
+                   }
+
+                   // Remove user from role first!
+                   var remFromRole = await UserManager.RemoveFromRoleAsync(id, role);
+
+                   // If successful
+                   if (remFromRole.Succeeded)
+                   {
+                       // Remove user from UserStore
+                       var results = await UserManager.DeleteAsync(user);
+
+                       // If successful
+                       if (results.Succeeded)
+                       {
+                           // Redirect to Users page
+                           return RedirectToAction("Index", "Users", new { area = "Dashboard" });
+                       }
+                       else
+                       {
+                           return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                       }
+                   }
+                   else
+                   {
+                       return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                   }
+
+               }
+       */
+        /*
+
+         //
+         // GET: /Members/Delete?userName=someuser
+
+         public ActionResult Delete(string userName)
+         {
+             var user = context.UserProfiles.SingleOrDefault(u => u.UserName == userName);
+             return View(user);
+         }
+
+         //
+         // POST: /Members/Delete?userName=someuser
+
+         [HttpPost]
+         public ActionResult Delete(string userName, FormCollection collection)
+         {
+             try
+             {
+                 // TODO: Add delete logic here
+                 ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(userName); // deletes record from webpages_Membership table
+                 ((SimpleMembershipProvider)Membership.Provider).DeleteUser(userName, true); // deletes record from UserProfile table
+
+                 return RedirectToAction("Index");
+             }
+             catch
+             {
+                 return View(userName);
+             }
+         }
+
+     */
+        /*
+
+           [HttpDelete]
+           public ActionResult DeleteUser(string uname)
+           {
+               //delete user
+               return View();
+           }
+           */
+//**************************************************************************************************
+/*
+        // GET: Manage/DeleteUser/5 
+        public async Task<ActionResult> DeleteUser(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = await db.Movies.FindAsync(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
+        // POST: Manage/Delete/5 
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteUserConfirmed(int id)
+        {
+            Movie movie = await db.Movies.FindAsync(id);
+            db.Movies.Remove(movie);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+*/
 
         //
         // GET: /Manage/SetPassword
@@ -448,6 +615,8 @@ namespace VehicleAppMVC.Controllers
             ChangePasswordSuccess,
             SetTwoFactorSuccess,
             SetPasswordSuccess,
+            SetUsernameSuccess,     //CG added
+            SetMobileNumberSuccess, //CG added
             RemoveLoginSuccess,
             RemovePhoneSuccess,
             Error
