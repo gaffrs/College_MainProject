@@ -222,8 +222,10 @@ namespace VehicleAppMVC.Controllers
                     return View(model);
                 }
         */
-/*
-            //CG Added to Delete User
+
+            /*
+        //CG Added to Delete User
+        //Part of this code is in ManageController "DeleteUser"
         public static async Task<IdentityResult> DeleteUserAccount(UserManager<ApplicationUser> userManager,
                                                                     string userEmail, ApplicationDbContext context)
         {
@@ -241,7 +243,7 @@ namespace VehicleAppMVC.Controllers
                     {
                         await userManager.RemoveLoginAsync(login.UserId, new UserLoginInfo(login.LoginProvider, login.ProviderKey)); //(user, login.LoginProvider, login.ProviderKey);
                     }
-                    /*
+
                     if (rolesForUser.Count() > 0)
                     {
                         foreach (var item in rolesForUser.ToList())
@@ -250,14 +252,15 @@ namespace VehicleAppMVC.Controllers
                             var result = await userManager.RemoveFromRoleAsync(user, item);
                         }
                     }
+
                     rc = await userManager.DeleteAsync(user);
                     transaction.Commit();
                 }
             }
             return rc;
         }
-        */
-
+        
+    */
 
 
 

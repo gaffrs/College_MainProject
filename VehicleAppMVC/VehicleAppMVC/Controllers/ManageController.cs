@@ -560,9 +560,10 @@ namespace VehicleAppMVC.Controllers
                         return View();
                     }
                 }*/
-/*
 
+/*
         // POST: /Manage/DeleteUser
+        //Part of this code is in AccountController "DeleteUserAccount"
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteUser(DeleteUserViewModel account)
@@ -585,6 +586,8 @@ namespace VehicleAppMVC.Controllers
             return View(account);
         }
         */
+
+
 
 
 
