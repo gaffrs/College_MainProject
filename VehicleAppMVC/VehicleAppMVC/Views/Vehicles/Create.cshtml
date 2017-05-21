@@ -16,6 +16,13 @@
         <h4>Enter Vehicle details</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*Temp message to show if Vehicles have not been created*@
+                @if (TempData["notice"] != null)
+                {
+                    <h4><font color="#C11B17">@TempData["notice"]</font></h4>
+                }
+        
         <div class="form-group">
             @Html.LabelFor(model => model.ApplicationUserId, "User", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -120,3 +127,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

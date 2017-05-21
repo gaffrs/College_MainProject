@@ -19,6 +19,12 @@
         <h4>Enter Cost details</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @*Temp message to show if Costs have not been created*@
+                @if (TempData["notice"] != null)
+                {
+                    <h4><font color="#C11B17">@TempData["notice"]</font></h4>
+                }
        
 @*CG: Added to return the VehicleID based on the Make*@
         <div class="form-group">

@@ -32,7 +32,22 @@ namespace VehicleAppMVC.Controllers
             //To return Costs for Vehicles for ONLY the Logged in User
             var costs = from s in db.Costs.Include(c => c.Vehicle).Where(v => v.Vehicle.ApplicationUserId == currentUserId)    //CG: Edited
             select s;
-            
+
+            //If no Vehicles were added the User is redirected to Vehicle Add page
+            var Vehicles = db.Vehicles.Where(v => v.ApplicationUserId == currentUserId).Select(s => s.VehicleID).ToList();
+            if (Vehicles.Count() == 0)
+            {
+                TempData["notice"] = "You must first add a Vehicle";
+                return (RedirectToAction("Create", "Vehicles"));
+            }
+
+            //If no Costs were added the User is redirected to Cost Add page
+            if (costs.Count() == 0)
+            {
+                TempData["notice"] = "You must first add a Cost entry";
+                return (RedirectToAction("Create", "Costs"));
+            }
+
             //Add a Search Box to the Cost View  (Search by Reg or Title or Year)
             if (!String.IsNullOrEmpty(searchString))
             {
