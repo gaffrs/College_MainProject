@@ -149,7 +149,8 @@
 
 @*Costs Graph*@
 
-    <div id="myArrayCosts">@{
+    <div id="myArrayCosts" style="display:none">
+        @{
         if (Model.Count() > 0)      //to overcome issue when model has No Values
         {
             var myArrCosts = "";
@@ -166,7 +167,7 @@
     </div>
 
 
-<div id="myArrayDates">
+<div id="myArrayDates" style="display:none">
     @{
         if (Model.Count() > 0)      //to overcome issue when model has No Values
         {
@@ -182,7 +183,7 @@
     }
 </div>
 
-<div id="myArrayReg">
+<div id="myArrayReg" style="display:none">
     @{
         if (Model.Count() > 0)      //to overcome issue when model has No Values
         {
@@ -199,7 +200,9 @@
 </div>
 
 
-
+@*Graphs to ONLY be seen by paid users*@
+@if (Model.FirstOrDefault().StripeToken != null)
+{
 
 <canvas id="myChart" width="400" height="150"></canvas>
     <script>
@@ -302,3 +305,4 @@
         });
 
 </script>
+}

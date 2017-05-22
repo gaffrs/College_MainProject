@@ -56,7 +56,10 @@ namespace VehicleAppMVC.Models
                 return cost;
             }
         }
-
+        
+        //Adding to enabling checking if user has paid
+        public string StripeToken { get; set; }
+        
         //Navigation Property
         public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Fuel associated to only One Vehicle
                                                                       /*

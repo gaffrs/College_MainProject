@@ -231,9 +231,9 @@
 
 @*Fuel Consumptions Graph*@
 
-<div id="myArrayCostsConsumptions">
+<div id="myArrayCostsConsumptions" style="display:none">
     @{
-        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        if (Model.Count() > 0)  //to overcome issue when model has No Values && Consumption is NOT = 0
         {
             var myArrCosts = "";
             var arrayListCosts = Model.OrderBy(i => i.FuelDate).Where(i => i.FuelConsumption >0).Select(i => i.FuelConsumption).ToArray();
@@ -242,16 +242,16 @@
                 myArrCosts += @item.ToString() + ",";
             }
 
-            myArrCosts = myArrCosts.Substring(0, myArrCosts.Length - 1) + "";
+            myArrCosts = myArrCosts != "" ? myArrCosts.Substring(0, myArrCosts.Length - 1) + "": null;
             @Html.DisplayFor(m => myArrCosts);
         }
     }
 </div>
 
 
-<div id="myArrayDatesConsumptions">
+<div id="myArrayDatesConsumptions" style="display:none">
     @{
-        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        if (Model.Count() > 0)  //to overcome issue when model has No Values && Consumption is NOT = 0
         {
             var myArrDates = "";
             var arrayListDates = Model.OrderBy(i => i.FuelDate).Where(i => i.FuelConsumption > 0).Select(i => i.FuelDate).ToArray();
@@ -259,15 +259,15 @@
             {
                 myArrDates += @item.ToShortDateString().ToString() + ",";
             }
-            myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
+            myArrDates = myArrDates != "" ? myArrDates.Substring(0, myArrDates.Length - 1) + "" : null;
             @Html.DisplayFor(m => myArrDates);
         }
     }
 </div>
 
-<div id="myArrayRegConsumptions">
+<div id="myArrayRegConsumptions" style="display:none">
     @{
-        if (Model.Count() > 0)      //to overcome issue when model has No Values
+        if (Model.Count() > 0) //to overcome issue when model has No Values && Consumption is NOT = 0
         {
             var myArrReg = "";
             var arrayListReg = Model.OrderBy(i => i.FuelDate).Select(i => i.Vehicle.VehicleRegistrationNumber).Distinct().ToArray();     //Distinct used to select dinstinct Vehicles
@@ -275,7 +275,7 @@
             {
                 myArrReg += @item.ToString() + ",";
             }
-            myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
+            myArrReg = myArrReg != "" ? myArrReg.Substring(0, myArrReg.Length - 1) + "" : null;
             @Html.DisplayFor(m => myArrReg);
         }
     }
@@ -283,7 +283,9 @@
 
 
 
-
+@*Graphs to ONLY be seen by paid users*@
+@if (Model.FirstOrDefault().StripeToken != null)
+{
 <canvas id="myChartConsumptions" width="400" height="150"></canvas>
 <script>
         /*
@@ -385,11 +387,11 @@
         });
 
 </script>
-
+}
 
 @*Fuel Unit Price Graph*@
 
-<div id="myArrayCostsFuelUnitPrice">
+<div id="myArrayCostsFuelUnitPrice" style="display:none">
     @{
         if (Model.Count() > 0)      //to overcome issue when model has No Values
         {
@@ -407,7 +409,7 @@
 </div>
 
 
-<div id="myArrayDatesFuelUnitPrice">
+<div id="myArrayDatesFuelUnitPrice" style="display:none">
     @{
         if (Model.Count() > 0)      //to overcome issue when model has No Values
         {
@@ -423,7 +425,7 @@
     }
 </div>
 
-<div id="myArrayRegFuelUnitPrice">
+<div id="myArrayRegFuelUnitPrice" style="display:none">
     @{
         if (Model.Count() > 0)      //to overcome issue when model has No Values
         {
@@ -441,7 +443,9 @@
 
 
 
-
+@*Graphs to ONLY be seen by paid users*@
+@if (Model.FirstOrDefault().StripeToken != null)
+{
 <canvas id="myChartFuelUnitPrice" width="400" height="150"></canvas>
 <script>
             /*
@@ -516,13 +520,15 @@
                             position: 'left',
                             ticks:
                     {
-                    fontColor: "#E5E4E2"
+                        fontColor: "#E5E4E2",
                             },
                             scaleLabel:
+                                
                     {
                     display: true,
                                 labelString: 'Fuel Unit Price',
                                 fontColor: "#E5E4E2"
+                        
                             }
 
                 }
@@ -530,12 +536,12 @@
 
                    xAxes: [
                         {
-                id: 'x-axis-1',
+                            id: 'x-axis-1',
                             display: true,
                             position: 'bottom',
                             ticks:
                     {
-                    fontColor: "#E5E4E2"
+                    fontColor: "#E5E4E2",
                             },
                             scaleLabel:
                     {
@@ -550,14 +556,14 @@
     });
 
 </script>
-
+}
 
 
 
 
 @*Fuel Costs Graph*@
 
-<div id="myArrayCostsFuel">
+<div id="myArrayCostsFuel" style="display:none">
     @{
     if (Model.Count() > 0)      //to overcome issue when model has No Values
     {
@@ -575,7 +581,7 @@
 </div>
 
 
-<div id="myArrayDatesFuel">
+<div id="myArrayDatesFuel" style="display:none">
     @{
         if (Model.Count() > 0)      //to overcome issue when model has No Values
         {
@@ -591,7 +597,7 @@
     }
     </div>
 
-    <div id="myArrayRegFuel">
+    <div id="myArrayRegFuel" style="display:none">
         @{
             if (Model.Count() > 0)      //to overcome issue when model has No Values
             {
@@ -609,7 +615,9 @@
 
 
 
-
+@*Graphs to ONLY be seen by paid users*@
+@if (Model.FirstOrDefault().StripeToken != null)
+{
     <canvas id="myChartFuel" width="400" height="150"></canvas>
     <script>
             /*
@@ -718,3 +726,4 @@
     });
 
 </script>
+}

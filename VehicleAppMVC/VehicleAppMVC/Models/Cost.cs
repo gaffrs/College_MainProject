@@ -35,9 +35,14 @@ public enum eCostTitle { Insurance, Service, Tax, [Display(Name = "Testing: NCT 
         [DisplayFormat(DataFormatString = "{0:#.##}")]
         [Display(Name = "Cost amount")]
         public double CostRunningCost { get; set; }
- 
+
+        //Adding to enabling checking if user has paid
+        public string StripeToken { get; set; }
+
         //Navigation Property
         public virtual Vehicle Vehicle { get; set; }                  //NOT a Collection, as a Cost associated to only One Vehicle
+
+
 
     }
 }

@@ -10,7 +10,7 @@ namespace VehicleAppMVC.Migrations.ApplicationDbMigration
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             MigrationsDirectory = @"Migrations\ApplicationDbMigration";
         }
 

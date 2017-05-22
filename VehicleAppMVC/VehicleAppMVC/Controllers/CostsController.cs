@@ -96,8 +96,14 @@ namespace VehicleAppMVC.Controllers
                     costs = costs.Include(c => c.Vehicle).OrderBy(s => s.CostDate);
                     break;
             }
-            
-            return View(await costs.ToListAsync());
+
+
+            //To enable showing Graphs to Paid users. Adding Token property to the list
+            var token = db.Users.Where(u => u.Id == currentUserId).Select(u => u.StripeToken).FirstOrDefault();
+            var costList = await costs.ToListAsync();
+            costList[0].StripeToken = token;
+
+            return View(costList);
         }
 
 
