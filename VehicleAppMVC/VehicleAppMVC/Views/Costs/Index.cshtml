@@ -151,16 +151,16 @@
 
     <div id="myArrayCosts" style="display:none">
         @{
-        if (Model.Count() > 0)      //to overcome issue when model has No Values
-        {
-            var myArrCosts = "";
-            var arrayListCosts = Model.OrderBy(i => i.CostDate).Select(i => i.CostRunningCost).ToArray();
-            foreach (var item in arrayListCosts)
+            if (Model.Count() > 0)      //to overcome issue when model has No Values
             {
-                myArrCosts += @item.ToString() + ",";
-            }
+                var myArrCosts = "";
+                var arrayListCosts = Model.OrderBy(i => i.CostDate).Select(i => i.CostRunningCost).ToArray();
+                foreach (var item in arrayListCosts)
+                {
+                    myArrCosts += @item.ToString() + ",";
+                }
 
-            myArrCosts = myArrCosts.Substring(0, myArrCosts.Length - 1) + "";
+                myArrCosts = myArrCosts != "" ? myArrCosts.Substring(0, myArrCosts.Length - 1) + "" : null;
             @Html.DisplayFor(m => myArrCosts); 
         }
         }
@@ -177,7 +177,7 @@
             {
                 myArrDates += @item.ToShortDateString().ToString() + ",";
             }
-            myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
+            myArrDates = myArrDates != "" ? myArrDates.Substring(0, myArrDates.Length - 1) + "" : null;
             @Html.DisplayFor(m => myArrDates); 
         }
     }
@@ -193,7 +193,7 @@
             {
                 myArrReg += @item.ToString() + ",";
             }
-            myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
+            myArrReg = myArrReg != "" ? myArrReg.Substring(0, myArrReg.Length - 1) + "" : null;
             @Html.DisplayFor(m => myArrReg); 
         }
     }

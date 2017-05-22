@@ -402,7 +402,7 @@
                 myArrCosts += @item.ToString() + ",";
             }
 
-            myArrCosts = myArrCosts.Substring(0, myArrCosts.Length - 1) + "";
+            myArrCosts = myArrCosts != "" ? myArrCosts.Substring(0, myArrCosts.Length - 1) + "" : null;            
             @Html.DisplayFor(m => myArrCosts);
         }
     }
@@ -419,7 +419,7 @@
             {
                 myArrDates += @item.ToShortDateString().ToString() + ",";
             }
-            myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
+            myArrDates = myArrDates != "" ? myArrDates.Substring(0, myArrDates.Length - 1) + "" : null;
             @Html.DisplayFor(m => myArrDates);
         }
     }
@@ -435,7 +435,7 @@
             {
                 myArrReg += @item.ToString() + ",";
             }
-            myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
+            myArrReg = myArrReg != "" ? myArrReg.Substring(0, myArrReg.Length - 1) + "" : null;
             @Html.DisplayFor(m => myArrReg);
         }
     }
@@ -574,7 +574,7 @@
             myArrCosts += @item.ToString() + ",";
         }
 
-        myArrCosts = myArrCosts.Substring(0, myArrCosts.Length - 1) + "";
+        myArrCosts = myArrCosts != "" ? myArrCosts.Substring(0, myArrCosts.Length - 1) + "" : null;
         @Html.DisplayFor(m => myArrCosts);
     }
 }
@@ -591,7 +591,7 @@
             {
                 myArrDates += @item.ToShortDateString().ToString() + ",";
             }
-            myArrDates = myArrDates.Substring(0, myArrDates.Length - 1) + "";
+            myArrDates = myArrDates != "" ? myArrDates.Substring(0, myArrDates.Length - 1) + "" : null;
             @Html.DisplayFor(m => myArrDates);
         }
     }
@@ -607,7 +607,7 @@
                 {
                     myArrReg += @item.ToString() + ",";
                 }
-                myArrReg = myArrReg.Substring(0, myArrReg.Length - 1) + "";
+                myArrReg = myArrReg != "" ? myArrReg.Substring(0, myArrReg.Length - 1) + "" : null;
                 @Html.DisplayFor(m => myArrReg);
             }
         }
