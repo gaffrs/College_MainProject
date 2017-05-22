@@ -379,7 +379,6 @@
     <Content Include="Views\Fuels\Edit.cshtml" />
     <Content Include="Views\Fuels\Index.cshtml" />
     <Content Include="Views\Costs\ChartDataQuery.cshtml" />
-    <Content Include="Views\Home\Charge.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
     <Content Include="Views\Manage\ChangeUsernameAndEmail.cshtml" />
     <Content Include="Views\Manage\ChangePhonenumber.cshtml" />
