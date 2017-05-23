@@ -84,15 +84,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Vehicle Registration", "Index", new { sortOrder = ViewBag.NameSortParmReg })      @*CG: Edited*@
+            @Html.ActionLink("Vehicle Registration", "Index", new { sortOrder = ViewBag.NameSortParmRegCost })      @*CG: Edited*@
             @*@Html.DisplayNameFor(model => model.Vehicle.ApplicationUserId)*@
         </th>
         @*New for sorting*@
         <th>
-            @Html.ActionLink("Cost Description", "Index", new { sortOrder = ViewBag.NameSortParmTitle })
+            @Html.ActionLink("Cost Description", "Index", new { sortOrder = ViewBag.NameSortParmTitleCost })
         </th>
         <th>
-            @Html.ActionLink("Cost Date", "Index", new { sortOrder = ViewBag.DateSortParmDate })
+            @Html.ActionLink("Cost Date", "Index", new { sortOrder = ViewBag.DateSortParmDateCost })
         </th>
 
         @*

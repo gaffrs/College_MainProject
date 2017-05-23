@@ -24,9 +24,9 @@ namespace VehicleAppMVC.Controllers
 
             //Add Filtering
 
-            ViewBag.NameSortParmReg = String.IsNullOrEmpty(sortOrder) ? "vehicle_registration_ascending" : "vehicle_registration_descending";                  // "vehicle_registration_descending"
-            ViewBag.NameSortParmTitle = String.IsNullOrEmpty(sortOrder) ? "cost_title_ascending" : "cost_title_descending";                      // "cost_title_descending"
-            ViewBag.DateSortParmDate = sortOrder == "Date" ? "date_descending" : "Date";
+            ViewBag.NameSortParmRegCost = sortOrder == "cost_vehicle_registration_ascending" ?  "cost_vehicle_registration_descending" : "cost_vehicle_registration_ascending";                     //ViewBag.NameSortParmRegCost = String.IsNullOrEmpty(sortOrder) ? "cost_vehicle_registration_ascending" : "cost_vehicle_registration_descending";
+            ViewBag.NameSortParmTitleCost = sortOrder == "cost_title_ascending"  ? "cost_title_descending" : "cost_title_ascending" ;                                                             //ViewBag.NameSortParmTitleCost = String.IsNullOrEmpty(sortOrder) ? "cost_title_ascending" : "cost_title_descending";
+            ViewBag.DateSortParmDateCost = sortOrder == "Date" ? "date_descending" : "Date";
 
             var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
             //To return Costs for Vehicles for ONLY the Logged in User
@@ -68,11 +68,11 @@ namespace VehicleAppMVC.Controllers
 
             switch (sortOrder)
             {
-                case "vehicle_registration_ascending":
+                case "cost_vehicle_registration_ascending":
                     costs = costs.OrderBy(s => s.Vehicle.VehicleRegistrationNumber);
                     break;
 
-                case "vehicle_registration_descending":
+                case "cost_vehicle_registration_descending":
                     costs = costs.OrderByDescending(s => s.Vehicle.VehicleRegistrationNumber);
                     break;
 
