@@ -26,7 +26,7 @@ namespace VehicleAppMVC.Controllers
 
             ViewBag.NameSortParmRegCost = sortOrder == "cost_vehicle_registration_ascending" ?  "cost_vehicle_registration_descending" : "cost_vehicle_registration_ascending";                     //ViewBag.NameSortParmRegCost = String.IsNullOrEmpty(sortOrder) ? "cost_vehicle_registration_ascending" : "cost_vehicle_registration_descending";
             ViewBag.NameSortParmTitleCost = sortOrder == "cost_title_ascending"  ? "cost_title_descending" : "cost_title_ascending" ;                                                             //ViewBag.NameSortParmTitleCost = String.IsNullOrEmpty(sortOrder) ? "cost_title_ascending" : "cost_title_descending";
-            ViewBag.DateSortParmDateCost = sortOrder == "Date" ? "date_descending" : "Date";
+            ViewBag.DateSortParmDateCost = sortOrder == "date_ascending" ? "date_descending" : "date_ascending";
 
             var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
             //To return Costs for Vehicles for ONLY the Logged in User
@@ -84,7 +84,7 @@ namespace VehicleAppMVC.Controllers
                     costs = costs.OrderByDescending(s => s.CostTitle);
                     break;
 
-                case "Date":
+                case "date_ascending":
                     costs = costs.OrderBy(s => s.CostDate);
                     break;
 

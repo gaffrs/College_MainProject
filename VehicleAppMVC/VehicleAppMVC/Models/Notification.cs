@@ -13,12 +13,13 @@ namespace VehicleAppMVC.Models
     //Enums
     public enum eNotificationTitle
     {
-        [Display(Name = "Vehicle Birthday")] VehicleBirthday,
-        [Display(Name = "Service Date Notification")] ServiceDateNotification,
-        [Display(Name = "Vehicle Testing DateRenewal")] VehicleTestingDateRenewal,
+
         [Display(Name = "Insurance Date Renewal")] InsuranceDateRenewal,
         [Display(Name = "Motor Tax Date Renewal")] MotorTaxDateRenewal,
-        [Display(Name = "Service Mileage Notification")] ServiceMileageNotification
+        [Display(Name = "Service Date Notification")] ServiceDateNotification,
+        [Display(Name = "Service Mileage Notification")] ServiceMileageNotification,
+        [Display(Name = "Vehicle Birthday")] VehicleBirthday,
+        [Display(Name = "Vehicle Testing DateRenewal")] VehicleTestingDateRenewal,
     }
 
     public enum eNotificationType { Email, SMS}

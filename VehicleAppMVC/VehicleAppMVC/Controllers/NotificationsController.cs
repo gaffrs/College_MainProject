@@ -25,9 +25,9 @@ namespace VehicleAppMVC.Controllers
             //var notifications = db.Notifications.Where(v => v.ApplicationUserId == currentUserId);    //CG: Edited
 
             //Add Filtering
-            ViewBag.NameSortParmNotificationTitle = String.IsNullOrEmpty(sortOrder) ? "NotificationTitle_ascending" : "NotificationTitle_descending";                  // "vehicle_registration_descending"
-            ViewBag.NameSortParmNotificationType = String.IsNullOrEmpty(sortOrder) ? "NotificationType_ascending" : "NotificationType_descending";                      // "cost_title_descending"
-            ViewBag.DateSortParmNotificationDate = sortOrder == "NotificationDate" ? "NotificationDate_descending" : "NotificationDate";
+            ViewBag.NameSortParmNotificationTitle = sortOrder == "NotificationTitle_ascending" ? "NotificationTitle_descending" : "NotificationTitle_ascending";               // ViewBag.NameSortParmNotificationTitle = String.IsNullOrEmpty(sortOrder) ? "NotificationTitle_ascending" : "NotificationTitle_descending";  
+            ViewBag.NameSortParmNotificationType = sortOrder == "NotificationType_ascending" ? "NotificationType_descending" : "NotificationType_ascending" ;                  // ViewBag.NameSortParmNotificationType = String.IsNullOrEmpty(sortOrder) ? "NotificationType_ascending" : "NotificationType_descending";
+            ViewBag.DateSortParmNotificationDate = sortOrder == "NotificationDate_ascending" ? "NotificationDate_descending" : "NotificationDate_ascending";
 
 
             var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
@@ -73,7 +73,7 @@ namespace VehicleAppMVC.Controllers
                     notifications = notifications.OrderByDescending(s => s.NotificationType);
                     break;
 
-                case "NotificationDate":
+                case "NotificationDate_ascending":
                     notifications = notifications.OrderBy(s => s.NotificationDate);
                     break;
 
