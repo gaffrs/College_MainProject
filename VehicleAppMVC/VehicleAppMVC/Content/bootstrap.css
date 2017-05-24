@@ -2525,8 +2525,8 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
   line-height: normal;
-    width: 22px; /*Desired width*/
-  height: 22px; /*Desired height*/
+    width: 15px; /*Desired width*/
+  height: 15px; /*Desired height*/
 }
 input[type="file"] {
   display: block;
