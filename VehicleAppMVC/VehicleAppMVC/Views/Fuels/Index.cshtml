@@ -109,12 +109,25 @@
 
 <h2> @ViewBag.Title </h2>
 
-
 <p>
     @Html.ActionLink("Add Fuel-fill", "Create")
 </p>
 
+<br />
 
+
+
+<p>
+    @*Pay button ONLY be seen by unpaid users*@
+    @if (Model.FirstOrDefault().StripeToken == null)
+    {
+        <div>
+            <div style="float:right;">
+                <button style="background-color: #E43712; color: aqua; width: 350px;">@Html.ActionLink("Pay button to view graphs", "Index", "Home", null, new { style = "color:#ebebeb" })</button>    @*Redirects to the Pay button shown in the Home View*@
+            </div>
+        </div>
+    }
+</p>
 
 @*Search fields*@
 @using (Html.BeginForm())
@@ -129,7 +142,10 @@
     </p>
 }
 
+
+
 <p><em> NOTE: A FULL tank of fuel is required to initiate consumption calculations. Consumption results will ONLY get displayed on subsequent fill-ups </em></p> 
+
 
 <table class="table">
     @*New for sorting*@

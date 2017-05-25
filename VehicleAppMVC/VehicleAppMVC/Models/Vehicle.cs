@@ -46,23 +46,23 @@ namespace VehicleAppMVC.Models
         //public int UserID { get; set; }                           //FK    Customer.UserID  
 
         [Required(ErrorMessage = "Vehicle Make is required")]       //Not null or empty string
-        [Display(Name = "Vehicle Make")]
+        [Display(Name = "Make")]
         public String VehicleMake { get; set; }
 
         [Required(ErrorMessage = "Vehicle Model is required")]      //Not null or empty string
-        [Display(Name = "Vehicle Model")]
+        [Display(Name = "Model")]
         public String VehicleModel { get; set; }
 
         [Required(ErrorMessage = "Vehicle Registration Number is required")] //Not null or empty string
-        [Display(Name = "Vehicle Registration")]
+        [Display(Name = "Registration")]
         public String VehicleRegistrationNumber { get; set; }
 
         [Required(ErrorMessage = "Vehicle Odometer reading is required")] //Not null or empty string
-        [Display(Name = "Vehicle Odometer")]
+        [Display(Name = "Odometer")]
         public int VehicleOdometerMileage { get; set; }
 
         [Required(ErrorMessage = "Fuel Type Setting is required")]  //Not null or empty string
-        [Display(Name = "Vehicle Fuel type")]
+        [Display(Name = "Fuel type")]
         public eSettingFuelType SettingFuelType { get; set; }       //Enum Type
 
 
@@ -154,7 +154,7 @@ namespace VehicleAppMVC.Models
                 public eSettingConsumption SettingConsumption { get; set; } //Enum Type
         */
         //Navigation Property
-        [Display(Name = "Application User")]
+        [Display(Name = "User")]
         public virtual ApplicationUser ApplicationUser { get; set; }       //NOT a Collection, as a Vehicle associated to only One User     
         public virtual List<Cost> Costs { get; set; }           //Collection and refers to Cost
         public virtual List<Fuel> Fuels { get; set; }           //Collection and refers to Fuel

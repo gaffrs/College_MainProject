@@ -37,6 +37,7 @@
 
         <dt>
             @Html.DisplayNameFor(model => model.CostOdometerMileage)
+            @Model.Vehicle.Consumption[1].ToString()            @*Units*@
         </dt>
 
         <dd>
@@ -44,6 +45,7 @@
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.CostRunningCost)
+            @Model.Vehicle.Consumption[0].ToString()            @*Units*@
         </dt>
 
         <dd>

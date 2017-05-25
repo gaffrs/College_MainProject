@@ -29,6 +29,7 @@
 
         <dt>
             @Html.DisplayNameFor(model => model.FuelOdometerMileage)
+            @Model.Vehicle.Consumption[1].ToString()            @*Units*@
         </dt>
 
         <dd>
@@ -37,6 +38,7 @@
 
         <dt>
             @Html.DisplayNameFor(model => model.FuelQuantity)
+            @Model.Vehicle.Consumption[2].ToString()            @*Units*@
         </dt>
 
         <dd>
@@ -45,6 +47,7 @@
 
         <dt>
             @Html.DisplayNameFor(model => model.FuelUnitPrice)
+            @Model.Vehicle.Consumption[0].ToString()            @*Units*@
         </dt>
 
         <dd>
@@ -58,7 +61,7 @@
         <dd>
             @Html.DisplayFor(model => model.FuelPartialFill)
         </dd>
-
+@*
         <dt>
             @Html.DisplayNameFor(model => model.FuelConsumption)
         </dt>
@@ -66,9 +69,10 @@
         <dd>
             @Html.DisplayFor(model => model.FuelConsumption)
         </dd>
-
+*@
         <dt>
             @Html.DisplayNameFor(model => model.FuelCost)
+            @Model.Vehicle.Consumption[0].ToString()            @*Units*@
         </dt>
 
         <dd>

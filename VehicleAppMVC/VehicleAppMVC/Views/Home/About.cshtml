@@ -2,6 +2,26 @@
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h3>Welcome to the “My Vehicle” web application.</h3>
 
-<p>Use this area to provide additional information.</p>
+
+    The application has been designed to allow users track their motoring costs and enable users to analyse their individual motoring habits.
+    <br>
+    <br>
+    <li> Users start by adding one or more vehicles to their profile.</li>
+        <br>
+    <li> Tracking commences once a user adds a full fuel-fill or motoring related cost.</li>
+        <br>
+    <li> Fuel fills are tracked by fuel unit price, cost of fuel fill and fuel consumption.</li>
+        <br>
+    <li> Motoring costs are broken into Insurance, Service, Tax, Vehicle Testing or Tyres.</li>
+        <br>
+    <li> Fuel and cost statistics are displayed by Total, Average, Highest and Lowest values.</li>
+        <br>
+    <li> Users can further analyse their results by refining their search criteria by Vehicle, Date, Year, Date Range or by Cost description</li>
+        <br>
+    <li> This data is all feeds into the paid graph feature which shows the history of all fuel and costs. Allowing users to fully analyse their motoring habits.</li>
+<br>
+<br>
+<br>
+@Html.ActionLink("Start adding your Vehicles now", "Create", "Vehicles")
