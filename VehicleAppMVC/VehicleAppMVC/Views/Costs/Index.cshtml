@@ -1,5 +1,12 @@
 ﻿@model IEnumerable<VehicleAppMVC.Models.Cost>
 
+
+
+
+
+
+
+
 <table class="table-condensed" width="350" align="right" style="background-color :lightslategray">
     <tr>
         <th>
@@ -52,7 +59,13 @@
     </tr>
 
     <tr></tr>
+
 </table>
+<button style="background-color: #E43712; color: aqua; width: 350px;">@Html.ActionLink("Pay to view graphs", "Index", "Home", null , new { style = "color:#ebebeb" })</button>    @*Redirects to the Pay button shown in the Home View*@
+
+
+
+
 
 
 
