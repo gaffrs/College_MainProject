@@ -47,12 +47,11 @@
         </dd>
 
         <dt>Delete User:</dt>
-        <dd>
             
             @*@Html.DisplayFor(model => model.VehicleUnit)*@
 
             @{ 
-                using (Html.BeginForm("Delete", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                using (Html.BeginForm("DeleteUser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
             @Html.AntiForgeryToken()
             <text>

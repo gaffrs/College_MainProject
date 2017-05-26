@@ -18,6 +18,7 @@ namespace VehicleAppMVC.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -351,217 +352,6 @@ namespace VehicleAppMVC.Controllers
 
 
         //CG added to Delete User
-        // GET: Manage/Delete/5
-        /*        public async Task<ActionResult> Delete()
-                {
-                    if (id == null)
-                    {
-                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                    }
-
-                    var currentUserId = User.Identity.GetUserId();
-                    // Look for user in the UserStore
-                    var user = UserManager.Users.Where(u => u.Id == currentUserId);
-
-                    if (user == null)
-                    {
-                        return HttpNotFound();
-                    }
-                    return View(user);
-                }
-
-        */
-        /*
-        // POST: Vehicles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Vehicle vehicle = await User.Identity.GetUserId();
-            db.Vehicles.Remove(vehicle);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-        */
-
-
-
-
-
-        /*           
-                   // GET: /Manage/Delete
-               public ActionResult Delete()
-               {
-                   var currentUserId = User.Identity.GetUserId();
-                   return View();
-               }
-
-               [HttpPost, ActionName("Delete")]
-               [ValidateAntiForgeryToken]
-               public async Task<ActionResult> Delete(string id, string role)
-               {
-                   // Check for for both ID and Role and exit if not found
-                   if (id == null || role == null)
-                   {
-                       return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                   }
-
-                   // Look for user in the UserStore
-                   var user = UserManager.Users.SingleOrDefault(u => u.Id == id);
-
-                   // If not found, exit
-                   if (user == null)
-                   {
-                       return HttpNotFound();
-                   }
-
-                   // Remove user from role first!
-                   var remFromRole = await UserManager.RemoveFromRoleAsync(id, role);
-
-                   // If successful
-                   if (remFromRole.Succeeded)
-                   {
-                       // Remove user from UserStore
-                       var results = await UserManager.DeleteAsync(user);
-
-                       // If successful
-                       if (results.Succeeded)
-                       {
-                           // Redirect to Users page
-                           return RedirectToAction("Index", "Users", new { area = "Dashboard" });
-                       }
-                       else
-                       {
-                           return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                       }
-                   }
-                   else
-                   {
-                       return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                   }
-
-               }
-       */
-        /*
-
-         //
-         // GET: /Members/Delete?userName=someuser
-
-         public ActionResult Delete(string userName)
-         {
-             var user = context.UserProfiles.SingleOrDefault(u => u.UserName == userName);
-             return View(user);
-         }
-
-         //
-         // POST: /Members/Delete?userName=someuser
-
-         [HttpPost]
-         public ActionResult Delete(string userName, FormCollection collection)
-         {
-             try
-             {
-                 // TODO: Add delete logic here
-                 ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(userName); // deletes record from webpages_Membership table
-                 ((SimpleMembershipProvider)Membership.Provider).DeleteUser(userName, true); // deletes record from UserProfile table
-
-                 return RedirectToAction("Index");
-             }
-             catch
-             {
-                 return View(userName);
-             }
-         }
-
-     */
-        /*
-
-           [HttpDelete]
-           public ActionResult DeleteUser(string uname)
-           {
-               //delete user
-               return View();
-           }
-           */
-        //**************************************************************************************************
-        /*
-                // GET: Manage/DeleteUser/5 
-                public async Task<ActionResult> DeleteUser(int? id)
-                {
-                    if (id == null)
-                    {
-                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                    }
-                    User user = await db.Movies.FindAsync(id);
-                    if (movie == null)
-                    {
-                        return HttpNotFound();
-                    }
-                    return View(movie);
-                }
-
-                // POST: Manage/Delete/5 
-                [HttpPost, ActionName("Delete")]
-                [ValidateAntiForgeryToken]
-                public async Task<ActionResult> DeleteUserConfirmed(int id)
-                {
-                    Movie movie = await db.Movies.FindAsync(id);
-                    db.Movies.Remove(movie);
-                    await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
-                }
-
-        */
-
-        /*
-                // POST: /Users/Delete/5
-                [HttpPost, ActionName("Delete")]
-                [ValidateAntiForgeryToken]
-                public async Task<ActionResult> DeleteConfirmed(string id)
-                {
-
-                    if (ModelState.IsValid)
-                    {
-
-                        if (id == null)
-                        {
-                            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                        }
-
-
-                        var user = await _userManager.FindByIdAsync(id);
-                        var logins = user.Logins;
-                        var rolesForUser = await _userManager.GetRolesAsync(id);
-
-                        using (var transaction = HttpContext.GetOwinContext().GetUserManager<ApplicationUserM‌​anager>())
-                        {
-                            foreach (var login in logins.ToList())
-                            {
-                                await _userManager.RemoveLoginAsync(login.UserId, new UserLoginInfo(login.LoginProvider, login.ProviderKey));
-                            }
-
-                            if (rolesForUser.Count() > 0)
-                            {
-                                foreach (var item in rolesForUser.ToList())
-                                {
-                                    // item should be the name of the role
-                                    var result = await _userManager.RemoveFromRoleAsync(user.Id, item);
-                                }
-                            }
-
-                            await _userManager.DeleteAsync(user);
-                            //transaction.Commit();
-                        }
-
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        return View();
-                    }
-                }*/
-
-/*
         // POST: /Manage/DeleteUser
         //Part of this code is in AccountController "DeleteUserAccount"
         [HttpPost]
@@ -569,27 +359,42 @@ namespace VehicleAppMVC.Controllers
         public async Task<ActionResult> DeleteUser(DeleteUserViewModel account)
         {
             var user = UserManager.FindById(User.Identity.GetUserId());//await GetCurrentUserAsync();
-            if ((user != null) && (user.PasswordHash != null) && (account != null) && (account.OldPassword != null))
+            if (user != null)
             {
-                var hasher = new Microsoft.AspNet.Identity.PasswordHasher();
-                if (hasher.VerifyHashedPassword(user.PasswordHash, account.OldPassword) != PasswordVerificationResult.Failed)
-                {
-                    IdentityResult rc = await AccountController.DeleteUserAccount(_userManager, user.Email, _Dbcontext);
-                    if (rc.Succeeded)
+                    var userToDelete = db.Users.Find(user.Id);
+                    var userVehicles = db.Vehicles.Where(v => v.ApplicationUserId == user.Id).ToList();
+                    foreach(Vehicle vehicle in userVehicles)
                     {
-                        await _signInManager.SignOutAsync();
-                        _logger.LogInformation(4, "User logged out.");
-                        return RedirectToAction(nameof(HomeController.Index), "Home");
+                        var userCosts = db.Costs.Where(v => v.VehicleID == vehicle.VehicleID).ToList();
+                        foreach (Cost cost in userCosts)
+                        {
+                            db.Costs.Remove(cost);
+                        }
+                        var userFuels = db.Fuels.Where(v => v.VehicleID == vehicle.VehicleID).ToList();
+                        foreach (Fuel fuel in userFuels)
+                        {
+                            db.Fuels.Remove(fuel);
+                        }
+
+                        db.Vehicles.Remove(vehicle);
                     }
+
+                var userNotifications = db.Notifications.Where(v => v.ApplicationUserId == user.Id).ToList();
+                foreach (Notification notification in userNotifications)
+                {
+                    db.Notifications.Remove(notification);
                 }
+
+
+
+                db.Users.Remove(userToDelete);
+                    await db.SaveChangesAsync();
+
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                return RedirectToAction("Login", "Account");
             }
             return View(account);
         }
-        */
-
-
-
-
 
 
         //

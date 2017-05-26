@@ -225,48 +225,7 @@ namespace VehicleAppMVC.Controllers
                 }
         */
 
-            /*
-        //CG Added to Delete User
-        //Part of this code is in ManageController "DeleteUser"
-        public static async Task<IdentityResult> DeleteUserAccount(UserManager<ApplicationUser> userManager,
-                                                                    string userEmail, ApplicationDbContext context)
-        {
-            IdentityResult rc = new IdentityResult();
-
-            if ((userManager != null) && (userEmail != null) && (context != null))
-            {
-                var user = await userManager.FindByEmailAsync(userEmail);
-                var logins = user.Logins;
-                //var rolesForUser = await userManager.GetRolesAsync(user);
-
-                using (var transaction = context.Database.BeginTransaction())
-                {
-                    foreach (var login in logins.ToList())
-                    {
-                        await userManager.RemoveLoginAsync(login.UserId, new UserLoginInfo(login.LoginProvider, login.ProviderKey)); //(user, login.LoginProvider, login.ProviderKey);
-                    }
-
-                    if (rolesForUser.Count() > 0)
-                    {
-                        foreach (var item in rolesForUser.ToList())
-                        {
-                            // item should be the name of the role
-                            var result = await userManager.RemoveFromRoleAsync(user, item);
-                        }
-                    }
-
-                    rc = await userManager.DeleteAsync(user);
-                    transaction.Commit();
-                }
-            }
-            return rc;
-        }
-        
-    */
-
-
-
-
+ 
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
