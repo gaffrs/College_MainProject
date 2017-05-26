@@ -26,40 +26,36 @@
         <dt>Username/Email:</dt>
         <dd>
             @Html.DisplayFor(model => model.UserName)
-            {
-                @Html.ActionLink("Change your Username/Email", "ChangeUsernameAndEmail")
-            }
+            [
+            @Html.ActionLink("Change your Username/Email", "ChangeUsernameAndEmail")
+            ]
         </dd>
-        <dt>Phone Number:</dt>
+        <dt>Phone Mobile Number</dt>
         <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-            {
+            [
             @Html.ActionLink("Change your Phone Number", "ChangePhonenumber")
-            }
+            ]
+            Current Number is @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
         <dt>Vehicle Unit Settings:</dt>
         <dd>
             @*@Html.DisplayFor(model => model.VehicleUnit)*@
-
-            {
+            [
             @Html.ActionLink("Change your Vehicle Units", "ChangeVehicleUnitSettings")
+            ]
+        </dd>
+
+        <dt>Delete Current User:</dt>
+        <dd>
+            @using (Html.BeginForm("DeleteUser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <text>[<input type="submit" value="Delete" class="btn-link"/>]</text>
+                @*class="btn btn-link"*@
             }
         </dd>
 
-        <dt>Delete User:</dt>
-            
-            @*@Html.DisplayFor(model => model.VehicleUnit)*@
 
-            @{ 
-                using (Html.BeginForm("DeleteUser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-            @Html.AntiForgeryToken()
-            <text>
-                Enabled
-                <input type="submit" value="Delete" class="btn btn-link" />
-            </text>
-                    }
-                }
 
 @*
     <dt>External Logins:</dt>

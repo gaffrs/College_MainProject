@@ -62,6 +62,7 @@ namespace VehicleAppMVC.Controllers
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetUsernameSuccess ? "Your username/email has been set."
+                //: message == ManageMessageId.UserDeleted ? "User has been deleted."
                 : message == ManageMessageId.SetMobileNumberSuccess ? "Your mobile number has been set."
                 : message == ManageMessageId.SetVehicleUnitSuccess ? "Your vehicle units have been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
@@ -391,7 +392,9 @@ namespace VehicleAppMVC.Controllers
                     await db.SaveChangesAsync();
 
                 AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-                return RedirectToAction("Login", "Account");
+
+                return RedirectToAction("Register", "Account"/*, new { Message = ManageMessageId.UserDeleted }*/);
+                //return RedirectToAction("Login", "Account");
             }
             return View(account);
         }
@@ -535,6 +538,7 @@ namespace VehicleAppMVC.Controllers
             SetUsernameSuccess,     //CG added
             SetMobileNumberSuccess, //CG added
             SetVehicleUnitSuccess,  //CG added
+            //UserDeleted,             //CG added
             RemoveLoginSuccess,
             RemovePhoneSuccess,
             Error
