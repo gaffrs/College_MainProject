@@ -267,7 +267,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Notification.cs" />
-    <Compile Include="Models\StripeSettings.cs" />
     <Compile Include="Models\TempClassToStoreSeedValues.cs" />
     <Compile Include="Models\UserDto.cs" />
     <Compile Include="Models\Vehicle.cs" />
