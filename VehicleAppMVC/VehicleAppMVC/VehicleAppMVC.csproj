@@ -268,7 +268,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\TempClassToStoreSeedValues.cs" />
-    <Compile Include="Models\UserDto.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Models\VehicleAppMVCContext.cs" />
     <Compile Include="Notification.cs">
