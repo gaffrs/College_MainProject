@@ -217,24 +217,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="AspNetUser.cs">
-      <DependentUpon>ColmSchema.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ColmSchema.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ColmSchema.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ColmSchema.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ColmSchema.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ColmSchema.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ColmSchema.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\CostsController.cs" />
@@ -243,12 +225,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
-    <Compile Include="Cost.cs">
-      <DependentUpon>ColmSchema.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Fuel.cs">
-      <DependentUpon>ColmSchema.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -270,26 +246,10 @@
     <Compile Include="Models\TempClassToStoreSeedValues.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Models\VehicleAppMVCContext.cs" />
-    <Compile Include="Notification.cs">
-      <DependentUpon>ColmSchema.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Vehicle.cs">
-      <DependentUpon>ColmSchema.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ColmSchema.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ColmSchema.edmx</DependentUpon>
-      <LastGenOutput>ColmSchema.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ColmSchema.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ColmSchema.edmx</DependentUpon>
-      <LastGenOutput>ColmSchema.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -341,13 +301,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="ColmSchema.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ColmSchema.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="ColmSchema.edmx.diagram">
-      <DependentUpon>ColmSchema.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
