@@ -503,7 +503,7 @@ namespace VehicleAppMVC.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Vehicles");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

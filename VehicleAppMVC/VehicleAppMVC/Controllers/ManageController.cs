@@ -354,7 +354,6 @@ namespace VehicleAppMVC.Controllers
 
         //CG added to Delete User
         // POST: /Manage/DeleteUser
-        //Part of this code is in AccountController "DeleteUserAccount"
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteUser(DeleteUserViewModel account)

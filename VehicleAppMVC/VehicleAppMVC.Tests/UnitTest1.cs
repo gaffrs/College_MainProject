@@ -98,7 +98,6 @@ namespace VehicleAppMVC.Tests
             b.CostRunningCost = 450;
             b.CostTitle = eCostTitle.Insurance;
 
-
             // assert
             Assert.AreEqual(b.CostID, (1));
             Assert.AreEqual(b.VehicleID, (3));
@@ -121,7 +120,6 @@ namespace VehicleAppMVC.Tests
             b.NotificationTitle = eNotificationTitle.VehicleBirthday;
             b.NotificationType = eNotificationType.Email;
 
-
             // assert
             Assert.AreEqual(b.ApplicationUserId, ("8ad230ab-0758-4066-952b-e0f163c648f4"));
             Assert.AreEqual(b.NotificationID, (1));
@@ -131,22 +129,15 @@ namespace VehicleAppMVC.Tests
             Assert.AreEqual(b.NotificationType, (eNotificationType.Email));
 
         }
-        /*
-        [TestMethod]
-        public void FuelConsumptionCalculationTest()
-        {
-            // arrange  
-            var controller = new FuelsController { };
-            }
-        */
 
-        [TestMethod]
+        [TestMethod]    //** Unit Test not completed **
         public void FuelConsumptionCalculationTest()
         {   
             // arrange  
             var controller = new FuelsController {  };
             Fuel b = new Fuel();
 
+            // act 
             b.FuelQuantity = 45;
             b.FuelPartialFill = false;
             b.FuelOdometerMileage = 100;
@@ -154,26 +145,10 @@ namespace VehicleAppMVC.Tests
             b.FuelPartialFill = false;
             b.FuelOdometerMileage = 1000;
 
-
-            // act 
-
-
-
             // assert
             Assert.AreEqual(b.FuelConsumption, (1000));
             //Assert.AreEqual();
         }
-        /*
-        [TestMethod]
-        public void ReturnsDetailsView()
-        {
-            FuelsController controllerUnderTest = new FuelsController();
-            var result = controllerUnderTest.Details("a1") as ViewResult;
-            Assert.AreEqual("fooview", result.ViewName);
-        }
-        */
-
-
     }
 }
 
