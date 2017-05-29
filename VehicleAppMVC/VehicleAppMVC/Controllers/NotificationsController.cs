@@ -262,10 +262,8 @@ namespace VehicleAppMVC.Controllers
         }
 
         // GET: Send notifications
-        public ActionResult SendNotifications()
-
-
-        //public async Task<ActionResult> SendNotifications()
+        //public ActionResult SendNotifications()
+        public async Task<ActionResult> SendNotifications()
 
         {
             var today = DateTime.Today;
