@@ -262,12 +262,16 @@ namespace VehicleAppMVC.Controllers
         }
 
         // GET: Send notifications
-        public async Task<ActionResult> SendNotifications()
+        public ActionResult SendNotifications()
+
+
+        //public async Task<ActionResult> SendNotifications()
+
         {
             var today = DateTime.Today;
             var mailMessages = new List<MailMessage>();
             var emailSender = new EmailSender();
-            var dueNotifications = db.Notifications.Where(n => n.NotificationSendDate == today).ToList();
+            var dueNotifications = db.Notifications.Where(n => n.NotificationSendDate == today).Where(n =>n.NotificationType == eNotificationType.Email).ToList();
 
             foreach(Notification notification in dueNotifications)
             {
