@@ -10,6 +10,10 @@ using System.Web.Mvc;
 using VehicleAppMVC.Models;
 
 using Microsoft.AspNet.Identity;    //CG added
+using VehicleAppMVC.services;
+using System.Configuration;
+using System.Net.Mail;
+using System.Net.Configuration;
 
 namespace VehicleAppMVC.Controllers
 {
@@ -255,6 +259,47 @@ namespace VehicleAppMVC.Controllers
             db.Notifications.Remove(notification);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        // GET: Send notifications
+        public async Task<ActionResult> SendNotifications()
+        {
+            var today = DateTime.Today;
+            var mailMessages = new List<MailMessage>();
+            var emailSender = new EmailSender();
+            var dueNotifications = db.Notifications.Where(n => n.NotificationSendDate == today).ToList();
+
+            foreach(Notification notification in dueNotifications)
+            {
+                
+                var emailFrom = ConfigurationManager.AppSettings.GetValues("EmailFrom").FirstOrDefault();
+                var mailSettings = (MailSettingsSectionGroup)ConfigurationManager.GetSection("system.net/mailSettings");
+                var emailTo = db.Users.Where(u => u.Id == notification.ApplicationUserId).Select(u => u.Email).FirstOrDefault();
+
+                // Create a Mail Message
+                var mailMessage = new MailMessage();
+
+                // Receiver’s E-Mail address. 
+                mailMessage.To.Add(emailTo);
+
+                // Subject of Email
+                mailMessage.Subject = "Reminder " + notification.NotificationTitle;
+
+                mailMessage.SubjectEncoding = System.Text.Encoding.UTF8;
+                mailMessage.Body = "This is a reminder notification about " + notification.NotificationTitle; // Message Body
+                mailMessage.BodyEncoding = System.Text.Encoding.UTF8;
+                mailMessage.IsBodyHtml = true;
+                mailMessage.Priority = MailPriority.Normal; // Email priority
+                mailMessage.From = new MailAddress(mailSettings.Smtp.From, "my vehicle web app reminder", System.Text.Encoding.UTF8);
+
+                mailMessages.Add(mailMessage);
+
+            }
+
+            // Send Email Asynchronously
+            emailSender.SendEmailAsync(mailMessages);
+
+            return View("");
         }
 
         protected override void Dispose(bool disposing)
