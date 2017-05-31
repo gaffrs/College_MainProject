@@ -263,19 +263,17 @@ namespace VehicleAppMVC.Controllers
 
         // GET: Send notifications
         //public ActionResult SendNotifications()
-        public async Task<ActionResult> SendNotifications()
+        public ActionResult SendNotifications()
 
         {
             var today = DateTime.Today;
             var mailMessages = new List<MailMessage>();
             var emailSender = new EmailSender();
-            var dueNotifications = db.Notifications.Where(n => n.NotificationSendDate == today).Where(n =>n.NotificationType == eNotificationType.Email).ToList();
+            var dueNotifications = db.Notifications.Where(n => n.NotificationSendDate == today && n.NotificationType == eNotificationType.Email).ToList();
 
             foreach(Notification notification in dueNotifications)
             {
-                
-                var emailFrom = ConfigurationManager.AppSettings.GetValues("EmailFrom").FirstOrDefault();
-                var mailSettings = (MailSettingsSectionGroup)ConfigurationManager.GetSection("system.net/mailSettings");
+                var mailSettings = ConfigurationManager.GetSection("system.net/mailSettings/smtp") as SmtpSection;
                 var emailTo = db.Users.Where(u => u.Id == notification.ApplicationUserId).Select(u => u.Email).FirstOrDefault();
 
                 // Create a Mail Message
@@ -292,16 +290,16 @@ namespace VehicleAppMVC.Controllers
                 mailMessage.BodyEncoding = System.Text.Encoding.UTF8;
                 mailMessage.IsBodyHtml = true;
                 mailMessage.Priority = MailPriority.Normal; // Email priority
-                mailMessage.From = new MailAddress(mailSettings.Smtp.From, "my vehicle web app reminder", System.Text.Encoding.UTF8);
+                mailMessage.From = new MailAddress(mailSettings.From, "my vehicle web app reminder", System.Text.Encoding.UTF8);
 
                 mailMessages.Add(mailMessage);
 
             }
 
             // Send Email Asynchronously
-            emailSender.SendEmailAsync(mailMessages);
+            emailSender.SendEmail(mailMessages);
 
-            return View("");
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
