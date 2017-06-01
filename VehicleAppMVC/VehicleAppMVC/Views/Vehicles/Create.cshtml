@@ -55,72 +55,72 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.VehicleOdometerMileage, htmlAttributes: new { @class = "control-label col-md-2" })
-            @*@(@Model.Vehicle.Consumption[1].ToString())*@
+            <div class="form-group">
+                @Html.LabelFor(model => model.VehicleOdometerMileage, htmlAttributes: new { @class = "control-label col-md-2" })
+                @*@(@Model.Consumption[1].ToString())*@
 
-            @*@Model.Consumption[0].ToString()*@
-            @*@Html.DisplayFor(m => m.[0].Consumption)*@
-            @*@Html.LabelFor(m => m[list].ArrayList Consumption)*@
-            @*@Model..Select(x => x.Vehicle.Consumption[1]).FirstOrDefault().ToString())*@
-            @*@Model.Select(x => x.Vehicle.Consumption[1]).FirstOrDefault().ToString())*@
-            @*@Html.DisplayFor(m => m.Consumption, iList[0])*@
-            @*@Html.LabelFor(model => model.Consumption.ToString(), htmlAttributes: new { @class = "control-label col-md-2" })*@
-            @*@Html.DisplayFor(model => model.iList[0])*@
-            @*@Html.ValueForModel("Consumption")*@
-            @*@Html.LabelFor(x => x.Consumption, Model.Consumption)*@
-            @*@Html.DisplayTextFor(model => model.Consumption.ToString());*@
+                @*@Model.Consumption[0].ToString()*@
+                @*@Html.DisplayFor(m => m.[0].Consumption)*@
+                @*@Html.LabelFor(m => m[list].ArrayList Consumption)*@
+                @*@Model..Select(x => x.Vehicle.Consumption[1]).FirstOrDefault().ToString())*@
+                @*@Model.Select(x => x.Vehicle.Consumption[1]).FirstOrDefault().ToString())*@
+                @*@Html.DisplayFor(m => m.Consumption, iList[0])*@
+                @*@Html.LabelFor(model => model.Consumption.ToString(), htmlAttributes: new { @class = "control-label col-md-2" })*@
+                @*@Html.DisplayFor(model => model.iList[0])*@
+                @*@Html.ValueForModel("Consumption")*@
+                @*@Html.LabelFor(x => x.Consumption, Model.Consumption)*@
+                @*@Html.DisplayTextFor(model => model.Consumption.ToString());*@
 
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.VehicleOdometerMileage, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VehicleOdometerMileage, "", new { @class = "text-danger" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.VehicleOdometerMileage, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VehicleOdometerMileage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*@Html.ValueFor(model => model.Consumption[0].ToString())*@
+
+
+            @*@@Html.DisplayFor(model => model[0].Consumption)*@
+            @*@Html.DisplayNameFor(ArrayList..Consumption..GetEnumerator.ToString())*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SettingFuelType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.SettingFuelType, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SettingFuelType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*
+            <div class="form-group">
+                @Html.LabelFor(model => model.SettingDistance, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.SettingDistance, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SettingDistance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SettingVolume, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.SettingVolume, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SettingVolume, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SettingConsumption, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.SettingConsumption, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SettingConsumption, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            *@
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
-
-        @*@Html.ValueFor(model => model.Consumption[0].ToString())*@
-
-            
-        @*@@Html.DisplayFor(model => model[0].Consumption)*@
-        @*@Html.DisplayNameFor(ArrayList..Consumption..GetEnumerator.ToString())*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SettingFuelType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.SettingFuelType, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SettingFuelType, "", new { @class = "text-danger" })
-            </div>
-        </div>
-@*
-    <div class="form-group">
-        @Html.LabelFor(model => model.SettingDistance, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.SettingDistance, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.SettingDistance, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.SettingVolume, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.SettingVolume, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.SettingVolume, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.SettingConsumption, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.SettingConsumption, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.SettingConsumption, "", new { @class = "text-danger" })
-        </div>
-    </div>
-*@
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
 }
 
 <div>

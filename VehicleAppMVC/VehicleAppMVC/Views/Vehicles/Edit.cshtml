@@ -50,7 +50,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VehicleOdometerMileage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2 text-right">
+                @Html.LabelFor(model => model.VehicleOdometerMileage, htmlAttributes: new { @class = "control-label" })
+                @Html.Label(Model.Consumption[1].ToString())
+            </div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.VehicleOdometerMileage, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.VehicleOdometerMileage, "", new { @class = "text-danger" })

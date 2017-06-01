@@ -35,8 +35,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FuelOdometerMileage, htmlAttributes: new { @class = "control-label col-md-2" })
-            @*@(@Model.Vehicle.Consumption[1].ToString())*@
+            <div class="col-md-2 text-right">
+                @Html.LabelFor(model => model.FuelOdometerMileage, htmlAttributes: new { @class = "control-label" })
+                @Html.Label(Model.Vehicle.Consumption[1].ToString())
+            </div> 
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FuelOdometerMileage, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FuelOdometerMileage, "", new { @class = "text-danger" })
@@ -44,15 +46,21 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FuelQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FuelQuantity, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FuelQuantity, "", new { @class = "text-danger" })
+            <div class="col-md-2 text-right">
+                @Html.LabelFor(model => model.FuelQuantity, htmlAttributes: new { @class = "control-label" })
+                @Html.Label(Model.Vehicle.Consumption[2].ToString())
             </div>
-        </div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FuelQuantity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FuelQuantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FuelUnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2 text-right">
+                @Html.LabelFor(model => model.FuelUnitPrice, htmlAttributes: new { @class = "control-label" })
+                @Html.Label(Model.Vehicle.Consumption[0].ToString())
+            </div>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FuelUnitPrice, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FuelUnitPrice, "", new { @class = "text-danger" })

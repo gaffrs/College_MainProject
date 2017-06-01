@@ -75,7 +75,7 @@ namespace VehicleAppMVC.Controllers
             return View();
             
 
-            //Marco Code
+            //To try get Units to work for Create
             /*
             var currentUserId = User.Identity.GetUserId();     //CG: Get the UserId of user logged in 
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email").Where(v => v.Value == currentUserId);   //CG: Edited
