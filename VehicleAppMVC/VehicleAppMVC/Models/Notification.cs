@@ -26,18 +26,7 @@ namespace VehicleAppMVC.Models
 
     public class Notification
     {
-        /*
-        //Enums
-    public enum eNotificationTitle
-    {
-        [Display(Name = "Vehicle Birthday")] VehicleBirthday,
-        [Display(Name = "Service Date Notification")] ServiceDateNotification,
-        [Display(Name = "Vehicle Testing DateRenewal")] VehicleTestingDateRenewal,
-        [Display(Name = "Insurance Date Renewal")] InsuranceDateRenewal,
-        [Display(Name = "Motor Tax Date Renewal")] MotorTaxDateRenewal,
-        [Display(Name = "Service Mileage Notification")] ServiceMileageNotification
-    }
-    */
+
         //Property			                    //auto-implemented ReadWrite
         public int NotificationID { get; set; }                     //PK
         public string ApplicationUserId { get; set; }               //FK to AspNetUsers UserId 
