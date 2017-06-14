@@ -220,9 +220,9 @@ namespace VehicleAppMVC.Controllers
                 ModelState.AddModelError("NotificationSendDate", "Send Date must be before Notification Date");
             }
 
-            if (notification.NotificationSendDate <= DateTime.Now)
+            if (notification.NotificationSendDate < DateTime.Now)
             {
-                ModelState.AddModelError("NotificationSendDate", "Send Date must occur after today");
+                ModelState.AddModelError("NotificationSendDate", "Send Date cannot must occur after today");
             }
 
             if (ModelState.IsValid)

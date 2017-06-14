@@ -56,8 +56,9 @@ namespace VehicleAppMVC.Models
                 return cost;
             }
         }
-        
+
         //Adding to enabling checking if user has paid
+        [NotMapped]
         public string StripeToken { get; set; }
         
         //Navigation Property

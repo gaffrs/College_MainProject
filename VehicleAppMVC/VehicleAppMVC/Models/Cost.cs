@@ -5,6 +5,7 @@ using System.Web;
 
 using System.ComponentModel.DataAnnotations;    //enables the [Key], [Required] etc
 using System.Data.Entity;                       //enables "DbContext"
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VehicleAppMVC.Models
 {
@@ -37,6 +38,7 @@ public enum eCostTitle { Insurance, Service, Tax, [Display(Name = "Testing: NCT 
         public double CostRunningCost { get; set; }
 
         //Adding to enabling checking if user has paid
+        [NotMapped]
         public string StripeToken { get; set; }
 
         //Navigation Property
