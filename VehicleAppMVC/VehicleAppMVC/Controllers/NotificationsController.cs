@@ -286,7 +286,7 @@ namespace VehicleAppMVC.Controllers
                 mailMessage.Subject = "Reminder " + notification.NotificationTitle;
 
                 mailMessage.SubjectEncoding = System.Text.Encoding.UTF8;
-                mailMessage.Body = "My Vehicle Web App update: This is a reminder notification about " + notification.NotificationTitle + " which is due on " + notification.NotificationDate.ToShortDateString(); // Message Body
+                mailMessage.Body = "My Vehicle Web App notification: This is a reminder " + notification.NotificationTitle + " is due on " + notification.NotificationDate.ToString("dd-MMM-yyyy"); // Message Body
                 mailMessage.BodyEncoding = System.Text.Encoding.UTF8;
                 mailMessage.IsBodyHtml = true;
                 mailMessage.Priority = MailPriority.Normal; // Email priority
